@@ -1,12 +1,33 @@
 package Entidad;
 
 public abstract class Enemigo extends Personaje{
-private int valor;
-public void setVelocidad(int velocidad) {
+	protected int valor;
+
 	
-}
-public int getVelocidad() {
-	return velocidad;
-}
+	public abstract void mover();
+	
+	public abstract void moverArriba(); 
+	
+	public abstract void moverAbajo(); 
+	
+	public abstract void moverIzq(); 
+		
+	public abstract void moverDer();
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+	
+	public int getvalor() {
+		return valor;
+	}
+	 
+	
+		
+	
 }
 
