@@ -11,6 +11,7 @@ import Logica.Cuchillo;
 import Logica.Dinero;
 import Logica.Energizante;
 import Logica.Galleta;
+import Logica.Jugador_456;
 import Logica.Triangulo;
 import Logica.Zona;
 
@@ -18,7 +19,7 @@ public class FactoryJuegoCalamar extends FactoryDominio {
 
 	@Override
 	public Jugador crearJugador() {
-		return new Jugador_546();
+		return new Jugador_456();
 	}
 
 	@Override
