@@ -14,7 +14,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 
-public class GuiNivel1 extends JFrame {
+public class GuiNivel2 extends JFrame {
 	
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class GuiNivel1 extends JFrame {
 	private JLabel laberintoNivel1;
 	private JLabel fondoNivel1;
 
-	public GuiNivel1() {
+	public GuiNivel2() {
 		
 		//Configuracion de la Ventana GUI
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +34,7 @@ public class GuiNivel1 extends JFrame {
 		setResizable(false);
 		
 		//Imagen del fondo de la Ventana Inicio
-		String rutaFotoJuego = this.getClass().getResource("/Images/fondo_nivel1.png").toString();
+		String rutaFotoJuego = this.getClass().getResource("/Images/fondo_nivel2.png").toString();
 	    ImageIcon fotoJuego = null;
 		try {
 			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));
@@ -53,7 +53,7 @@ public class GuiNivel1 extends JFrame {
 		panelNivel1.setVisible(true);
 		
 		//Imagen del fondo del laberinto
-		String rutaLaberinto = this.getClass().getResource("/Images/laberinto_nivel1.png").toString();
+		String rutaLaberinto = this.getClass().getResource("/Images/laberinto_nivel2.png").toString();
 	    ImageIcon fotoLaberinto = null;
 		try {
 			fotoLaberinto = new ImageIcon(new URL(rutaLaberinto));
@@ -77,7 +77,6 @@ public class GuiNivel1 extends JFrame {
 		panelNivel1.add(fondoNivel1);
 		fondoNivel1.setBackground(Color.BLUE);
 		fondoNivel1.setIcon(new ImageIcon(medidaJuego));
-		
 		
 		
 	}

@@ -14,7 +14,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 
-public class GuiNivel1 extends JFrame {
+public class GuiNivel3 extends JFrame {
 	
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class GuiNivel1 extends JFrame {
 	private JLabel laberintoNivel1;
 	private JLabel fondoNivel1;
 
-	public GuiNivel1() {
+	public GuiNivel3() {
 		
 		//Configuracion de la Ventana GUI
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

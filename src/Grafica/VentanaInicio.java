@@ -60,8 +60,8 @@ public class VentanaInicio extends JFrame {
 		btnIngresa.setBounds(300, 379, 227, 77);
 		btnIngresa.setBackground(Color.black);
 		
-		/*
-		String rutaBotonJuego = this.getClass().getResource("/images/boton_inicio.png").toString();
+		
+		String rutaBotonJuego = this.getClass().getResource("/Images/boton_iniciar.png").toString();
 		ImageIcon fotoBoton = null;
 		try {
 			fotoBoton = new ImageIcon(new URL(rutaBotonJuego));
@@ -70,7 +70,7 @@ public class VentanaInicio extends JFrame {
 		}
 		btnIngresa.setIcon(fotoBoton); 
 		btnIngresa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-		*/
+		
 		
 		btnIngresa.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
