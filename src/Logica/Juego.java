@@ -1,6 +1,8 @@
 package Logica;
 
+import Entidad.Enemigo;
 import Entidad.Item;
+import Entidad.Jugador;
 import Entidad.Personaje;
 
 public class Juego {
@@ -49,15 +51,15 @@ public class Juego {
 		
 	}
 	
-	public void cambioEstadoGuaria(Guardia guardia) {
+	public void cambioEstadoEnemigo(Enemigo enem) {
 		
 	}
 	
-	public void cambioEstadoJuegador(Jugador_456 jugador) {
+	public void cambioEstadoJugador(Jugador jugador) {
 		
 	}
 	
 	public boolean actualizarMovimiento(Personaje p) {
-		
+		return false;
 	}
 }

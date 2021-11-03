@@ -3,7 +3,7 @@ package Logica;
 import Entidad.Enemigo;
 import Entidad.Item;
 import Entidad.Jugador;
-import com.sun.org.apache.bcel.internal.generic.Visitor;
+import VisitorEntidad.VisitorEntidad;
 
 public class Jugador_456 extends Jugador{
 	
@@ -19,7 +19,7 @@ public class Jugador_456 extends Jugador{
 		
 	}
 	
-	public void accept(Visitor v) {
+	public void accept(VisitorEntidad v) {
 		
 	}
 }

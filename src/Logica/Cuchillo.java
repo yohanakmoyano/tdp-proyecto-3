@@ -1,7 +1,7 @@
 package Logica;
 
-import com.sun.org.apache.bcel.internal.generic.Visitor;
 import Entidad.ItemB;
+import VisitorEntidad.VisitorEntidad;
 
 public class Cuchillo extends ItemB {
 	
@@ -9,7 +9,7 @@ public class Cuchillo extends ItemB {
 		
 	}
 	
-	public void accept(Visitor v) {
+	public void accept(VisitorEntidad v) {
 		
 	}
 }

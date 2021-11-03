@@ -1,6 +1,7 @@
 package Logica;
 
 import Entidad.ItemE;
+import VisitorEntidad.VisitorEntidad;
 
 public class Dinero extends ItemE{
 
@@ -8,7 +9,7 @@ public class Dinero extends ItemE{
 		
 	}
 	
-	public void accept(Visitor v) {
+	public void accept(VisitorEntidad v) {
 		
 	}
 }

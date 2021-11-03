@@ -1,6 +1,7 @@
 package Logica;
 
 import Entidad.Enemigo;
+import VisitorEntidad.VisitorEntidad;
 
 public class Cuadrado extends Enemigo {
 
@@ -35,7 +36,7 @@ public class Cuadrado extends Enemigo {
 	}
 
 	@Override
-	public void accept(Visitor v) {
+	public void accept(VisitorEntidad v) {
 		// TODO Auto-generated method stub
 		
 	}

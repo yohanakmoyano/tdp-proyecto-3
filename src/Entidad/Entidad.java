@@ -1,6 +1,6 @@
 package Entidad;
 
-import com.sun.org.apache.bcel.internal.generic.Visitor;
+import VisitorEntidad.VisitorEntidad;
 
 public abstract class Entidad {
 	protected int ancho;
@@ -8,9 +8,7 @@ public abstract class Entidad {
 	protected int esquina;
 
 	
-	public abstract void accept(Visitor v) {
-		
-	}
+	public abstract void accept(VisitorEntidad v);
 	
 	public RepresentacionGrafica getRepresentacionGrafica() {
 	

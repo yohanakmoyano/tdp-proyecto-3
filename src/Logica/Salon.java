@@ -1,5 +1,7 @@
 package Logica;
 
+import Entidad.Enemigo;
+
 public class Salon {
 	private Zona zonaSalon; 
 	
@@ -7,8 +9,8 @@ public class Salon {
 		
 	}
 	
-	public Guardia regenerarGuardia(Guardia guardia) {
-		
+	public Enemigo regenerarEnemigo(Enemigo enem) {
+		return null;
 	}
 	
 	public void setZonaSalon(Zona z) {

@@ -1,8 +1,7 @@
 package Logica;
 
-import com.sun.org.apache.bcel.internal.generic.Visitor;
-
 import Entidad.ItemC;
+import VisitorEntidad.VisitorEntidad;
 
 public class Energizante extends ItemC {
 
@@ -10,7 +9,7 @@ public class Energizante extends ItemC {
 		
 	}
 	
-	public void accept(Visitor v) {
+	public void accept(VisitorEntidad v) {
 		
 	}
 }
