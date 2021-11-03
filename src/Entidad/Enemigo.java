@@ -6,13 +6,13 @@ public abstract class Enemigo extends Personaje{
 	
 	public abstract void mover();
 	
-	public abstract void moverArriba(); 
+	protected abstract void moverArriba(); 
 	
-	public abstract void moverAbajo(); 
+	protected abstract void moverAbajo(); 
 	
-	public abstract void moverIzq(); 
+	protected abstract void moverIzq(); 
 		
-	public abstract void moverDer();
+	protected abstract void moverDer();
 
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;

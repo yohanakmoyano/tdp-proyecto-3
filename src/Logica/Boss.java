@@ -3,27 +3,40 @@ package Logica;
 import Entidad.Enemigo;
 
 public class Boss extends Enemigo {
+
+	@Override
 	public void mover() {
+		// TODO Auto-generated method stub
 		
 	}
-	
+
+	@Override
+	protected void moverArriba() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void moverAbajo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void moverIzq() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void moverDer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void accept(Visitor v) {
-		
-	}
-	
-	public void moverArriba() {
-		
-	}
-	
-	public void moverAbajo() {
-		
-	}
-	
-	public void moverIzquierda() {
-		
-	}
-	
-	public void moverDerecha() {
+		// TODO Auto-generated method stub
 		
 	}
 }

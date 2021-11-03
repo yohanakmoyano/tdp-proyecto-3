@@ -4,10 +4,14 @@ import Entidad.Enemigo;
 import Entidad.Item;
 import Entidad.Jugador;
 import Logica.Bomba;
+import Logica.Boss;
+import Logica.Circulo;
+import Logica.Cuadrado;
 import Logica.Cuchillo;
 import Logica.Dinero;
 import Logica.Energizante;
 import Logica.Galleta;
+import Logica.Triangulo;
 import Logica.Zona;
 
 public class FactoryJuegoCalamar extends FactoryDominio {
