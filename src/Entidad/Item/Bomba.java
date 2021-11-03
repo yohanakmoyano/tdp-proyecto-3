@@ -1,6 +1,6 @@
-package Logica;
+package Entidad.Item;
 
-import Entidad.ItemD;
+import Logica.Zona;
 import VisitorEntidad.VisitorEntidad;
 
 public class Bomba extends ItemD{

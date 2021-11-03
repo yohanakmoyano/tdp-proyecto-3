@@ -1,4 +1,6 @@
-package Entidad;
+package Entidad.Jugador;
+
+import Entidad.EntidadMovible.Personaje;
 
 public abstract class Jugador extends Personaje {
 

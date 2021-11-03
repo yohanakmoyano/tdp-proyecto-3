@@ -1,8 +1,8 @@
 package Dominio;
 
-import Entidad.Enemigo;
-import Entidad.Item;
-import Entidad.Jugador;
+import Entidad.Enemigo.Enemigo;
+import Entidad.Item.Item;
+import Entidad.Jugador.Jugador;
 
 public abstract class FactoryDominio {
 public abstract  Jugador crearJugador();	

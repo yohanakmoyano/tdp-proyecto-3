@@ -1,9 +1,8 @@
-package Logica;
+package Entidad.Enemigo;
 
-import Entidad.Enemigo;
 import VisitorEntidad.VisitorEntidad;
 
-public class Cuadrado extends Enemigo {
+public class Circulo extends Enemigo {
 
 	@Override
 	public void mover() {

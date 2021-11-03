@@ -1,8 +1,7 @@
-package Logica;
+package Entidad.Jugador;
 
-import Entidad.Enemigo;
-import Entidad.Item;
-import Entidad.Jugador;
+import Entidad.Enemigo.Enemigo;
+import Entidad.Item.Item;
 import VisitorEntidad.VisitorEntidad;
 
 public class Jugador_456 extends Jugador{

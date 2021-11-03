@@ -1,6 +1,6 @@
-package Logica;
+package Entidad.Item;
 
-import Entidad.ItemB;
+import Logica.Zona;
 import VisitorEntidad.VisitorEntidad;
 
 public class Cuchillo extends ItemB {

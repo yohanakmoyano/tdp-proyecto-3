@@ -1,6 +1,6 @@
-package Logica;
+package Entidad.Item;
 
-import Entidad.ItemE;
+import Logica.Zona;
 import VisitorEntidad.VisitorEntidad;
 
 public class Dinero extends ItemE{

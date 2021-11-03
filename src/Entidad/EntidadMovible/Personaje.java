@@ -1,4 +1,6 @@
-package Entidad;
+package Entidad.EntidadMovible;
+
+import Entidad.Entidad;
 
 public abstract class Personaje extends Entidad {
 	protected int velocidad;

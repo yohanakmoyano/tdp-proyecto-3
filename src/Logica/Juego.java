@@ -1,9 +1,9 @@
 package Logica;
 
-import Entidad.Enemigo;
-import Entidad.Item;
-import Entidad.Jugador;
-import Entidad.Personaje;
+import Entidad.Enemigo.Enemigo;
+import Entidad.EntidadMovible.Personaje;
+import Entidad.Item.Item;
+import Entidad.Jugador.Jugador;
 
 public class Juego {
 	

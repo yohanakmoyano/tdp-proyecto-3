@@ -1,6 +1,6 @@
-package Logica;
+package Entidad.Item;
 
-import Entidad.ItemC;
+import Logica.Zona;
 import VisitorEntidad.VisitorEntidad;
 
 public class Energizante extends ItemC {

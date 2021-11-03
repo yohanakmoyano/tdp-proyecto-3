@@ -1,10 +1,9 @@
-package Logica;
+package Entidad.Enemigo;
 
-import Entidad.Enemigo;
 import VisitorEntidad.VisitorEntidad;
 
-public class Boss extends Enemigo {
-
+public class Triangulo extends Enemigo{
+	
 	@Override
 	public void mover() {
 		// TODO Auto-generated method stub
@@ -40,4 +39,5 @@ public class Boss extends Enemigo {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

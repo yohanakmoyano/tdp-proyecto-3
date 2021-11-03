@@ -1,6 +1,6 @@
-package Logica;
+package Entidad.Item;
 
-import Entidad.ItemA;
+import Logica.Zona;
 import VisitorEntidad.VisitorEntidad;
 
 public class Galleta extends ItemA {

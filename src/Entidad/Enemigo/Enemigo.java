@@ -1,4 +1,6 @@
-package Entidad;
+package Entidad.Enemigo;
+
+import Entidad.EntidadMovible.Personaje;
 
 public abstract class Enemigo extends Personaje{
 	protected int valor;

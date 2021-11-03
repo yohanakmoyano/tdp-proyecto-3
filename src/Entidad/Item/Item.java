@@ -1,4 +1,4 @@
-package Entidad;
+package Entidad.Item;
 
 public abstract class Item {
 	protected boolean visible;

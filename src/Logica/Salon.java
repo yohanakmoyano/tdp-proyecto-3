@@ -1,6 +1,6 @@
 package Logica;
 
-import Entidad.Enemigo;
+import Entidad.Enemigo.Enemigo;
 
 public class Salon {
 	private Zona zonaSalon; 

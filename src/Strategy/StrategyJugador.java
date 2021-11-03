@@ -1,6 +1,6 @@
 package Strategy;
 
-import Entidad.Enemigo;
+import Entidad.Enemigo.Enemigo;
 
 public abstract class StrategyJugador {
 	protected Strategy estrategia;

@@ -1,18 +1,18 @@
 package Dominio;
 
-import Entidad.Enemigo;
-import Entidad.Item;
-import Entidad.Jugador;
-import Logica.Bomba;
-import Logica.Boss;
-import Logica.Circulo;
-import Logica.Cuadrado;
-import Logica.Cuchillo;
-import Logica.Dinero;
-import Logica.Energizante;
-import Logica.Galleta;
-import Logica.Jugador_456;
-import Logica.Triangulo;
+import Entidad.Enemigo.Boss;
+import Entidad.Enemigo.Circulo;
+import Entidad.Enemigo.Cuadrado;
+import Entidad.Enemigo.Enemigo;
+import Entidad.Enemigo.Triangulo;
+import Entidad.Item.Bomba;
+import Entidad.Item.Cuchillo;
+import Entidad.Item.Dinero;
+import Entidad.Item.Energizante;
+import Entidad.Item.Galleta;
+import Entidad.Item.Item;
+import Entidad.Jugador.Jugador;
+import Entidad.Jugador.Jugador_456;
 import Logica.Zona;
 
 public class FactoryJuegoCalamar extends FactoryDominio {

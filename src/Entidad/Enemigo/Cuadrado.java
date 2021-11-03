@@ -1,10 +1,9 @@
-package Logica;
+package Entidad.Enemigo;
 
-import Entidad.Enemigo;
 import VisitorEntidad.VisitorEntidad;
 
-public class Triangulo extends Enemigo{
-	
+public class Cuadrado extends Enemigo {
+
 	@Override
 	public void mover() {
 		// TODO Auto-generated method stub
@@ -40,5 +39,4 @@ public class Triangulo extends Enemigo{
 		// TODO Auto-generated method stub
 		
 	}
-
 }
