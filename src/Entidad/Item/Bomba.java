@@ -1,15 +1,16 @@
 package Entidad.Item;
 
-import Logica.Zona;
+import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
 
-public class Bomba extends ItemD{
+public class Bomba extends ItemD {
 	
-	public Bomba(int val,Zona pos) {
-		
+	public Bomba(int val,Coordenada c) {
+		valor=val;
+		posicion=c;
 	}
 	
-	public void acept(VisitorEntidad v) {
+	public void accept(VisitorEntidad v) {
 		
 	}
 }

@@ -1,6 +1,8 @@
 package Entidad.Item;
 
-public abstract class Item {
+import Entidad.Entidad;
+
+public abstract class Item extends Entidad {
 	protected boolean visible;
 	protected int valor;
 	

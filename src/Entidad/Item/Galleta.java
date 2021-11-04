@@ -1,15 +1,16 @@
 package Entidad.Item;
 
-import Logica.Zona;
+import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
 
 public class Galleta extends ItemA {
 	
-	public Galleta(int val, Zona pos) {
-		
+	public Galleta(int val, Coordenada c) {
+		valor=val;
+		posicion=c;
 	}
-	
-	public void acept(VisitorEntidad pos) {
+
+	public void accept(VisitorEntidad v) {
 		
 	}
 }

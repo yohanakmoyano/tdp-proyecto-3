@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.Panel;
 
 
 public class GuiNivel1 extends JFrame {
@@ -21,8 +22,12 @@ public class GuiNivel1 extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel panelNivel1; 
-	private JLabel laberintoNivel1;
 	private JLabel fondoNivel1;
+	private JLabel galleta; 
+	private JLabel dinero; 
+	private JLabel bomba; 
+	private JLabel cuchillo; 
+	private JLabel energizante; 
 
 	public GuiNivel1() {
 		
@@ -64,11 +69,11 @@ public class GuiNivel1 extends JFrame {
 		Image medidaLaberinto = fotoLaberinto.getImage().getScaledInstance(500, 600, Image.SCALE_DEFAULT);
 		panelNivel1.setLayout(null);
 		
-		//Label del laberinto
-		laberintoNivel1=new JLabel();
-		laberintoNivel1.setBounds(188, -44, 589, 640);
-		laberintoNivel1.setIcon(new ImageIcon(medidaLaberinto));
-		panelNivel1.add(laberintoNivel1);
+		//Label Galleta
+		galleta=new JLabel();
+		galleta.setVerticalAlignment(SwingConstants.BOTTOM);
+		galleta.setBounds(0, 0, 10, 10);
+		panelNivel1.add(galleta);
 		
 		//Label del fondo 
 		fondoNivel1=new JLabel();
@@ -77,8 +82,18 @@ public class GuiNivel1 extends JFrame {
 		panelNivel1.add(fondoNivel1);
 		fondoNivel1.setBackground(Color.BLUE);
 		fondoNivel1.setIcon(new ImageIcon(medidaJuego));
+		fondoNivel1.setBackground(Color.BLUE);
 		
+		Panel panel = new Panel();
+		panel.setBounds(197, 0, 501, 561);
+		panelNivel1.add(panel);
+		panel.setLayout(null);
 		
+		JLabel laberintoNivel1 = new JLabel();
+		laberintoNivel1.setBounds(0, 0, 600, 640);
+		laberintoNivel1.setIcon(new ImageIcon(medidaLaberinto));
+		panel.add(laberintoNivel1);
+		//fondoNivel1.setIcon(new ImageIcon(medidaJuego));
 		
 	}
 }

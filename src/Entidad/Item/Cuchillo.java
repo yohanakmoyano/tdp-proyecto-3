@@ -1,12 +1,13 @@
 package Entidad.Item;
 
-import Logica.Zona;
+import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
 
 public class Cuchillo extends ItemB {
 	
-	public Cuchillo(int val, Zona pos) {
-		
+	public Cuchillo(int val, Coordenada c) {
+		valor=val;
+		posicion=c;
 	}
 	
 	public void accept(VisitorEntidad v) {

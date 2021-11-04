@@ -1,12 +1,13 @@
 package Entidad.Item;
 
-import Logica.Zona;
+import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
 
 public class Dinero extends ItemE{
 
-	public Dinero(int val ,Zona pos) {
-		
+	public Dinero(int val ,Coordenada c) {
+		valor=val;
+		posicion=c;
 	}
 	
 	public void accept(VisitorEntidad v) {

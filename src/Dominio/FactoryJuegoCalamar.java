@@ -13,6 +13,7 @@ import Entidad.Item.Galleta;
 import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
 import Entidad.Jugador.Jugador_456;
+import Logica.Coordenada;
 import Logica.Zona;
 
 public class FactoryJuegoCalamar extends FactoryDominio {
@@ -44,27 +45,27 @@ public class FactoryJuegoCalamar extends FactoryDominio {
 
 	@Override
 	public Item CrearItemA() {
-		return new Galleta(5,new Zona(2,4));
+		return new Galleta(5,new Coordenada(2,4));
 	}
 
 	@Override
 	public Item CrearItemB() {
-		return new Cuchillo(5,new Zona(5,7));
+		return new Cuchillo(5,new Coordenada(5,7));
 	}
 
 	@Override
 	public Item CrearItemC() {
-		return new Energizante(5,new Zona(5,7));
+		return new Energizante(5,new Coordenada(5,7));
 	}
 
 	@Override
 	public Item CrearItemD() {
-		return new Bomba(5,new Zona(5,7));
+		return new Bomba(5,new Coordenada(5,7));
 	}
 
 	@Override
 	public Item CrearItemE() {
-		return new Dinero(5,new Zona(5,7));
+		return new Dinero(5,new Coordenada(5,7));
 	}
 	
 }

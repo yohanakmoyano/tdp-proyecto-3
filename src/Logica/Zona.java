@@ -1,32 +1,52 @@
 package Logica;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Entidad.Entidad;
+
 public class Zona {
 	
-	private int base;
-	private int altura;
+	protected Coordenada esquinaIzqSuperior;
+	protected Coordenada esquinaDerSuperior;
+	protected Coordenada esquinaIzqInferior;
+	protected Coordenada esquinaDerInferior;
+	protected List<Entidad> listaEntidades; 
 
-	public Zona(int b ,int a) {
-		base=b;
-		altura=a;
+	public Zona(Coordenada esqIzqSup, Coordenada esqDerSup, Coordenada esqIzqInf, Coordenada esqDerInf) {
+		esquinaIzqSuperior=esqIzqSup;
+		esquinaDerSuperior=esqDerSup; 
+		esquinaIzqInferior=esqIzqInf;
+		esquinaDerInferior=esqIzqInf;
+		listaEntidades= new ArrayList<Entidad>(); 
 	}
 	
-	public int Area() {
-		return base*altura;
+	public Coordenada getEsquinaIzqSup() {
+		return esquinaIzqSuperior; 
 	}
 	
-	public void setBase(int b) {
-		base=b;
+	public Coordenada getEsquinaDerSup() {
+		return esquinaDerSuperior; 
 	}
 	
-	public int getBase() {
-		return base; 
+	public Coordenada getEsquinaIzqInf() {
+		return esquinaIzqInferior;
 	}
 	
-	public void setAltura(int a) {
-		altura=a; 
+	public Coordenada getEsquinaDerInf() {
+		return esquinaDerInferior;
 	}
 	
-	public int getAltura() {
-		return altura; 
+	public List<Entidad> getListaEntidades() {
+		return listaEntidades;
 	}
+	
+	public void agregarEntidad(Entidad e) {
+		listaEntidades.add(e);
+	}
+	
+	public void eliminarEntidad(Entidad e) {
+		listaEntidades.remove(e);
+	}	
+	
 }

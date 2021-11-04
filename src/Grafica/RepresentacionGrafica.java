@@ -3,6 +3,8 @@ package Grafica;
 public class RepresentacionGrafica {
 	
 	protected String ruta; 
+	protected int altura; 
+	protected int base; 
 	
 	public RepresentacionGrafica(String r) {
 		ruta=r;

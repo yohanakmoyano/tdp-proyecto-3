@@ -1,5 +1,5 @@
 package Entidad.Item;
 
-public class ItemE extends Item{
+public abstract class ItemE extends Item{
 
 }
