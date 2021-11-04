@@ -14,13 +14,12 @@ import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
 import Entidad.Jugador.Jugador_456;
 import Logica.Coordenada;
-import Logica.Zona;
 
 public class FactoryJuegoCalamar extends FactoryDominio {
 
 	@Override
 	public Jugador crearJugador() {
-		return new Jugador_456();
+		return new Jugador_456(null, 0, 0);
 	}
 
 	@Override
