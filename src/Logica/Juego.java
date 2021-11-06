@@ -1,7 +1,9 @@
 package Logica;
 
+import Entidad.Entidad;
 import Entidad.Enemigo.Enemigo;
 import Entidad.EntidadMovible.Personaje;
+import Entidad.Item.Energizante;
 import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
 import Grafica.Gui;
@@ -14,10 +16,13 @@ public class Juego {
 	protected Gui miGui;
 	protected SalaDeJuegos misala;
 	protected Director miFabrica;
+	protected Personaje p;
+	protected Entidad e;
 	
 	public Juego() {
 		puntaje=0;
 		nivel=1;
+		miFabrica=new Director(nivel);
 	}
 	
 	public void setPuntaje(int p) {
@@ -44,6 +49,8 @@ public class Juego {
 	}
 	
 	public void generarItems() {
+		Entidad energizante=new Energizante(1,new Coordenada(451,137)); 
+		
 		
 	}
 	
@@ -71,8 +78,16 @@ public class Juego {
 	public boolean actualizarMovimiento(Personaje p) {
 		return false;
 	}
-	
+	public SalaDeJuegos getSalaDeJuegos() {
+		return misala;
+	}
 	private void finDeJuego() {
 			miGui.finDeJuego();	
+	}
+	public boolean sigueEnJuego() {
+		if(p.getVidas()>=0)
+			return true;
+		else
+			return false;
 	}
 }

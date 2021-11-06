@@ -1,5 +1,7 @@
 package Entidad;
 
+import javax.swing.JLabel;
+
 import Grafica.RepresentacionGrafica;
 import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
@@ -10,6 +12,7 @@ public abstract class Entidad {
 	protected int esquina;
 	protected RepresentacionGrafica miRep;
 	protected Coordenada posicion; 
+	protected JLabel dibujo;
 
 	public abstract void accept(VisitorEntidad v);
 	
@@ -20,5 +23,14 @@ public abstract class Entidad {
 	public Coordenada getPosicion() {
 		return posicion;
 	}
-
+	public JLabel getDibujo() {
+		return dibujo;
+	}
+	public int getAncho() {
+		return ancho;
+	}
+	public int getAlto() {
+		return alto;
+	}
+	
 }

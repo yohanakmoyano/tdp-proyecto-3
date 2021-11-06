@@ -26,10 +26,7 @@ public abstract class Enemigo extends Personaje{
 	
 	public int getvalor() {
 		return valor;
-	}
-	 
-	
-		
+	}	
 	
 }
 

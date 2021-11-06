@@ -4,16 +4,18 @@ import Entidad.Enemigo.Enemigo;
 import Entidad.Item.Item;
 import Grafica.RepresentacionGrafica;
 import Logica.Coordenada;
+import Strategy.StrategyJugador;
 import VisitorEntidad.VisitorEntidad;
 
 public class Jugador_456 extends Jugador{
+	protected StrategyJugador stg;
 	
 	public Jugador_456(Coordenada c,int vel, int v) {
 		velocidad=vel;
 		vidas=v;
 		posicion=c;
-		String rutaBomba=this.getClass().getResource("/Images/jugador_nivel1.png").toString();
-		miRep=new RepresentacionGrafica(rutaBomba);
+		//String rutaJugador=this.getClass().getResource("/Images/jugador_nivel1.png").toString();
+	//	miRep=new RepresentacionGrafica(rutaJugador);
 	}
 	
 	public void colisionConItem(Item i) {
@@ -27,5 +29,8 @@ public class Jugador_456 extends Jugador{
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}
-	
+	public void morir(){
+		//SalaDeJuegos.getListaEliminar().add(this);
+		//SalaDeJuegos.getJuego().finDeJuego();
+	}
 }

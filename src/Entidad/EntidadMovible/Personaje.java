@@ -13,4 +13,5 @@ public abstract class Personaje extends Entidad {
 	public void setVidas(int v) {
 		vidas=v;
 	}
+	public abstract void morir();
 }

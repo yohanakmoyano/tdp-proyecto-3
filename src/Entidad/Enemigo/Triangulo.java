@@ -40,4 +40,10 @@ public class Triangulo extends Enemigo{
 		
 	}
 
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

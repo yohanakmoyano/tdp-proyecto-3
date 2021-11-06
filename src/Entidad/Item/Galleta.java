@@ -9,10 +9,14 @@ public class Galleta extends ItemA {
 	public Galleta(int val, Coordenada c) {
 		valor=val;
 		posicion=c;
-		String rutaGalleta=this.getClass().getResource("/Images/galleta_nivel1.png").toString();
-		miRep=new RepresentacionGrafica(rutaGalleta); 
+		ancho=22;
+		alto=23;
+		//String rutaGalleta=this.getClass().getResource("/Images/galleta_nivel1.png").toString();
+	//	miRep=new RepresentacionGrafica(rutaGalleta); 
 	}
-
+	public Galleta() {
+		
+	}
 	public void accept(VisitorEntidad v) {
 		
 	}

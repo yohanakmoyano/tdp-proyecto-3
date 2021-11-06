@@ -3,6 +3,8 @@ package Grafica;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -11,13 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-import Entidad.Item.Bomba;
+
+import Entidad.Entidad;
 import Entidad.Item.Cuchillo;
-import Entidad.Item.Dinero;
-import Entidad.Item.Energizante;
-import Entidad.Item.Galleta;
-import Entidad.Jugador.Jugador_456;
-import Logica.Coordenada;
 import Logica.Juego;
 
 
@@ -91,12 +89,9 @@ public class Gui extends JFrame {
 		
 		//Label Cuchillo
 		label_cuchillo=new JLabel();
-		label_cuchillo.setBounds(83, 97, 40, 58);
+		//label_cuchillo.setBounds(83, 97, 40, 58);
 		
-		Coordenada coordenadaCuchillo=new Coordenada(85,90); 
-	    Cuchillo cuchillo=new Cuchillo(1,coordenadaCuchillo);
-		
-		String rutaCuchillo = cuchillo.getRepresentacionGrafica().getRuta();
+	    String rutaCuchillo=this.getClass().getResource("/Images/cuchillo_nivel1.png").toString();
 	    ImageIcon fotoCuchillo = null;
 		try {
 			fotoCuchillo = new ImageIcon(new URL(rutaCuchillo));
@@ -112,12 +107,9 @@ public class Gui extends JFrame {
 		
 		//Label Bomba
 		label_bomba=new JLabel();
-		label_bomba.setBounds(112, 379, 40, 58);
+		//label_bomba.setBounds(112, 379, 40, 58);
 		
-		Coordenada coordenadaBomba=new Coordenada(85,90); 
-	    Bomba bomba=new Bomba(1,coordenadaBomba);
-		
-		String rutaBomba = bomba.getRepresentacionGrafica().getRuta();
+		String rutaBomba=this.getClass().getResource("/Images/bomba_nivel1.png").toString();
 	    ImageIcon fotoBomba = null;
 		try {
 			fotoBomba = new ImageIcon(new URL(rutaBomba));
@@ -133,12 +125,9 @@ public class Gui extends JFrame {
 		
 		//Label Jugador
 		label_jugador=new JLabel();
-		label_jugador.setBounds(235, 441, 40, 58);
+		//label_jugador.setBounds(235, 441, 40, 58);
 		
-		Coordenada coordenadaJugador=new Coordenada(85,90); 
-	    Jugador_456 jugador=new Jugador_456(coordenadaJugador, 100, 3); //agregar valores reales de velocidad y vidas
-		
-		String rutaJugador = jugador.getRepresentacionGrafica().getRuta();
+		String rutaJugador = this.getClass().getResource("/Images/jugador_nivel1.png").toString();
 	    ImageIcon fotoJugador = null;
 		try {
 			fotoJugador = new ImageIcon(new URL(rutaJugador));
@@ -154,12 +143,10 @@ public class Gui extends JFrame {
 		
 		//Label Energizante
 		label_energizante=new JLabel();
-		label_energizante.setBounds(451, 137, 40, 58);
+		//label_energizante.setBounds(451, 137, 40, 58);
+		mijuego.generarItems();
 		
-		Coordenada coordenadaEnergizante=new Coordenada(85,90); 
-	    Energizante energizante=new Energizante(1,coordenadaEnergizante);
-		
-		String rutaEnergizante = energizante.getRepresentacionGrafica().getRuta();
+		String rutaEnergizante=this.getClass().getResource("/Images/energizante_nivel1.png").toString();
 	    ImageIcon fotoEnergizante = null;
 		try {
 			fotoEnergizante = new ImageIcon(new URL(rutaEnergizante));
@@ -177,12 +164,9 @@ public class Gui extends JFrame {
 		
 		label_galleta=new JLabel();
 		label_galleta.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_galleta.setBounds(163, 277, 22, 23);
+		//label_galleta.setBounds(163, 277, 22, 23);
 		
-	    Coordenada coordenadaGalleta=new Coordenada(65,65); 
-	    Galleta galleta=new Galleta(1,coordenadaGalleta);
-		
-		String rutaGalleta = galleta.getRepresentacionGrafica().getRuta();
+		String rutaGalleta=this.getClass().getResource("/Images/galleta_nivel1.png").toString();
 	    ImageIcon fotoGalleta = null;
 		try {
 			fotoGalleta = new ImageIcon(new URL(rutaGalleta));
@@ -199,12 +183,9 @@ public class Gui extends JFrame {
 		//Label Dinero
 		label_dinero=new JLabel();
 		//label_cuchillo.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_dinero.setBounds(235, 345, 46, 23);
+		//label_dinero.setBounds(235, 345, 46, 23);
 		
-		Coordenada coordenadaDinero=new Coordenada(41,90); 
-	    Dinero dinero=new Dinero(1,coordenadaDinero);
-		
-		String rutaDinero = dinero.getRepresentacionGrafica().getRuta();
+		String rutaDinero=this.getClass().getResource("/Images/dinero_nivel1.png").toString();
 	    ImageIcon fotoDinero = null;
 		try {
 			fotoDinero = new ImageIcon(new URL(rutaDinero));
@@ -248,11 +229,44 @@ public class Gui extends JFrame {
 		
 		
 	}
+	private class MyKeyListener implements KeyListener {
+		@Override
+		public void keyTyped(KeyEvent e) {
+		}
+		
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if(mijuego.sigueEnJuego()) {
+				 switch(e.getKeyCode()) {
+	           /*  case KeyEvent.VK_LEFT: { mijuego.operar(Logica.moverIzquierda); break; }
+	             case KeyEvent.VK_RIGHT: { mijuego.operar(Logica.moverDerecha); break; }
+	             case KeyEvent.VK_UP: { mijuego.operar(Logica.rotar); break; }
+	             case KeyEvent.VK_DOWN: { mijuego.operar(Logica.moverAbajo); break; }
+	             */
+	         	}
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+		}
+	}
+	
 	public void cambioPuntaje()  {
 	
 	}
     public void finDeJuego(){
 	
-	
 	}
+   /* public void agregarDibujo(Cuchillo e) {		
+		int x = e.getPosicion().getX();
+		int y = e.getPosicion().getY();
+		int ancho = e.getAncho();
+		int largo = e.getAlto();
+		JLabel dibujo = e.getDibujo();
+		dibujo.setBounds(x, y, ancho, largo);
+		dibujo.setVisible(true);
+		panelNivel1.add(dibujo,0);		
+		panelNivel1.repaint();
+	}*/
 }

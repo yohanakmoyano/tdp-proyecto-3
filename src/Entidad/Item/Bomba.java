@@ -9,10 +9,14 @@ public class Bomba extends ItemD {
 	public Bomba(int val,Coordenada c) {
 		valor=val;
 		posicion=c;
-		String rutaBomba=this.getClass().getResource("/Images/bomba_nivel1.png").toString();
-		miRep=new RepresentacionGrafica(rutaBomba);
+		ancho=40;
+		alto=58;
+		//String rutaBomba=this.getClass().getResource("/Images/bomba_nivel1.png").toString();
+		//miRep=new RepresentacionGrafica(rutaBomba);
 	}
-	
+	public Bomba() {
+		
+	}
 	public void accept(VisitorEntidad v) {
 		
 	}

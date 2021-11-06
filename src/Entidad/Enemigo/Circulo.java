@@ -39,4 +39,10 @@ public class Circulo extends Enemigo {
 		v.visit(this);
 		
 	}
+
+	@Override
+	public void morir() {
+		// TODO Auto-generated method stub
+		
+	}
 }

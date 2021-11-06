@@ -19,7 +19,7 @@ public class FactoryJuegoCalamar extends FactoryDominio {
 
 	@Override
 	public Jugador crearJugador() {
-		return new Jugador_456(null, 0, 0);
+		return new Jugador_456(new Coordenada(235,441), 100, 3); //agregar valores reales de velocidad y vidas
 	}
 
 	@Override
@@ -44,27 +44,27 @@ public class FactoryJuegoCalamar extends FactoryDominio {
 
 	@Override
 	public Item CrearItemA() {
-		return new Galleta(5,new Coordenada(2,4));
+		return new Galleta(1,new Coordenada(163,277)); 
 	}
 
 	@Override
 	public Item CrearItemB() {
-		return new Cuchillo(5,new Coordenada(5,7));
+		return new Cuchillo(1,new Coordenada(83,97)); 
 	}
 
 	@Override
 	public Item CrearItemC() {
-		return new Energizante(5,new Coordenada(5,7));
+		return new Energizante(1,new Coordenada(451,137)); 
 	}
 
 	@Override
 	public Item CrearItemD() {
-		return new Bomba(5,new Coordenada(5,7));
+		return new Bomba(1,new Coordenada(112,379)); 
 	}
 
 	@Override
 	public Item CrearItemE() {
-		return new Dinero(5,new Coordenada(5,7));
+		return new Dinero(1,new Coordenada(235,345)); 
 	}
 	
 }
