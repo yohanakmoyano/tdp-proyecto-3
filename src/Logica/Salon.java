@@ -10,7 +10,7 @@ public class Salon {
 	}
 	
 	public Enemigo regenerarEnemigo(Enemigo enem) {
-		return null;
+		return enem;
 	}
 	
 	public void setZonaSalon(Zona z) {

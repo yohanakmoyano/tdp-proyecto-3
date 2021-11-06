@@ -36,7 +36,7 @@ public class Triangulo extends Enemigo{
 
 	@Override
 	public void accept(VisitorEntidad v) {
-		// TODO Auto-generated method stub
+		v.visit(this);
 		
 	}
 

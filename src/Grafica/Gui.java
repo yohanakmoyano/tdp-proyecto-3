@@ -18,36 +18,52 @@ import Entidad.Item.Energizante;
 import Entidad.Item.Galleta;
 import Entidad.Jugador.Jugador_456;
 import Logica.Coordenada;
+import Logica.Juego;
+
 
 import java.awt.Panel;
 
 
-public class GuiNivel2 extends JFrame {
+public class Gui extends JFrame {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel panelNivel2; 
-	private JLabel fondoNivel2;
+	private JPanel panelNivel1; 
+	private JLabel fondoNivel1;
 	private JLabel label_galleta; 
 	private JLabel label_dinero; 
 	private JLabel label_bomba; 
 	private JLabel label_cuchillo; 
 	private JLabel label_energizante; 
 	private JLabel label_jugador; 
+	private Juego mijuego;
 
-	public GuiNivel2() {
+	public Gui() {
+		//Inicia Juego
+		mijuego = new Juego();
+		mijuego.iniciarJuego();
 		
 		//Configuracion de la Ventana GUI
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GuiNivel1.class.getResource("/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/icono.png")));
 		setTitle("PACMAN 2.0");
 		setSize(new Dimension(900, 600));
 		setResizable(false);
 		
 		//Imagen del fondo de la Ventana Inicio
-		String rutaFotoJuego = this.getClass().getResource("/Images/fondo_nivel2.png").toString();
+		
+		String rutaFotoJuego =null;
+		if (mijuego.getNivel()==1)
+				rutaFotoJuego=this.getClass().getResource("/Images/fondo_nivel1.png").toString();
+		
+		if (mijuego.getNivel()==2) {
+			rutaFotoJuego = this.getClass().getResource("/Images/fondo_nivel2.png").toString();
+		}
+		if (mijuego.getNivel()==3) {
+			 rutaFotoJuego = this.getClass().getResource("/Images/fondo_nivel3.png").toString();
+		}
 	    ImageIcon fotoJuego = null;
 		try {
 			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));
@@ -59,18 +75,18 @@ public class GuiNivel2 extends JFrame {
 		getContentPane().setLayout(null);
 		
 		//panel del laberinto
-		panelNivel2= new JPanel();
+		panelNivel1= new JPanel();
 		//panelNivel1.setBounds(0, 0, 890, 561);
-		panelNivel2.setBounds(0, 0, 900, 600);
-		getContentPane().add(panelNivel2);
-		panelNivel2.setVisible(true);
+		panelNivel1.setBounds(0, 0, 900, 600);
+		getContentPane().add(panelNivel1);
+		panelNivel1.setVisible(true);
 		
 		
 		//Crea el panel
 		
 		Panel panel = new Panel();
 		panel.setBounds(197, 0, 501, 553);
-		panelNivel2.add(panel);
+		panelNivel1.add(panel);
 		panel.setLayout(null);
 		
 		//Label Cuchillo
@@ -89,7 +105,7 @@ public class GuiNivel2 extends JFrame {
 		}
 
 		Image medidaCuchillo = fotoCuchillo.getImage().getScaledInstance(40, 9, Image.SCALE_DEFAULT);
-		panelNivel2.setLayout(null);
+		panelNivel1.setLayout(null);
 		
 		label_cuchillo.setIcon(new ImageIcon(medidaCuchillo)); 
 		panel.add(label_cuchillo);
@@ -110,7 +126,7 @@ public class GuiNivel2 extends JFrame {
 		}
 
 		Image medidaBomba = fotoBomba.getImage().getScaledInstance(30, 31, Image.SCALE_DEFAULT);
-		panelNivel2.setLayout(null);
+		panelNivel1.setLayout(null);
 		
 		label_bomba.setIcon(new ImageIcon(medidaBomba)); 		
 		panel.add(label_bomba);
@@ -131,7 +147,7 @@ public class GuiNivel2 extends JFrame {
 		}
 
 		Image medidaJugador = fotoJugador.getImage().getScaledInstance(30, 41, Image.SCALE_DEFAULT);
-		panelNivel2.setLayout(null);
+		panelNivel1.setLayout(null);
 		
 		label_jugador.setIcon(new ImageIcon(medidaJugador)); 
 		panel.add(label_jugador);
@@ -152,7 +168,7 @@ public class GuiNivel2 extends JFrame {
 		}
 
 		Image medidaEnergizante = fotoEnergizante.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
-		panelNivel2.setLayout(null);
+		panelNivel1.setLayout(null);
 		
 		label_energizante.setIcon(new ImageIcon(medidaEnergizante)); 
 		panel.add(label_energizante);
@@ -175,7 +191,7 @@ public class GuiNivel2 extends JFrame {
 		}
 
 		Image medidaGalleta = fotoGalleta.getImage().getScaledInstance(15, 16, Image.SCALE_DEFAULT);
-		panelNivel2.setLayout(null);
+		panelNivel1.setLayout(null);
 		
 		label_galleta.setIcon(new ImageIcon(medidaGalleta)); 
 		panel.add(label_galleta);
@@ -197,14 +213,14 @@ public class GuiNivel2 extends JFrame {
 		}
 
 		Image medidaDinero = fotoDinero.getImage().getScaledInstance(30, 15, Image.SCALE_DEFAULT);
-		panelNivel2.setLayout(null);
+		panelNivel1.setLayout(null);
 		
 		label_dinero.setIcon(new ImageIcon(medidaDinero)); 
 		panel.add(label_dinero); 
 		
 		
 		//Imagen del fondo del laberinto
-		String rutaLaberinto = this.getClass().getResource("/Images/laberinto_nivel2.png").toString();
+		String rutaLaberinto = this.getClass().getResource("/Images/laberinto_nivel1.png").toString();
 	    ImageIcon fotoLaberinto = null;
 		try {
 			fotoLaberinto = new ImageIcon(new URL(rutaLaberinto));
@@ -213,7 +229,7 @@ public class GuiNivel2 extends JFrame {
 		}
 
 		Image medidaLaberinto = fotoLaberinto.getImage().getScaledInstance(500, 600, Image.SCALE_DEFAULT);
-		panelNivel2.setLayout(null);
+		panelNivel1.setLayout(null);
 		
 		JLabel laberintoNivel1 = new JLabel();
 		laberintoNivel1.setBounds(0, 0, 491, 640);
@@ -222,14 +238,21 @@ public class GuiNivel2 extends JFrame {
 		
 		
 		//Label del fondo 
-		fondoNivel2=new JLabel();
-		fondoNivel2.setVerticalAlignment(SwingConstants.BOTTOM);
-		fondoNivel2.setBounds(0, 0, 890, 561);
-		panelNivel2.add(fondoNivel2);
-		fondoNivel2.setBackground(Color.BLUE);
-		fondoNivel2.setIcon(new ImageIcon(medidaJuego));
-		fondoNivel2.setBackground(Color.BLUE);
+		fondoNivel1=new JLabel();
+		fondoNivel1.setVerticalAlignment(SwingConstants.BOTTOM);
+		fondoNivel1.setBounds(0, 0, 890, 561);
+		panelNivel1.add(fondoNivel1);
+		fondoNivel1.setBackground(Color.BLUE);
+		fondoNivel1.setIcon(new ImageIcon(medidaJuego));
+		fondoNivel1.setBackground(Color.BLUE);
 		
 		
+	}
+	public void cambioPuntaje()  {
+	
+	}
+    public void finDeJuego(){
+	
+	
 	}
 }

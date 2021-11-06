@@ -4,11 +4,16 @@ import Entidad.Enemigo.Enemigo;
 import Entidad.EntidadMovible.Personaje;
 import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
+import Grafica.Gui;
+
 
 public class Juego {
 	
-	private int puntaje;
-	private int nivel;
+	protected int puntaje;
+	protected int nivel;
+	protected Gui miGui;
+	protected SalaDeJuegos misala;
+	protected Director miFabrica;
 	
 	public Juego() {
 		puntaje=0;
@@ -28,7 +33,10 @@ public class Juego {
 	}
 	
 	public int getNivel() {
-		return nivel;
+		//return nivel;
+		//return 3;
+		//return 2;
+		return 1;
 	}
 	
 	public void generarEnemigos() {
@@ -39,8 +47,9 @@ public class Juego {
 		
 	}
 	
-	public void inicializarJuego() {
-		
+	public void iniciarJuego() {
+		puntaje=0;
+		nivel=1;
 	}
 	
 	public void actualizarSalaDeJuego(SalaDeJuegos s){
@@ -61,5 +70,9 @@ public class Juego {
 	
 	public boolean actualizarMovimiento(Personaje p) {
 		return false;
+	}
+	
+	private void finDeJuego() {
+			miGui.finDeJuego();	
 	}
 }

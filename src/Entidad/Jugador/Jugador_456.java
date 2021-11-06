@@ -25,6 +25,7 @@ public class Jugador_456 extends Jugador{
 	}
 	
 	public void accept(VisitorEntidad v) {
-		
+		v.visit(this);
 	}
+	
 }

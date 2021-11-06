@@ -1,11 +1,21 @@
 package Logica;
 
+import java.util.List;
+
+
+import Entidad.Enemigo.Enemigo;
+import Entidad.EntidadMovible.Personaje;
+import Entidad.Item.Item;
+
 public class SalaDeJuegos {
 
 	//private boolean laberinto[][];
 	protected Zona matrizZonas[][]; 
 	protected static final int base=125; 
 	protected static final int altura=150; 
+	protected List<Enemigo> listaEnemigos; 
+	protected List<Item> listaItem; 
+	protected List<Personaje> listaJugador; 
 	
 	public SalaDeJuegos() {
 		
