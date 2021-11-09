@@ -18,7 +18,7 @@ public class Cuchillo extends ItemB {
 		//miRep=new RepresentacionGrafica(rutaCuchillo);
 	}
 	public Cuchillo() {
-		
+	
 	}
 	
 	public void accept(VisitorEntidad v) {

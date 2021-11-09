@@ -1,9 +1,12 @@
 package Entidad.Enemigo;
 
+import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
 
 public class Cuadrado extends Enemigo {
-
+public Cuadrado(Coordenada c) {
+		
+	}
 	@Override
 	public void mover() {
 		// TODO Auto-generated method stub

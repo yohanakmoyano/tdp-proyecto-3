@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 
 import Entidad.Entidad;
 import Entidad.Item.Cuchillo;
+import LevelBuilder.Level1Builder;
+import LevelBuilder.LevelBuilder;
 import Logica.Juego;
 
 
@@ -39,10 +41,7 @@ public class Gui extends JFrame {
 	private Juego mijuego;
 
 	public Gui() {
-		//Inicia Juego
-		mijuego = new Juego();
-		mijuego.iniciarJuego();
-		
+	
 		//Configuracion de la Ventana GUI
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/icono.png")));
@@ -144,7 +143,7 @@ public class Gui extends JFrame {
 		//Label Energizante
 		label_energizante=new JLabel();
 		//label_energizante.setBounds(451, 137, 40, 58);
-		mijuego.generarItems();
+		//mijuego.generarItems();
 		
 		String rutaEnergizante=this.getClass().getResource("/Images/energizante_nivel1.png").toString();
 	    ImageIcon fotoEnergizante = null;
@@ -228,6 +227,11 @@ public class Gui extends JFrame {
 		fondoNivel1.setBackground(Color.BLUE);
 		
 		
+	}
+	public void iniciarJuego() {
+		mijuego = new Juego();
+		mijuego.iniciarJuego();
+				
 	}
 	private class MyKeyListener implements KeyListener {
 		@Override

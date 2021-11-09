@@ -1,8 +1,12 @@
 package Entidad.Enemigo;
 
+import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
 
 public class Boss extends Enemigo {
+	public Boss(Coordenada c) {
+		
+	}
 
 	@Override
 	public void mover() {

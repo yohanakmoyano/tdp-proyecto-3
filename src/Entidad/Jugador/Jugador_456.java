@@ -17,6 +17,9 @@ public class Jugador_456 extends Jugador{
 		//String rutaJugador=this.getClass().getResource("/Images/jugador_nivel1.png").toString();
 	//	miRep=new RepresentacionGrafica(rutaJugador);
 	}
+	public Jugador_456() {
+		
+	}
 	
 	public void colisionConItem(Item i) {
 		

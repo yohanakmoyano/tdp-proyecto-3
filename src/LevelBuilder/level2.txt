@@ -1,0 +1,2 @@
+/Images/fondo_nivel2.png;
+w;150;30

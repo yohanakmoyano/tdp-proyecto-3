@@ -44,15 +44,15 @@ public class Juego {
 		return 1;
 	}
 	
-	public void generarEnemigos() {
+	/*public void generarEnemigos() {
 		
 	}
 	
 	public void generarItems() {
-		Entidad energizante=new Energizante(1,new Coordenada(451,137)); 
 		
 		
-	}
+		
+	}*/
 	
 	public void iniciarJuego() {
 		puntaje=0;
