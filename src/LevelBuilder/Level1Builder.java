@@ -15,6 +15,7 @@ import Entidad.Item.Galleta;
 
 import Entidad.Jugador.Jugador_456;
 import Logica.Coordenada;
+import Logica.Juego;
 import Logica.SalaDeJuegos;
 
 public class Level1Builder extends LevelBuilder {
@@ -25,7 +26,6 @@ public class Level1Builder extends LevelBuilder {
 		List<String> toret = LeerArchivo.leer("src\\LevelBuilder\\level1.txt");
 
 		for (int i = 0; i < toret.size() - 1; i++) {
-			
 			String palabra = toret.get(i);
 			String[] caracter = palabra.split(";");
 			

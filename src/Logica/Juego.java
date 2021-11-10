@@ -8,6 +8,7 @@ import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
 import Grafica.Gui;
 
+
 public class Juego {
 
 	protected int puntaje;
@@ -18,11 +19,12 @@ public class Juego {
 	protected Personaje p;
 	protected Entidad e;
 
-	public Juego(Gui gui) {
+	public Juego(Gui mg) {
 		puntaje = 0;
 		nivel = 1;
-		miSala = new SalaDeJuegos();
-		miGui = gui; 
+		miGui = mg;
+		miGui.setVisible(true);
+		miSala = new SalaDeJuegos(mg,this);
 		miFabrica = new Director(nivel, miSala);
 		
 	}

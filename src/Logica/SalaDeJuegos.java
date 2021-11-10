@@ -16,8 +16,9 @@ public class SalaDeJuegos {
 	protected List<Entidad> listaItem; 
 	protected List<Entidad> listaJugador; //dudoso preguntar
 	protected Gui miGui;
+	protected Juego juego;
 	
-	public SalaDeJuegos() {
+	public SalaDeJuegos(Gui g, Juego jueg) {
 		
 		int baseZona=0;
 		int alturaZona=0;
@@ -40,6 +41,8 @@ public class SalaDeJuegos {
 		listaEnemigos= new ArrayList<Entidad>(); 
 		listaItem= new ArrayList<Entidad>(); 
 		listaJugador= new ArrayList<Entidad>(); 
+		miGui=g;
+		juego=jueg;
 		
 	}
 	

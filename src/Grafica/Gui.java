@@ -41,21 +41,21 @@ public class Gui extends JFrame {
 		
 		//mover esto
 		
-		mijuego = new Juego(this);
-		mijuego.iniciarJuego();
+	   mijuego = new Juego(this);
+	mijuego.iniciarJuego();
 		
 		
 		//Imagen del fondo de la Ventana Inicio
 		String rutaFotoJuego =null;
-		if (mijuego.getNivel()==1)
+		//if (mijuego.getNivel()==1)
 				rutaFotoJuego=this.getClass().getResource("/Images/fondo_nivel1.png").toString();
 		
-		if (mijuego.getNivel()==2) {
+		/*if (mijuego.getNivel()==2) {
 			rutaFotoJuego = this.getClass().getResource("/Images/fondo_nivel2.png").toString();
 		}
 		if (mijuego.getNivel()==3) {
 			 rutaFotoJuego = this.getClass().getResource("/Images/fondo_nivel3.png").toString();
-		}
+		}*/
 	    ImageIcon fotoJuego = null;
 		try {
 			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));
@@ -108,10 +108,9 @@ public class Gui extends JFrame {
 		fondoNivel1.setBackground(Color.BLUE);
 		fondoNivel1.setIcon(new ImageIcon(medidaJuego));
 		fondoNivel1.setBackground(Color.BLUE);
+	
 			
 	}
-		
-	
 	
 	private class MyKeyListener implements KeyListener {
 		@Override
