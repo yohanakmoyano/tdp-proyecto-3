@@ -13,11 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-
 import Entidad.Entidad;
-import Entidad.Item.Cuchillo;
-import LevelBuilder.Level1Builder;
-import LevelBuilder.LevelBuilder;
 import Logica.Juego;
 
 
@@ -32,6 +28,7 @@ public class Gui extends JFrame {
 	private JLabel fondoNivel1;
 	private Juego mijuego;
 	private JLabel labelEntidad;
+	private JLabel laberintoNivel1;
 
 	public Gui() {
 	
@@ -44,7 +41,7 @@ public class Gui extends JFrame {
 		
 		//mover esto
 		
-		mijuego = new Juego();
+		mijuego = new Juego(this);
 		mijuego.iniciarJuego();
 		
 		
@@ -97,7 +94,7 @@ public class Gui extends JFrame {
 		Image medidaLaberinto = fotoLaberinto.getImage().getScaledInstance(500, 600, Image.SCALE_DEFAULT);
 		panelNivel1.setLayout(null);
 		
-		JLabel laberintoNivel1 = new JLabel();
+		laberintoNivel1 = new JLabel();
 		laberintoNivel1.setBounds(0, 0, 491, 640);
 		laberintoNivel1.setIcon(new ImageIcon(medidaLaberinto));
 		panel.add(laberintoNivel1);
@@ -142,10 +139,12 @@ public class Gui extends JFrame {
 	public void mostrarEntidad(Entidad e) {
 		ImageIcon imagen;
 		try {
-			imagen = new ImageIcon(new URL (e.getRepresentacionGrafica().getRuta()) );
+			System.out.println("La ruta es : "+e.getRepresentacionGrafica().getRuta()); 
+			imagen = new ImageIcon(new URL (e.getRepresentacionGrafica().getRuta()));
 			int ancho = e.getAncho();
 			int alto = e.getAlto();
 			labelEntidad = new JLabel(imagen);
+			labelEntidad.setText("Holiiiiiiiiii");
 			labelEntidad.setBounds(e.getPosicion().getX(), e.getPosicion().getY(), ancho, alto);
 			panelNivel1.add(labelEntidad);
 			

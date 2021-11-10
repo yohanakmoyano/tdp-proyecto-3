@@ -18,10 +18,13 @@ public class Juego {
 	protected Personaje p;
 	protected Entidad e;
 
-	public Juego() {
+	public Juego(Gui gui) {
 		puntaje = 0;
 		nivel = 1;
-		miFabrica = new Director(nivel);
+		miSala = new SalaDeJuegos();
+		miGui = gui; 
+		miFabrica = new Director(nivel, miSala);
+		
 	}
 
 	public void setPuntaje(int p) {
@@ -58,7 +61,6 @@ public class Juego {
 	public void iniciarJuego() {
 		puntaje = 0;
 		nivel = 1;
-		miSala = new SalaDeJuegos();
 	}
 
 	public void actualizarSalaDeJuego(SalaDeJuegos s) {

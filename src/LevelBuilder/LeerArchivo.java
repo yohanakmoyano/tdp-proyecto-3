@@ -31,8 +31,5 @@ public class LeerArchivo {
 		}
 		return lista;
 	}
-	public static void main (String args[]) {
-		Level1Builder aux=new Level1Builder();
-	}
 	
 }

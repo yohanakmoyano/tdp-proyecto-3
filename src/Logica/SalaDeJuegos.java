@@ -1,5 +1,6 @@
 package Logica;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Entidad.Entidad;
@@ -35,6 +36,10 @@ public class SalaDeJuegos {
 			alturaZona=alturaZona+altura; 
 			
 		}
+		
+		listaEnemigos= new ArrayList<Entidad>(); 
+		listaItem= new ArrayList<Entidad>(); 
+		listaJugador= new ArrayList<Entidad>(); 
 		
 	}
 	

@@ -15,10 +15,11 @@ import Entidad.Item.Galleta;
 
 import Entidad.Jugador.Jugador_456;
 import Logica.Coordenada;
+import Logica.SalaDeJuegos;
 
 public class Level1Builder extends LevelBuilder {
 
-	public Level1Builder() {
+	public Level1Builder(SalaDeJuegos sj) {
 		Coordenada punto = null;
 		Entidad entidad = null;
 		List<String> toret = LeerArchivo.leer("src\\LevelBuilder\\level1.txt");
@@ -33,6 +34,7 @@ public class Level1Builder extends LevelBuilder {
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Galleta(1, punto, caracter[3]);
 				sj.getListaItem().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
@@ -40,6 +42,7 @@ public class Level1Builder extends LevelBuilder {
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Energizante(1, punto, caracter[3]);
 				sj.getListaItem().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
@@ -47,12 +50,14 @@ public class Level1Builder extends LevelBuilder {
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Cuchillo(1, punto, caracter[3]);
 				sj.getListaItem().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "d": { // Creo un dinero
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Dinero(1, punto, caracter[3]);
 				sj.getListaItem().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
@@ -60,36 +65,42 @@ public class Level1Builder extends LevelBuilder {
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Bomba(1, punto, caracter[3]);
 				sj.getListaItem().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
 			case "j": { // Creo un jugador
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Jugador_456(punto, 100, 3, caracter[3]);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "B": { // Creo un Boss
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Boss(punto, caracter[3]);
 				sj.getListaEnemigos().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "C": { // Creo un circulo
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Circulo(punto, caracter[3]);
 				sj.getListaEnemigos().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "S": { // Creo un cuadrado
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Cuadrado(punto, caracter[3]);
 				sj.getListaEnemigos().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "T": { // Creo un triangulo
 				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
 				entidad = new Triangulo(punto, caracter[3]);
 				sj.getListaEnemigos().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			}
