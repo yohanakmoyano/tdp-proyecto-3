@@ -26,19 +26,12 @@ import java.awt.Panel;
 
 public class Gui extends JFrame {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel panelNivel1; 
 	private JLabel fondoNivel1;
-	private JLabel label_galleta; 
-	private JLabel label_dinero; 
-	private JLabel label_bomba; 
-	private JLabel label_cuchillo; 
-	private JLabel label_energizante; 
-	private JLabel label_jugador; 
 	private Juego mijuego;
+	private JLabel labelEntidad;
 
 	public Gui() {
 	
@@ -49,8 +42,13 @@ public class Gui extends JFrame {
 		setSize(new Dimension(900, 600));
 		setResizable(false);
 		
-		//Imagen del fondo de la Ventana Inicio
+		//mover esto
 		
+		mijuego = new Juego();
+		mijuego.iniciarJuego();
+		
+		
+		//Imagen del fondo de la Ventana Inicio
 		String rutaFotoJuego =null;
 		if (mijuego.getNivel()==1)
 				rutaFotoJuego=this.getClass().getResource("/Images/fondo_nivel1.png").toString();
@@ -86,118 +84,6 @@ public class Gui extends JFrame {
 		panelNivel1.add(panel);
 		panel.setLayout(null);
 		
-		//Label Cuchillo
-		label_cuchillo=new JLabel();
-		//label_cuchillo.setBounds(83, 97, 40, 58);
-		
-	    String rutaCuchillo=this.getClass().getResource("/Images/cuchillo_nivel1.png").toString();
-	    ImageIcon fotoCuchillo = null;
-		try {
-			fotoCuchillo = new ImageIcon(new URL(rutaCuchillo));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		Image medidaCuchillo = fotoCuchillo.getImage().getScaledInstance(40, 9, Image.SCALE_DEFAULT);
-		panelNivel1.setLayout(null);
-		
-		label_cuchillo.setIcon(new ImageIcon(medidaCuchillo)); 
-		panel.add(label_cuchillo);
-		
-		//Label Bomba
-		label_bomba=new JLabel();
-		//label_bomba.setBounds(112, 379, 40, 58);
-		
-		String rutaBomba=this.getClass().getResource("/Images/bomba_nivel1.png").toString();
-	    ImageIcon fotoBomba = null;
-		try {
-			fotoBomba = new ImageIcon(new URL(rutaBomba));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		Image medidaBomba = fotoBomba.getImage().getScaledInstance(30, 31, Image.SCALE_DEFAULT);
-		panelNivel1.setLayout(null);
-		
-		label_bomba.setIcon(new ImageIcon(medidaBomba)); 		
-		panel.add(label_bomba);
-		
-		//Label Jugador
-		label_jugador=new JLabel();
-		//label_jugador.setBounds(235, 441, 40, 58);
-		
-		String rutaJugador = this.getClass().getResource("/Images/jugador_nivel1.png").toString();
-	    ImageIcon fotoJugador = null;
-		try {
-			fotoJugador = new ImageIcon(new URL(rutaJugador));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		Image medidaJugador = fotoJugador.getImage().getScaledInstance(30, 41, Image.SCALE_DEFAULT);
-		panelNivel1.setLayout(null);
-		
-		label_jugador.setIcon(new ImageIcon(medidaJugador)); 
-		panel.add(label_jugador);
-		
-		//Label Energizante
-		label_energizante=new JLabel();
-		//label_energizante.setBounds(451, 137, 40, 58);
-		//mijuego.generarItems();
-		
-		String rutaEnergizante=this.getClass().getResource("/Images/energizante_nivel1.png").toString();
-	    ImageIcon fotoEnergizante = null;
-		try {
-			fotoEnergizante = new ImageIcon(new URL(rutaEnergizante));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		Image medidaEnergizante = fotoEnergizante.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
-		panelNivel1.setLayout(null);
-		
-		label_energizante.setIcon(new ImageIcon(medidaEnergizante)); 
-		panel.add(label_energizante);
-		
-	    //label galleta
-		
-		label_galleta=new JLabel();
-		label_galleta.setVerticalAlignment(SwingConstants.BOTTOM);
-		//label_galleta.setBounds(163, 277, 22, 23);
-		
-		String rutaGalleta=this.getClass().getResource("/Images/galleta_nivel1.png").toString();
-	    ImageIcon fotoGalleta = null;
-		try {
-			fotoGalleta = new ImageIcon(new URL(rutaGalleta));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		Image medidaGalleta = fotoGalleta.getImage().getScaledInstance(15, 16, Image.SCALE_DEFAULT);
-		panelNivel1.setLayout(null);
-		
-		label_galleta.setIcon(new ImageIcon(medidaGalleta)); 
-		panel.add(label_galleta);
-		
-		//Label Dinero
-		label_dinero=new JLabel();
-		//label_cuchillo.setVerticalAlignment(SwingConstants.BOTTOM);
-		//label_dinero.setBounds(235, 345, 46, 23);
-		
-		String rutaDinero=this.getClass().getResource("/Images/dinero_nivel1.png").toString();
-	    ImageIcon fotoDinero = null;
-		try {
-			fotoDinero = new ImageIcon(new URL(rutaDinero));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		Image medidaDinero = fotoDinero.getImage().getScaledInstance(30, 15, Image.SCALE_DEFAULT);
-		panelNivel1.setLayout(null);
-		
-		label_dinero.setIcon(new ImageIcon(medidaDinero)); 
-		panel.add(label_dinero); 
-		
 		
 		//Imagen del fondo del laberinto
 		String rutaLaberinto = this.getClass().getResource("/Images/laberinto_nivel1.png").toString();
@@ -225,14 +111,11 @@ public class Gui extends JFrame {
 		fondoNivel1.setBackground(Color.BLUE);
 		fondoNivel1.setIcon(new ImageIcon(medidaJuego));
 		fondoNivel1.setBackground(Color.BLUE);
-		
-		
+			
 	}
-	public void iniciarJuego() {
-		mijuego = new Juego();
-		mijuego.iniciarJuego();
-				
-	}
+		
+	
+	
 	private class MyKeyListener implements KeyListener {
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -256,6 +139,22 @@ public class Gui extends JFrame {
 		}
 	}
 	
+	public void mostrarEntidad(Entidad e) {
+		ImageIcon imagen;
+		try {
+			imagen = new ImageIcon(new URL (e.getRepresentacionGrafica().getRuta()) );
+			int ancho = e.getAncho();
+			int alto = e.getAlto();
+			labelEntidad = new JLabel(imagen);
+			labelEntidad.setBounds(e.getPosicion().getX(), e.getPosicion().getY(), ancho, alto);
+			panelNivel1.add(labelEntidad);
+			
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+		
+	}
+		
 	public void cambioPuntaje()  {
 	
 	}

@@ -16,6 +16,10 @@ public abstract class Entidad {
 
 	public abstract void accept(VisitorEntidad v);
 	
+	public abstract int getAncho();
+	
+	public abstract int getAlto();
+	
 	public RepresentacionGrafica getRepresentacionGrafica() {
 		return miRep;
 	}
@@ -26,11 +30,7 @@ public abstract class Entidad {
 	public JLabel getDibujo() {
 		return dibujo;
 	}
-	public int getAncho() {
-		return ancho;
-	}
-	public int getAlto() {
-		return alto;
-	}
+	
+	
 	
 }

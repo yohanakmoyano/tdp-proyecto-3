@@ -1,4 +1,5 @@
-g;150;30
-g;151;31
-g;152;32
-e;45;12
+g;150;30;this.getClass().getResource("/Images/cuchillo_nivel1.png").toString()
+e;151;31;this.getClass().getResource("/Images/cuchillo_nivel1.png").toString()
+c;152;32;this.getClass().getResource("/Images/cuchillo_nivel1.png").toString()
+d;45;12;this.getClass().getResource("/Images/cuchillo_nivel1.png").toString()
+b;80;20;this.getClass().getResource("/Images/bomba_nivel1.png").toString()

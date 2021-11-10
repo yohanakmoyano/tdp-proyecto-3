@@ -7,7 +7,7 @@ public class RepresentacionGrafica {
 	protected int base; 
 	
 	public RepresentacionGrafica(String r) {
-		ruta=r;
+		ruta = r;
 	}
 	
 	public String getRuta() {
@@ -15,6 +15,6 @@ public class RepresentacionGrafica {
 	}
 	
 	public void cambiarRuta(String r) {
-		ruta=r;
+		ruta = r;
 	}
 }
