@@ -14,8 +14,8 @@ public class Jugador_456 extends Jugador {
 		velocidad = vel;
 		vidas = v;
 		posicion = c;
-		// String
-		// rutaJugador=this.getClass().getResource("/Images/jugador_nivel1.png").toString();
+		ancho =40;
+		alto =40;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 

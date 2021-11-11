@@ -7,6 +7,8 @@ import VisitorEntidad.VisitorEntidad;
 public class Circulo extends Enemigo {
 	public Circulo(Coordenada c, String rutaImg) {
 		posicion = c;
+		ancho =40;
+		alto =48;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 

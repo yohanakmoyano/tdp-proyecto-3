@@ -5,6 +5,7 @@ import Entidad.Enemigo.Circulo;
 import Entidad.Enemigo.Cuadrado;
 import Entidad.Enemigo.Enemigo;
 import Entidad.Enemigo.Triangulo;
+import Entidad.Item.Bloque;
 import Entidad.Item.Bomba;
 import Entidad.Item.Cuchillo;
 import Entidad.Item.Dinero;
@@ -66,6 +67,11 @@ public class FactoryJuegoCalamar extends FactoryDominio {
 	@Override
 	public Item CrearItemE() {
 		return new Dinero(0, null, null);// (1,new Coordenada(235,345));
+	}
+
+	@Override
+	public Bloque CrearBloque() {
+		return new Bloque(null,null,0,0);
 	}
 
 }

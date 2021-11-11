@@ -7,6 +7,8 @@ import VisitorEntidad.VisitorEntidad;
 public class Triangulo extends Enemigo {
 	public Triangulo(Coordenada c, String rutaImg) {
 		posicion = c;
+		ancho =40;
+		alto =48;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 

@@ -1,6 +1,7 @@
 package Dominio;
 
 import Entidad.Enemigo.Enemigo;
+import Entidad.Item.Bloque;
 import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
 
@@ -62,6 +63,12 @@ public class FactoryAmong extends FactoryDominio {
 
 	@Override
 	public Item CrearItemE() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Bloque CrearBloque() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,34 +1,32 @@
 package Entidad.Item;
 
+import Entidad.Entidad;
 import Grafica.RepresentacionGrafica;
 import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;
 
-public class Energizante extends ItemC {
-
-	public Energizante(int val, Coordenada c, String rutaImg) {
-		valor = val;
+public class Bloque extends Entidad{
+	public Bloque(Coordenada c, String rutaImg,int anc,int alt) {
 		posicion = c;
-		ancho = 16;//40;
-		alto = 10;//58;
-		// String
-		// rutaEnergizante=this.getClass().getResource("/Images/energizante_nivel1.png").toString();
+		ancho = anc;//10;
+		alto = alt;//60;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 
-	public Energizante() {
-
-	}
-
+	@Override
 	public void accept(VisitorEntidad v) {
-
+		// TODO Auto-generated method stub
+		
 	}
-	
+
+	@Override
 	public int getAncho() {
 		return ancho;
 	}
 
+	@Override
 	public int getAlto() {
 		return alto;
 	}
+
 }

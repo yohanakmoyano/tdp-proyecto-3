@@ -8,6 +8,8 @@ public class Boss extends Enemigo {
 
 	public Boss(Coordenada c, String rutaImg) {
 		posicion = c;
+		ancho =40;
+		alto =48;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 

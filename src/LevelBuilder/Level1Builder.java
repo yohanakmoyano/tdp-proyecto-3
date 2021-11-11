@@ -7,6 +7,7 @@ import Entidad.Enemigo.Boss;
 import Entidad.Enemigo.Circulo;
 import Entidad.Enemigo.Cuadrado;
 import Entidad.Enemigo.Triangulo;
+import Entidad.Item.Bloque;
 import Entidad.Item.Bomba;
 import Entidad.Item.Cuchillo;
 import Entidad.Item.Dinero;
@@ -25,11 +26,18 @@ public class Level1Builder extends LevelBuilder {
 		Entidad entidad = null;
 		int j=0;
 		List<String> toret = LeerArchivo.leer("src\\LevelBuilder\\level1.txt");
-		System.out.println("el tamaño de toret es: "+toret.size());
-		for (int i = 0;i < toret.size() ; i++) {
+		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
+		for (int i = 1;i < toret.size() ; i++) {
 			String palabra = toret.get(i);
 			String[] caracter = palabra.split(";");
 			switch (caracter[j]) {
+			case "p" :{ //bloque pared
+				punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
+				entidad = new Bloque(punto,this.getClass().getResource(caracter[j+3]).toString(),Integer.parseInt(caracter[j+4]), Integer.parseInt(caracter[j+5])); 
+				sj.getListaItem().add(entidad);
+				sj.obtenerGui().mostrarEntidad(entidad);
+				break;
+				}
 			case "g": { // galleta
 				punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 				entidad = new Galleta(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
