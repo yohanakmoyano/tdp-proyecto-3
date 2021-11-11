@@ -29,6 +29,7 @@ public class Gui extends JFrame {
 	private Juego mijuego;
 	private JLabel labelEntidad;
 	private JLabel laberintoNivel1;
+	private Panel panel;
 
 	public Gui() {
 	
@@ -39,11 +40,7 @@ public class Gui extends JFrame {
 		setSize(new Dimension(900, 600));
 		setResizable(false);
 		
-		//mover esto
-		
-	   mijuego = new Juego(this);
-	mijuego.iniciarJuego();
-		
+	
 		
 		//Imagen del fondo de la Ventana Inicio
 		String rutaFotoJuego =null;
@@ -76,14 +73,14 @@ public class Gui extends JFrame {
 		
 		//Crea el panel
 		
-		Panel panel = new Panel();
+		 panel = new Panel();
 		panel.setBounds(197, 0, 501, 553);
 		panelNivel1.add(panel);
 		panel.setLayout(null);
 		
 		
 		//Imagen del fondo del laberinto
-		String rutaLaberinto = this.getClass().getResource("/Images/laberinto_nivel1.png").toString();
+		/*String rutaLaberinto = this.getClass().getResource("/Images/laberinto_nivel1.png").toString();
 	    ImageIcon fotoLaberinto = null;
 		try {
 			fotoLaberinto = new ImageIcon(new URL(rutaLaberinto));
@@ -98,7 +95,7 @@ public class Gui extends JFrame {
 		laberintoNivel1.setBounds(0, 0, 491, 640);
 		laberintoNivel1.setIcon(new ImageIcon(medidaLaberinto));
 		panel.add(laberintoNivel1);
-		
+		*/
 		
 		//Label del fondo 
 		fondoNivel1=new JLabel();
@@ -108,7 +105,10 @@ public class Gui extends JFrame {
 		fondoNivel1.setBackground(Color.BLUE);
 		fondoNivel1.setIcon(new ImageIcon(medidaJuego));
 		fondoNivel1.setBackground(Color.BLUE);
-	
+		//mover esto
+		
+		   mijuego = new Juego(this);
+		mijuego.iniciarJuego();
 			
 	}
 	
@@ -136,20 +136,25 @@ public class Gui extends JFrame {
 	}
 	
 	public void mostrarEntidad(Entidad e) {
-		ImageIcon imagen;
-		try {
-			System.out.println("La ruta es : "+e.getRepresentacionGrafica().getRuta()); 
-			imagen = new ImageIcon(new URL (e.getRepresentacionGrafica().getRuta()));
+		ImageIcon imagen=null;
+
+		String rutaEntidad= e.getRepresentacionGrafica().getRuta();
 			int ancho = e.getAncho();
 			int alto = e.getAlto();
-			labelEntidad = new JLabel(imagen);
-			labelEntidad.setText("Holiiiiiiiiii");
+			labelEntidad = new JLabel();
 			labelEntidad.setBounds(e.getPosicion().getX(), e.getPosicion().getY(), ancho, alto);
-			panelNivel1.add(labelEntidad);
-			
-		} catch (MalformedURLException e1) {
-			e1.printStackTrace();
-		}
+			try {
+				imagen = new ImageIcon(new URL (rutaEntidad));
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Image medidaEntidad = imagen.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT);
+			labelEntidad.setIcon(new ImageIcon(medidaEntidad)); 
+			panel.add(labelEntidad);
+			/*panelNivel1.add(labelEntidad);
+			labelEntidad.setVisible(true);*/
+			panel.repaint();
 		
 	}
 		
@@ -159,15 +164,5 @@ public class Gui extends JFrame {
     public void finDeJuego(){
 	
 	}
-   /* public void agregarDibujo(Cuchillo e) {		
-		int x = e.getPosicion().getX();
-		int y = e.getPosicion().getY();
-		int ancho = e.getAncho();
-		int largo = e.getAlto();
-		JLabel dibujo = e.getDibujo();
-		dibujo.setBounds(x, y, ancho, largo);
-		dibujo.setVisible(true);
-		panelNivel1.add(dibujo,0);		
-		panelNivel1.repaint();
-	}*/
+  
 }

@@ -31,74 +31,75 @@ public class Level1Builder extends LevelBuilder {
 			
 			switch (caracter[i]) {
 			case "g": { // galleta
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Galleta(1, punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Galleta(1, punto,this.getClass().getResource(caracter[i+3]).toString()); 
 				sj.getListaItem().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
 			case "e": { // Creo un energizante
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Energizante(1, punto, caracter[3]);
+				
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Energizante(1, punto, this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaItem().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
 			case "c": { // Creo un cuchillo
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Cuchillo(1, punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Cuchillo(1, punto,this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaItem().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "d": { // Creo un dinero
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Dinero(1, punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Dinero(1, punto,this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaItem().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
 			case "b": { // Creo una bomba
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Bomba(1, punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Bomba(1, punto, this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaItem().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 
 			case "j": { // Creo un jugador
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Jugador_456(punto, 100, 3, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Jugador_456(punto, 100, 3, this.getClass().getResource(caracter[i+3]).toString());
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "B": { // Creo un Boss
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Boss(punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Boss(punto,this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaEnemigos().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "C": { // Creo un circulo
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Circulo(punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Circulo(punto,this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaEnemigos().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "S": { // Creo un cuadrado
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Cuadrado(punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Cuadrado(punto, this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaEnemigos().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;
 			}
 			case "T": { // Creo un triangulo
-				punto = new Coordenada(Integer.parseInt(caracter[1]), Integer.parseInt(caracter[2]));
-				entidad = new Triangulo(punto, caracter[3]);
+				punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
+				entidad = new Triangulo(punto,this.getClass().getResource(caracter[i+3]).toString());
 				sj.getListaEnemigos().add(entidad);
 				sj.obtenerGui().mostrarEntidad(entidad);
 				break;

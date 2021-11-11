@@ -1,5 +1,5 @@
-g;150;30;this.getClass().getResource("/Images/galleta_nivel1.png").toString()
-e;151;31;this.getClass().getResource("/Images/energizante_nivel1.png").toString()
-c;152;32;this.getClass().getResource("/Images/cuchillo_nivel1.png").toString()
-d;45;12;this.getClass().getResource("/Images/dinero_nivel1.png").toString()
-b;80;20;this.getClass().getResource("/Images/bomba_nivel1.png").toString()
+g;163;277;/Images/galleta_nivel1.png
+e;151;270;/Images/energizante_nivel1.png
+c;152;32;/Images/cuchillo_nivel1.png
+d;45;12;/Images/dinero_nivel1.png
+b;80;20;/Images/bomba_nivel1.png
