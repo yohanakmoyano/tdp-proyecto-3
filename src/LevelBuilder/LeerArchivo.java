@@ -20,7 +20,7 @@ public class LeerArchivo {
 			BufferedReader br = new BufferedReader(fr);
 			while ((linea = br.readLine()) != null) { // en cada linea
 				lista.add(linea);
-				//System.out.println(arreglo[j]);
+			//	System.out.println(lista.get(j));
 				j++;
 			}
 

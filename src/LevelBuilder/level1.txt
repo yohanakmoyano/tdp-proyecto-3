@@ -1,5 +1,5 @@
 g;163;277;/Images/galleta_nivel1.png
-e;151;270;/Images/energizante_nivel1.png
-c;152;32;/Images/cuchillo_nivel1.png
+e;114;100;/Images/energizante_nivel1.png
+c;100;340;/Images/cuchillo_nivel1.png
 d;45;12;/Images/dinero_nivel1.png
-b;80;20;/Images/bomba_nivel1.png
+z;80;20;/Images/bomba_nivel1.png
