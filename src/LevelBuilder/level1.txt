@@ -237,4 +237,3 @@ p;270;210;/Images/bloque_libre.jpg;30;10
 p;200;210;/Images/bloque_libre.jpg;10;80
 p;290;210;/Images/bloque_libre.jpg;10;80
 p;200;280;/Images/bloque_libre.jpg;100;10
-
