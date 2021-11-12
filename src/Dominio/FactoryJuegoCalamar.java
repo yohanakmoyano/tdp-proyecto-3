@@ -14,7 +14,6 @@ import Entidad.Item.Galleta;
 import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
 import Entidad.Jugador.Jugador_456;
-import Logica.Coordenada;
 
 public class FactoryJuegoCalamar extends FactoryDominio {
 

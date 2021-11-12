@@ -1,8 +1,5 @@
 package Entidad.Item;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import Grafica.RepresentacionGrafica;
 import Logica.Coordenada;
 import VisitorEntidad.VisitorEntidad;

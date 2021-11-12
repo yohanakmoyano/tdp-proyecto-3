@@ -14,9 +14,9 @@ public class Director {
 		if (nivel==1)
 			builder=new Level1Builder(sj);
 		if (nivel==2)
-			builder=new Level2Builder();
+			builder=new Level2Builder(sj);
 		if (nivel==3)
-			builder=new Level3Builder();
+			builder=new Level3Builder(sj);
 		
 	}
 	

@@ -3,7 +3,6 @@ package Logica;
 import Entidad.Entidad;
 import Entidad.Enemigo.Enemigo;
 import Entidad.EntidadMovible.Personaje;
-import Entidad.Item.Energizante;
 import Entidad.Item.Item;
 import Entidad.Jugador.Jugador;
 import Grafica.Gui;
@@ -89,6 +88,7 @@ public class Juego {
 		return miSala;
 	}
 
+	@SuppressWarnings("unused")
 	private void finDeJuego() {
 		miGui.finDeJuego();
 	}

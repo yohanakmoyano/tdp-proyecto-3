@@ -13,10 +13,8 @@ import Entidad.Item.Cuchillo;
 import Entidad.Item.Dinero;
 import Entidad.Item.Energizante;
 import Entidad.Item.Galleta;
-
 import Entidad.Jugador.Jugador_456;
 import Logica.Coordenada;
-import Logica.Juego;
 import Logica.SalaDeJuegos;
 
 public class Level1Builder extends LevelBuilder {

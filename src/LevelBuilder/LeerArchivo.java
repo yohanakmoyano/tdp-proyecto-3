@@ -11,17 +11,13 @@ public class LeerArchivo {
 	 
 	public static List<String> leer(String ruta) {
 		String linea;
-		int cant=0;
 		
 		List<String> lista =new ArrayList<String>();
-		int j = 0;
 		try {
 			FileReader fr = new FileReader(ruta);
 			BufferedReader br = new BufferedReader(fr);
 			while ((linea = br.readLine()) != null) { // en cada linea
 				lista.add(linea);
-			//	System.out.println(lista.get(j));
-				j++;
 			}
 
 			fr.close();

@@ -16,9 +16,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 
-import Logica.Juego;
-
-
 public class VentanaInicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel inicioJuego;
