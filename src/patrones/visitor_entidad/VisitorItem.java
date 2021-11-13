@@ -1,10 +1,8 @@
 package patrones.visitor_entidad;
 
-import entidades.movibles.enemigos.EnemigoA;
-import entidades.movibles.enemigos.EnemigoB;
-import entidades.movibles.enemigos.EnemigoC;
-import entidades.movibles.enemigos.EnemigoD;
+import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
+import entidades.nomovibles.Bloque;
 import entidades.nomovibles.Item;
 import entidades.nomovibles.items.ItemA;
 import entidades.nomovibles.items.ItemB;
@@ -17,6 +15,11 @@ public class VisitorItem extends VisitorEntidad {
 	
 	public VisitorItem(Item miIt) {
 		miItem = miIt;
+	}
+
+	public void visit(Bloque ent) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public void visit(ItemA it) {
@@ -39,23 +42,11 @@ public class VisitorItem extends VisitorEntidad {
 		
 	}
 	
-	public void visit(EnemigoA enemigo) {
-		
-	}
-	
-	public void visit(EnemigoB enemigo) {
-		
-	}
-	
-	public void visit(EnemigoC enemigo) {
-		
-	}
-	
-	public void visit(EnemigoD enemigo) {
+	public void visit(Enemigo enemigo) {
 		
 	}
 	
 	public void visit(Jugador jug) {
-		
+		jug.afectarPuntaje(miItem.getValor());
 	}
 }

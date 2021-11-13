@@ -23,7 +23,7 @@ public abstract class Enemigo extends Personaje {
 		return velocidad;
 	}
 
-	public int getvalor() {
+	public int getValor() {
 		return valor;
 	}
 

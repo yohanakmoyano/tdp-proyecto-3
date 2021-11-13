@@ -2,12 +2,11 @@ package entidades.movibles.jugadores;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import patrones.strategy.StrategyJugador;
+import patrones.strategy.ControlStrategy;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public class Jugador_456 extends Jugador {
 	protected static Jugador_456 myInstance;
-	protected StrategyJugador stg;
 
 	// TODO
 	/**Dado que tira error al momento de crear los niveles, por ahora dejaré este constructor público.
@@ -20,6 +19,7 @@ public class Jugador_456 extends Jugador {
 		ancho =40;
 		alto =40;
 		miRep = new RepresentacionGrafica(rutaImg);
+		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
 	}
 	
 	private Jugador_456() {

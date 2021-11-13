@@ -8,6 +8,10 @@ public abstract class Personaje extends EntidadMovible {
 		return velocidad;
 	}
 	
+	public void setVelocidad(int vel) {
+		velocidad = vel;
+	}
+	
 	public int getVidas() {
 		return vidas;
 	}

@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
+import logica.Puntaje;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public abstract class Entidad {
@@ -13,6 +14,7 @@ public abstract class Entidad {
 	protected RepresentacionGrafica miRep;
 	protected Coordenada posicion; 
 	protected JLabel dibujo;
+	protected Puntaje puntajeActual;
 
 	public abstract void accept(VisitorEntidad v);
 
@@ -35,6 +37,8 @@ public abstract class Entidad {
 		return dibujo;
 	}
 	
-	
+	public void afectarPuntaje(int valor) {
+		puntajeActual.incrementarEn(valor);
+	}
 	
 }
