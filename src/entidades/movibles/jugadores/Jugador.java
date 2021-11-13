@@ -1,9 +1,9 @@
 package entidades.movibles.jugadores;
 
-import entidades.movibles.Personaje;
+import entidades.movibles.EntidadMovible;
 import patrones.strategy.ControlStrategy;
 
-public abstract class Jugador extends Personaje {
+public abstract class Jugador extends EntidadMovible {
 	protected ControlStrategy controlStr;
 	
 	public ControlStrategy getEstrategia() {

@@ -1,7 +1,7 @@
 package logica;
 
 import entidades.Entidad;
-import entidades.movibles.Personaje;
+import entidades.movibles.EntidadMovible;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Item;
@@ -16,7 +16,7 @@ public class Juego {
 	protected Gui miGui;
 	protected SalaDeJuegos miSala;
 	protected Director miFabrica;
-	protected Personaje p;
+	protected EntidadMovible p;
 	protected Entidad e;
 
 	public Juego(Gui mg) {
@@ -81,7 +81,7 @@ public class Juego {
 
 	}
 
-	public boolean actualizarMovimiento(Personaje p) {
+	public boolean actualizarMovimiento(EntidadMovible p) {
 		return false;
 	}
 

@@ -1,8 +1,8 @@
 package entidades.movibles.enemigos;
 
-import entidades.movibles.Personaje;
+import entidades.movibles.EntidadMovible;
 
-public abstract class Enemigo extends Personaje {
+public abstract class Enemigo extends EntidadMovible {
 	protected int valor;
 
 	public abstract void mover();
