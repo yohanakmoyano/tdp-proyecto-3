@@ -16,8 +16,8 @@ public class Jugador_456 extends Jugador {
 		velocidad = vel;
 		vidas = v;
 		posicion = c;
-		ancho =40;
-		alto =40;
+		ancho =23;
+		alto =28;
 		miRep = new RepresentacionGrafica(rutaImg);
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
 	}

@@ -9,10 +9,8 @@ public class Energizante extends ItemC {
 	public Energizante(int val, Coordenada c, String rutaImg) {
 		valor = val;
 		posicion = c;
-		ancho = 16;//40;
-		alto = 10;//58;
-		// String
-		// rutaEnergizante=this.getClass().getResource("/Images/energizante_nivel1.png").toString();
+		ancho = 15;
+		alto = 30;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 

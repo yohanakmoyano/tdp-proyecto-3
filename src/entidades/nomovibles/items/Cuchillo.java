@@ -9,10 +9,8 @@ public class Cuchillo extends ItemB {
 	public Cuchillo(int val, Coordenada c, String rutaImg) {
 		valor = val;
 		posicion = c;
-		ancho =16;// 40;
-		alto =10;// 58;
-		// String
-		// rutaCuchillo=this.getClass().getResource("/Images/cuchillo_nivel1.png").toString();
+		ancho = 25;
+		alto = 10;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 
@@ -23,5 +21,5 @@ public class Cuchillo extends ItemB {
 	public void accept(VisitorEntidad v) {
 
 	}
-	
+
 }
