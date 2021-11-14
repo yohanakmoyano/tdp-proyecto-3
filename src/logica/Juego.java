@@ -4,6 +4,7 @@ import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
+import entidades.movibles.jugadores.Jugador_456;
 import entidades.nomovibles.Item;
 import grafica.Gui;
 import patrones.level_builder.Director;
@@ -16,8 +17,12 @@ public class Juego {
 	protected Gui miGui;
 	protected SalaDeJuegos miSala;
 	protected Director miFabrica;
-	protected EntidadMovible p;
-	protected Entidad e;
+	protected Jugador personaje;
+	protected Entidad entidad;
+	public static final int moverIzquierda = 1;
+	public static final int moverDerecha = 2;
+	public static final int moverAbajo = 3;
+	public static final int moverArriba = 4;
 
 	public Juego(Gui mg) {
 		puntaje = 0;
@@ -95,9 +100,52 @@ public class Juego {
 	}
 
 	public boolean sigueEnJuego() {
-		if (p.getVidas() >= 0)
+		if (personaje.getVidas() >= 0)
 			return true;
 		else
 			return false;
 	}
+	
+
+	public void operar(int op) {
+		switch (op) {
+		case moverAbajo: {
+			moverAbajo();
+			break;
+		}
+		case moverIzquierda: {
+			moverIzquierda();
+			break;
+		}
+		case moverDerecha: {
+			moverDerecha();
+			break;
+		}
+		case moverArriba: {
+			moverArriba();
+			break;
+		}
+		}
+	}
+
+	private void moverArriba() {
+		personaje.moverArriba();
+		
+	}
+
+	private void moverDerecha() {
+		personaje.moverDerecha();
+		
+	}
+
+	private void moverIzquierda() {
+		personaje.moverIzquierda();
+		
+	}
+
+	private void moverAbajo() {
+		personaje.moverAbajo();
+		
+	}
+	
 }

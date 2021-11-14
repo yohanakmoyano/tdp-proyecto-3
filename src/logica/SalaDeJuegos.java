@@ -14,7 +14,7 @@ public class SalaDeJuegos {
 	protected static final int altura=150; 
 	protected List<Entidad> listaEnemigos; 
 	protected List<Entidad> listaItem; 
-	protected List<Entidad> listaJugador; //dudoso preguntar
+	protected List<Entidad> listaJugador; 
 	protected Gui miGui;
 	protected Juego juego;
 	

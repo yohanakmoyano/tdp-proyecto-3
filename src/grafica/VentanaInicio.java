@@ -57,11 +57,11 @@ public class VentanaInicio extends JFrame {
 		//Boton Inicio
 		JButton btnInicio = new JButton("");
 		btnInicio.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnInicio.setBounds(87, 394, 227, 77);
+		btnInicio.setBounds(333, 396, 227, 77);
 		btnInicio.setBackground(Color.black);
 		
 		
-		String rutaBotonInicio = this.getClass().getResource("/Images/boton_inicio.png").toString();
+		String rutaBotonInicio = this.getClass().getResource("/Images/boton_iniciar.png").toString();
 		ImageIcon fotoBotonInicio = null;
 		try {
 			fotoBotonInicio = new ImageIcon(new URL(rutaBotonInicio));

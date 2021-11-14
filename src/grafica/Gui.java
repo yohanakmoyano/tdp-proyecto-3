@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -12,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
 import entidades.Entidad;
 import logica.Juego;
 
@@ -34,12 +35,14 @@ public class Gui extends JFrame {
 		setSize(new Dimension(900, 600));
 		setResizable(false);
 
+		//Panel principal
 		panelprincipal = new JPanel();
 		panelprincipal.setBounds(0, 0, 900, 600);
 		getContentPane().add(panelprincipal);
 		panelprincipal.setVisible(true);
 		panelprincipal.setLayout(null);
 		
+		//Panel laberinto
 		laberinto = new JPanel();
 		laberinto.setBounds(197, 0, 501, 553);
 		panelprincipal.add(laberinto);
@@ -48,11 +51,18 @@ public class Gui extends JFrame {
 		laberinto.setLayout(null);
 		laberinto.setBackground(Color.black);
 		
+		//Inicia miJuego
 		mijuego = new Juego(this);
 		mijuego.iniciarJuego();
-
+		
+		//Oyentes de teclados
+		KeyListener listener = new MyKeyListener();
+		addKeyListener(listener);
+		setFocusable(true);
+		getContentPane().setLayout(null);
 		
 	}
+	
 	public void mostrarImagenFondo(String s) {
 		ImageIcon fotoJuego = null;
 		try {
@@ -68,6 +78,7 @@ public class Gui extends JFrame {
 		panelprincipal.add(fondoNivel);
 		fondoNivel.setIcon(new ImageIcon(medidaJuego));;
 	}
+	
 	public void mostrarEntidad(Entidad e) {
 		ImageIcon imagen = null;
 		String rutaEntidad = e.getRepresentacionGrafica().getRuta();
@@ -86,7 +97,33 @@ public class Gui extends JFrame {
 		labelEntidad.setVisible(true);
 
 	}
+	
+	private class MyKeyListener implements KeyListener {
+		@Override
+		public void keyTyped(KeyEvent e) {
+		}
+		
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if(mijuego.sigueEnJuego()) {
+				 switch(e.getKeyCode()) {
+				 
+	             case KeyEvent.VK_LEFT: { mijuego.operar(Juego.moverIzquierda); break; }
+	             case KeyEvent.VK_RIGHT: { mijuego.operar(Juego.moverDerecha); break; }
+	             case KeyEvent.VK_UP: { mijuego.operar(Juego.moverArriba); break; }
+	             case KeyEvent.VK_DOWN: { mijuego.operar(Juego.moverAbajo); break; }
+	             
+	         	}
+			}
+		}
 
+		@Override
+		public void keyReleased(KeyEvent e) {
+		}
+	}	
+	
+	
+	
 	public void cambioPuntaje() {
 
 	}

@@ -10,7 +10,7 @@ public class Cuchillo extends ItemB {
 		valor = val;
 		posicion = c;
 		ancho = 25;
-		alto = 10;
+		alto = 7;
 		miRep = new RepresentacionGrafica(rutaImg);
 	}
 
