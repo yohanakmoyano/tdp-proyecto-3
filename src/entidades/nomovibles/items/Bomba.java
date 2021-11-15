@@ -11,7 +11,7 @@ public class Bomba extends ItemD {
 		posicion = c;
 		ancho = 25;
 		alto = 25;
-		miRep = new RepresentacionGrafica(rutaImg);
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 	public Bomba() {

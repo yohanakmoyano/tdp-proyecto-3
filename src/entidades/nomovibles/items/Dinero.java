@@ -9,9 +9,9 @@ public class Dinero extends ItemE {
 	public Dinero(int val, Coordenada c, String rutaImg) {
 		valor = val;
 		posicion = c;
-		ancho =30;
+		ancho = 30;
 		alto = 20;
-		miRep = new RepresentacionGrafica(rutaImg);
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 	public Dinero() {

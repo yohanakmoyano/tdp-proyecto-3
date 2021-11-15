@@ -122,13 +122,31 @@ public class Level1Builder extends LevelBuilder {
 				}
 			}
 			
-			Zona z = sj.getZona(punto);
-			if(z != null)
-				z.agregarEntidad(entidad);
+			agregarAZonas(entidad, sj);
 			
 		}
 	}
 
+	private void agregarAZonas(Entidad e, SalaDeJuegos sj) {
+		Coordenada esqSupIzq = e.getEsquinaSupIzq();
+		Coordenada esqSupDer = e.getEsquinaSupDer();
+		Coordenada esqInfIzq = e.getEsquinaInfIzq();
+		Coordenada esqInfDer = e.getEsquinaInfDer();
+		Zona z1 = sj.getZona(esqSupIzq);
+		if(z1 != null)
+			z1.agregarEntidad(e);
+		Zona z2 = sj.getZona(esqSupDer);
+		if(z2 != null)
+			z2.agregarEntidad(e);
+		Zona z3 = sj.getZona(esqInfIzq);
+		if(z3 != null)
+			z3.agregarEntidad(e);
+		Zona z4 = sj.getZona(esqInfDer);
+		if(z4 != null)
+			z4.agregarEntidad(e);
+		
+	}
+	
 	
 	//verificar si sirven 
 	@Override

@@ -86,22 +86,22 @@ public class SalaDeJuegos {
 
 	//Modificar autorizaciones
 	public boolean autorizarMovArriba(EntidadMovible e) {
-		System.out.println("Comprobo Mover Arriba");
-		return ((e.getEsquinaSupIzq().getY()-(e.getAlto()/2)) > 0);
+		System.out.println("Puede mover => "+((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0));
+		return ((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0);
 	}
 	
 	public boolean autorizarMovAbajo(EntidadMovible e) {
-		System.out.println("Comprobo Mover Abajo");
+		System.out.println("Puede mover => "+((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura));
 		return ((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura);
 	}
 	
 	public boolean autorizarMovDerecha(EntidadMovible e) {
-		System.out.println("Comprobo Mover Derecha");
+		System.out.println("Puede mover => " + ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base));
 		return ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base);
 	}
 	
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
-		System.out.println("Comprobo Mover Izquierda");
+		System.out.println("Puede mover => " + ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0));
 		return ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0);
 	}
 	

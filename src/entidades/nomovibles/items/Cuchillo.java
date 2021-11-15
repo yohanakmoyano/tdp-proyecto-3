@@ -11,7 +11,7 @@ public class Cuchillo extends ItemB {
 		posicion = c;
 		ancho = 25;
 		alto = 7;
-		miRep = new RepresentacionGrafica(rutaImg);
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 	public Cuchillo() {

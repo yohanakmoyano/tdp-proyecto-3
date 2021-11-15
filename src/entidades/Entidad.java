@@ -1,7 +1,5 @@
 package entidades;
 
-import javax.swing.JLabel;
-
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import logica.Puntaje;
@@ -12,8 +10,7 @@ public abstract class Entidad {
 	protected int alto; //mi Y
 	protected int esquina;
 	protected RepresentacionGrafica miRep;
-	protected Coordenada posicion; //se tratará de la esquina superior izquierda. 
-	protected JLabel dibujo;					//Considerando a la entidad como un cuadrilátero cuyos ángulos interiores son todos rectos.
+	protected Coordenada posicion; //se tratará de la esquina superior izquierda. Considerando a la entidad como un cuadrilátero cuyos ángulos interiores son todos rectos.
 	protected Puntaje puntajeActual;
 
 	public abstract void accept(VisitorEntidad v);
@@ -64,9 +61,6 @@ public abstract class Entidad {
 	
 	public Coordenada getPosicion() {
 		return posicion;
-	}
-	public JLabel getDibujo() {
-		return dibujo;
 	}
 	
 	public void afectarPuntaje(int valor) {

@@ -117,45 +117,45 @@ public class Juego {
 	}
 
 	private void moverArriba() {
-		System.out.println("Mover Arriba");
+		System.out.println("--------------------------Logica-------------------------------------------------------------");
+		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovArriba(personaje)) {
-			System.out.println("Movio arriba");
 			personaje.moverArriba();
-			miGui.mostrarEntidad(personaje);
+			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		
 	}
 
 	private void moverDerecha() {
-		System.out.println("Mover Derecha");
-		System.out.println("Coordenada: "+ personaje.getEsquinaSupIzq().getX() + ", " + personaje.getEsquinaSupIzq().getY());
+		System.out.println("--------------------------Logica-------------------------------------------------------------");
+		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovDerecha(personaje)) {
-			System.out.println("Movio derecha");
 			personaje.moverDerecha();
-			System.out.println("Coordenada: "+ personaje.getEsquinaSupIzq().getX() + ", " + personaje.getEsquinaSupIzq().getY());
-			miGui.mostrarEntidad(personaje);
-			System.out.println("Coordenada: "+ personaje.getEsquinaSupIzq().getX() + ", " + personaje.getEsquinaSupIzq().getY());
+			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
+		System.out.println("-----------------------------------------------------------------------------------------------");
 		
 	}
 
 	private void moverIzquierda() {
-		System.out.println("Mover Izquierda");
+		System.out.println("--------------------------Logica-------------------------------------------------------------");
+		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovIzquierda(personaje)) {
-			System.out.println("Movio izquierda");
 			personaje.moverIzquierda(); 
-			miGui.mostrarEntidad(personaje);
+			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
+		System.out.println("-----------------------------------------------------------------------------------------------");
 		
 	}
 
 	private void moverAbajo() {
-		System.out.println("Mover Abajo");
+		System.out.println("--------------------------Logica-------------------------------------------------------------");
+		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovAbajo(personaje)) {
-			System.out.println("Movio abajo");
 			personaje.moverAbajo(); 
-			miGui.mostrarEntidad(personaje);
+			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
+		System.out.println("-----------------------------------------------------------------------------------------------");
 		
 	}
 	

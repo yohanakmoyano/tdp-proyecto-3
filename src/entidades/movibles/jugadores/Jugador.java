@@ -10,14 +10,6 @@ public abstract class Jugador extends EntidadMovible {
 		return controlStr;
 	}
 	
-	public abstract void moverDerecha();
-	
-	public abstract void moverIzquierda();
-
-	public abstract void moverArriba();
-	
-	public abstract void moverAbajo();
-	
 	/**
 	 * Por el momento hace una especie de switch entre las dos estrategias existentes.
 	 * Ver como hacer para que esto no dependa de que solo existen dos estrategias.

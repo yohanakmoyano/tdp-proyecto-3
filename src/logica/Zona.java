@@ -1,7 +1,7 @@
 package logica;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.AbstractSet;
+import java.util.HashSet;
 
 import java.awt.Rectangle;
 import entidades.Entidad;
@@ -10,33 +10,33 @@ public class Zona extends Rectangle {
 	protected Coordenada posSupIzq;
 	protected int ancho;
 	protected int alto;
-	protected List<Entidad> listaEntidades; 
+	protected AbstractSet<Entidad> listaEntidades; //Me aseguro de no tener entidades repetidas dentro de la lista.
 
 	public Zona(int x, int y, int ancho, int alto) {
 		posSupIzq = new Coordenada(x, y);
 		this.ancho = ancho;
 		this.alto = alto;
 		
-		listaEntidades= new ArrayList<Entidad>(); 
+		listaEntidades= new HashSet<Entidad>(); 
 	}
 	
-	public Coordenada getEsquinaIzqSup() {
+	public Coordenada getEsquinaSupIzq() {
 		return posSupIzq;
 	}
 	
-	public Coordenada getEsquinaDerSup() {
-		return /*esquinaDerSuperior*/null; 
+	public Coordenada getEsquinaSupDer() {
+		return new Coordenada(posSupIzq.getX() + ancho, posSupIzq.getY());
 	}
 	
-	public Coordenada getEsquinaIzqInf() {
-		return /*esquinaIzqInferior*/null;
+	public Coordenada getEsquinaInfIzq() {
+		return new Coordenada(posSupIzq.getX(), posSupIzq.getY() + alto);
 	}
 	
-	public Coordenada getEsquinaDerInf() {
-		return /*esquinaDerInferior*/null;
+	public Coordenada getEsquinaInfDer() {
+		return new Coordenada(posSupIzq.getX() + ancho, posSupIzq.getY() + alto);
 	}
 	
-	public List<Entidad> getListaEntidades() {
+	public AbstractSet<Entidad> getListaEntidades() {
 		return listaEntidades;
 	}
 	

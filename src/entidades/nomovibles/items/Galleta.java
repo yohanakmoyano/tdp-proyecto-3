@@ -10,8 +10,8 @@ public class Galleta extends ItemA {
 		valor = val;
 		posicion = c;
 		ancho = 13;
-		alto =10;
-		miRep = new RepresentacionGrafica(rutaImg);
+		alto = 10;
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 	public Galleta() {

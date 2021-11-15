@@ -18,7 +18,7 @@ public class Jugador_456 extends Jugador {
 		posicion = c;
 		ancho =23;
 		alto =28;
-		miRep = new RepresentacionGrafica(rutaImg);
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
 	}
 	
@@ -38,27 +38,28 @@ public class Jugador_456 extends Jugador {
 	public void moverDerecha() {
 		actualizarMov = posicion.getX() + (ancho/2);
 		posicion.setX(actualizarMov);
-		
+		miRep.moverDerecha();
 	}
 	
 	//se mueve - en el eje x
 	public void moverIzquierda() {
 		actualizarMov = posicion.getX() - (ancho/2);
 		posicion.setX(actualizarMov);
-		
+		miRep.moverIzquierda();
 	}
 	
 	//se mueve - en el eje y
 	public void moverArriba() {
 		actualizarMov = posicion.getY() - (alto/2);
 		posicion.setY(actualizarMov);
-		
+		miRep.moverArriba();
 	}
 	
 	//se mueve + en el eje y
 	public void moverAbajo() {
 		actualizarMov = posicion.getY() + (alto/2);
 		posicion.setY(actualizarMov);
+		miRep.moverAbajo();
 	}
 	
 

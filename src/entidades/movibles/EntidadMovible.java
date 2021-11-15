@@ -23,6 +23,14 @@ public abstract class EntidadMovible extends Entidad {
 		vidas=v;
 	}
 	
+	public abstract void moverDerecha();
+	
+	public abstract void moverIzquierda();
+
+	public abstract void moverArriba();
+	
+	public abstract void moverAbajo();
+	
 	/**
 	 * Se encarga de reducir en uno la cantidad de vidas del personaje. Retorna Verdadero si el personaje se quedó sin
 	 * vidas al reducirlas en uno (si vidas == 0, esto es, si personaje murio), falso en caso contrario.

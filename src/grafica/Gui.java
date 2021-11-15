@@ -25,7 +25,7 @@ public class Gui extends JFrame {
 	private JPanel laberinto;
 	
 	private Juego mijuego;
-	private JLabel labelEntidad;
+	//private JLabel labelEntidad;
 	private JLabel fondoNivel;
 
 	public Gui() {
@@ -54,7 +54,6 @@ public class Gui extends JFrame {
 		//Inicia miJuego
 		mijuego = new Juego(this);
 		mijuego.iniciarJuego();
-		
 		//Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
@@ -79,6 +78,8 @@ public class Gui extends JFrame {
 		fondoNivel.setIcon(new ImageIcon(medidaJuego));;
 	}
 	
+	//Comentado temporalmente
+	/*
 	public void mostrarEntidad(Entidad e) {
 		ImageIcon imagen = null;
 		String rutaEntidad = e.getRepresentacionGrafica().getRuta();
@@ -96,6 +97,17 @@ public class Gui extends JFrame {
 		laberinto.add(labelEntidad);
 		labelEntidad.setVisible(true);
 
+	}*/
+	
+	public void mostrarEntidad(Entidad e) {
+		
+		laberinto.add(e.getRepresentacionGrafica().getDibujo());
+		e.getRepresentacionGrafica().getDibujo().setVisible(true);
+
+	}
+	
+	public void removerEntidad(Entidad e) {
+		e.getRepresentacionGrafica().getDibujo().setVisible(false);
 	}
 	
 	private class MyKeyListener implements KeyListener {

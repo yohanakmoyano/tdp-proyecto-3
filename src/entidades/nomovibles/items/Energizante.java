@@ -11,7 +11,7 @@ public class Energizante extends ItemC {
 		posicion = c;
 		ancho = 15;
 		alto = 30;
-		miRep = new RepresentacionGrafica(rutaImg);
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 	public Energizante() {

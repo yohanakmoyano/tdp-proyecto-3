@@ -8,43 +8,37 @@ public class Boss extends EnemigoA {
 
 	public Boss(Coordenada c, String rutaImg) {
 		posicion = c;
-		ancho =40;
-		alto =48;
-		miRep = new RepresentacionGrafica(rutaImg);
+		ancho = 40;
+		alto = 48;
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void moverArriba() {
+	public void moverArriba() {
 		actualizarMov = posicion.getY() - (alto/2);
 		posicion.setY(actualizarMov);
-		
+		miRep.moverArriba();
 	}
 
 	@Override
-	protected void moverAbajo() {
+	public void moverAbajo() {
 		actualizarMov = posicion.getY() + (alto/2);
 		posicion.setY(actualizarMov);
-		
+		miRep.moverAbajo();
 	}
 
 	@Override
-	protected void moverIzq() {
+	public void moverIzquierda() {
 		actualizarMov = posicion.getX() - (ancho/2);
 		posicion.setX(actualizarMov);
-		
+		miRep.moverIzquierda();
 	}
 
 	@Override
-	protected void moverDer() {
+	public void moverDerecha() {
 		actualizarMov = posicion.getX() + (ancho/2);
 		posicion.setX(actualizarMov);
-		
+		miRep.moverDerecha();
 	}
 	
 	@Override
