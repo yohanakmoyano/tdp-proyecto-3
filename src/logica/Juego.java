@@ -11,7 +11,7 @@ import patrones.level_builder.Director;
 
 
 public class Juego {
-
+	protected Puntaje puntos;
 	protected int puntaje;
 	protected int nivel;
 	protected Gui miGui;
@@ -25,6 +25,7 @@ public class Juego {
 	public static final int moverArriba = 4;
 
 	public Juego(Gui mg) {
+		puntos = Puntaje.getInstancePuntaje();
 		puntaje = 0;
 		nivel = 1;
 		miGui = mg;

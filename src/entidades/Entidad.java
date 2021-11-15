@@ -11,7 +11,7 @@ public abstract class Entidad {
 	protected int esquina;
 	protected RepresentacionGrafica miRep;
 	protected Coordenada posicion; //se tratará de la esquina superior izquierda. Considerando a la entidad como un cuadrilátero cuyos ángulos interiores son todos rectos.
-	protected Puntaje puntajeActual;
+	//protected Puntaje puntajeActual;
 
 	public abstract void accept(VisitorEntidad v);
 
@@ -64,7 +64,7 @@ public abstract class Entidad {
 	}
 	
 	public void afectarPuntaje(int valor) {
-		puntajeActual.incrementarEn(valor);
+		Puntaje.getInstancePuntaje().incrementarEn(valor);
 	}
 	
 	public boolean colisiona(Entidad e) {

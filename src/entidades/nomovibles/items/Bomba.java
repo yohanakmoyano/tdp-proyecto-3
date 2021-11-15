@@ -19,7 +19,7 @@ public class Bomba extends ItemD {
 	}
 
 	public void accept(VisitorEntidad v) {
-
+		v.visit(this);
 	}
 
 }

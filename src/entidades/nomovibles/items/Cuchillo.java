@@ -19,7 +19,7 @@ public class Cuchillo extends ItemB {
 	}
 
 	public void accept(VisitorEntidad v) {
-
+		v.visit(this);
 	}
 
 }

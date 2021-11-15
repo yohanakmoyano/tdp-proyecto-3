@@ -19,7 +19,7 @@ public class Galleta extends ItemA {
 	}
 
 	public void accept(VisitorEntidad v) {
-
+		v.visit(this);
 	}
 	
 }

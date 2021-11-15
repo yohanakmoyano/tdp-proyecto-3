@@ -117,27 +117,35 @@ public class SalaDeJuegos {
 	
 	//Modificar autorizaciones
 	public boolean autorizarMovArriba(EntidadMovible e) {
-		posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => "+((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0));
-		return ((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0);
+		boolean puedeMoverse = ((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0);
+		if(puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();
+		System.out.println("Puede mover => "+puedeMoverse);
+		return puedeMoverse;
 	}
 	
 	public boolean autorizarMovAbajo(EntidadMovible e) {
-		posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => "+((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura));
-		return ((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura);
+		boolean puedeMoverse = ((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura);
+		if(puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();
+		System.out.println("Puede mover => "+puedeMoverse);
+		return puedeMoverse;
 	}
 	
 	public boolean autorizarMovDerecha(EntidadMovible e) {
-		posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => " + ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base));
-		return ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base);
+		boolean puedeMoverse = ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base);
+		if(puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();
+		System.out.println("Puede mover => "+puedeMoverse);
+		return puedeMoverse;
 	}
 	
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
-		posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => " + ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0));
-		return ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0);
+		boolean puedeMoverse = ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0);
+		if(puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();
+		System.out.println("Puede mover => "+puedeMoverse);
+		return puedeMoverse;
 	}
 	
 	private void addEntidadAZonaEn(Coordenada pos, Entidad e) {
@@ -199,6 +207,8 @@ public class SalaDeJuegos {
 			colisiono = e.colisiona(ent);
 			toRet = toRet || colisiono;
 			if(colisiono) {
+				System.out.println("--------------------------Hubo Colision --: "+toRet + "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
+				System.out.println("--------------------------Entro Visitor--: "+toRet);
 				ent.accept(new VisitorJugador((Jugador)e));
 			}
 		}

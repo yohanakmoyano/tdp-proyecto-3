@@ -19,7 +19,7 @@ public class Dinero extends ItemE {
 	}
 
 	public void accept(VisitorEntidad v) {
-
+		v.visit(this);
 	}
 
 }

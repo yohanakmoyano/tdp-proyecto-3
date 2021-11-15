@@ -19,7 +19,7 @@ public class Energizante extends ItemC {
 	}
 
 	public void accept(VisitorEntidad v) {
-
+		v.visit(this);
 	}
 	
 }
