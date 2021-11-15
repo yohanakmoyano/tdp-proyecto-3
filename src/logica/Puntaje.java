@@ -23,4 +23,8 @@ public class Puntaje {
 	public int getPuntajeActual() {
 		return puntaje;
 	}
+	
+	public void setPuntaje(int p) {
+		puntaje = p;
+	}
 }

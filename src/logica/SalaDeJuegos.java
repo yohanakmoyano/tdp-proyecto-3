@@ -212,7 +212,6 @@ public class SalaDeJuegos {
 				ent.accept(new VisitorJugador((Jugador)e));
 			}
 		}
-		System.out.println("--------------------------Hubo Colision--: "+toRet);
 		return toRet;
 	}
 	

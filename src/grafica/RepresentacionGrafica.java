@@ -77,7 +77,14 @@ public class RepresentacionGrafica {
 		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
 		//System.out.println("-----------------------------------------------------------------------------------------------");
 	}
-		
+	
+	public void eliminar() {
+		dibujo.setBounds(0, 0, 0, 0);
+	}
+	
+	public boolean colisiona(RepresentacionGrafica r) {
+		return this.dibujo.getBounds().intersects(r.getDibujo().getBounds());
+	}
 	
 	public String getRuta() {
 		return ruta;

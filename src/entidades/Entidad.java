@@ -68,7 +68,11 @@ public abstract class Entidad {
 	}
 	
 	public boolean colisiona(Entidad e) {
-		return ((this != e) && (this.miRep.getDibujo().getBounds().intersects(e.getRepresentacionGrafica().getDibujo().getBounds())));
+		return ((this != e) && (miRep.colisiona(e.getRepresentacionGrafica())));
+	}
+	
+	public void eliminar() {
+		miRep.eliminar();
 	}
 	
 }

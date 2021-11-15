@@ -12,6 +12,7 @@ public abstract class EntidadMovible extends Entidad {
 	}
 	
 	public void setVelocidad(int vel) {
+		System.out.println("Modifico velocidad: old: "+velocidad+" new: "+vel);
 		velocidad = vel;
 	}
 	

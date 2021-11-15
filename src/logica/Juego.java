@@ -12,7 +12,6 @@ import patrones.level_builder.Director;
 
 public class Juego {
 	protected Puntaje puntos;
-	protected int puntaje;
 	protected int nivel;
 	protected Gui miGui;
 	protected SalaDeJuegos miSala;
@@ -26,7 +25,6 @@ public class Juego {
 
 	public Juego(Gui mg) {
 		puntos = Puntaje.getInstancePuntaje();
-		puntaje = 0;
 		nivel = 1;
 		miGui = mg;
 		miGui.setVisible(true);
@@ -34,17 +32,17 @@ public class Juego {
 		miFabrica = new Director(nivel, miSala);
 		personaje = (Jugador) miSala.getListJugador().get(0);
 	}
-
+	
 	public void setPuntaje(int p) {
-		puntaje = p;
+		puntos.setPuntaje(p);
 	}
 
 	public int getPuntaje() {
-		return puntaje;
+		return puntos.getPuntajeActual();
 	}
 
 	public void setNivel(int n) {
-		puntaje = n;
+		nivel = n;
 	}
 
 	public int getNivel() {
@@ -55,7 +53,7 @@ public class Juego {
 	}
 
 	public void iniciarJuego() {
-		puntaje = 0;
+		//puntaje = 0;
 		nivel = 1;
 	}
 
@@ -73,10 +71,6 @@ public class Juego {
 
 	public void cambioEstadoJugador(Jugador jugador) {
 
-	}
-
-	public boolean actualizarMovimiento(EntidadMovible p) {
-		return false;
 	}
 
 	public SalaDeJuegos getSalaDeJuegos() {

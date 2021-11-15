@@ -10,15 +10,14 @@ public class Zona extends Rectangle {
 	protected Coordenada posSupIzq;
 	protected int ancho;
 	protected int alto;
-	protected AbstractSet<Entidad> listaEntidades; //Me aseguro de no tener entidades repetidas dentro de la lista.
+	protected AbstractSet<Entidad> listaEntidades; 
 
 	public Zona(int x, int y, int ancho, int alto) {
 		super(x, y, ancho, alto);
 		posSupIzq = new Coordenada(x, y);
 		this.ancho = ancho;
 		this.alto = alto;
-		
-		listaEntidades= new HashSet<Entidad>(); 
+		listaEntidades= new HashSet<Entidad>(); //Me aseguro de no tener entidades repetidas dentro de la lista.
 	}
 	
 	public Coordenada getEsquinaSupIzq() {

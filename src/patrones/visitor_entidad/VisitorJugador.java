@@ -19,40 +19,45 @@ public class VisitorJugador extends VisitorEntidad {
 
 	public void visit(Bloque ent) {
 		// TODO Auto-generated method stub
-
 		System.out.println("--------------------------Visite bloque-------------------------------------------------------------");
 	}
 	
 	public void visit(ItemA it) {
 		System.out.println("--------------------------Visite galleta-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
+		it.eliminar();
 	}
 
 	public void visit(ItemB it) {
 		System.out.println("--------------------------Visite cuchillo-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
 		miJugador.getEstrategia().setStrategy(new Cazador(miJugador));
+		it.eliminar();
 	}
 	
 	public void visit(ItemC it) {
 		System.out.println("--------------------------Visite energizante-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
 		miJugador.setVelocidad((miJugador.getVelocidad()*3)/2); //Algo simil a multiplicarlo por un factor de 1.5
+		it.eliminar();
 	}
 
 	public void visit(ItemD it) {
 		System.out.println("--------------------------Visite bomba-------------------------------------------------------------");
 		// TODO definir comportamiento de la bomba.
+		it.eliminar();
 	}
 
 	public void visit(ItemE it) {
 		System.out.println("--------------------------Visite dolar-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
+		it.eliminar();
 	}
 	
 	public void visit(Enemigo enemigo) {
 		System.out.println("--------------------------Visite enemigo-------------------------------------------------------------");
 		miJugador.getEstrategia().atacar(enemigo);
+		enemigo.eliminar();
 	}
 	
 	public void visit(Jugador jug) {
