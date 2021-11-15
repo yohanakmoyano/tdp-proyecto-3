@@ -7,37 +7,48 @@ import patrones.visitor_entidad.VisitorEntidad;
 
 public class Triangulo extends EnemigoC {
 	public Triangulo(Coordenada c, String rutaImg) {
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
 		miVisitor = new VisitorEnemigo(this);
 		posicion = c;
 		ancho = 40;
+		factorMovX = ancho/2;
 		alto = 48;
+		factorMovY = alto/2;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 	@Override
 	public void moverArriba() {
-		actualizarMov = posicion.getY() - (alto/2);
+		ultMovimiento = ultMovUp;
+		actualizarMov = posicion.getY() - (factorMovY);
 		posicion.setY(actualizarMov);
 		miRep.moverArriba();
 	}
 
 	@Override
 	public void moverAbajo() {
-		actualizarMov = posicion.getY() + (alto/2);
+		ultMovimiento = ultMovDown;
+		actualizarMov = posicion.getY() + (factorMovY);
 		posicion.setY(actualizarMov);
 		miRep.moverAbajo();
 	}
 
 	@Override
 	public void moverIzquierda() {
-		actualizarMov = posicion.getX() - (ancho/2);
+		ultMovimiento = ultMovIzq;
+		actualizarMov = posicion.getX() - (factorMovX);
 		posicion.setX(actualizarMov);
 		miRep.moverIzquierda();
 	}
 
 	@Override
 	public void moverDerecha() {
-		actualizarMov = posicion.getX() + (ancho/2);
+		ultMovimiento = ultMovDer;
+		actualizarMov = posicion.getX() + (factorMovX);
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha();
 	}
@@ -58,6 +69,25 @@ public class Triangulo extends EnemigoC {
 	public void morir() {
 		// TODO Auto-generated method stub
 
+	}
+	@Override
+	public Coordenada nextPosMovDer() {
+		return new Coordenada(posicion.getX() + (factorMovX), posicion.getY());
+	}
+
+	@Override
+	public Coordenada nextPosMovIzq() {
+		return new Coordenada(posicion.getX() - (factorMovX), posicion.getY());
+	}
+
+	@Override
+	public Coordenada nextPosMovUp() {
+		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY));
+	}
+
+	@Override
+	public Coordenada nextPosMovDown() {
+		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY));
 	}
 
 }

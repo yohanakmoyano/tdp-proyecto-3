@@ -15,7 +15,7 @@ public abstract class Entidad {
 	//protected Puntaje puntajeActual;
 
 	public abstract void accept(VisitorEntidad v);
-
+	
 	public int getAncho() {
 		return ancho;
 	}

@@ -28,8 +28,9 @@ public class Juego {
 		miGui.setVisible(true);
 		miSala = new SalaDeJuegos(mg,this);
 		miFabrica = new Director(nivel, miSala);
-		personaje = (Jugador) miSala.getListJugador().get(0);
-	}
+		if(!miSala.getListJugador().isEmpty())
+			personaje = (Jugador) miSala.getListJugador().get(0);
+	}	
 	
 	public void setPuntaje(int p) {
 		puntos.setPuntaje(p);

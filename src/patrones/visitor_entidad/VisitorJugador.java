@@ -18,7 +18,24 @@ public class VisitorJugador extends VisitorEntidad {
 	}
 
 	public void visit(Bloque ent) {
-		// TODO Auto-generated method stub
+		switch(miJugador.getUltMovimiento()) {
+			case(Jugador.ultMovDer): {
+				miJugador.setPuedoMovermeDer(false);
+				break;
+			}
+			case(Jugador.ultMovIzq): {
+				miJugador.setPuedoMovermeIzq(false);
+				break;
+			}
+			case(Jugador.ultMovUp): {
+				miJugador.setPuedoMovermeUp(false);
+				break;
+			}
+			case(Jugador.ultMovDown): {
+				miJugador.setPuedoMovermeDown(false);
+				break;
+			}
+		}
 		System.out.println("--------------------------Visite bloque-------------------------------------------------------------");
 	}
 	

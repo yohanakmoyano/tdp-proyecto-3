@@ -117,7 +117,7 @@ public class SalaDeJuegos {
 	
 	//Modificar autorizaciones
 	public boolean autorizarMovArriba(EntidadMovible e) {
-		boolean puedeMoverse = ((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0);
+		boolean puedeMoverse = (e.nextPosMovUp().getY() > 0) && (e.puedoMovermeUp());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => "+puedeMoverse);
@@ -125,7 +125,7 @@ public class SalaDeJuegos {
 	}
 	
 	public boolean autorizarMovAbajo(EntidadMovible e) {
-		boolean puedeMoverse = ((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura);
+		boolean puedeMoverse = ((e.nextPosMovDown().getY() + e.getAlto()) < altura) && (e.puedoMovermeDown());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => "+puedeMoverse);
@@ -133,7 +133,7 @@ public class SalaDeJuegos {
 	}
 	
 	public boolean autorizarMovDerecha(EntidadMovible e) {
-		boolean puedeMoverse = ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base);
+		boolean puedeMoverse = ((e.nextPosMovDer().getX() + e.getAlto()) < base) && (e.puedoMovermeDer());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => "+puedeMoverse);
@@ -141,7 +141,7 @@ public class SalaDeJuegos {
 	}
 	
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
-		boolean puedeMoverse = ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0);
+		boolean puedeMoverse = (e.nextPosMovIzq().getX() > 0) && (e.puedoMovermeIzq());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => "+puedeMoverse);
@@ -208,6 +208,10 @@ public class SalaDeJuegos {
 				System.out.println("--------------------------Hubo Colision --: "+toRet + "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
 				System.out.println("--------------------------Entro Visitor--: "+toRet);
 				ent.accept(e.getMyVisitor());
+			} else {/*
+				EntidadMovible ee = (EntidadMovible)e;
+				ee.resetearMovimientos();
+				*/
 			}
 		}
 		return toRet;

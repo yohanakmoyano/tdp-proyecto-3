@@ -14,10 +14,6 @@ public class Bomba extends ItemD {
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
-	public Bomba() {
-
-	}
-
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

@@ -14,10 +14,6 @@ public class Cuchillo extends ItemB {
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
-	public Cuchillo() {
-
-	}
-
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

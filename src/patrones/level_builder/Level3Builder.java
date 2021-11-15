@@ -79,6 +79,7 @@ public class Level3Builder extends LevelBuilder {
 				case "j": { // Creo un jugador
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Jugador_456(punto, 100, 3, this.getClass().getResource(caracter[j+3]).toString());
+					sj.getListJugador().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}

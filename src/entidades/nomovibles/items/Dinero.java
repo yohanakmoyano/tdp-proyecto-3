@@ -14,10 +14,6 @@ public class Dinero extends ItemE {
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
-	public Dinero() {
-
-	}
-
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

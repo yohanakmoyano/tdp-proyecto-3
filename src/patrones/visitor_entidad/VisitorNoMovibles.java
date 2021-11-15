@@ -3,6 +3,7 @@ package patrones.visitor_entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
+import entidades.nomovibles.EntidadNoMovible;
 import entidades.nomovibles.Item;
 import entidades.nomovibles.items.ItemA;
 import entidades.nomovibles.items.ItemB;
@@ -10,11 +11,11 @@ import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
 
-public class VisitorItem extends VisitorEntidad {
-	protected Item miItem;
+public class VisitorNoMovibles extends VisitorEntidad {
+	protected EntidadNoMovible me;
 	
-	public VisitorItem(Item miIt) {
-		miItem = miIt;
+	public VisitorNoMovibles(EntidadNoMovible me) {
+		this.me = me;
 	}
 
 	public void visit(Bloque ent) {
@@ -47,6 +48,6 @@ public class VisitorItem extends VisitorEntidad {
 	}
 	
 	public void visit(Jugador jug) {
-		jug.afectarPuntaje(miItem.getValor());
+		jug.afectarPuntaje(me.getValor());
 	}
 }

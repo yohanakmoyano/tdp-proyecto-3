@@ -13,11 +13,7 @@ public class Galleta extends ItemA {
 		alto = 10;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
-
-	public Galleta() {
-
-	}
-
+	
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}
