@@ -121,6 +121,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovArriba(personaje)) {
 			personaje.moverArriba();
+			miSala.actualizarZonasEntidad(personaje);
 			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
@@ -132,6 +133,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovDerecha(personaje)) {
 			personaje.moverDerecha();
+			miSala.actualizarZonasEntidad(personaje);
 			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
@@ -144,6 +146,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovIzquierda(personaje)) {
 			personaje.moverIzquierda(); 
+			miSala.actualizarZonasEntidad(personaje);
 			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
@@ -156,6 +159,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovAbajo(personaje)) {
 			personaje.moverAbajo(); 
+			miSala.actualizarZonasEntidad(personaje);
 			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}

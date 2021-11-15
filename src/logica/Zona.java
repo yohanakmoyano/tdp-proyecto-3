@@ -13,6 +13,7 @@ public class Zona extends Rectangle {
 	protected AbstractSet<Entidad> listaEntidades; //Me aseguro de no tener entidades repetidas dentro de la lista.
 
 	public Zona(int x, int y, int ancho, int alto) {
+		super(x, y, ancho, alto);
 		posSupIzq = new Coordenada(x, y);
 		this.ancho = ancho;
 		this.alto = alto;

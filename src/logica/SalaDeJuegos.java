@@ -23,6 +23,8 @@ public class SalaDeJuegos {
 	protected Gui miGui;
 	protected Juego juego;
 	
+	protected Coordenada posAnteriorJug;
+	
 	public SalaDeJuegos(Gui g, Juego jueg) {
 		int incrementX = base/cantDivisiones;
 		int incrementY = altura/cantDivisiones;
@@ -73,6 +75,7 @@ public class SalaDeJuegos {
 	 * @return Zona que contiene a punto.
 	 */
 	private Zona getZona(Coordenada punto) {
+		System.out.println("--------------------------GetZona-------------------------------------------------------------");
 		boolean encontre = false;
 		Zona toRet = null;
 		for(int i = 0; i<cantDivisiones && !encontre; i++) {
@@ -85,65 +88,103 @@ public class SalaDeJuegos {
 		return toRet;
 	}
 
+	private void verificarCambioZona(Coordenada oldPos, Coordenada newPos, Entidad e) {
+		System.out.println("--------------------------VerificarCambioZona---------------------------------------------------");
+		Zona z = getZona(oldPos);
+		Zona ze = getZona(newPos);
+		if(z != ze) {
+			z.eliminarEntidad(e);
+			ze.agregarEntidad(e);
+			System.out.println("--------------------------HuboCambioZona--: "+true);
+		}
+	}
+	
+	/**
+	 * Consulta si la entidad e, al moverse, cambio las zonas sobre las que está.
+	 * @param e entidad por la cual consultar.
+	 */
+	public void actualizarZonasEntidad(Entidad e) {
+		System.out.println("--------------------------ActualizarZonasEntidad------------------------------------------------");
+		Coordenada esqSupIzq = e.getEsquinaSupIzq();
+		Coordenada esqSupDer = e.getEsquinaSupDer();
+		Coordenada esqInfIzq = e.getEsquinaInfIzq();
+		Coordenada esqInfDer = e.getEsquinaInfDer();
+		verificarCambioZona(posAnteriorJug, esqSupIzq, e);
+		verificarCambioZona(new Coordenada(posAnteriorJug.getX() + e.getAncho(), posAnteriorJug.getY()), esqSupDer, e);
+		verificarCambioZona(new Coordenada(posAnteriorJug.getX(), posAnteriorJug.getY() + e.getAlto()), esqInfIzq, e);
+		verificarCambioZona(new Coordenada(posAnteriorJug.getX() + e.getAncho(), posAnteriorJug.getY() + e.getAlto()), esqInfDer, e);
+	}
+	
 	//Modificar autorizaciones
 	public boolean autorizarMovArriba(EntidadMovible e) {
+		posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => "+((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0));
 		return ((e.getEsquinaSupIzq().getY() - (e.getAlto()/2)) > 0);
 	}
 	
 	public boolean autorizarMovAbajo(EntidadMovible e) {
+		posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => "+((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura));
 		return ((e.getEsquinaSupIzq().getY() + (e.getAlto()/2)) < altura);
 	}
 	
 	public boolean autorizarMovDerecha(EntidadMovible e) {
+		posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => " + ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base));
 		return ((e.getEsquinaSupIzq().getX() + (e.getAncho()/2)) < base);
 	}
 	
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
+		posAnteriorJug = e.getEsquinaSupIzq();
 		System.out.println("Puede mover => " + ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0));
 		return ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0);
 	}
 	
+	private void addEntidadAZonaEn(Coordenada pos, Entidad e) {
+	System.out.println("--------------------------AddEntidadAZonaEn---------------------------------------------------------");
+		Zona z = getZona(pos);
+		if(z != null) {
+			z.agregarEntidad(e);
+			System.out.println("--------------------------AgregoAZona--: "+true);
+		}
+	}
+	
 	public void agregarAZonas(Entidad e) {
+		System.out.println("--------------------------AgregarAZonas----------------------------------------------------------");
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();
 		Coordenada esqInfDer = e.getEsquinaInfDer();
-		Zona z1 = getZona(esqSupIzq);
-		if(z1 != null)
-			z1.agregarEntidad(e);
-		Zona z2 = getZona(esqSupDer);
-		if(z2 != null)
-			z2.agregarEntidad(e);
-		Zona z3 = getZona(esqInfIzq);
-		if(z3 != null)
-			z3.agregarEntidad(e);
-		Zona z4 = getZona(esqInfDer);
-		if(z4 != null)
-			z4.agregarEntidad(e);
+		addEntidadAZonaEn(esqSupIzq, e);
+		addEntidadAZonaEn(esqSupDer, e);
+		addEntidadAZonaEn(esqInfIzq, e);
+		addEntidadAZonaEn(esqInfDer, e);
 		
 	}
 	
+	private void addZonaAConjunto(AbstractSet<Zona> col, Coordenada pos) {
+		System.out.println("--------------------------AddZonaAConjunto-------------------------------------------------------");
+		Zona z = getZona(pos);
+		if(z != null)
+			col.add(z);
+	}
+	
+	/**
+	 * Consulta las zonas en las que se encuentra la entidad e.
+	 * @param e entidad por la cual consultar.
+	 * @return un conjunto de zonas a las que pertenece la entidad.
+	 */
 	private AbstractSet<Zona> entidadEnZonas(Entidad e) {
+		System.out.println("--------------------------EntidadEnZonas-----------------------------------------------------------");
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();
 		Coordenada esqInfDer = e.getEsquinaInfDer();
 		AbstractSet<Zona> toRet = new HashSet<Zona>();
-		Zona z1 = getZona(esqSupIzq);
-		if(z1 != null)
-			toRet.add(z1);
-		Zona z2 = getZona(esqSupDer);
-		if(z2 != null)
-			toRet.add(z2);
-		Zona z3 = getZona(esqInfIzq);
-		if(z3 != null)
-			toRet.add(z3);
-		Zona z4 = getZona(esqInfDer);
-		if(z4 != null)
-			toRet.add(z4);
+		addZonaAConjunto(toRet, esqSupIzq);
+		addZonaAConjunto(toRet, esqSupDer);
+		addZonaAConjunto(toRet, esqInfIzq);
+		addZonaAConjunto(toRet, esqInfDer);
 		return toRet;
 		
 	}
@@ -151,22 +192,30 @@ public class SalaDeJuegos {
 	//Para jugador, despues volverlo generico.
 	//Retorna verdadero si hubo al menos una colision.
 	private boolean colisionEnZona(Entidad e, Zona z) {
+		System.out.println("-------------------------ColisionEnZona------------------------------------------------------------");
 		boolean colisiono = false;
+		boolean toRet = false;
 		for(Entidad ent : z.getListaEntidades()) {
-			colisiono = colisiono || e.colisiona(ent);
+			colisiono = e.colisiona(ent);
+			toRet = toRet || colisiono;
 			if(colisiono) {
 				ent.accept(new VisitorJugador((Jugador)e));
 			}
 		}
-		return colisiono;
+		System.out.println("--------------------------Hubo Colision--: "+toRet);
+		return toRet;
 	}
 	
 	public boolean detectarColisionesJugador(Entidad e) {
+		System.out.println("--------------------------DetectarColsionesJugador-------------------------------------------------");
 		boolean colisiono = false;
+		boolean toRet = false;
 		for(Zona z : entidadEnZonas(e)) {
-			colisiono = colisiono || colisionEnZona(e, z);
+			colisiono = colisionEnZona(e, z);
+			toRet = toRet || colisiono;
 		}
-		return colisiono;
+		System.out.println("--------------------------Hubo Colision--: "+toRet);
+		return toRet;
 	}
 	
 	public List<Entidad> getListaEnemigos(){
