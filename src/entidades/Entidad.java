@@ -6,6 +6,7 @@ import logica.Puntaje;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public abstract class Entidad {
+	protected VisitorEntidad miVisitor;
 	protected int ancho; //mi X
 	protected int alto; //mi Y
 	protected int esquina;
@@ -73,6 +74,10 @@ public abstract class Entidad {
 	
 	public void eliminar() {
 		miRep.eliminar();
+	}
+	
+	public VisitorEntidad getMyVisitor() {
+		return miVisitor;
 	}
 	
 }

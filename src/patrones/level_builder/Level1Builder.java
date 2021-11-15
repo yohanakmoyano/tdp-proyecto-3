@@ -16,7 +16,6 @@ import entidades.nomovibles.items.Energizante;
 import entidades.nomovibles.items.Galleta;
 import logica.Coordenada;
 import logica.SalaDeJuegos;
-import logica.Zona;
 
 public class Level1Builder extends LevelBuilder {
 

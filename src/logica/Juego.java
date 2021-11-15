@@ -1,10 +1,8 @@
 package logica;
 
 import entidades.Entidad;
-import entidades.movibles.EntidadMovible;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
-import entidades.movibles.jugadores.Jugador_456;
 import entidades.nomovibles.Item;
 import grafica.Gui;
 import patrones.level_builder.Director;

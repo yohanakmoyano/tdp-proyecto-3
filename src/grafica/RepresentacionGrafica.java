@@ -1,6 +1,5 @@
 package grafica;
 
-import java.awt.Rectangle;
 import java.awt.Image;
 import java.net.MalformedURLException;
 import java.net.URL;

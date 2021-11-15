@@ -197,8 +197,6 @@ public class SalaDeJuegos {
 		
 	}
 	
-	//Para jugador, despues volverlo generico.
-	//Retorna verdadero si hubo al menos una colision.
 	private boolean colisionEnZona(Entidad e, Zona z) {
 		System.out.println("-------------------------ColisionEnZona------------------------------------------------------------");
 		boolean colisiono = false;
@@ -209,7 +207,7 @@ public class SalaDeJuegos {
 			if(colisiono) {
 				System.out.println("--------------------------Hubo Colision --: "+toRet + "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
 				System.out.println("--------------------------Entro Visitor--: "+toRet);
-				ent.accept(new VisitorJugador((Jugador)e));
+				ent.accept(e.getMyVisitor());
 			}
 		}
 		return toRet;

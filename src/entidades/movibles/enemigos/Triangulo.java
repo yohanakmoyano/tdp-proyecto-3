@@ -2,10 +2,12 @@ package entidades.movibles.enemigos;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
+import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public class Triangulo extends EnemigoC {
 	public Triangulo(Coordenada c, String rutaImg) {
+		miVisitor = new VisitorEnemigo(this);
 		posicion = c;
 		ancho = 40;
 		alto = 48;

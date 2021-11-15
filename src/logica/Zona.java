@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.awt.Rectangle;
 import entidades.Entidad;
 
+@SuppressWarnings("serial")
 public class Zona extends Rectangle {
 	protected Coordenada posSupIzq;
 	protected int ancho;

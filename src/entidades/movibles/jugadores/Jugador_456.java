@@ -4,6 +4,7 @@ import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.strategy.ControlStrategy;
 import patrones.visitor_entidad.VisitorEntidad;
+import patrones.visitor_entidad.VisitorJugador;
 
 public class Jugador_456 extends Jugador {
 	protected static Jugador_456 myInstance;
@@ -13,6 +14,7 @@ public class Jugador_456 extends Jugador {
 	//Evitando así posibles errores al modificar esas lineas.
 	//Una vez solucionado eso, pasar el constructor a privado.**/
 	public Jugador_456(Coordenada c, int vel, int v, String rutaImg) {
+		miVisitor = new VisitorJugador(this);
 		velocidad = vel;
 		vidas = v;
 		posicion = c;
