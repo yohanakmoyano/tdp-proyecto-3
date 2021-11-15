@@ -17,6 +17,7 @@ public class Puntaje {
 	
 	public void incrementarEn(int puntos) {
 		puntaje += puntos;
+		System.out.println("--------------------------Nuevo Puntaje---------------------------------------"+puntaje);
 	}
 	
 	public int getPuntajeActual() {

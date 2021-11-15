@@ -113,10 +113,7 @@ public class Level2Builder extends LevelBuilder {
 				}
 			}
 
-			Zona z = sj.getZona(punto);
-			if(z != null)
-				z.agregarEntidad(entidad);
-			
+			sj.agregarAZonas(entidad);
 		}
 	}
 	@Override

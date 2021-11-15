@@ -15,8 +15,7 @@ public class Bloque extends Entidad {
 
 	@Override
 	public void accept(VisitorEntidad v) {
-		// TODO Auto-generated method stub
-		
+		v.visit(this);
 	}
 
 }

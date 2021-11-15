@@ -67,4 +67,8 @@ public abstract class Entidad {
 		puntajeActual.incrementarEn(valor);
 	}
 	
+	public boolean colisiona(Entidad e) {
+		return ((this != e) && (this.miRep.getDibujo().getBounds().intersects(e.getRepresentacionGrafica().getDibujo().getBounds())));
+	}
+	
 }

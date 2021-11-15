@@ -121,6 +121,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovArriba(personaje)) {
 			personaje.moverArriba();
+			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		
@@ -131,6 +132,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovDerecha(personaje)) {
 			personaje.moverDerecha();
+			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		System.out.println("-----------------------------------------------------------------------------------------------");
@@ -142,6 +144,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovIzquierda(personaje)) {
 			personaje.moverIzquierda(); 
+			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		System.out.println("-----------------------------------------------------------------------------------------------");
@@ -153,6 +156,7 @@ public class Juego {
 		System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovAbajo(personaje)) {
 			personaje.moverAbajo(); 
+			miSala.detectarColisionesJugador(personaje);
 			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		System.out.println("-----------------------------------------------------------------------------------------------");

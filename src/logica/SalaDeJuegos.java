@@ -1,14 +1,15 @@
 package logica;
 
+import java.util.AbstractSet;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
+import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
+import patrones.visitor_entidad.VisitorJugador;
 
 public class SalaDeJuegos {
 
@@ -71,7 +72,7 @@ public class SalaDeJuegos {
 	 * @param punto para el cual buscar zona.
 	 * @return Zona que contiene a punto.
 	 */
-	public Zona getZona(Coordenada punto) {
+	private Zona getZona(Coordenada punto) {
 		boolean encontre = false;
 		Zona toRet = null;
 		for(int i = 0; i<cantDivisiones && !encontre; i++) {
@@ -103,6 +104,69 @@ public class SalaDeJuegos {
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
 		System.out.println("Puede mover => " + ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0));
 		return ((e.getEsquinaSupIzq().getX() - (e.getAncho()/2)) > 0);
+	}
+	
+	public void agregarAZonas(Entidad e) {
+		Coordenada esqSupIzq = e.getEsquinaSupIzq();
+		Coordenada esqSupDer = e.getEsquinaSupDer();
+		Coordenada esqInfIzq = e.getEsquinaInfIzq();
+		Coordenada esqInfDer = e.getEsquinaInfDer();
+		Zona z1 = getZona(esqSupIzq);
+		if(z1 != null)
+			z1.agregarEntidad(e);
+		Zona z2 = getZona(esqSupDer);
+		if(z2 != null)
+			z2.agregarEntidad(e);
+		Zona z3 = getZona(esqInfIzq);
+		if(z3 != null)
+			z3.agregarEntidad(e);
+		Zona z4 = getZona(esqInfDer);
+		if(z4 != null)
+			z4.agregarEntidad(e);
+		
+	}
+	
+	private AbstractSet<Zona> entidadEnZonas(Entidad e) {
+		Coordenada esqSupIzq = e.getEsquinaSupIzq();
+		Coordenada esqSupDer = e.getEsquinaSupDer();
+		Coordenada esqInfIzq = e.getEsquinaInfIzq();
+		Coordenada esqInfDer = e.getEsquinaInfDer();
+		AbstractSet<Zona> toRet = new HashSet<Zona>();
+		Zona z1 = getZona(esqSupIzq);
+		if(z1 != null)
+			toRet.add(z1);
+		Zona z2 = getZona(esqSupDer);
+		if(z2 != null)
+			toRet.add(z2);
+		Zona z3 = getZona(esqInfIzq);
+		if(z3 != null)
+			toRet.add(z3);
+		Zona z4 = getZona(esqInfDer);
+		if(z4 != null)
+			toRet.add(z4);
+		return toRet;
+		
+	}
+	
+	//Para jugador, despues volverlo generico.
+	//Retorna verdadero si hubo al menos una colision.
+	private boolean colisionEnZona(Entidad e, Zona z) {
+		boolean colisiono = false;
+		for(Entidad ent : z.getListaEntidades()) {
+			colisiono = colisiono || e.colisiona(ent);
+			if(colisiono) {
+				ent.accept(new VisitorJugador((Jugador)e));
+			}
+		}
+		return colisiono;
+	}
+	
+	public boolean detectarColisionesJugador(Entidad e) {
+		boolean colisiono = false;
+		for(Zona z : entidadEnZonas(e)) {
+			colisiono = colisiono || colisionEnZona(e, z);
+		}
+		return colisiono;
 	}
 	
 	public List<Entidad> getListaEnemigos(){
