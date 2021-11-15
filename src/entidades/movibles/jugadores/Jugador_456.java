@@ -7,7 +7,6 @@ import patrones.visitor_entidad.VisitorEntidad;
 
 public class Jugador_456 extends Jugador {
 	protected static Jugador_456 myInstance;
-	protected int actualizarMov;
 
 	// TODO
 	/**Dado que tira error al momento de crear los niveles, por ahora dejaré este constructor público.
@@ -47,26 +46,24 @@ public class Jugador_456 extends Jugador {
 		actualizarMov = posicion.getX() - (ancho/2);
 		posicion.setX(actualizarMov);
 		
-		
-	}
-	
-	//se mueve + en el eje y
-	public void moverArriba() {
-		actualizarMov = posicion.getY() + (alto/2);
-		posicion.setY(actualizarMov);
-		
 	}
 	
 	//se mueve - en el eje y
-	public void moverAbajo() {
+	public void moverArriba() {
 		actualizarMov = posicion.getY() - (alto/2);
 		posicion.setY(actualizarMov);
 		
 	}
 	
+	//se mueve + en el eje y
+	public void moverAbajo() {
+		actualizarMov = posicion.getY() + (alto/2);
+		posicion.setY(actualizarMov);
+	}
+	
 
 	public boolean perderVida() {
-		
+		vidas -= 1;
 		return vidas == 0;
 	}
 

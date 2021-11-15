@@ -21,26 +21,30 @@ public class Boss extends EnemigoA {
 
 	@Override
 	protected void moverArriba() {
-		// TODO Auto-generated method stub
-
+		actualizarMov = posicion.getY() - (alto/2);
+		posicion.setY(actualizarMov);
+		
 	}
 
 	@Override
 	protected void moverAbajo() {
-		// TODO Auto-generated method stub
-
+		actualizarMov = posicion.getY() + (alto/2);
+		posicion.setY(actualizarMov);
+		
 	}
 
 	@Override
 	protected void moverIzq() {
-		// TODO Auto-generated method stub
-
+		actualizarMov = posicion.getX() - (ancho/2);
+		posicion.setX(actualizarMov);
+		
 	}
 
 	@Override
 	protected void moverDer() {
-		// TODO Auto-generated method stub
-
+		actualizarMov = posicion.getX() + (ancho/2);
+		posicion.setX(actualizarMov);
+		
 	}
 	
 	@Override

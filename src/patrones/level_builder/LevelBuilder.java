@@ -1,8 +1,10 @@
 package patrones.level_builder;
 
 import dominio.FactoryDominio;
+import logica.SalaDeJuegos;
 
 public abstract class LevelBuilder {
+	protected SalaDeJuegos nivel;
 	
 	protected FactoryDominio mifabrica;
 	protected String fileName;

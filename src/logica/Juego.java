@@ -31,7 +31,7 @@ public class Juego {
 		miGui.setVisible(true);
 		miSala = new SalaDeJuegos(mg,this);
 		miFabrica = new Director(nivel, miSala);
-		
+		personaje = (Jugador) miSala.getListJugador().get(0);
 	}
 
 	public void setPuntaje(int p) {
@@ -52,18 +52,6 @@ public class Juego {
 		// return 2;
 		return 1;
 	}
-
-	/*
-	 * public void generarEnemigos() {
-	 * 
-	 * }
-	 * 
-	 * public void generarItems() {
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
 
 	public void iniciarJuego() {
 		puntaje = 0;
@@ -109,42 +97,65 @@ public class Juego {
 
 	public void operar(int op) {
 		switch (op) {
-		case moverAbajo: {
-			moverAbajo();
-			break;
-		}
-		case moverIzquierda: {
-			moverIzquierda();
-			break;
-		}
-		case moverDerecha: {
-			moverDerecha();
-			break;
-		}
-		case moverArriba: {
-			moverArriba();
-			break;
-		}
+			case moverAbajo: {
+				moverAbajo();
+				break;
+			}
+			case moverIzquierda: {
+				moverIzquierda();
+				break;
+			}
+			case moverDerecha: {
+				moverDerecha();
+				break;
+			}
+			case moverArriba: {
+				moverArriba();
+				break;
+			}
 		}
 	}
 
 	private void moverArriba() {
-		personaje.moverArriba();
+		System.out.println("Mover Arriba");
+		if(miSala.autorizarMovArriba(personaje)) {
+			System.out.println("Movio arriba");
+			personaje.moverArriba();
+			miGui.mostrarEntidad(personaje);
+		}
 		
 	}
 
 	private void moverDerecha() {
-		personaje.moverDerecha();
+		System.out.println("Mover Derecha");
+		System.out.println("Coordenada: "+ personaje.getEsquinaSupIzq().getX() + ", " + personaje.getEsquinaSupIzq().getY());
+		if(miSala.autorizarMovDerecha(personaje)) {
+			System.out.println("Movio derecha");
+			personaje.moverDerecha();
+			System.out.println("Coordenada: "+ personaje.getEsquinaSupIzq().getX() + ", " + personaje.getEsquinaSupIzq().getY());
+			miGui.mostrarEntidad(personaje);
+			System.out.println("Coordenada: "+ personaje.getEsquinaSupIzq().getX() + ", " + personaje.getEsquinaSupIzq().getY());
+		}
 		
 	}
 
 	private void moverIzquierda() {
-		personaje.moverIzquierda();
+		System.out.println("Mover Izquierda");
+		if(miSala.autorizarMovIzquierda(personaje)) {
+			System.out.println("Movio izquierda");
+			personaje.moverIzquierda(); 
+			miGui.mostrarEntidad(personaje);
+		}
 		
 	}
 
 	private void moverAbajo() {
-		personaje.moverAbajo();
+		System.out.println("Mover Abajo");
+		if(miSala.autorizarMovAbajo(personaje)) {
+			System.out.println("Movio abajo");
+			personaje.moverAbajo(); 
+			miGui.mostrarEntidad(personaje);
+		}
 		
 	}
 	

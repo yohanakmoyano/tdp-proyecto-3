@@ -16,10 +16,12 @@ import entidades.nomovibles.items.Energizante;
 import entidades.nomovibles.items.Galleta;
 import logica.Coordenada;
 import logica.SalaDeJuegos;
+import logica.Zona;
 
 public class Level1Builder extends LevelBuilder {
 
 	public Level1Builder(SalaDeJuegos sj) {
+		
 		Coordenada punto = null;
 		Entidad entidad = null;
 		int j=0;
@@ -30,13 +32,14 @@ public class Level1Builder extends LevelBuilder {
 		for (int i = 1;i < toret.size() ; i++) {
 			String palabra = toret.get(i);
 			String[] caracter = palabra.split(";");
-			
+			//TODO
+			//Repeticion codigo punto y mostrarEntidad
 			switch (caracter[j]) {
 			
 				case "p" :{ //bloque pared
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Bloque(punto,this.getClass().getResource(caracter[j+3]).toString(),Integer.parseInt(caracter[j+4]), Integer.parseInt(caracter[j+5])); 
-					sj.getListaItem().add(entidad);
+					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 					
@@ -45,7 +48,7 @@ public class Level1Builder extends LevelBuilder {
 				case "g": { // galleta
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Galleta(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
-					sj.getListaItem().add(entidad);
+					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
@@ -54,7 +57,7 @@ public class Level1Builder extends LevelBuilder {
 					
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Energizante(1, punto, this.getClass().getResource(caracter[j+3]).toString());
-					sj.getListaItem().add(entidad);
+					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
@@ -62,14 +65,14 @@ public class Level1Builder extends LevelBuilder {
 				case "c": { // Creo un cuchillo
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Cuchillo(1, punto,this.getClass().getResource(caracter[j+3]).toString());
-					sj.getListaItem().add(entidad);
+					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
 				case "d": { // Creo un dinero
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Dinero(1, punto,this.getClass().getResource(caracter[j+3]).toString());
-					sj.getListaItem().add(entidad);
+					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
@@ -77,7 +80,7 @@ public class Level1Builder extends LevelBuilder {
 				case "z": { // Creo una bomba
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Bomba(1, punto, this.getClass().getResource(caracter[j+3]).toString());
-					sj.getListaItem().add(entidad);
+					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
@@ -85,6 +88,7 @@ public class Level1Builder extends LevelBuilder {
 				case "j": { // Creo un jugador
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
 					entidad = new Jugador_456(punto, 100, 3, this.getClass().getResource(caracter[j+3]).toString());
+					sj.getListJugador().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
@@ -117,6 +121,11 @@ public class Level1Builder extends LevelBuilder {
 					break;
 				}
 			}
+			
+			Zona z = sj.getZona(punto);
+			if(z != null)
+				z.agregarEntidad(entidad);
+			
 		}
 	}
 

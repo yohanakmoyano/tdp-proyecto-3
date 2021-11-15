@@ -5,6 +5,7 @@ import entidades.Entidad;
 public abstract class EntidadMovible extends Entidad {
 	protected int velocidad;
 	protected int vidas;
+	protected int actualizarMov;
 
 	public int getVelocidad() {
 		return velocidad;
