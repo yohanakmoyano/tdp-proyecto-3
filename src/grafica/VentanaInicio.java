@@ -40,11 +40,11 @@ public class VentanaInicio extends JFrame {
 		setTitle("PACMAN 2.0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/icono.png")));
-		setSize(new Dimension(900, 600));
+		setSize(new Dimension(915, 640));
 		setResizable(false);
 		
 		//Imagen del fondo de la Ventana Inicio
-		String rutaFotoJuego = this.getClass().getResource("/Images/juegoInicio.png").toString();
+		String rutaFotoJuego = this.getClass().getResource("/Images/dominio_niveles.png").toString();
 		ImageIcon fotoJuego = null;
 		try {
 			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));
@@ -57,7 +57,7 @@ public class VentanaInicio extends JFrame {
 		//Boton Inicio
 		JButton btnInicio = new JButton("");
 		btnInicio.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnInicio.setBounds(333, 396, 227, 77);
+		btnInicio.setBounds(75, 522, 222, 78);
 		btnInicio.setBackground(Color.black);
 		
 		
@@ -86,7 +86,7 @@ public class VentanaInicio extends JFrame {
 				
 		//Label que contiene la imagen del fondo de la Ventana Inicio
 		inicioJuego = new JLabel("");
-		inicioJuego.setBounds(0, 0, 894, 571);
+		inicioJuego.setBounds(0, 0, 900, 600);
 		getContentPane().add(inicioJuego);
 		inicioJuego.setIcon(new ImageIcon(medidaJuego));
 		getContentPane().add(inicioJuego, BorderLayout.CENTER);

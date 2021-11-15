@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import entidades.Entidad;
 import logica.Juego;
+import javax.swing.JTextField;
 
 
 public class Gui extends JFrame {
@@ -27,6 +28,8 @@ public class Gui extends JFrame {
 	private Juego mijuego;
 	//private JLabel labelEntidad;
 	private JLabel fondoNivel;
+	private JTextField text_puntaje;
+	private JTextField text_vidas;
 
 	public Gui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,6 +44,21 @@ public class Gui extends JFrame {
 		getContentPane().add(panelprincipal);
 		panelprincipal.setVisible(true);
 		panelprincipal.setLayout(null);
+		
+		//Text Puntaje
+		text_puntaje = new JTextField();
+		text_puntaje.setText("0");
+		text_puntaje.setEditable(false);
+		text_puntaje.setBounds(722, 35, 137, 27);
+		panelprincipal.add(text_puntaje);
+		text_puntaje.setColumns(10);
+		
+		//Text Vidas
+		text_vidas = new JTextField();
+		text_vidas.setEditable(false);
+		text_vidas.setColumns(10);
+		text_vidas.setBounds(722, 93, 137, 27);
+		panelprincipal.add(text_vidas);
 		
 		//Panel laberinto
 		laberinto = new JPanel();
@@ -137,11 +155,11 @@ public class Gui extends JFrame {
 	
 	
 	public void cambioPuntaje() {
-
+		text_puntaje.setText("Puntaje: "+ mijuego.getPuntaje());
+		System.out.print("puntaje essss: " + mijuego.getPuntaje());
 	}
 
 	public void finDeJuego() {
 
 	}
-
 }
