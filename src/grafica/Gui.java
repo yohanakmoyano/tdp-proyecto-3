@@ -2,6 +2,7 @@ package grafica;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -47,17 +48,23 @@ public class Gui extends JFrame {
 		
 		//Text Puntaje
 		text_puntaje = new JTextField();
+		text_puntaje.setForeground(Color.WHITE);
+		text_puntaje.setBackground(Color.DARK_GRAY);
 		text_puntaje.setText("0");
 		text_puntaje.setEditable(false);
-		text_puntaje.setBounds(722, 35, 137, 27);
+		text_puntaje.setFont(new Font("Consolas", Font.BOLD, 22));
+		text_puntaje.setBounds(725, 56, 137, 27);
 		panelprincipal.add(text_puntaje);
 		text_puntaje.setColumns(10);
 		
 		//Text Vidas
 		text_vidas = new JTextField();
+		text_vidas.setForeground(Color.WHITE);
+		text_vidas.setBackground(Color.DARK_GRAY);
 		text_vidas.setEditable(false);
 		text_vidas.setColumns(10);
-		text_vidas.setBounds(722, 93, 137, 27);
+		text_vidas.setFont(new Font("Consolas", Font.BOLD, 22));
+		text_vidas.setBounds(725, 140, 137, 27);
 		panelprincipal.add(text_vidas);
 		
 		//Panel laberinto
@@ -81,11 +88,11 @@ public class Gui extends JFrame {
 	}
 	
 	public void actualizarPuntaje() {
-		text_puntaje.setText("Mi puntaje: "+mijuego.getPuntaje());
+		text_puntaje.setText(" "+mijuego.getPuntaje());
 	}
 	
 	public void actualizarVidas(int v) {
-		text_vidas.setText("Mis vidas: "+v);
+		text_vidas.setText(" "+v);
 	}
 	
 	public void mostrarImagenFondo(String s) {
@@ -95,11 +102,11 @@ public class Gui extends JFrame {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		Image medidaJuego = fotoJuego.getImage().getScaledInstance(900, 600, Image.SCALE_DEFAULT);
+		Image medidaJuego = fotoJuego.getImage().getScaledInstance(890, 600, Image.SCALE_DEFAULT);
 		getContentPane().setLayout(null);
 		fondoNivel = new JLabel();
 		fondoNivel.setVerticalAlignment(SwingConstants.BOTTOM);
-		fondoNivel.setBounds(0, 0, 890, 561);
+		fondoNivel.setBounds(0, 0, 900, 600);
 		panelprincipal.add(fondoNivel);
 		fondoNivel.setIcon(new ImageIcon(medidaJuego));;
 	}
