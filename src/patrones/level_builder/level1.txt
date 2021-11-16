@@ -1,5 +1,8 @@
 /Images/fondo_nivel1.png
 j;240;390;/Images/jugador_nivel1.png
+B;241;241;/Images/boss_enemigo.png
+B;70;150;/Images/boss_enemigo.png
+B;321;300;/Images/boss_enemigo.png
 g;163;277;/Images/galleta_nivel1.png
 g;16;19;/Images/galleta_nivel1.png
 g;16;34;/Images/galleta_nivel1.png

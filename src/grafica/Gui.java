@@ -80,6 +80,14 @@ public class Gui extends JFrame {
 		
 	}
 	
+	public void actualizarPuntaje() {
+		text_puntaje.setText("Mi puntaje: "+mijuego.getPuntaje());
+	}
+	
+	public void actualizarVidas(int v) {
+		text_vidas.setText("Mis vidas: "+v);
+	}
+	
 	public void mostrarImagenFondo(String s) {
 		ImageIcon fotoJuego = null;
 		try {

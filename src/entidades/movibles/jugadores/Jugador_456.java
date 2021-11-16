@@ -25,9 +25,9 @@ public class Jugador_456 extends Jugador {
 		velocidad = vel;
 		vidas = v;
 		posicion = c;
-		ancho = 23;
+		ancho = 19;
 		factorMovX = ancho/2;
-		alto = 28;
+		alto = 22;
 		factorMovY = alto/2;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.

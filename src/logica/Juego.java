@@ -34,6 +34,10 @@ public class Juego {
 			personaje = (Jugador) miSala.getListJugador().get(0);
 	}	
 	
+	public void actualizoVidas() {
+		miGui.actualizarVidas(personaje.getVidas());
+	}
+	
 	public void setPuntaje(int p) {
 		puntos.setPuntaje(p);
 	}
@@ -55,11 +59,15 @@ public class Juego {
 
 	public void iniciarJuego() {
 		//puntaje = 0;
-		//movE = new Movimiento(miSala);
-		//movE.ru
+		movE = new Movimiento(miSala);
+		movE.start();
 		nivel = 1;
 	}
 
+	public void runEnemies() {
+		movE.run();
+	}
+	
 	public void actualizarSalaDeJuego(SalaDeJuegos s) {
 
 	}

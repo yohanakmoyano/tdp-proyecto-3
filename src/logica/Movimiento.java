@@ -1,42 +1,62 @@
 package logica;
 
+import java.util.Random;
+
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 
 public class Movimiento extends Thread {
 	protected SalaDeJuegos sala;
 	protected boolean deboMover;
+	protected Random ran;
 	
 	public Movimiento(SalaDeJuegos sj) {
 		sala = sj;
 		deboMover = true;
+		ran = new Random();
 	}
 	
 	public void run() {		
 		while(deboMover) {
 			try {
-				Thread.sleep(40); // 40 anda bien
+				Thread.sleep(100); // 40 anda bien
 			}catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			System.out.println("Hilo Movimiento ");
 			moverEnemigos();
 		}
 	}
 	
 	public boolean getDeboMover(){ return deboMover ;}
+	
 	public void setDeboMover(boolean deboMover){ this.deboMover = deboMover ;}
 	
 	protected void moverEnemigos() {
 		for(Entidad e : sala.getListaEnemigos()) {
-			moverEnemigoDer((Enemigo)e);
-			moverEnemigoDer((Enemigo)e);
-			moverEnemigoDer((Enemigo)e);
-			moverEnemigoDer((Enemigo)e);
-			moverEnemigoIzq((Enemigo)e);
-			moverEnemigoUp((Enemigo)e);
-			moverEnemigoUp((Enemigo)e);
-			moverEnemigoUp((Enemigo)e);
-			moverEnemigoDown((Enemigo)e);
+			int mov = ran.nextInt(4);
+			moverMientrasPueda((Enemigo)e, mov);
+		}
+	}
+	
+	protected void moverMientrasPueda(Enemigo e, int direccion) {
+		switch(direccion) {
+			case(0): {
+				moverEnemigoDer(e);
+				break;
+			}
+			case(1): {
+				moverEnemigoIzq(e);
+				break;
+			}
+			case(2): {
+				moverEnemigoUp(e);
+				break;
+			}
+			case(3): {
+				moverEnemigoDown(e);
+				break;
+			}
 		}
 	}
 	

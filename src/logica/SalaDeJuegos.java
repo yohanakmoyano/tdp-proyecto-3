@@ -208,6 +208,8 @@ public class SalaDeJuegos {
 				//System.out.println("--------------------------Hubo Colision --: "+toRet + "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
 				//System.out.println("--------------------------Entro Visitor--: "+toRet);
 				ent.accept(e.getMyVisitor());
+				miGui.actualizarPuntaje();
+				juego.actualizoVidas();
 			} else {/*
 				EntidadMovible ee = (EntidadMovible)e;
 				ee.resetearMovimientos();
