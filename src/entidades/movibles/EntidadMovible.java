@@ -99,11 +99,11 @@ public abstract class EntidadMovible extends Entidad {
 	public abstract void moverAbajo();
 	
 	/**
-	 * Se encarga de reducir en uno la cantidad de vidas del personaje. Retorna Verdadero si el personaje se quedó sin
-	 * vidas al reducirlas en uno (si vidas == 0, esto es, si personaje murio), falso en caso contrario.
-	 * @return Verdadero si el personaje se quedó sin vidas, false en caso contrario.
+	 * Se encarga de reducir en uno la cantidad de vidas del personaje. 
 	 */
-	public abstract boolean perderVida();
+	public void perderVida() {
+		vidas--;
+	}
 	
 	public abstract void morir();
 }

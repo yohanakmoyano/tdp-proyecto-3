@@ -58,17 +58,17 @@ public class Triangulo extends EnemigoC {
 		v.visit(this);
 
 	}
-
-	@Override
-	public boolean perderVida() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	@Override
 	public void morir() {
-		// TODO Auto-generated method stub
-
+		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
+		posicion.setX(miSalon.getRespawnPoint().getX());
+		posicion.setY(miSalon.getRespawnPoint().getY());
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
 	}
 	@Override
 	public Coordenada nextPosMovDer() {

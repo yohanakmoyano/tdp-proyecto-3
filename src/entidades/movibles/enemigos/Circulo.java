@@ -61,14 +61,14 @@ public class Circulo extends EnemigoD {
 
 	@Override
 	public void morir() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean perderVida() {
-		// TODO Auto-generated method stub
-		return false;
+		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
+		posicion.setX(miSalon.getRespawnPoint().getX());
+		posicion.setY(miSalon.getRespawnPoint().getY());
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
 	}
 
 	@Override

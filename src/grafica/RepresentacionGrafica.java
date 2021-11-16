@@ -32,53 +32,34 @@ public class RepresentacionGrafica {
 	
 	//se mueve + en el eje x
 	public void moverDerecha() {
-		//System.out.println("--------------------------Grafica-------------------------------------------------------------");
 		actualizarMov = dibujo.getX() + (base/2);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//dibujo.setX(actualizarMov);
-		//dibujo.getBounds().setLocation(actualizarMov, dibujo.getY());
 		dibujo.setBounds(actualizarMov, dibujo.getY(), base, altura);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//System.out.println("-----------------------------------------------------------------------------------------------");
 	}
 	
 	//se mueve - en el eje x
 	public void moverIzquierda() {
-		//System.out.println("--------------------------Grafica-------------------------------------------------------------");
 		actualizarMov = dibujo.getX() - (base/2);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//dibujo.getBounds().setLocation(actualizarMov, dibujo.getY());		
 		dibujo.setBounds(actualizarMov, dibujo.getY(), base, altura);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//System.out.println("-----------------------------------------------------------------------------------------------");
 	}
 	
 	//se mueve - en el eje y
 	public void moverArriba() {
-		//System.out.println("--------------------------Grafica-------------------------------------------------------------");
 		actualizarMov = dibujo.getY() - (altura/2);
-		//dibujo.setY(actualizarMov);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//dibujo.getBounds().setLocation(dibujo.getX(), actualizarMov);		
 		dibujo.setBounds(dibujo.getX(), actualizarMov, base, altura);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//System.out.println("-----------------------------------------------------------------------------------------------");
 	}
 	
 	//se mueve + en el eje y
 	public void moverAbajo() {
-		//System.out.println("--------------------------Grafica-------------------------------------------------------------");
 		actualizarMov = dibujo.getY() + (altura/2);
-		//dibujo.setY(actualizarMov);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//dibujo.getBounds().setLocation(dibujo.getX(), actualizarMov);	
 		dibujo.setBounds(dibujo.getX(), actualizarMov, base, altura);
-		//System.out.println("Coordenada Label: ("+dibujo.getX()+", "+dibujo.getY()+")");
-		//System.out.println("-----------------------------------------------------------------------------------------------");
 	}
 	
 	public void eliminar() {
 		dibujo.setBounds(0, 0, 0, 0);
+	}
+	
+	public void moverRep(int x, int y) {
+		dibujo.setBounds(x, y, base, altura);
 	}
 	
 	public boolean colisiona(RepresentacionGrafica r) {

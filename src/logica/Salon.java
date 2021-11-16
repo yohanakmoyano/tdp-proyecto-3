@@ -1,24 +1,21 @@
 package logica;
 
-import entidades.movibles.enemigos.Enemigo;
-
 public class Salon {
-	private Zona zonaSalon; 
+	protected Coordenada respawn;
+	protected static Salon miInstance;
 	
-	public Salon() {
-		
+	private Salon(Coordenada r) {
+		respawn = r;
 	}
 	
-	public Enemigo regenerarEnemigo(Enemigo enem) {
-		return enem;
+	public static Salon getInstance() {
+		if(miInstance == null)
+			miInstance = new Salon(new Coordenada(241, 241));
+		return miInstance;
 	}
 	
-	public void setZonaSalon(Zona z) {
-		zonaSalon=z;
-	}
-	
-	public Zona getZonaSalon() {
-		return zonaSalon; 
+	public Coordenada getRespawnPoint() {
+		return respawn;
 	}
 	
 }

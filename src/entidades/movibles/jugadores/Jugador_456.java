@@ -8,12 +8,14 @@ import patrones.visitor_entidad.VisitorJugador;
 
 public class Jugador_456 extends Jugador {
 	protected static Jugador_456 myInstance;
+	protected Coordenada posRespawn;
 
 	// TODO
 	/**Dado que tira error al momento de crear los niveles, por ahora dejaré este constructor público.
 	//Evitando así posibles errores al modificar esas lineas.
 	//Una vez solucionado eso, pasar el constructor a privado.**/
 	public Jugador_456(Coordenada c, int vel, int v, String rutaImg) {
+		posRespawn = new Coordenada(c.getX(), c.getY());
 		ultMovimiento = reposo;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
@@ -74,18 +76,26 @@ public class Jugador_456 extends Jugador {
 		posicion.setY(actualizarMov);
 		miRep.moverAbajo();
 	}
-	
-
-	public boolean perderVida() {
-		vidas -= 1;
-		return vidas == 0;
-	}
 
 	public void morir() {
-		// SalaDeJuegos.getListaEliminar().add(this);
-		// SalaDeJuegos.getJuego().finDeJuego();
+		//Ver como finalizar el juego.
+		reUbicar();
 	}
-
+	
+	public void reUbicar() {
+		System.out.println("Pos anterior a muerte Jugador ("+posicion.getX() + ", " + posicion.getY()+")");
+		miRep.eliminar();
+		miRep.moverRep(posRespawn.getX(), posRespawn.getY());
+		posicion.setX(posRespawn.getX());
+		posicion.setY(posRespawn.getY());
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
+		System.out.println("Pos posterior a muerte jugador ("+posicion.getX() + ", " + posicion.getY()+")");
+	}
+	
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

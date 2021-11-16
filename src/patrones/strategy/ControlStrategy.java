@@ -14,6 +14,6 @@ public class ControlStrategy {
 		estrategia = est;
 	}
 	public void atacar(Enemigo op) {
-		
+		estrategia.atacar(op);
 	}
 }

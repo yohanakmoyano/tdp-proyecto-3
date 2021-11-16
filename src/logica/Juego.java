@@ -21,6 +21,8 @@ public class Juego {
 	public static final int moverAbajo = 3;
 	public static final int moverArriba = 4;
 
+	protected Movimiento movE;
+	
 	public Juego(Gui mg) {
 		puntos = Puntaje.getInstancePuntaje();
 		nivel = 1;
@@ -53,6 +55,8 @@ public class Juego {
 
 	public void iniciarJuego() {
 		//puntaje = 0;
+		//movE = new Movimiento(miSala);
+		//movE.ru
 		nivel = 1;
 	}
 

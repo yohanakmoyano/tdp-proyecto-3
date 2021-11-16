@@ -61,16 +61,16 @@ public class Cuadrado extends EnemigoB {
 
 	@Override
 	public void morir() {
-		// TODO Auto-generated method stub
-
+		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
+		posicion.setX(miSalon.getRespawnPoint().getX());
+		posicion.setY(miSalon.getRespawnPoint().getY());
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
 	}
 
-	@Override
-	public boolean perderVida() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
 	@Override
 	public Coordenada nextPosMovDer() {
 		return new Coordenada(posicion.getX() + (factorMovX), posicion.getY());

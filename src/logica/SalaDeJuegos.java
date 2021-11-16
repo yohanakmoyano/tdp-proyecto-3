@@ -12,7 +12,7 @@ import grafica.Gui;
 import patrones.visitor_entidad.VisitorJugador;
 
 public class SalaDeJuegos {
-
+	protected Salon miSalon;
 	protected Zona matrizZonas[][]; 
 	protected static final int base=501; 
 	protected static final int altura=553; 
@@ -56,7 +56,7 @@ public class SalaDeJuegos {
 			alturaY=alturaY+incrementY + 1; 
 			
 		}
-		
+		miSalon = Salon.getInstance();//new Salon(new Coordenada(230, 230));//Cambiar a algo mas automatico.
 		listaEnemigos= new ArrayList<Entidad>(); 
 		listaEntidadFija= new ArrayList<Entidad>(); 
 		listaJugador= new ArrayList<Entidad>(); 
@@ -149,16 +149,16 @@ public class SalaDeJuegos {
 	}
 	
 	private void addEntidadAZonaEn(Coordenada pos, Entidad e) {
-	System.out.println("--------------------------AddEntidadAZonaEn---------------------------------------------------------");
+	//System.out.println("--------------------------AddEntidadAZonaEn---------------------------------------------------------");
 		Zona z = getZona(pos);
 		if(z != null) {
 			z.agregarEntidad(e);
-			System.out.println("--------------------------AgregoAZona--: "+true);
+			//System.out.println("--------------------------AgregoAZona--: "+true);
 		}
 	}
 	
 	public void agregarAZonas(Entidad e) {
-		System.out.println("--------------------------AgregarAZonas----------------------------------------------------------");
+		//System.out.println("--------------------------AgregarAZonas----------------------------------------------------------");
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();
@@ -171,7 +171,7 @@ public class SalaDeJuegos {
 	}
 	
 	private void addZonaAConjunto(AbstractSet<Zona> col, Coordenada pos) {
-		System.out.println("--------------------------AddZonaAConjunto-------------------------------------------------------");
+		//System.out.println("--------------------------AddZonaAConjunto-------------------------------------------------------");
 		Zona z = getZona(pos);
 		if(z != null)
 			col.add(z);
@@ -182,8 +182,8 @@ public class SalaDeJuegos {
 	 * @param e entidad por la cual consultar.
 	 * @return un conjunto de zonas a las que pertenece la entidad.
 	 */
-	private AbstractSet<Zona> entidadEnZonas(Entidad e) {
-		System.out.println("--------------------------EntidadEnZonas-----------------------------------------------------------");
+	private AbstractSet<Zona> zonasDeEntidad(Entidad e) {
+		//System.out.println("--------------------------EntidadEnZonas-----------------------------------------------------------");
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();
@@ -205,8 +205,8 @@ public class SalaDeJuegos {
 			colisiono = e.colisiona(ent);
 			toRet = toRet || colisiono;
 			if(colisiono) {
-				System.out.println("--------------------------Hubo Colision --: "+toRet + "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
-				System.out.println("--------------------------Entro Visitor--: "+toRet);
+				//System.out.println("--------------------------Hubo Colision --: "+toRet + "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
+				//System.out.println("--------------------------Entro Visitor--: "+toRet);
 				ent.accept(e.getMyVisitor());
 			} else {/*
 				EntidadMovible ee = (EntidadMovible)e;
@@ -218,14 +218,14 @@ public class SalaDeJuegos {
 	}
 	
 	public boolean detectarColisionesJugador(Entidad e) {
-		System.out.println("--------------------------DetectarColsionesJugador-------------------------------------------------");
+		//System.out.println("--------------------------DetectarColsionesJugador-------------------------------------------------");
 		boolean colisiono = false;
 		boolean toRet = false;
-		for(Zona z : entidadEnZonas(e)) {
+		for(Zona z : zonasDeEntidad(e)) {
 			colisiono = colisionEnZona(e, z);
 			toRet = toRet || colisiono;
 		}
-		System.out.println("--------------------------Hubo Colision--: "+toRet);
+		//System.out.println("--------------------------Hubo Colision--: "+toRet);
 		return toRet;
 	}
 	

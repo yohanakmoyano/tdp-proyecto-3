@@ -15,9 +15,9 @@ public class Boss extends EnemigoA {
 		puedoMovermeDown = true;
 		miVisitor = new VisitorEnemigo(this);
 		posicion = c;
-		ancho = 40;
+		ancho = 20;
 		factorMovX = ancho/2;
-		alto = 48;
+		alto = 20;
 		factorMovY = alto/2;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
@@ -61,14 +61,16 @@ public class Boss extends EnemigoA {
 
 	@Override
 	public void morir() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean perderVida() {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("Pos anterior a muerte Boss ("+posicion.getX() + ", " + posicion.getY()+")");
+		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
+		posicion.setX(miSalon.getRespawnPoint().getX());
+		posicion.setY(miSalon.getRespawnPoint().getY());
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
+		System.out.println("Pos posterior a muerte Boss ("+posicion.getX() + ", " + posicion.getY()+")");
 	}
 
 	@Override

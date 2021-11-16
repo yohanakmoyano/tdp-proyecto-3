@@ -73,8 +73,9 @@ public class VisitorJugador extends VisitorEntidad {
 	
 	public void visit(Enemigo enemigo) {
 		System.out.println("--------------------------Visite enemigo-------------------------------------------------------------");
+		//miJugador.getEstrategia().atacar(enemigo);
+		//enemigo.morir();
 		miJugador.getEstrategia().atacar(enemigo);
-		enemigo.eliminar();
 	}
 	
 	public void visit(Jugador jug) {
