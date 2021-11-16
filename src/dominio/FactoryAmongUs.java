@@ -5,7 +5,7 @@ import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
 import entidades.nomovibles.Item;
 
-public class FactoryAmong extends FactoryDominio {
+public class FactoryAmongUs extends FactoryDominio {
 
 	@Override
 	public Jugador crearJugador() {
