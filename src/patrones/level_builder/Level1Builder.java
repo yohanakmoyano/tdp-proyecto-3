@@ -24,7 +24,7 @@ public class Level1Builder extends LevelBuilder {
 		Coordenada punto = null;
 		Entidad entidad = null;
 		int j=0;
-		List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1.txt");
+		List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1JDC.txt");
 		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
 		
 		//Lee del txt las entidades y las agrega al mapa

@@ -23,7 +23,7 @@ public class Level2Builder extends LevelBuilder {
 		Coordenada punto = null;
 		Entidad entidad = null;
 		int j=0;
-		List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level2.txt");
+		List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level2JDC.txt");
 		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
 		for (int i = 1;i < toret.size() ; i++) {
 			String palabra = toret.get(i);

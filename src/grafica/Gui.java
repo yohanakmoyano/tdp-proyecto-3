@@ -34,7 +34,7 @@ public class Gui extends JFrame {
 
 	public Gui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/icono.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
 		setTitle("PACMAN 2.0");
 		setSize(new Dimension(900, 600));
 		setResizable(false);
