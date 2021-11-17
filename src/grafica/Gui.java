@@ -171,10 +171,44 @@ public class Gui extends JFrame {
 	
 	public void cambioPuntaje() {
 		text_puntaje.setText("Puntaje: "+ mijuego.getPuntaje());
-		System.out.print("puntaje essss: " + mijuego.getPuntaje());
+		//System.out.print("puntaje essss: " + mijuego.getPuntaje());
 	}
-
+	
+	public void PasoDeNivel() {
+		panelprincipal.removeAll();
+  		ImageIcon img_Siguiente_nivel = new ImageIcon(getClass().getClassLoader().getResource("Images/generales/next_level.png"));
+		JLabel lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);	
+		int ancho = img_Siguiente_nivel.getIconWidth();
+		int largo = img_Siguiente_nivel.getIconHeight();
+		lbl_Siguiente_nivel.setBounds(0, 0, ancho, largo);
+		
+		this.setSize(ancho, largo);
+		panelprincipal.add(lbl_Siguiente_nivel);	
+		panelprincipal.repaint();	
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	public void finDeJuego() {
-
+		panelprincipal.removeAll();
+  		ImageIcon img_gameOver = new ImageIcon(getClass().getClassLoader().getResource("Images/generales/game_over.png"));
+		JLabel lbl_gameOver = new JLabel(img_gameOver);	
+		int ancho = img_gameOver.getIconWidth();
+		int largo = img_gameOver.getIconHeight();
+		lbl_gameOver.setBounds(0, 0, ancho, largo);
+		
+		this.setSize(ancho, largo);
+		panelprincipal.add(lbl_gameOver);
+		panelprincipal.repaint();		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		// Cerramos el juego
+		System.exit(0);
 	}
 }

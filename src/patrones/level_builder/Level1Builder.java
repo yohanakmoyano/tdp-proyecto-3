@@ -113,8 +113,8 @@ public class Level1Builder extends LevelBuilder {
 					break;
 				}
 				case "T": { // Creo un triangulo
-					punto = new Coordenada(Integer.parseInt(caracter[i+1]), Integer.parseInt(caracter[i+2]));
-					entidad = new Triangulo(punto,this.getClass().getResource(caracter[i+3]).toString());
+					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
+					entidad = new Triangulo(punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEnemigos().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;

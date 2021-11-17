@@ -36,7 +36,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 				break;
 			}
 		}
-	System.out.println("--------------------------Visite bloque-------------------------------------------------------------");
+	//System.out.println("--------------------------Visite bloque-------------------------------------------------------------");
 	}
 	
 	public void visit(ItemA it) {

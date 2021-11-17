@@ -37,43 +37,43 @@ public class VisitorJugador extends VisitorEntidad {
 				break;
 			}
 		}
-		System.out.println("--------------------------Visite bloque-------------------------------------------------------------");
+		//System.out.println("--------------------------Visite bloque-------------------------------------------------------------");
 	}
 	
 	public void visit(ItemA it) {
-		System.out.println("--------------------------Visite galleta-------------------------------------------------------------");
+		//System.out.println("--------------------------Visite galleta-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
 		it.eliminar();
 	}
 
 	public void visit(ItemB it) {
-		System.out.println("--------------------------Visite cuchillo-------------------------------------------------------------");
+		//System.out.println("--------------------------Visite cuchillo-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
 		miJugador.getEstrategia().setStrategy(new Cazador(miJugador));
 		it.eliminar();
 	}
 	
 	public void visit(ItemC it) {
-		System.out.println("--------------------------Visite energizante-------------------------------------------------------------");
+		//System.out.println("--------------------------Visite energizante-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
 		miJugador.setVelocidad((miJugador.getVelocidad()*3)/2); //Algo simil a multiplicarlo por un factor de 1.5
 		it.eliminar();
 	}
 
 	public void visit(ItemD it) {
-		System.out.println("--------------------------Visite bomba-------------------------------------------------------------");
+		//System.out.println("--------------------------Visite bomba-------------------------------------------------------------");
 		// TODO definir comportamiento de la bomba.
 		it.eliminar();
 	}
 
 	public void visit(ItemE it) {
-		System.out.println("--------------------------Visite dolar-------------------------------------------------------------");
+		//System.out.println("--------------------------Visite dolar-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
 		it.eliminar();
 	}
 	
 	public void visit(Enemigo enemigo) {
-		System.out.println("--------------------------Visite enemigo-------------------------------------------------------------");
+		//System.out.println("--------------------------Visite enemigo-------------------------------------------------------------");
 		//miJugador.getEstrategia().atacar(enemigo);
 		//enemigo.morir();
 		miJugador.getEstrategia().atacar(enemigo);

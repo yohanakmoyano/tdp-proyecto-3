@@ -75,7 +75,7 @@ public class SalaDeJuegos {
 	 * @return Zona que contiene a punto.
 	 */
 	private Zona getZona(Coordenada punto) {
-		System.out.println("--------------------------GetZona-------------------------------------------------------------");
+		//System.out.println("--------------------------GetZona-------------------------------------------------------------");
 		boolean encontre = false;
 		Zona toRet = null;
 		for(int i = 0; i<cantDivisiones && !encontre; i++) {
@@ -89,7 +89,7 @@ public class SalaDeJuegos {
 	}
 
 	private void verificarCambioZona(Coordenada oldPos, Coordenada newPos, Entidad e) {
-		System.out.println("--------------------------VerificarCambioZona---------------------------------------------------");
+		//System.out.println("--------------------------VerificarCambioZona---------------------------------------------------");
 		Zona z = getZona(oldPos);
 		Zona ze = getZona(newPos);
 		if(z != ze) {
@@ -104,7 +104,7 @@ public class SalaDeJuegos {
 	 * @param e entidad por la cual consultar.
 	 */
 	public void actualizarZonasEntidad(Entidad e) {
-		System.out.println("--------------------------ActualizarZonasEntidad------------------------------------------------");
+	//	System.out.println("--------------------------ActualizarZonasEntidad------------------------------------------------");
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();
@@ -120,7 +120,7 @@ public class SalaDeJuegos {
 		boolean puedeMoverse = (e.nextPosMovUp().getY() > 0) && (e.puedoMovermeUp());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => "+puedeMoverse);
+	//	System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
 	
@@ -128,7 +128,7 @@ public class SalaDeJuegos {
 		boolean puedeMoverse = ((e.nextPosMovDown().getY() + e.getAlto()) < altura) && (e.puedoMovermeDown());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => "+puedeMoverse);
+		//System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
 	
@@ -136,7 +136,7 @@ public class SalaDeJuegos {
 		boolean puedeMoverse = ((e.nextPosMovDer().getX() + e.getAlto()) < base) && (e.puedoMovermeDer());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => "+puedeMoverse);
+		//System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
 	
@@ -144,7 +144,7 @@ public class SalaDeJuegos {
 		boolean puedeMoverse = (e.nextPosMovIzq().getX() > 0) && (e.puedoMovermeIzq());
 		if(puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
-		System.out.println("Puede mover => "+puedeMoverse);
+		//System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
 	
@@ -198,7 +198,7 @@ public class SalaDeJuegos {
 	}
 	
 	private boolean colisionEnZona(Entidad e, Zona z) {
-		System.out.println("-------------------------ColisionEnZona------------------------------------------------------------");
+	//	System.out.println("-------------------------ColisionEnZona------------------------------------------------------------");
 		boolean colisiono = false;
 		boolean toRet = false;
 		for(Entidad ent : z.getListaEntidades()) {

@@ -1,68 +1,25 @@
 package entidades.movibles.enemigos;
 
+import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import patrones.visitor_entidad.VisitorEntidad;
+import patrones.visitor_entidad.VisitorEnemigo;
+
 
 public class Black extends EnemigoA {
 
-	@Override
-	public Coordenada nextPosMovDer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Coordenada nextPosMovIzq() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Coordenada nextPosMovUp() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Coordenada nextPosMovDown() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void moverDerecha() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void moverIzquierda() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void moverArriba() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void moverAbajo() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void morir() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void accept(VisitorEntidad v) {
-		// TODO Auto-generated method stub
-		
+	public Black(Coordenada c, String rutaImg) {
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
+		miVisitor = new VisitorEnemigo(this);
+		posicion = c;
+		ancho = 20;
+		factorMovX = ancho/2;
+		alto = 20;
+		factorMovY = alto/2;
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
 }

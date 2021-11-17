@@ -23,7 +23,7 @@ public class Movimiento extends Thread {
 			}catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println("Hilo Movimiento ");
+			//System.out.println("Hilo Movimiento ");
 			moverEnemigos();
 		}
 	}
