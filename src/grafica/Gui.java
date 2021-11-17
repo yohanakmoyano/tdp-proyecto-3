@@ -18,6 +18,9 @@ import javax.swing.SwingConstants;
 import entidades.Entidad;
 import logica.Juego;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class Gui extends JFrame {
@@ -76,40 +79,50 @@ public class Gui extends JFrame {
 		laberinto.setLayout(null);
 		laberinto.setBackground(Color.black);
 		
+		//Boton musica- revisar
+		JButton btn_musica = new JButton("");
+		btn_musica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btn_musica.setBounds(0, 0, 48, 42);
+		panelprincipal.add(btn_musica);
+		
 		//Inicia miJuego
 		mijuego = new Juego(this);
 		mijuego.iniciarJuego();
+		
 		//Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
 		setFocusable(true);
 		getContentPane().setLayout(null);
 		
-	}
-	
-	public void actualizarPuntaje() {
-		text_puntaje.setText(" "+mijuego.getPuntaje());
-	}
-	
-	public void actualizarVidas(int v) {
-		text_vidas.setText(" "+v);
-	}
-	
-	public void mostrarImagenFondo(String s) {
-		ImageIcon fotoJuego = null;
-		try {
-			fotoJuego = new ImageIcon(new URL(s));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
 		}
-		Image medidaJuego = fotoJuego.getImage().getScaledInstance(890, 600, Image.SCALE_DEFAULT);
-		getContentPane().setLayout(null);
-		fondoNivel = new JLabel();
-		fondoNivel.setVerticalAlignment(SwingConstants.BOTTOM);
-		fondoNivel.setBounds(0, 0, 900, 600);
-		panelprincipal.add(fondoNivel);
-		fondoNivel.setIcon(new ImageIcon(medidaJuego));;
-	}
+	
+		public void actualizarPuntaje() {
+			text_puntaje.setText(" "+mijuego.getPuntaje());
+		}
+		
+		public void actualizarVidas(int v) {
+			text_vidas.setText(" "+v);
+		}
+		
+		public void mostrarImagenFondo(String s) {
+			ImageIcon fotoJuego = null;
+			try {
+				fotoJuego = new ImageIcon(new URL(s));
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			Image medidaJuego = fotoJuego.getImage().getScaledInstance(890, 600, Image.SCALE_DEFAULT);
+			getContentPane().setLayout(null);
+			fondoNivel = new JLabel();
+			fondoNivel.setVerticalAlignment(SwingConstants.BOTTOM);
+			fondoNivel.setBounds(0, 0, 900, 600);
+			panelprincipal.add(fondoNivel);
+			fondoNivel.setIcon(new ImageIcon(medidaJuego));
+		}
 	
 	//Comentado temporalmente
 	/*
@@ -133,7 +146,6 @@ public class Gui extends JFrame {
 	}*/
 	
 	public void mostrarEntidad(Entidad e) {
-		
 		laberinto.add(e.getRepresentacionGrafica().getDibujo());
 		e.getRepresentacionGrafica().getDibujo().setVisible(true);
 
@@ -166,7 +178,6 @@ public class Gui extends JFrame {
 		public void keyReleased(KeyEvent e) {
 		}
 	}	
-	
 	
 	
 	public void cambioPuntaje() {

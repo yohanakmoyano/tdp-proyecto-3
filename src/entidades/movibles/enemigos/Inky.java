@@ -3,7 +3,6 @@ package entidades.movibles.enemigos;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEnemigo;
-import patrones.visitor_entidad.VisitorEntidad;
 
 public class Inky extends EnemigoB{
 

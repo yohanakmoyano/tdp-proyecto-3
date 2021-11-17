@@ -46,7 +46,12 @@ public class Juego {
 	}
 
 	public int getPuntaje() {
-		return puntos.getPuntajeActual();
+		int toRet;
+		toRet=puntos.getPuntajeActual();
+		
+		if (toRet==100) //358
+			miGui.PasoDeNivel();
+		return toRet;
 	}
 
 	public void setNivel(int n) {
@@ -67,12 +72,7 @@ public class Juego {
 	public void runEnemies() {
 		movE.run();
 	}
-	public void siguienteNivel() {
-		if (puntos.getPuntajeActual()==3) {//358
-			miGui.PasoDeNivel();
-		}
-			
-	}
+	
 	
 	public void actualizarSalaDeJuego(SalaDeJuegos s) {
 
@@ -147,7 +147,7 @@ public class Juego {
 			personaje.moverDerecha();
 			miSala.actualizarZonasEntidad(personaje);
 			miSala.detectarColisionesJugador(personaje);
-			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
+			//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		//System.out.println("-----------------------------------------------------------------------------------------------");
 		
@@ -160,7 +160,7 @@ public class Juego {
 			personaje.moverIzquierda(); 
 			miSala.actualizarZonasEntidad(personaje);
 			miSala.detectarColisionesJugador(personaje);
-			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
+			//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		//System.out.println("-----------------------------------------------------------------------------------------------");
 		
@@ -173,7 +173,7 @@ public class Juego {
 			personaje.moverAbajo(); 
 			miSala.actualizarZonasEntidad(personaje);
 			miSala.detectarColisionesJugador(personaje);
-			System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
+			//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 	//	System.out.println("-----------------------------------------------------------------------------------------------");
 		

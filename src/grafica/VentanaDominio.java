@@ -38,23 +38,23 @@ public class VentanaDominio extends JFrame {
 
 		Image medidaJuego = fotoJuego.getImage().getScaledInstance(900, 600, Image.SCALE_DEFAULT);
 
-		// Boton Inicio
-		JButton btnInicio = new JButton("");
-		btnInicio.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnInicio.setBounds(75, 522, 222, 78);
-		btnInicio.setBackground(Color.black);
+		
+		// Boton Juego del Calamar
+		JButton btnInicio_JDC = new JButton("");
+		btnInicio_JDC.setBounds(70, 522, 190, 50);
+		btnInicio_JDC.setBackground(new Color(220, 20, 60));
 
-		String rutaBotonInicio = this.getClass().getResource("/Images/generales/boton_iniciar.png").toString();
-		ImageIcon fotoBotonInicio = null;
+		String rutaBotonJDC = this.getClass().getResource("/Images/generales/boton_1.png").toString();
+		ImageIcon fotoBotonJDC = null;
 		try {
-			fotoBotonInicio = new ImageIcon(new URL(rutaBotonInicio));
+			fotoBotonJDC = new ImageIcon(new URL(rutaBotonJDC));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		btnInicio.setIcon(fotoBotonInicio);
-		btnInicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+		btnInicio_JDC.setIcon(fotoBotonJDC);
+		btnInicio_JDC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-		btnInicio.addActionListener(new ActionListener() {
+		btnInicio_JDC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				Gui ingresoNivel1 = new Gui();
@@ -64,7 +64,66 @@ public class VentanaDominio extends JFrame {
 
 		});
 		getContentPane().setLayout(null);
-		getContentPane().add(btnInicio);
+		getContentPane().add(btnInicio_JDC);
+		
+		
+		// Boton Among Us
+		JButton btnInicio_AU = new JButton("");
+		btnInicio_AU.setBounds(357, 522, 190, 50);
+		btnInicio_AU.setBackground(new Color(220, 20, 60));
+
+		String rutaBotonAU = this.getClass().getResource("/Images/generales/boton_2.png").toString();
+		ImageIcon fotoBotonAU = null;
+		try {
+			fotoBotonAU = new ImageIcon(new URL(rutaBotonAU));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		btnInicio_AU.setIcon(fotoBotonAU);
+		btnInicio_AU.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+		btnInicio_AU.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				Gui ingresoNivel1 = new Gui();
+				ingresoNivel1.setVisible(true);
+				setVisible(false);
+			}
+
+		});
+		getContentPane().setLayout(null);
+		getContentPane().add(btnInicio_AU);
+
+		
+		// Boton Among Pacman
+		JButton btnInicio_PM = new JButton("");
+		btnInicio_PM.setForeground(Color.WHITE);
+		btnInicio_PM.setBounds(628, 522, 190, 50);
+		btnInicio_PM.setBackground(new Color(220, 20, 60));
+
+		String rutaBotonPM = this.getClass().getResource("/Images/generales/boton_3.png").toString();
+		ImageIcon fotoBotonPM = null;
+		try {
+			fotoBotonPM = new ImageIcon(new URL(rutaBotonPM));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		btnInicio_PM.setIcon(fotoBotonPM);
+		btnInicio_PM.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+		btnInicio_PM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				Gui ingresoNivel1 = new Gui();
+				ingresoNivel1.setVisible(true);
+				setVisible(false);
+			}
+
+		});
+		getContentPane().setLayout(null);
+		getContentPane().add(btnInicio_PM);
+		
+		
 
 		// Label que contiene la imagen del fondo de la Ventana dominio
 		inicioJuego = new JLabel("");
