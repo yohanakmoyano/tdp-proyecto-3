@@ -15,9 +15,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import Audio.AudioPlayer;
 import entidades.Entidad;
 import logica.Juego;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -34,6 +36,9 @@ public class Gui extends JFrame {
 	private JLabel fondoNivel;
 	private JTextField text_puntaje;
 	private JTextField text_vidas;
+	private AudioPlayer ap;
+	private Thread audio;
+	private JToggleButton jToggleButtonAudio;
 
 	public Gui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,6 +53,15 @@ public class Gui extends JFrame {
 		getContentPane().add(panelprincipal);
 		panelprincipal.setVisible(true);
 		panelprincipal.setLayout(null);
+		
+		//Boton musica- revisar
+		JButton btn_musica = new JButton("");
+		btn_musica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btn_musica.setBounds(0, 0, 48, 42);
+		panelprincipal.add(btn_musica);
 		
 		//Text Puntaje
 		text_puntaje = new JTextField();
@@ -79,15 +93,6 @@ public class Gui extends JFrame {
 		laberinto.setLayout(null);
 		laberinto.setBackground(Color.black);
 		
-		//Boton musica- revisar
-		JButton btn_musica = new JButton("");
-		btn_musica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btn_musica.setBounds(0, 0, 48, 42);
-		panelprincipal.add(btn_musica);
-		
 		//Inicia miJuego
 		mijuego = new Juego(this);
 		mijuego.iniciarJuego();
@@ -98,7 +103,47 @@ public class Gui extends JFrame {
 		setFocusable(true);
 		getContentPane().setLayout(null);
 		
+		
+		jToggleButtonAudio = new JToggleButton();
+		panelprincipal.add(jToggleButtonAudio);
+		jToggleButtonAudio.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Images/generales/game_over.png")));
+		jToggleButtonAudio.setBounds(221, 77, 46, 39);
+		jToggleButtonAudio.setOpaque(false);
+		jToggleButtonAudio.setFocusable(false);
+		jToggleButtonAudio.setSelected(true);
+		jToggleButtonAudio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jToggleButtonAudioActionPerformed(evt);
+			}
+		});
+		
+		
 		}
+	
+	private void jToggleButtonAudioActionPerformed(ActionEvent evt) {
+		if(this.jToggleButtonAudio.isSelected()) {
+			audioOff();
+		} else {
+			audioOn();
+		}
+	}
+	
+	private void audioOn() {
+		jToggleButtonAudio.setIcon(new ImageIcon(getClass().getClassLoader().getResource("/Images/generales/boton_musica.png")));
+		ap = new AudioPlayer("/audio/JDC.mp3");
+		audio = new Thread(ap);
+		audio.start();
+	}
+
+
+
+	private void audioOff() {
+		jToggleButtonAudio.setIcon(new ImageIcon(getClass().getClassLoader().getResource("/Images/generales/boton_musica.png")));
+		ap = null;
+		audio.stop();
+		audio = null;
+	}
+
 	
 		public void actualizarPuntaje() {
 			text_puntaje.setText(" "+mijuego.getPuntaje());
