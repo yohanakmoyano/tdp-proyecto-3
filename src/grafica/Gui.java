@@ -1,25 +1,32 @@
 package grafica;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import javax.swing.SwingConstants;
+
+
 import Audio.AudioPlayer;
 import entidades.Entidad;
 import logica.Juego;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -46,7 +53,7 @@ public class Gui extends JFrame {
 		setTitle("PACMAN 2.0");
 		setSize(new Dimension(900, 600));
 		setResizable(false);
-
+		initAudio();
 		//Panel principal
 		panelprincipal = new JPanel();
 		panelprincipal.setBounds(0, 0, 900, 600);
@@ -111,16 +118,19 @@ public class Gui extends JFrame {
 		jToggleButtonAudio.setOpaque(false);
 		jToggleButtonAudio.setFocusable(false);
 		jToggleButtonAudio.setSelected(true);
+		
 		jToggleButtonAudio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jToggleButtonAudioActionPerformed(evt);
 			}
 		});
 		
-		
 		}
-	
+	private void initAudio() {
+		
+	}
 	private void jToggleButtonAudioActionPerformed(ActionEvent evt) {
+		System.out.println("entre aca");
 		if(this.jToggleButtonAudio.isSelected()) {
 			audioOff();
 		} else {
@@ -130,17 +140,17 @@ public class Gui extends JFrame {
 	
 	private void audioOn() {
 		jToggleButtonAudio.setIcon(new ImageIcon(getClass().getClassLoader().getResource("/Images/generales/boton_musica.png")));
-		ap = new AudioPlayer("/audio/JDC.mp3");
+		ap = new AudioPlayer("\\\\Audio\\\\JDC.mp3");
 		audio = new Thread(ap);
 		audio.start();
 	}
-
-
 
 	private void audioOff() {
 		jToggleButtonAudio.setIcon(new ImageIcon(getClass().getClassLoader().getResource("/Images/generales/boton_musica.png")));
 		ap = null;
 		audio.stop();
+		//audio.suspend();
+		//audio.interrupt();
 		audio = null;
 	}
 
@@ -214,7 +224,7 @@ public class Gui extends JFrame {
 	             case KeyEvent.VK_RIGHT: { mijuego.operar(Juego.moverDerecha); break; }
 	             case KeyEvent.VK_UP: { mijuego.operar(Juego.moverArriba); break; }
 	             case KeyEvent.VK_DOWN: { mijuego.operar(Juego.moverAbajo); break; }
-	             
+	             //case KeyEvent.VK_SPACE:{ audioOff(); break;}
 	         	}
 			}
 		}

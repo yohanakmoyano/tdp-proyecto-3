@@ -1,5 +1,6 @@
 package logica;
 
+import Audio.AudioPlayer;
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
@@ -20,7 +21,7 @@ public class Juego {
 	public static final int moverDerecha = 2;
 	public static final int moverAbajo = 3;
 	public static final int moverArriba = 4;
-
+protected AudioPlayer audio;
 	protected Movimiento movE;
 	
 	public Juego(Gui mg) {
@@ -66,6 +67,8 @@ public class Juego {
 		//puntaje = 0;
 		movE = new Movimiento(miSala);
 		movE.start();
+		audio=new AudioPlayer("\\\\Audio\\\\JDC.mp3");
+		audio.start();
 		nivel = 1;
 	}
 

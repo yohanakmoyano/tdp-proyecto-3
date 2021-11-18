@@ -95,7 +95,7 @@ public class SalaDeJuegos {
 		if(z != ze) {
 			z.eliminarEntidad(e);
 			ze.agregarEntidad(e);
-			System.out.println("--------------------------HuboCambioZona--: "+true);
+			//System.out.println("--------------------------HuboCambioZona--: "+true);
 		}
 	}
 	

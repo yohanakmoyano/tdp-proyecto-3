@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 
 import javazoom.jl.player.Player;
 
-public class AudioPlayer implements Runnable {
+public class AudioPlayer extends Thread{ 
 	
 	protected String file;
 	
