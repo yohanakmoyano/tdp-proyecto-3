@@ -1,6 +1,6 @@
 package logica;
 
-import Audio.AudioPlayer;
+
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
@@ -21,15 +21,14 @@ public class Juego {
 	public static final int moverDerecha = 2;
 	public static final int moverAbajo = 3;
 	public static final int moverArriba = 4;
-protected AudioPlayer audio;
+	public static final int ponerItem = 5;
 	protected Movimiento movE;
 	
-	public Juego(Gui mg) {
+	public Juego() {
 		puntos = Puntaje.getInstancePuntaje();
 		nivel = 1;
-		miGui = mg;
-		miGui.setVisible(true);
-		miSala = new SalaDeJuegos(mg,this);
+		miGui = Gui.getGui(this);
+		miSala = new SalaDeJuegos(miGui,this);
 		miFabrica = new Director(nivel, miSala);
 		if(!miSala.getListJugador().isEmpty())
 			personaje = (Jugador) miSala.getListJugador().get(0);
@@ -67,8 +66,8 @@ protected AudioPlayer audio;
 		//puntaje = 0;
 		movE = new Movimiento(miSala);
 		movE.start();
-		audio=new AudioPlayer("\\\\Audio\\\\JDC.mp3");
-		audio.start();
+		//audio=new AudioPlayer("\\\\Audio\\\\JDC.mp3");
+		//audio.start();
 		nivel = 1;
 	}
 
@@ -76,6 +75,10 @@ protected AudioPlayer audio;
 		movE.run();
 	}
 	
+	//falta coneccion entre el jugador
+	public void agregarItemD() {
+		miGui.agregarItem();
+	}
 	
 	public void actualizarSalaDeJuego(SalaDeJuegos s) {
 
@@ -126,6 +129,10 @@ protected AudioPlayer audio;
 			}
 			case moverArriba: {
 				moverArriba();
+				break;
+			}
+			case ponerItem: {
+				ponerItem();
 				break;
 			}
 		}
@@ -181,5 +188,11 @@ protected AudioPlayer audio;
 	//	System.out.println("-----------------------------------------------------------------------------------------------");
 		
 	}
-	
+	//si toque la tecla en esa posicion del jugador dejo la bomba
+	private void ponerItem() {
+		if(personaje.tieneItemD()) {
+			if(miSala.autorizarMovAbajo(personaje));
+			
+		}
+	}
 }

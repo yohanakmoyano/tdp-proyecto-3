@@ -21,6 +21,7 @@ public class Jugador_456 extends Jugador {
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
+		poseeItemD = false;
 		miVisitor = new VisitorJugador(this);
 		velocidad = vel;
 		vidas = v;
@@ -31,6 +32,7 @@ public class Jugador_456 extends Jugador {
 		factorMovY = alto/2;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
+		
 	}
 	
 	private Jugador_456() {

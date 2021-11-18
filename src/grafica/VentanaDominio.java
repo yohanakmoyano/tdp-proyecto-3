@@ -16,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import logica.Juego;
+
 public class VentanaDominio extends JFrame {
 	private JLabel inicioJuego;
 
@@ -57,8 +59,9 @@ public class VentanaDominio extends JFrame {
 		btnInicio_JDC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Gui ingresoNivel1 = new Gui();
-				ingresoNivel1.setVisible(true);
+				//crear metodo inicarJuego
+				Juego juego = new Juego();
+				juego.iniciarJuego();
 				setVisible(false);
 			}
 
@@ -85,9 +88,10 @@ public class VentanaDominio extends JFrame {
 		btnInicio_AU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Gui ingresoNivel1 = new Gui();
-				ingresoNivel1.setVisible(true);
+				Juego juego = new Juego();
+				juego.iniciarJuego();
 				setVisible(false);
+				//crear una intancia de la factory de among us y pasarsela al director
 			}
 
 		});
@@ -114,8 +118,8 @@ public class VentanaDominio extends JFrame {
 		btnInicio_PM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Gui ingresoNivel1 = new Gui();
-				ingresoNivel1.setVisible(true);
+				Juego juego = new Juego();
+				juego.iniciarJuego();
 				setVisible(false);
 			}
 

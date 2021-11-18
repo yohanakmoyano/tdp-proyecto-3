@@ -10,9 +10,17 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,8 +29,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 
-import Audio.AudioPlayer;
 import entidades.Entidad;
+import entidades.movibles.jugadores.Jugador_456;
 import logica.Juego;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
@@ -43,17 +51,22 @@ public class Gui extends JFrame {
 	private JLabel fondoNivel;
 	private JTextField text_puntaje;
 	private JTextField text_vidas;
-	private AudioPlayer ap;
-	private Thread audio;
-	private JToggleButton jToggleButtonAudio;
+	private Clip clip;
+	private JLabel labelPotion;
+	//private AudioPlayer ap;
+	//private Thread audio;
+	//private JToggleButton jToggleButtonAudio;
+	protected static Gui myInstance;
 
-	public Gui() {
+	private Gui(Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
 		setTitle("PACMAN 2.0");
 		setSize(new Dimension(900, 600));
 		setResizable(false);
-		initAudio();
+		this.setVisible(true);
+		//initAudio();
+		
 		//Panel principal
 		panelprincipal = new JPanel();
 		panelprincipal.setBounds(0, 0, 900, 600);
@@ -61,14 +74,20 @@ public class Gui extends JFrame {
 		panelprincipal.setVisible(true);
 		panelprincipal.setLayout(null);
 		
-		//Boton musica- revisar
-		JButton btn_musica = new JButton("");
-		btn_musica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btn_musica.setBounds(0, 0, 48, 42);
-		panelprincipal.add(btn_musica);
+		JButton b_musica= new JButton("Musica ON");
+		b_musica.setBounds(770, 510, 120, 20);
+		panelprincipal.add(b_musica);
+		b_musica.setFocusable(false);
+		b_musica.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 10));
+
+		JButton b_musicaOff= new JButton("Musica OFF");
+		b_musicaOff.setBounds(770, 479, 120, 20);
+		panelprincipal.add(b_musicaOff);
+		b_musicaOff.setFocusable(false);
+		b_musicaOff.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 10));
+
+		requestFocusInWindow();
+
 		
 		//Text Puntaje
 		text_puntaje = new JTextField();
@@ -101,8 +120,7 @@ public class Gui extends JFrame {
 		laberinto.setBackground(Color.black);
 		
 		//Inicia miJuego
-		mijuego = new Juego(this);
-		mijuego.iniciarJuego();
+		mijuego = juego;
 		
 		//Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
@@ -110,7 +128,7 @@ public class Gui extends JFrame {
 		setFocusable(true);
 		getContentPane().setLayout(null);
 		
-		
+		/*
 		jToggleButtonAudio = new JToggleButton();
 		panelprincipal.add(jToggleButtonAudio);
 		jToggleButtonAudio.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Images/generales/game_over.png")));
@@ -123,12 +141,42 @@ public class Gui extends JFrame {
 			public void actionPerformed(ActionEvent evt) {
 				jToggleButtonAudioActionPerformed(evt);
 			}
+		});*/
+		
+		
+		b_musica.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				URL path=this.getClass().getResource("/audio/JDC.wav");
+				try {
+					AudioInputStream audioInput = AudioSystem.getAudioInputStream(path);
+					clip = AudioSystem.getClip();
+
+					clip.open(audioInput);
+					clip.start();
+
+
+				}catch(IOException | UnsupportedAudioFileException | LineUnavailableException e1) {
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		
+		
+		b_musicaOff.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clip.stop();
+			}
 		});
 		
 		}
-	private void initAudio() {
+	//private void initAudio() {
 		
-	}
+//	}
+	
+	/*
 	private void jToggleButtonAudioActionPerformed(ActionEvent evt) {
 		System.out.println("entre aca");
 		if(this.jToggleButtonAudio.isSelected()) {
@@ -153,7 +201,14 @@ public class Gui extends JFrame {
 		//audio.interrupt();
 		audio = null;
 	}
+	*/
 
+	
+		public static Gui getGui(Juego juego) {
+			if(myInstance == null)
+				myInstance = new Gui(juego);
+			return myInstance;
+		}
 	
 		public void actualizarPuntaje() {
 			text_puntaje.setText(" "+mijuego.getPuntaje());
@@ -224,7 +279,7 @@ public class Gui extends JFrame {
 	             case KeyEvent.VK_RIGHT: { mijuego.operar(Juego.moverDerecha); break; }
 	             case KeyEvent.VK_UP: { mijuego.operar(Juego.moverArriba); break; }
 	             case KeyEvent.VK_DOWN: { mijuego.operar(Juego.moverAbajo); break; }
-	             //case KeyEvent.VK_SPACE:{ audioOff(); break;}
+	             case KeyEvent.VK_SPACE:{ mijuego.operar(Juego.ponerItem); break;}
 	         	}
 			}
 		}
@@ -276,5 +331,13 @@ public class Gui extends JFrame {
 		
 		// Cerramos el juego
 		System.exit(0);
+	}
+
+	public void agregarItem() {
+		ImageIcon img_potion = new ImageIcon(getClass().getClassLoader().getResource("Images/generales/bomba_nivel1.png"));
+		labelPotion = new JLabel(img_potion);
+		labelPotion.setBounds(725, 224, 25, 25);
+		panelprincipal.add(labelPotion);
+		panelprincipal.repaint();
 	}
 }

@@ -8,6 +8,10 @@ import patrones.visitor_entidad.VisitorEntidad;
 public abstract class Jugador extends EntidadMovible {
 	protected ControlStrategy controlStr;
 	protected Coordenada posRespawn;
+	protected boolean poseeItemD; //esto si tiene un item no mas o tener el item
+	//coleccion de power up
+	
+	//jugador metodo accionar--> tipo de estado de estrategia cuando suelto delego al strategy
 	public ControlStrategy getEstrategia() {
 		return controlStr;
 	}
@@ -18,6 +22,11 @@ public abstract class Jugador extends EntidadMovible {
 	 */
 	public void cambiarEstrategia() {
 		
+	}
+	
+	//falta la coneccion de llamar desde jugaro a itemD
+	public boolean tieneItemD() {
+		return poseeItemD = true;
 	}
 	
 	//se mueve + en el eje x

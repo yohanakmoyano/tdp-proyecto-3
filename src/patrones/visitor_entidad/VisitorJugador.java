@@ -63,6 +63,7 @@ public class VisitorJugador extends VisitorEntidad {
 	public void visit(ItemD it) {
 		//System.out.println("--------------------------Visite bomba-------------------------------------------------------------");
 		// TODO definir comportamiento de la bomba.
+		miJugador.tieneItemD();
 		it.eliminar();
 	}
 

@@ -63,7 +63,7 @@ public abstract class Entidad {
 	public Coordenada getPosicion() {
 		return posicion;
 	}
-	
+	//solo jugador
 	public void afectarPuntaje(int valor) {
 		Puntaje.getInstancePuntaje().incrementarEn(valor);
 	}
@@ -79,5 +79,5 @@ public abstract class Entidad {
 	public VisitorEntidad getMyVisitor() {
 		return miVisitor;
 	}
-	
+	//agregar acept
 }
