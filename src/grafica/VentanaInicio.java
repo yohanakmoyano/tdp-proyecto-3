@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 public class VentanaInicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel inicioJuego;
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -28,22 +28,84 @@ public class VentanaInicio extends JFrame {
 					ventana.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}	
+				}
 			}
 		});
 	}
 
-	
 	public VentanaInicio() {
-		//Configuracion de la Ventana Inicio
+		// Configuracion de la Ventana Inicio
 		setTitle("PACMAN 2.0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
 		setSize(new Dimension(915, 640));
 		setResizable(false);
-		
-		
-		//Imagen del fondo de la Ventana Inicio
+		this.agregarBotones();
+		this.agregarFondo();
+
+	}
+
+	public void agregarBotones() {
+		// Boton Inicio
+		JButton btnInicio = new JButton("");
+		btnInicio.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnInicio.setBounds(320, 487, 272, 54);
+		btnInicio.setBackground(new Color(220, 20, 60));
+
+		String rutaBotonInicio = this.getClass().getResource("/Images/generales/boton_inicio.png").toString();
+		ImageIcon fotoBotonInicio = null;
+		try {
+			fotoBotonInicio = new ImageIcon(new URL(rutaBotonInicio));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		btnInicio.setIcon(fotoBotonInicio);
+		btnInicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+		btnInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				// Gui ingresoNivel1= new Gui();
+				VentanaDominio ingresoDominio = new VentanaDominio();
+				ingresoDominio.setVisible(true);
+				setVisible(false);
+			}
+
+		});
+		getContentPane().setLayout(null);
+		getContentPane().add(btnInicio);
+
+		// Boton Instrucciones
+		JButton btnInstrucciones = new JButton("");
+		btnInstrucciones.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnInstrucciones.setBounds(320, 546, 272, 54);
+		btnInstrucciones.setBackground(new Color(220, 20, 60));
+
+		String rutaBotonInstruc = this.getClass().getResource("/Images/generales/boton_instrucciones.png").toString();
+		ImageIcon fotoBotonInstruc = null;
+		try {
+			fotoBotonInstruc = new ImageIcon(new URL(rutaBotonInstruc));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		btnInstrucciones.setIcon(fotoBotonInstruc);
+		btnInstrucciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+		btnInstrucciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaDominio ingresoDominio = new VentanaDominio();
+				ingresoDominio.setVisible(true);
+				setVisible(false);
+			}
+
+		});
+		getContentPane().setLayout(null);
+		getContentPane().add(btnInstrucciones);
+
+	}
+
+	public void agregarFondo() {
+		// Imagen del fondo de la Ventana Inicio
 		String rutaFotoJuego = this.getClass().getResource("/Images/generales/fondoinicio.png").toString();
 		ImageIcon fotoJuego = null;
 		try {
@@ -53,77 +115,12 @@ public class VentanaInicio extends JFrame {
 		}
 
 		Image medidaJuego = fotoJuego.getImage().getScaledInstance(900, 600, Image.SCALE_DEFAULT);
-		
-		
-		//Boton Inicio
-		JButton btnInicio = new JButton("");
-		btnInicio.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnInicio.setBounds(320, 487, 272, 54);
-		btnInicio.setBackground(new Color(220, 20, 60));
-		
-		String rutaBotonInicio = this.getClass().getResource("/Images/generales/boton_inicio.png").toString();
-		ImageIcon fotoBotonInicio = null;
-		try {
-			fotoBotonInicio = new ImageIcon(new URL(rutaBotonInicio));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		btnInicio.setIcon(fotoBotonInicio); 
-		btnInicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-		
-		btnInicio.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				
-					//Gui ingresoNivel1= new Gui();
-				  VentanaDominio ingresoDominio=new VentanaDominio();
-				  ingresoDominio.setVisible(true);
-					setVisible(false); 
-					}
-					
-				});
-		getContentPane().setLayout(null);
-		getContentPane().add(btnInicio);
-				
-		
-		//Boton Instrucciones
-		JButton btnInstrucciones = new JButton("");
-		btnInstrucciones.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnInstrucciones.setBounds(320, 546, 272, 54);
-		btnInstrucciones.setBackground(new Color(220, 20, 60));
-		
-		
-		String rutaBotonInstruc = this.getClass().getResource("/Images/generales/boton_instrucciones.png").toString();
-		ImageIcon fotoBotonInstruc = null;
-		try {
-			fotoBotonInstruc = new ImageIcon(new URL(rutaBotonInstruc));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		btnInstrucciones.setIcon(fotoBotonInstruc); 
-		btnInstrucciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-		
-		btnInstrucciones.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				
-					//Gui ingresoNivel1= new Gui();
-				  VentanaDominio ingresoDominio=new VentanaDominio();
-				  ingresoDominio.setVisible(true);
-					setVisible(false); 
-					}
-					
-				});
-		getContentPane().setLayout(null);
-		getContentPane().add(btnInstrucciones);
-		
-		
-		//Label que contiene la imagen del fondo de la Ventana Inicio
+
+		// Label que contiene la imagen del fondo de la Ventana Inicio
 		inicioJuego = new JLabel("");
 		inicioJuego.setBounds(0, 0, 900, 600);
 		getContentPane().add(inicioJuego);
 		inicioJuego.setIcon(new ImageIcon(medidaJuego));
 		getContentPane().add(inicioJuego, BorderLayout.CENTER);
-		
-		
-		
 	}
 }

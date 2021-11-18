@@ -28,19 +28,11 @@ public class VentanaDominio extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
 		setSize(new Dimension(915, 640));
 		setResizable(false);
+		this.agregarBotones();
+		this.agregarFondo();
+	}
 
-		// Imagen del fondo de la Ventana Inicio
-		String rutaFotoJuego = this.getClass().getResource("/Images/generales/dominios.png").toString();
-		ImageIcon fotoJuego = null;
-		try {
-			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		Image medidaJuego = fotoJuego.getImage().getScaledInstance(900, 600, Image.SCALE_DEFAULT);
-
-		
+	public void agregarBotones() {
 		// Boton Juego del Calamar
 		JButton btnInicio_JDC = new JButton("");
 		btnInicio_JDC.setBounds(70, 522, 190, 50);
@@ -58,18 +50,13 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_JDC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				//crear metodo inicarJuego
-				Juego juego = new Juego();
-				juego.iniciarJuego();
-				setVisible(false);
+				iniciarJuego();
 			}
 
 		});
 		getContentPane().setLayout(null);
 		getContentPane().add(btnInicio_JDC);
-		
-		
+
 		// Boton Among Us
 		JButton btnInicio_AU = new JButton("");
 		btnInicio_AU.setBounds(357, 522, 190, 50);
@@ -87,18 +74,14 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_AU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				Juego juego = new Juego();
-				juego.iniciarJuego();
-				setVisible(false);
-				//crear una intancia de la factory de among us y pasarsela al director
+				iniciarJuego();
+				// crear una intancia de la factory de among us y pasarsela al director
 			}
 
 		});
 		getContentPane().setLayout(null);
 		getContentPane().add(btnInicio_AU);
 
-		
 		// Boton Among Pacman
 		JButton btnInicio_PM = new JButton("");
 		btnInicio_PM.setForeground(Color.WHITE);
@@ -117,24 +100,38 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_PM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				Juego juego = new Juego();
-				juego.iniciarJuego();
-				setVisible(false);
+				iniciarJuego();
 			}
 
 		});
 		getContentPane().setLayout(null);
 		getContentPane().add(btnInicio_PM);
-		
-		
 
+	}
+
+	public void agregarFondo() {
+		// Imagen del fondo de la Ventana Inicio
+		String rutaFotoJuego = this.getClass().getResource("/Images/generales/dominios.png").toString();
+		ImageIcon fotoJuego = null;
+		try {
+			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		Image medidaJuego = fotoJuego.getImage().getScaledInstance(900, 600, Image.SCALE_DEFAULT);
 		// Label que contiene la imagen del fondo de la Ventana dominio
 		inicioJuego = new JLabel("");
 		inicioJuego.setBounds(0, 0, 900, 600);
 		getContentPane().add(inicioJuego);
 		inicioJuego.setIcon(new ImageIcon(medidaJuego));
 		getContentPane().add(inicioJuego, BorderLayout.CENTER);
+
+	}
+
+	public void iniciarJuego() {
+		Juego juego = new Juego();
+		juego.iniciarJuego();
+		setVisible(false);
 
 	}
 }
