@@ -1,12 +1,13 @@
 package patrones.level_builder;
 
+import dominio.FactoryDominio;
 import logica.SalaDeJuegos;
 
 public class Director {
 	protected LevelBuilder builder;
 	protected int nivel;
 	//pasar la fabrica directamentamente o alguna forma de idenficar como atributo o contructor
-
+	
 	
 	public Director(int n, SalaDeJuegos sj) {
 		nivel=n;

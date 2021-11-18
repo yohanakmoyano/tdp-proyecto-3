@@ -1,16 +1,58 @@
 package entidades.movibles.jugadores;
 
 import entidades.movibles.EntidadMovible;
+import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.strategy.ControlStrategy;
 import patrones.visitor_entidad.VisitorEntidad;
+import patrones.visitor_entidad.VisitorJugador;
 
-public abstract class Jugador extends EntidadMovible {
+public  class Jugador extends EntidadMovible {
+	//JDC: jugador_456 , AU: jugador_red , PC: Pac_man
 	protected ControlStrategy controlStr;
 	protected Coordenada posRespawn;
 	protected boolean poseeItemD; //esto si tiene un item no mas o tener el item
 	//coleccion de power up
+protected static Jugador myInstance;
 	
+
+	// TODO
+	/**Dado que tira error al momento de crear los niveles, por ahora dejaré este constructor público.
+	//Evitando así posibles errores al modificar esas lineas.
+	//Una vez solucionado eso, pasar el constructor a privado.**/
+	public Jugador(Coordenada c, int vel, int v, String rutaImg) {
+		posRespawn = new Coordenada(c.getX(), c.getY());
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
+		poseeItemD = false;
+		miVisitor = new VisitorJugador(this);
+		velocidad = vel;
+		vidas = v;
+		posicion = c;
+		ancho = 19;
+		factorMovX = ancho/2;
+		alto = 22;
+		factorMovY = alto/2;
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
+		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
+		
+	}
+	
+	private Jugador() {
+		// TODO acá llamar al constructor Jugador_456(Coordenada c, int vel, int v, String rutaImg) con
+		//		los parámetros adecuados.
+	}
+	
+	public static Jugador getJugador() {
+		if(myInstance == null)
+			myInstance = new Jugador();
+		return myInstance;
+	}
+	
+
 	//jugador metodo accionar--> tipo de estado de estrategia cuando suelto delego al strategy
 	public ControlStrategy getEstrategia() {
 		return controlStr;

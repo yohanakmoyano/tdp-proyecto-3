@@ -1,10 +1,26 @@
 package entidades.movibles.enemigos;
 
+import grafica.RepresentacionGrafica;
 import logica.Coordenada;
+import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
-public abstract class EnemigoA extends Enemigo {
-
+public class EnemigoA extends Enemigo {
+//AU: black , JDC: Boss , PC: Blinky
+	public EnemigoA(Coordenada c, String rutaImg) {
+		ultMovimiento = reposo;
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
+		miVisitor = new VisitorEnemigo(this);
+		posicion = c;
+		ancho = 20;
+		factorMovX = ancho/2;
+		alto = 20;
+		factorMovY = alto/2;
+		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
+	}
 	@Override
 	public void moverArriba() {
 		ultMovimiento = ultMovUp;

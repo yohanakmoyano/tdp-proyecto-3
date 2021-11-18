@@ -3,17 +3,17 @@ package patrones.level_builder;
 import java.util.List;
 
 import entidades.Entidad;
-import entidades.movibles.enemigos.Boss;
-import entidades.movibles.enemigos.Circulo;
-import entidades.movibles.enemigos.Cuadrado;
-import entidades.movibles.enemigos.Triangulo;
-import entidades.movibles.jugadores.Jugador_456;
+import entidades.movibles.enemigos.EnemigoA;
+import entidades.movibles.enemigos.EnemigoB;
+import entidades.movibles.enemigos.EnemigoC;
+import entidades.movibles.enemigos.EnemigoD;
+import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
-import entidades.nomovibles.items.Bomba;
-import entidades.nomovibles.items.Cuchillo;
-import entidades.nomovibles.items.Dinero;
-import entidades.nomovibles.items.Energizante;
-import entidades.nomovibles.items.Galleta;
+import entidades.nomovibles.items.ItemA;
+import entidades.nomovibles.items.ItemB;
+import entidades.nomovibles.items.ItemC;
+import entidades.nomovibles.items.ItemD;
+import entidades.nomovibles.items.ItemE;
 import logica.Coordenada;
 import logica.SalaDeJuegos;
 
@@ -24,7 +24,12 @@ public class Level1Builder extends LevelBuilder {
 		Coordenada punto = null;
 		Entidad entidad = null;
 		int j=0;
+		//if (mifabrica==FactoryJuegoCalamar)
 		List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1JDC.txt");
+		//if (mifabrica==FactoryAmongUs)
+			//List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1AU.txt");
+		//if (mifabrica==FactoryPacman)
+			//List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1PM.txt");
 		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
 		
 		//Lee del txt las entidades y las agrega al mapa
@@ -46,7 +51,7 @@ public class Level1Builder extends LevelBuilder {
 				
 				case "g": { // galleta
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Galleta(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
+					entidad = new ItemA(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
 					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
@@ -55,7 +60,7 @@ public class Level1Builder extends LevelBuilder {
 				case "e": { // Creo un energizante
 					
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Energizante(1, punto, this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new ItemC(1, punto, this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
@@ -63,14 +68,14 @@ public class Level1Builder extends LevelBuilder {
 		
 				case "c": { // Creo un cuchillo
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Cuchillo(1, punto,this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new ItemB(1, punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
 				case "d": { // Creo un dinero
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Dinero(1, punto,this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new ItemE(1, punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
@@ -78,7 +83,7 @@ public class Level1Builder extends LevelBuilder {
 		
 				case "z": { // Creo una bomba
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Bomba(1, punto, this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new ItemD(1, punto, this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
@@ -86,35 +91,35 @@ public class Level1Builder extends LevelBuilder {
 		
 				case "j": { // Creo un jugador
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Jugador_456(punto, 100, 3, this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new Jugador(punto, 100, 3, this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListJugador().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
 				case "B": { // Creo un Boss
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Boss(punto,this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new EnemigoA(punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEnemigos().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
 				case "C": { // Creo un circulo
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Circulo(punto,this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new EnemigoD(punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEnemigos().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
 				case "S": { // Creo un cuadrado
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Cuadrado(punto, this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new EnemigoB(punto, this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEnemigos().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;
 				}
 				case "T": { // Creo un triangulo
 					punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
-					entidad = new Triangulo(punto,this.getClass().getResource(caracter[j+3]).toString());
+					entidad = new EnemigoC(punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEnemigos().add(entidad);
 					sj.obtenerGui().mostrarEntidad(entidad);
 					break;

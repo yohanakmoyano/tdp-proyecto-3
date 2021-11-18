@@ -30,7 +30,7 @@ import javax.swing.SwingConstants;
 
 
 import entidades.Entidad;
-import entidades.movibles.jugadores.Jugador_456;
+
 import logica.Juego;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
