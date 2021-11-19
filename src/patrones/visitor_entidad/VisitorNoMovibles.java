@@ -4,7 +4,6 @@ import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
 import entidades.nomovibles.EntidadNoMovible;
-import entidades.nomovibles.Item;
 import entidades.nomovibles.items.ItemA;
 import entidades.nomovibles.items.ItemB;
 import entidades.nomovibles.items.ItemC;

@@ -50,7 +50,10 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_JDC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iniciarJuego();
+				Juego juego = new Juego();
+				juego.setDominio(1);
+				juego.iniciarJuego();
+				setVisible(false);
 			}
 
 		});
@@ -74,8 +77,10 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_AU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iniciarJuego();
-				// crear una intancia de la factory de among us y pasarsela al director
+				Juego juego = new Juego();
+				juego.setDominio(2);
+				juego.iniciarJuego();
+				setVisible(false);
 			}
 
 		});
@@ -100,7 +105,10 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_PM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iniciarJuego();
+				Juego juego = new Juego();
+				juego.setDominio(3);
+				juego.iniciarJuego();
+				setVisible(false);
 			}
 
 		});
@@ -128,10 +136,4 @@ public class VentanaDominio extends JFrame {
 
 	}
 
-	public void iniciarJuego() {
-		Juego juego = new Juego();
-		juego.iniciarJuego();
-		setVisible(false);
-
-	}
 }

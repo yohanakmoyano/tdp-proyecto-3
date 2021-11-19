@@ -1,12 +1,12 @@
 package entidades.nomovibles.items;
 
-import entidades.nomovibles.Item;
+import entidades.nomovibles.EntidadNoMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEntidad;
 
-public  class ItemA extends Item {
-// JDC: Galleta , AU: por definir , PC: pacDoct
+public  class ItemA extends EntidadNoMovible {
+// JDC: Galleta , AU: hojitas , PC: pacDoct
 	public ItemA(int val, Coordenada c, String rutaImg) {
 		valor = val;
 		posicion = c;

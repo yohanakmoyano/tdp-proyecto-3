@@ -19,17 +19,17 @@ import logica.SalaDeJuegos;
 
 public class Level1Builder extends LevelBuilder {
 
-	public Level1Builder(SalaDeJuegos sj) {
-		
+	public Level1Builder(SalaDeJuegos sj,int d) {
 		Coordenada punto = null;
 		Entidad entidad = null;
 		int j=0;
-		//if (mifabrica==FactoryJuegoCalamar)
-		List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1JDC.txt");
-		//if (mifabrica==FactoryAmongUs)
-			//List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1AU.txt");
-		//if (mifabrica==FactoryPacman)
-			//List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1PM.txt");
+		List<String> toret =null;
+		if (d==1)
+		toret= LeerArchivo.leer("src\\patrones\\level_builder\\level1JDC.txt");
+		if (d==2)
+			 toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1AU.txt");
+		if (d==3)
+			toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1PM.txt");
 		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
 		
 		//Lee del txt las entidades y las agrega al mapa
@@ -133,8 +133,8 @@ public class Level1Builder extends LevelBuilder {
 	
 	
 	//verificar si sirven 
-	@Override
-	public void buildEnemigos() {
+	
+	/*public void buildEnemigos() {
 		mifabrica.crearEnemigoA();
 		mifabrica.crearEnemigoB();
 		mifabrica.crearEnemigoC();
@@ -156,6 +156,6 @@ public class Level1Builder extends LevelBuilder {
 	public void buildPlayer() {
 		mifabrica.crearJugador();
 
-	}
+	}*/
 
 }

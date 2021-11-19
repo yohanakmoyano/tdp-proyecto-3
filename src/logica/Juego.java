@@ -4,7 +4,7 @@ package logica;
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
-import entidades.nomovibles.Item;
+import entidades.nomovibles.EntidadNoMovible;
 import grafica.Gui;
 import patrones.level_builder.Director;
 
@@ -23,17 +23,21 @@ public class Juego {
 	public static final int moverArriba = 4;
 	public static final int ponerItem = 5;
 	protected Movimiento movE;
-	
+	protected int d;
 	public Juego() {
 		puntos = Puntaje.getInstancePuntaje();
 		nivel = 1;
 		miGui = Gui.getGui(this);
 		miSala = new SalaDeJuegos(miGui,this);
-		miFabrica = new Director(nivel, miSala);
+	    /*miFabrica = new Director(nivel, miSala,d);
+		if(!miSala.getListJugador().isEmpty())
+			personaje = (Jugador) miSala.getListJugador().get(0);*/
+	}	
+	public void setDominio(int d) {
+		miFabrica = new Director(nivel, miSala,d);
 		if(!miSala.getListJugador().isEmpty())
 			personaje = (Jugador) miSala.getListJugador().get(0);
-	}	
-	
+	}
 	public void actualizoVidas() {
 		if (personaje.getVidas()!=0)
 		miGui.actualizarVidas(personaje.getVidas());
@@ -66,11 +70,8 @@ public class Juego {
 		//puntaje = 0;
 		movE = new Movimiento(miSala);
 		movE.start();
-		//audio=new AudioPlayer("\\\\Audio\\\\JDC.mp3");
-		//audio.start();
 		nivel = 1;
 	}
-
 	public void runEnemies() {
 		movE.run();
 	}
@@ -84,7 +85,7 @@ public class Juego {
 
 	}
 
-	public void cambioEstadoItem(Item item) {
+	public void cambioEstadoItem(EntidadNoMovible item) {
 
 	}
 

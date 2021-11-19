@@ -20,19 +20,6 @@ public class VentanaInicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel inicioJuego;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaInicio ventana = new VentanaInicio();
-					ventana.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public VentanaInicio() {
 		// Configuracion de la Ventana Inicio
 		setTitle("PACMAN 2.0");

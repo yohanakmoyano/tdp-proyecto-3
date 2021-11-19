@@ -22,11 +22,17 @@ import logica.SalaDeJuegos;
 
 public class Level3Builder extends LevelBuilder {
 
-	public Level3Builder(SalaDeJuegos sj) {
+	public Level3Builder(SalaDeJuegos sj,int d) {
 		Coordenada punto = null;
 		Entidad entidad = null;
 		int j=0;
-		List<String> toret = LeerArchivo.leer("src\\patrones\\level_builder\\level3JDC.txt");
+		List<String> toret =null;
+		if (d==1)
+			toret= LeerArchivo.leer("src\\patrones\\level_builder\\level3JDC.txt");
+			if (d==2)
+				 toret = LeerArchivo.leer("src\\patrones\\level_builder\\level3AU.txt");
+			if (d==3)
+				toret = LeerArchivo.leer("src\\patrones\\level_builder\\level3PM.txt");
 		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
 		//Lee del txt las entidades y las agrega al mapa
 				for (int i = 1;i < toret.size() ; i++) {
@@ -126,7 +132,7 @@ public class Level3Builder extends LevelBuilder {
 					
 				}
 	}
-	@Override
+	/*@Override
 	public void buildEnemigos() {
 		mifabrica.crearEnemigoA();
 		mifabrica.crearEnemigoB();
@@ -149,6 +155,6 @@ public class Level3Builder extends LevelBuilder {
 	public void buildPlayer() {
 		mifabrica.crearJugador();
 		
-	}
+	}*/
 
 }
