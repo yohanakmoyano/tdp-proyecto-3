@@ -26,7 +26,7 @@ public class Juego {
 	protected int d;
 	public Juego() {
 		puntos = Puntaje.getInstancePuntaje();
-		nivel = 1;
+		nivel = 2;
 		miGui = Gui.getGui(this);
 		miSala = new SalaDeJuegos(miGui,this);
 	    /*miFabrica = new Director(nivel, miSala,d);

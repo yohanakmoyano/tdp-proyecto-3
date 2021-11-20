@@ -4,11 +4,11 @@ B;241;241;/Images/AU/enemigo_black.png
 T;70;150;/Images/AU/enemigo_blue.png
 S;321;300;/Images/AU/enemigo_green.png
 C;300;300;/Images/AU/enemigo_pink.png
-d;240;300;/Images/JDC/dinero_nivel2.png
-c;430;247;/Images/JDC/cuchillo_nivel1.png
-c;172;185;/Images/JDC/cuchillo_nivel1.png
-c;332;38;/Images/JDC/cuchillo_nivel1.png
-c;34;525;/Images/JDC/cuchillo_nivel1.png
+d;240;300;/Images/AU/sombrero_nivel2.png
+c;430;247;/Images/AU/pistola.png
+c;172;185;/Images/AU/pistola.png
+c;332;38;/Images/AU/pistola.png
+c;34;525;/Images/AU/pistola.png
 z;56;56;/Images/AU/Calabaza.png
 g;282;303;/Images/AU/Planta.png
 g;302;303;/Images/AU/Planta.png
