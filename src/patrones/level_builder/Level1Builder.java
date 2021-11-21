@@ -77,7 +77,8 @@ public class Level1Builder extends LevelBuilder {
 					break;
 				}
 				case "j": { // Creo un jugador
-					entidad = new Jugador(punto, 100, 3, this.getClass().getResource(caracter[j+3]).toString());
+					entidad = Jugador.getJugador( punto, 100,3,this.getClass().getResource(caracter[j+3]).toString());
+					//new Jugador(punto, 100, 3, this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListJugador().add(entidad);
 					break;
 				}	

@@ -13,14 +13,10 @@ public  class Jugador extends EntidadMovible {
 	protected Coordenada posRespawn;
 	protected boolean poseeItemD; //esto si tiene un item no mas o tener el item
 	//coleccion de power up
-protected static Jugador myInstance;
+	protected static Jugador myInstance;
 	
 
-	// TODO
-	/**Dado que tira error al momento de crear los niveles, por ahora dejaré este constructor público.
-	//Evitando así posibles errores al modificar esas lineas.
-	//Una vez solucionado eso, pasar el constructor a privado.**/
-	public Jugador(Coordenada c, int vel, int v, String rutaImg) {
+	private Jugador(Coordenada c, int vel, int v, String rutaImg) {
 		posRespawn = new Coordenada(c.getX(), c.getY());
 		ultMovimiento = reposo;
 		puedoMovermeIzq = true;
@@ -40,15 +36,9 @@ protected static Jugador myInstance;
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
 		
 	}
-	
-	private Jugador() {
-		// TODO acá llamar al constructor Jugador_456(Coordenada c, int vel, int v, String rutaImg) con
-		//		los parámetros adecuados.
-	}
-	
-	public static Jugador getJugador() {
+	public static Jugador getJugador(Coordenada c, int vel, int v, String rutaImg) {
 		if(myInstance == null)
-			myInstance = new Jugador();
+			myInstance = new Jugador(c,vel,v,rutaImg);
 		return myInstance;
 	}
 	
