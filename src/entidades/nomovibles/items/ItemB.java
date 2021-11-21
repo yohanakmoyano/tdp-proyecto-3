@@ -11,7 +11,7 @@ public class ItemB extends EntidadNoMovible {
 		valor = val;
 		posicion = c;
 		ancho = 25;
-		alto = 7;
+		alto = 13;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
