@@ -59,6 +59,7 @@ public class Gui extends JFrame {
 		setSize(new Dimension(900, 600));
 		setResizable(false);
 		this.setVisible(true);
+		
 		// Panel principal
 		panelprincipal = new JPanel();
 		panelprincipal.setBounds(0, 0, 900, 600);
@@ -66,6 +67,7 @@ public class Gui extends JFrame {
 		panelprincipal.setVisible(true);
 		panelprincipal.setLayout(null);
 		this.agregarBotonesMusica();
+		
 		// Panel laberinto
 		laberinto = new JPanel();
 		laberinto.setBounds(197, 0, 501, 553);
@@ -77,6 +79,7 @@ public class Gui extends JFrame {
 
 		// Inicia miJuego
 		mijuego = juego;
+		
 		// Text Puntaje
 		text_puntaje = new JTextField();
 		text_puntaje.setForeground(Color.WHITE);
@@ -87,6 +90,7 @@ public class Gui extends JFrame {
 		text_puntaje.setBounds(725, 56, 137, 27);
 		panelprincipal.add(text_puntaje);
 		text_puntaje.setColumns(10);
+		
 		// Text Vidas
 		text_vidas = new JTextField();
 		text_vidas.setForeground(Color.WHITE);
@@ -96,6 +100,7 @@ public class Gui extends JFrame {
 		text_vidas.setFont(new Font("Consolas", Font.BOLD, 22));
 		text_vidas.setBounds(725, 140, 137, 27);
 		panelprincipal.add(text_vidas);
+		
 		// Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
@@ -104,21 +109,28 @@ public class Gui extends JFrame {
 
 	}
 
+	
+	//pasarle por parametro la musica correspondiente
 	public void agregarBotonesMusica() {
-		JButton b_musica = new JButton("Musica ON");
-		b_musica.setBounds(770, 510, 120, 20);
-		panelprincipal.add(b_musica);
-		b_musica.setFocusable(false);
-		b_musica.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 10));
+		JButton boton_music = new JButton("Music ON");
+		boton_music.setBackground(Color.DARK_GRAY);
+		boton_music.setForeground(Color.WHITE);
+		boton_music.setBounds(767, 525, 100, 20);
+		panelprincipal.add(boton_music);
+		boton_music.setFocusable(false);
+		boton_music.setFont(new Font("Consolas", Font.BOLD, 12));
 
-		JButton b_musicaOff = new JButton("Musica OFF");
-		b_musicaOff.setBounds(770, 479, 120, 20);
-		panelprincipal.add(b_musicaOff);
-		b_musicaOff.setFocusable(false);
-		b_musicaOff.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 10));
+		JButton boton_musicOff = new JButton("Music OFF");
+		boton_musicOff.setBackground(Color.DARK_GRAY);
+		boton_musicOff.setForeground(Color.WHITE);
+		boton_musicOff.setBounds(767, 525, 100, 20);
+		panelprincipal.add(boton_musicOff);
+		boton_musicOff.setFocusable(false);
+		boton_musicOff.setFont(new Font("Consolas", Font.BOLD, 12));
+		boton_musicOff.setVisible(false);
 
 		requestFocusInWindow();
-		b_musica.addMouseListener(new MouseAdapter() {
+		boton_music.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				URL path = this.getClass().getResource("/audio/JDC.wav");
@@ -128,6 +140,8 @@ public class Gui extends JFrame {
 
 					clip.open(audioInput);
 					clip.start();
+					boton_musicOff.setVisible(true);
+					boton_music.setVisible(false);
 
 				} catch (IOException | UnsupportedAudioFileException | LineUnavailableException e1) {
 					e1.printStackTrace();
@@ -136,10 +150,12 @@ public class Gui extends JFrame {
 			}
 		});
 
-		b_musicaOff.addMouseListener(new MouseAdapter() {
+		boton_musicOff.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				clip.stop();
+				boton_music.setVisible(true);
+				boton_musicOff.setVisible(false);
 			}
 		});
 
@@ -285,10 +301,12 @@ public class Gui extends JFrame {
 	 */
 
 	
-	 public void agregarItem() { ImageIcon img_potion = new
-	 ImageIcon(getClass().getClassLoader().getResource(
-	 "Images/generales/bomba_nivel1.png")); labelPotion = new JLabel(img_potion);
-	 labelPotion.setBounds(725, 224, 25, 25); panelprincipal.add(labelPotion);
-	 panelprincipal.repaint(); }
+	 public void agregarItem() { 
+		 ImageIcon img_potion = new ImageIcon(getClass().getClassLoader().getResource("Images/generales/bomba_nivel1.png"));
+		 labelPotion = new JLabel(img_potion);
+		 labelPotion.setBounds(725, 224, 25, 25); 
+		 panelprincipal.add(labelPotion);
+		 panelprincipal.repaint();
+	 }
 	 
 }

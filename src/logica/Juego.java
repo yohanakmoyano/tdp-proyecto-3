@@ -23,24 +23,30 @@ public class Juego {
 	public static final int moverArriba = 4;
 	public static final int ponerItem = 5;
 	protected Movimiento movE;
-	protected int d;
+	protected int dominio;
+	protected int itemsRestantes;
+	
+	
 	public Juego() {
 		puntos = Puntaje.getInstancePuntaje();
-		nivel = 2;
+		nivel = 1;
 		miGui = Gui.getGui(this);
 		miSala = new SalaDeJuegos(miGui,this);
+		itemsRestantes = 0;
 	    /*miFabrica = new Director(nivel, miSala,d);
 		if(!miSala.getListJugador().isEmpty())
 			personaje = (Jugador) miSala.getListJugador().get(0);*/
 	}	
-	public void setDominio(int d) {
-		miFabrica = new Director(nivel, miSala,d);
+	
+	public void setDominio(int dominio) {
+		miFabrica = new Director(nivel, miSala, dominio);
 		if(!miSala.getListJugador().isEmpty())
 			personaje = (Jugador) miSala.getListJugador().get(0);
 	}
+	
 	public void actualizoVidas() {
-		if (personaje.getVidas()!=0)
-		miGui.actualizarVidas(personaje.getVidas());
+		if (personaje.getVidas()!=0) 
+			miGui.actualizarVidas(personaje.getVidas());
 		else
 			miGui.finDeJuego();
 	}
@@ -49,6 +55,7 @@ public class Juego {
 		puntos.setPuntaje(p);
 	}
 
+	//en getPuntaje esta mal evaluar el siguiente nivel aca
 	public int getPuntaje() {
 		int toRet;
 		toRet=puntos.getPuntajeActual();
@@ -71,6 +78,9 @@ public class Juego {
 		movE = new Movimiento(miSala);
 		movE.start();
 		nivel = 1;
+		//buscar donde restar estas monedas
+		itemsRestantes = miSala.getCantItemsA();
+		System.out.println("cantidad de monedas " +itemsRestantes);
 	}
 	public void runEnemies() {
 		movE.run();
@@ -113,6 +123,11 @@ public class Juego {
 			return false;
 	}
 	
+	//si ya agarre todos los items ya puedo pasar a siguiente nivel
+	public void siguienteNivel() {
+		if (itemsRestantes == 0) 
+			miGui.PasoDeNivel();
+	}
 
 	public void operar(int op) {
 		switch (op) {

@@ -22,6 +22,7 @@ public class SalaDeJuegos {
 	protected List<Entidad> listaJugador;
 	protected Gui miGui;
 	protected Juego juego;
+	protected int cantItemsA;
 
 	protected Coordenada posAnteriorJug;
 
@@ -30,6 +31,7 @@ public class SalaDeJuegos {
 		int incrementY = altura / cantDivisiones;
 		int baseX = 0;
 		int alturaY = 0;
+		int cantItemsA = 0;
 		int casoEspecialAncho = base - ((cantDivisiones - 1) * incrementX);
 		int casoEspecialAlto = altura - ((cantDivisiones - 1) * incrementY);
 		matrizZonas = new Zona[cantDivisiones][cantDivisiones];
@@ -67,6 +69,14 @@ public class SalaDeJuegos {
 
 	public Gui obtenerGui() {
 		return miGui;
+	}
+	
+	public void setCantItemsA(int cant) {
+		cantItemsA = cant;
+	}
+	
+	public int getCantItemsA() {
+		return cantItemsA;
 	}
 
 	/**

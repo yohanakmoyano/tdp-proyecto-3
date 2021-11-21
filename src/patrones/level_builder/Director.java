@@ -10,14 +10,15 @@ public class Director {
 	
 	public Director(int n, SalaDeJuegos sj,int j) {
 		nivel=n;
-		if (nivel==1) {
+		
+		if (nivel==1) 
 			builder=new Level1Builder(sj,j);
-		}
+		
 		if (nivel==2)
 			builder=new Level2Builder(sj,j);
-		if (nivel==3)
-			builder=new Level3Builder(sj,j);
 		
+		if (nivel==3)
+			builder=new Level3Builder(sj,j);	
 	}
 	
 	
