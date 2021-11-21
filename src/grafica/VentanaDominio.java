@@ -35,7 +35,7 @@ public class VentanaDominio extends JFrame {
 	public void agregarBotones() {
 		// Boton Juego del Calamar
 		JButton btnInicio_JDC = new JButton("");
-		btnInicio_JDC.setBounds(70, 522, 190, 50);
+		btnInicio_JDC.setBounds(93, 522, 190, 50);
 		btnInicio_JDC.setBackground(new Color(220, 20, 60));
 
 		String rutaBotonJDC = this.getClass().getResource("/Images/generales/boton_1.png").toString();

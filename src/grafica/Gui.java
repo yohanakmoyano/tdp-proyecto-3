@@ -112,24 +112,43 @@ public class Gui extends JFrame {
 	
 	//pasarle por parametro la musica correspondiente
 	public void agregarBotonesMusica() {
-		JButton boton_music = new JButton("Music ON");
-		boton_music.setBackground(Color.DARK_GRAY);
-		boton_music.setForeground(Color.WHITE);
-		boton_music.setBounds(767, 525, 100, 20);
-		panelprincipal.add(boton_music);
-		boton_music.setFocusable(false);
-		boton_music.setFont(new Font("Consolas", Font.BOLD, 12));
-
-		JButton boton_musicOff = new JButton("Music OFF");
-		boton_musicOff.setBackground(Color.DARK_GRAY);
-		boton_musicOff.setForeground(Color.WHITE);
-		boton_musicOff.setBounds(767, 525, 100, 20);
-		panelprincipal.add(boton_musicOff);
+		
+		
+		String rutaBotonSonidoOn = this.getClass().getResource("/Images/generales/sonidoOn.png").toString();
+		ImageIcon fotoBotonSonidoOn = null;
+		try {
+			fotoBotonSonidoOn = new ImageIcon(new URL(rutaBotonSonidoOn));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		
+		String rutaBotonSonidoOff = this.getClass().getResource("/Images/generales/sonidoOff.png").toString();
+		ImageIcon fotoBotonSonidoOff = null;
+		try {
+			fotoBotonSonidoOff = new ImageIcon(new URL(rutaBotonSonidoOff));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		
+		JButton boton_musicOff = new JButton();
+		boton_musicOff.setBackground(Color.WHITE);
+		boton_musicOff.setBounds(23, 11, 35, 35);
 		boton_musicOff.setFocusable(false);
 		boton_musicOff.setFont(new Font("Consolas", Font.BOLD, 12));
 		boton_musicOff.setVisible(false);
-
-		requestFocusInWindow();
+		Image medidaSonidoOff = fotoBotonSonidoOff.getImage().getScaledInstance(35,35, Image.SCALE_DEFAULT);
+		
+		JButton boton_music = new JButton();
+		boton_music.setBackground(Color.WHITE);
+		boton_music.setBounds(23, 11, 35, 35);
+		boton_music.setFocusable(false);
+		boton_music.setFont(new Font("Consolas", Font.BOLD, 12));
+		Image medidaSonidoOn = fotoBotonSonidoOn.getImage().getScaledInstance(35,35, Image.SCALE_DEFAULT);
+		boton_music.setIcon(new ImageIcon(medidaSonidoOn));
+		boton_music.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+		
+		
+		boton_musicOff.setIcon(new ImageIcon(medidaSonidoOff));
 		boton_music.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -149,15 +168,19 @@ public class Gui extends JFrame {
 
 			}
 		});
+		boton_musicOff.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+		panelprincipal.add(boton_musicOff);
+		panelprincipal.add(boton_music);
+				boton_musicOff.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						clip.stop();
+						boton_music.setVisible(true);
+						boton_musicOff.setVisible(false);
+					}
+				});
 
-		boton_musicOff.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				clip.stop();
-				boton_music.setVisible(true);
-				boton_musicOff.setVisible(false);
-			}
-		});
+		requestFocusInWindow();
 
 	}
 
