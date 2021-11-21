@@ -1,4 +1,5 @@
 /Images/PM/fondoPM_nivel2.png
+/audio/PC.wav
 j;222;410;/Images/JDC/jugador_nivel1.png
 B;241;241;/Images/JDC/boss_enemigo.png
 T;70;150;/Images/JDC/triangulo_enemigo.png

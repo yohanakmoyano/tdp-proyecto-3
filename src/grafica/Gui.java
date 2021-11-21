@@ -133,7 +133,7 @@ public class Gui extends JFrame {
 		boton_music.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				URL path = this.getClass().getResource("/audio/JDC.wav");
+				URL path = mijuego.getMusica();//this.getClass().getResource("/audio/JDC.wav");
 				try {
 					AudioInputStream audioInput = AudioSystem.getAudioInputStream(path);
 					clip = AudioSystem.getClip();

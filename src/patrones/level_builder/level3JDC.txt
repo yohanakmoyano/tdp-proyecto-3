@@ -1,4 +1,5 @@
 /Images/JDC/fondo_nivel3.png
+/audio/JDC.wav
 j;237;380;/Images/JDC/jugador_nivel1.png
 g;18;19;/Images/JDC/galleta_nivel1.png
 g;36;19;/Images/JDC/galleta_nivel1.png

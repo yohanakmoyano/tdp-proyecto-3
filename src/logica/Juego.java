@@ -1,6 +1,8 @@
 package logica;
 
 
+import java.net.URL;
+
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
@@ -26,7 +28,6 @@ public class Juego {
 	protected int dominio;
 	protected int itemsRestantes;
 	
-	
 	public Juego() {
 		puntos = Puntaje.getInstancePuntaje();
 		nivel = 1;
@@ -42,6 +43,9 @@ public class Juego {
 		miFabrica = new Director(nivel, miSala, dominio);
 		if(!miSala.getListJugador().isEmpty())
 			personaje = (Jugador) miSala.getListJugador().get(0);
+	}
+	public URL getMusica() {
+		return miFabrica.getMusica();
 	}
 	
 	public void actualizoVidas() {

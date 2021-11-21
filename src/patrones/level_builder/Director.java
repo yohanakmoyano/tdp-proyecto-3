@@ -1,6 +1,8 @@
 package patrones.level_builder;
 
 
+import java.net.URL;
+
 import logica.SalaDeJuegos;
 
 public class Director {
@@ -20,7 +22,9 @@ public class Director {
 		if (nivel==3)
 			builder=new Level3Builder(sj,j);	
 	}
-	
+	public URL getMusica(){
+		return builder.getMusica();
+	}
 	
 	public void changeLevel(int nvl) {
 		nivel=nvl;

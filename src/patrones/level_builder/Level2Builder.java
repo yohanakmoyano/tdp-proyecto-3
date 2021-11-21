@@ -34,9 +34,9 @@ public class Level2Builder extends LevelBuilder {
 		if (d==3)
 			toret = LeerArchivo.leer("src\\patrones\\level_builder\\level2PM.txt");
 		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
-		
+		musica=this.getClass().getResource(toret.get(1).toString());
 		//Lee del txt las entidades y las agrega al mapa
-		for (int i = 1;i < toret.size() ; i++) {
+		for (int i = 2;i < toret.size() ; i++) {
 			String palabra = toret.get(i);
 			String[] caracter = palabra.split(";");
 			punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
