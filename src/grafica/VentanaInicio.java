@@ -21,7 +21,7 @@ public class VentanaInicio extends JFrame {
 
 	public VentanaInicio() {
 		// Configuracion de la Ventana Inicio
-		setTitle("PACMAN 2.0");
+		setTitle("The Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
 		setSize(new Dimension(915, 640));
@@ -79,9 +79,8 @@ public class VentanaInicio extends JFrame {
 
 		btnInstrucciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaDominio ingresoDominio = new VentanaDominio();
-				ingresoDominio.setVisible(true);
-				setVisible(false);
+				VentanaInstrucciones ventaInt = new VentanaInstrucciones();
+				ventaInt.setVisible(true);
 			}
 
 		});

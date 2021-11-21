@@ -25,6 +25,7 @@ public class Level2Builder extends LevelBuilder {
 		Entidad entidad = null;
 		int j=0;
 		List<String> toret =null;
+		int cantItems = 0;
 		
 		//Lee del txt el fondo del lvl2 de los diferentes Dominios
 		if (d==1)
@@ -51,6 +52,8 @@ public class Level2Builder extends LevelBuilder {
 				case "g": { // galleta
 					entidad = new ItemA(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
 					sj.getListaEntidadFija().add(entidad);
+					cantItems++;	
+					sj.setCantItems(cantItems);
 					break;
 				}
 				case "e": { // Creo un energizante
@@ -61,6 +64,8 @@ public class Level2Builder extends LevelBuilder {
 				case "c": { // Creo un cuchillo
 					entidad = new ItemB(1, punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
+					cantItems++;	
+					sj.setCantItems(cantItems);
 					break;
 				}
 				case "d": { // Creo un dinero

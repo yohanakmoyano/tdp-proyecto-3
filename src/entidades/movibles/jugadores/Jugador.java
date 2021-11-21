@@ -3,6 +3,7 @@ package entidades.movibles.jugadores;
 import entidades.movibles.EntidadMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
+import logica.Puntaje;
 import patrones.strategy.ControlStrategy;
 import patrones.visitor_entidad.VisitorEntidad;
 import patrones.visitor_entidad.VisitorJugador;
@@ -14,6 +15,7 @@ public  class Jugador extends EntidadMovible {
 	protected boolean poseeItemD; //esto si tiene un item no mas o tener el item
 	//coleccion de power up
 	protected static Jugador myInstance;
+	protected int cantItemsLevantados;
 	
 
 	private Jugador(Coordenada c, int vel, int v, String rutaImg) {
@@ -32,6 +34,7 @@ public  class Jugador extends EntidadMovible {
 		factorMovX = ancho/2;
 		alto = 22;
 		factorMovY = alto/2;
+		cantItemsLevantados=0;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
 		
@@ -42,6 +45,18 @@ public  class Jugador extends EntidadMovible {
 		return myInstance;
 	}
 	
+	
+	public void afectarPuntaje(int valor) {
+		Puntaje.getInstancePuntaje().incrementarEn(valor);
+	}
+	
+	public void afectarCantItem() {
+		cantItemsLevantados++;
+	}
+	
+	public int getCantItemsLevantados() {
+		return cantItemsLevantados;
+	}
 
 	//jugador metodo accionar--> tipo de estado de estrategia cuando suelto delego al strategy
 	public ControlStrategy getEstrategia() {

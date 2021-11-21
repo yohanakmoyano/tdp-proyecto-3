@@ -25,7 +25,8 @@ public class Level1Builder extends LevelBuilder {
 		Entidad entidad = null;
 		int j=0;
 		List<String> toret =null;
-		int cantItemsA = 0;
+		int cantItems = 0;
+		
 		//Lee del txt el fondo del lvl1 de los diferentes Dominios
 		if (d==1)
 			toret= LeerArchivo.leer("src\\patrones\\level_builder\\level1JDC.txt");
@@ -51,9 +52,9 @@ public class Level1Builder extends LevelBuilder {
 				case "g": { // galleta
 					entidad = new ItemA(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
 					sj.getListaEntidadFija().add(entidad);
-					cantItemsA = cantItemsA + 1 ;
 					//System.out.println("cantidad de monedas " + cantItemsA);
-					sj.setCantItemsA(cantItemsA);
+					cantItems++;	
+					sj.setCantItems(cantItems);
 					break;
 				}
 				case "e": { // Creo un energizante
@@ -64,6 +65,8 @@ public class Level1Builder extends LevelBuilder {
 				case "c": { // Creo un cuchillo
 					entidad = new ItemB(1, punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
+					cantItems++;	
+					sj.setCantItems(cantItems);
 					break;
 				}
 				case "d": { // Creo un dinero

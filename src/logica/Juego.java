@@ -13,7 +13,7 @@ import patrones.level_builder.Director;
 
 public class Juego {
 	protected Puntaje puntos;
-	protected int nivel;
+	protected int nivel; 
 	protected Gui miGui;
 	protected SalaDeJuegos miSala;
 	protected Director miFabrica;
@@ -26,19 +26,19 @@ public class Juego {
 	public static final int ponerItem = 5;
 	protected Movimiento movE;
 	protected int dominio;
-	protected int itemsRestantes;
+	protected int itemsTotales;
 	
 	public Juego() {
 		puntos = Puntaje.getInstancePuntaje();
 		nivel = 1;
 		miGui = Gui.getGui(this);
 		miSala = new SalaDeJuegos(miGui,this);
-		itemsRestantes = 0;
+		itemsTotales = 0;
 	    /*miFabrica = new Director(nivel, miSala,d);
 		if(!miSala.getListJugador().isEmpty())
 			personaje = (Jugador) miSala.getListJugador().get(0);*/
 	}	
-	
+	//ojo con el casteo
 	public void setDominio(int dominio) {
 		miFabrica = new Director(nivel, miSala, dominio);
 		if(!miSala.getListJugador().isEmpty())
@@ -83,8 +83,8 @@ public class Juego {
 		movE.start();
 		nivel = 1;
 		//buscar donde restar estas monedas
-		itemsRestantes = miSala.getCantItemsA();
-		System.out.println("cantidad de monedas " +itemsRestantes);
+		itemsTotales = miSala.getCantItems();
+		System.out.println("cantidad de monedas " +itemsTotales);
 	}
 	public void runEnemies() {
 		movE.run();
@@ -127,12 +127,21 @@ public class Juego {
 			return false;
 	}
 	
-	//si ya agarre todos los items ya puedo pasar a siguiente nivel
-	public void siguienteNivel() {
-		if (itemsRestantes == 0) 
-			miGui.PasoDeNivel();
+	public boolean siguienteNivel() {
+		boolean pasoLvl = false;
+		if (itemsTotales == personaje.getCantItemsLevantados()) {
+			pasoLvl = true;
+		}
+		return pasoLvl;
+			
 	}
 
+	public void pasoDeNivel() {
+		if(siguienteNivel()) {
+			miGui.PasoDeNivel();
+		}
+	}
+	
 	public void operar(int op) {
 		switch (op) {
 			case moverAbajo: {
