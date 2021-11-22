@@ -39,8 +39,12 @@ public class Level3Builder extends LevelBuilder {
 			toret = LeerArchivo.leer("src\\patrones\\level_builder\\level3PM.txt");
 		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
 		musica=this.getClass().getResource(toret.get(1).toString());
+		 // Creo un jugador
+		Jugador jug = Jugador.getJugador(new Coordenada(240,380),100,3,this.getClass().getResource(toret.get(2)).toString());
+		sj.obtenerGui().mostrarEntidad(jug);
+		sj.getListJugador().add(jug);
 		//Lee del txt las entidades y las agrega al mapa
-		for (int i = 2;i < toret.size() ; i++) {
+		for (int i = 3;i < toret.size() ; i++) {
 			String palabra = toret.get(i);
 			String[] caracter = palabra.split(";");
 			punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]));
@@ -79,12 +83,6 @@ public class Level3Builder extends LevelBuilder {
 				case "z": { // Creo una bomba
 					entidad = new ItemD(1, punto, this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
-					break;
-				}
-				case "j": { // Creo un jugador
-					entidad =Jugador.getJugador( punto, 100,3,this.getClass().getResource(caracter[j+3]).toString());
-							//new Jugador(punto, 100, 3, this.getClass().getResource(caracter[j+3]).toString());
-					sj.getListJugador().add(entidad);
 					break;
 				}
 				case "B": { // Creo un Boss

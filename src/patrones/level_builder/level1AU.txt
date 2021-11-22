@@ -1,6 +1,6 @@
 /Images/AU/fondoAU_nivel1.png
 /audio/AU.wav
-j;240;390;/Images/AU/jugador_red.png
+/Images/AU/jugador_red.png
 B;241;241;/Images/AU/enemigo_black.png
 T;70;150;/Images/AU/enemigo_blue.png
 S;321;300;/Images/AU/enemigo_green.png

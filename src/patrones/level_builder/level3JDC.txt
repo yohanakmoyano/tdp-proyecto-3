@@ -1,6 +1,6 @@
 /Images/JDC/fondo_nivel3.png
 /audio/JDC.wav
-j;237;380;/Images/JDC/jugador_nivel1.png
+/Images/JDC/jugador_nivel1.png
 B;241;241;/Images/JDC/boss_enemigo.png
 T;70;150;/Images/JDC/triangulo_enemigo.png
 S;321;300;/Images/JDC/cuadrado_enemigo.png
