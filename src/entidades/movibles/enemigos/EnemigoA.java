@@ -16,41 +16,46 @@ public class EnemigoA extends Enemigo {
 		miVisitor = new VisitorEnemigo(this);
 		posicion = c;
 		ancho = 20;
-		factorMovX = ancho/2;
+		factorMovX = ancho/4;
 		alto = 20;
-		factorMovY = alto/2;
+		factorMovY = alto/4;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
+	
 	@Override
 	public void moverArriba() {
+		puedoMovermeDown = true;
 		ultMovimiento = ultMovUp;
 		actualizarMov = posicion.getY() - (factorMovY);
 		posicion.setY(actualizarMov);
-		miRep.moverArriba();
+		miRep.moverArriba(factorMovY);
 	}
 
 	@Override
 	public void moverAbajo() {
+		puedoMovermeUp = true;
 		ultMovimiento = ultMovDown;
 		actualizarMov = posicion.getY() + (factorMovY);
 		posicion.setY(actualizarMov);
-		miRep.moverAbajo();
+		miRep.moverAbajo(factorMovY);
 	}
 
 	@Override
 	public void moverIzquierda() {
+		puedoMovermeDer = true;
 		ultMovimiento = ultMovIzq;
 		actualizarMov = posicion.getX() - (factorMovX);
 		posicion.setX(actualizarMov);
-		miRep.moverIzquierda();
+		miRep.moverIzquierda(factorMovX);
 	}
 
 	@Override
 	public void moverDerecha() {
+		puedoMovermeIzq = true;
 		ultMovimiento = ultMovDer;
 		actualizarMov = posicion.getX() + (factorMovX);
 		posicion.setX(actualizarMov);
-		miRep.moverDerecha();
+		miRep.moverDerecha(factorMovX);
 	}
 	
 	@Override

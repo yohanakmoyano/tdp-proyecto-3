@@ -7,6 +7,8 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import logica.Coordenada;
+
 public class RepresentacionGrafica {
 	protected JLabel dibujo;
 	protected String ruta; 
@@ -31,26 +33,26 @@ public class RepresentacionGrafica {
 	}
 	
 	//se mueve + en el eje x
-	public void moverDerecha() {
-		actualizarMov = dibujo.getX() + (base/2);
+	public void moverDerecha(int factorX) {
+		actualizarMov = dibujo.getX() + (factorX);
 		dibujo.setBounds(actualizarMov, dibujo.getY(), base, altura);
 	}
 	
 	//se mueve - en el eje x
-	public void moverIzquierda() {
-		actualizarMov = dibujo.getX() - (base/2);
+	public void moverIzquierda(int factorX) {
+		actualizarMov = dibujo.getX() - (factorX);
 		dibujo.setBounds(actualizarMov, dibujo.getY(), base, altura);
 	}
 	
 	//se mueve - en el eje y
-	public void moverArriba() {
-		actualizarMov = dibujo.getY() - (altura/2);
+	public void moverArriba(int factorY) {
+		actualizarMov = dibujo.getY() - (factorY);
 		dibujo.setBounds(dibujo.getX(), actualizarMov, base, altura);
 	}
 	
 	//se mueve + en el eje y
-	public void moverAbajo() {
-		actualizarMov = dibujo.getY() + (altura/2);
+	public void moverAbajo(int factorY) {
+		actualizarMov = dibujo.getY() + (factorY);
 		dibujo.setBounds(dibujo.getX(), actualizarMov, base, altura);
 	}
 	
@@ -64,6 +66,10 @@ public class RepresentacionGrafica {
 	
 	public boolean colisiona(RepresentacionGrafica r) {
 		return this.dibujo.getBounds().intersects(r.getDibujo().getBounds());
+	}
+	
+	public boolean contieneCoordenada(Coordenada c) {
+		return dibujo.contains(c.getX(), c.getY());
 	}
 	
 	public String getRuta() {

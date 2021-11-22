@@ -31,9 +31,9 @@ public  class Jugador extends EntidadMovible {
 		vidas = v;
 		posicion = c;
 		ancho = 19;
-		factorMovX = ancho/2;
+		factorMovX = ancho/4;
 		alto = 22;
-		factorMovY = alto/2;
+		factorMovY = alto/4;
 		cantItemsLevantados=0;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
@@ -78,34 +78,38 @@ public  class Jugador extends EntidadMovible {
 	
 	//se mueve + en el eje x
 	public void moverDerecha() {
+		puedoMovermeIzq = true;
 		ultMovimiento = ultMovDer;
 		actualizarMov = posicion.getX() + (factorMovX);
 		posicion.setX(actualizarMov);
-		miRep.moverDerecha();
+		miRep.moverDerecha(factorMovX);
 	}
 	
 	//se mueve - en el eje x
 	public void moverIzquierda() {
+		puedoMovermeDer = true;
 		ultMovimiento = ultMovIzq;
 		actualizarMov = posicion.getX() - (factorMovX);
 		posicion.setX(actualizarMov);
-		miRep.moverIzquierda();
+		miRep.moverIzquierda(factorMovX);
 	}
 	
 	//se mueve - en el eje y
 	public void moverArriba() {
+		puedoMovermeDown = true;
 		ultMovimiento = ultMovUp;
 		actualizarMov = posicion.getY() - (factorMovY);
 		posicion.setY(actualizarMov);
-		miRep.moverArriba();
+		miRep.moverArriba(factorMovY);
 	}
 	
 	//se mueve + en el eje y
 	public void moverAbajo() {
+		puedoMovermeUp = true;
 		ultMovimiento = ultMovDown;
 		actualizarMov = posicion.getY() + (factorMovY);
 		posicion.setY(actualizarMov);
-		miRep.moverAbajo();
+		miRep.moverAbajo(factorMovY);
 	}
 
 	public void morir() {

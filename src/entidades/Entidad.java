@@ -67,6 +67,11 @@ public abstract class Entidad {
 	public boolean colisiona(Entidad e) {
 		return ((this != e) && (miRep.colisiona(e.getRepresentacionGrafica())));
 	}
+
+	public boolean contieneCoordenada(Coordenada c) {
+		return miRep.contieneCoordenada(c);
+	}
+	
 	
 	public void eliminar() {
 		miRep.eliminar();

@@ -3,6 +3,7 @@ package logica;
 import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import entidades.Entidad;
@@ -111,6 +112,18 @@ public class SalaDeJuegos {
 			// System.out.println("--------------------------HuboCambioZona--: "+true);
 		}
 	}
+	
+	private boolean posColisiona(Coordenada c) {
+		//System.out.println("Pos: "+c.getX()+", "+c.getY());
+		Zona z = getZona(c);
+		Iterator<Entidad> it = z.getListaEntidades().iterator();
+		boolean colisiona = false;
+		while(it.hasNext() && !colisiona) {
+			colisiona = it.next().contieneCoordenada(c);
+		}
+		//System.out.println("Pos: "+colisiona);
+		return colisiona;
+	}
 
 	/**
 	 * Consulta si la entidad e, al moverse, cambio las zonas sobre las que está.
@@ -132,7 +145,7 @@ public class SalaDeJuegos {
 
 	// Modificar autorizaciones
 	public boolean autorizarMovArriba(EntidadMovible e) {
-		boolean puedeMoverse = (e.nextPosMovUp().getY() > 0) && (e.puedoMovermeUp());
+		boolean puedeMoverse = (e.nextPosMovUp().getY() > 0) && (e.puedoMovermeUp()) && !posColisiona(e.nextPosMovUp());
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);
@@ -140,7 +153,7 @@ public class SalaDeJuegos {
 	}
 
 	public boolean autorizarMovAbajo(EntidadMovible e) {
-		boolean puedeMoverse = ((e.nextPosMovDown().getY() + e.getAlto()) < altura) && (e.puedoMovermeDown());
+		boolean puedeMoverse = ((e.nextPosMovDown().getY() + e.getAlto()) < altura) && (e.puedoMovermeDown()) && !posColisiona(e.nextPosMovDown());
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);
@@ -148,7 +161,7 @@ public class SalaDeJuegos {
 	}
 
 	public boolean autorizarMovDerecha(EntidadMovible e) {
-		boolean puedeMoverse = ((e.nextPosMovDer().getX() + e.getAlto()) < base) && (e.puedoMovermeDer());
+		boolean puedeMoverse = ((e.nextPosMovDer().getX() + e.getAlto()) < base) && (e.puedoMovermeDer()) && !posColisiona(e.nextPosMovDer());
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);
@@ -156,7 +169,7 @@ public class SalaDeJuegos {
 	}
 
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
-		boolean puedeMoverse = (e.nextPosMovIzq().getX() > 0) && (e.puedoMovermeIzq());
+		boolean puedeMoverse = (e.nextPosMovIzq().getX() > 0) && (e.puedoMovermeIzq()) && !posColisiona(e.nextPosMovIzq());
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);
