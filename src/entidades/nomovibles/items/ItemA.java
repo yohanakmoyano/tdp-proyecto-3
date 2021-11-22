@@ -8,6 +8,7 @@ import patrones.visitor_entidad.VisitorEntidad;
 public  class ItemA extends EntidadNoMovible {
 // JDC: Galleta , AU: hojitas , PC: pacDoct
 	public ItemA(int val, Coordenada c, String rutaImg) {
+		caminable = true;
 		valor = val;
 		posicion = c;
 		ancho = 13;

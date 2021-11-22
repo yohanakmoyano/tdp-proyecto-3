@@ -119,7 +119,8 @@ public class SalaDeJuegos {
 		Iterator<Entidad> it = z.getListaEntidades().iterator();
 		boolean colisiona = false;
 		while(it.hasNext() && !colisiona) {
-			colisiona = it.next().contieneCoordenada(c);
+			Entidad e = it.next();
+			colisiona = e.contieneCoordenada(c) && (!e.isCaminable());
 		}
 		//System.out.println("Pos: "+colisiona);
 		return colisiona;
@@ -127,7 +128,6 @@ public class SalaDeJuegos {
 
 	/**
 	 * Consulta si la entidad e, al moverse, cambio las zonas sobre las que está.
-	 * 
 	 * @param e entidad por la cual consultar.
 	 */
 	public void actualizarZonasEntidad(Entidad e) {
@@ -139,13 +139,14 @@ public class SalaDeJuegos {
 		verificarCambioZona(posAnteriorJug, esqSupIzq, e);
 		verificarCambioZona(new Coordenada(posAnteriorJug.getX() + e.getAncho(), posAnteriorJug.getY()), esqSupDer, e);
 		verificarCambioZona(new Coordenada(posAnteriorJug.getX(), posAnteriorJug.getY() + e.getAlto()), esqInfIzq, e);
-		verificarCambioZona(new Coordenada(posAnteriorJug.getX() + e.getAncho(), posAnteriorJug.getY() + e.getAlto()),
-				esqInfDer, e);
+		verificarCambioZona(new Coordenada(posAnteriorJug.getX() + e.getAncho(), posAnteriorJug.getY() + e.getAlto()), esqInfDer, e);
 	}
 
 	// Modificar autorizaciones
 	public boolean autorizarMovArriba(EntidadMovible e) {
-		boolean puedeMoverse = (e.nextPosMovUp().getY() > 0) && (e.puedoMovermeUp()) && !posColisiona(e.nextPosMovUp());
+		Coordenada newPosSupIzq = e.nextPosMovUp();
+		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
+		boolean puedeMoverse = (newPosSupIzq.getY() > 0) && (e.puedoMovermeUp()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosSupDer);
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);
@@ -153,7 +154,10 @@ public class SalaDeJuegos {
 	}
 
 	public boolean autorizarMovAbajo(EntidadMovible e) {
-		boolean puedeMoverse = ((e.nextPosMovDown().getY() + e.getAlto()) < altura) && (e.puedoMovermeDown()) && !posColisiona(e.nextPosMovDown());
+		Coordenada newPosSupIzq = e.nextPosMovDown();
+		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
+		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
+		boolean puedeMoverse = ((newPosSupIzq.getY() + e.getAlto()) < altura) && (e.puedoMovermeDown()) && !posColisiona(newPosInfIzq) && !posColisiona(newPosInfDer);
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);
@@ -161,7 +165,10 @@ public class SalaDeJuegos {
 	}
 
 	public boolean autorizarMovDerecha(EntidadMovible e) {
-		boolean puedeMoverse = ((e.nextPosMovDer().getX() + e.getAlto()) < base) && (e.puedoMovermeDer()) && !posColisiona(e.nextPosMovDer());
+		Coordenada newPosSupIzq = e.nextPosMovDer();
+		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
+		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
+		boolean puedeMoverse = ((newPosSupIzq.getX() + e.getAlto()) < base) && (e.puedoMovermeDer()) && !posColisiona(newPosSupDer) && !posColisiona(newPosInfDer);
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);
@@ -169,7 +176,9 @@ public class SalaDeJuegos {
 	}
 
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
-		boolean puedeMoverse = (e.nextPosMovIzq().getX() > 0) && (e.puedoMovermeIzq()) && !posColisiona(e.nextPosMovIzq());
+		Coordenada newPosSupIzq = e.nextPosMovIzq();
+		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
+		boolean puedeMoverse = (newPosSupIzq.getX() > 0) && (e.puedoMovermeIzq()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosInfIzq);
 		if (puedeMoverse)
 			posAnteriorJug = e.getEsquinaSupIzq();
 		// System.out.println("Puede mover => "+puedeMoverse);

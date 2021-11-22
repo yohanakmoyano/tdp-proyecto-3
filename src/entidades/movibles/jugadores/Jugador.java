@@ -19,6 +19,7 @@ public  class Jugador extends EntidadMovible {
 	
 
 	private Jugador(Coordenada c, int vel, int v, String rutaImg) {
+		caminable = true;
 		posRespawn = new Coordenada(c.getX(), c.getY());
 		ultMovimiento = reposo;
 		puedoMovermeIzq = true;

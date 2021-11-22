@@ -6,6 +6,7 @@ import logica.Puntaje;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public abstract class Entidad {
+	protected boolean caminable;
 	protected VisitorEntidad miVisitor;
 	protected int ancho; //mi X
 	protected int alto; //mi Y
@@ -22,6 +23,10 @@ public abstract class Entidad {
 
 	public int getAlto() {
 		return alto;
+	}
+	
+	public boolean isCaminable() {
+		return caminable;
 	}
 	
 	/**

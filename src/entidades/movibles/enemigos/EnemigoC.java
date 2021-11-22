@@ -8,6 +8,7 @@ import patrones.visitor_entidad.VisitorEntidad;
 public class EnemigoC extends Enemigo {
 	//JDC: Triangulo, AU: Pink , PC: Pinky
 	public EnemigoC(Coordenada c, String rutaImg) {
+		caminable = true;
 		ultMovimiento = reposo;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;

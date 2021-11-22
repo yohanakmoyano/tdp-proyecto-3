@@ -18,7 +18,7 @@ public class VisitorJugador extends VisitorEntidad {
 	}
 
 	public void visit(Bloque ent) {
-		miJugador.resetearMovimientos();
+		//miJugador.resetearMovimientos();
 		switch(miJugador.getUltMovimiento()) {
 			case(Jugador.ultMovDer): {
 				miJugador.setPuedoMovermeDer(false);
