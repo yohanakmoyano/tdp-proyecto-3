@@ -113,8 +113,7 @@ public class Gui extends JFrame {
 	//pasarle por parametro la musica correspondiente
 	public void agregarBotonesMusica() {
 		
-		
-		String rutaBotonSonidoOn = this.getClass().getResource("/Images/generales/sonidoOn.png").toString();
+		String rutaBotonSonidoOn = this.getClass().getResource("/Images/generales/sonidoOff.png").toString();
 		ImageIcon fotoBotonSonidoOn = null;
 		try {
 			fotoBotonSonidoOn = new ImageIcon(new URL(rutaBotonSonidoOn));
@@ -122,7 +121,7 @@ public class Gui extends JFrame {
 			e.printStackTrace();
 		}
 		
-		String rutaBotonSonidoOff = this.getClass().getResource("/Images/generales/sonidoOff.png").toString();
+		String rutaBotonSonidoOff = this.getClass().getResource("/Images/generales/sonidoOn.png").toString();
 		ImageIcon fotoBotonSonidoOff = null;
 		try {
 			fotoBotonSonidoOff = new ImageIcon(new URL(rutaBotonSonidoOff));

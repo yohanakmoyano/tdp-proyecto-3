@@ -30,7 +30,7 @@ public class Juego {
 	
 	public Juego() {
 		puntos = Puntaje.getInstancePuntaje();
-		nivel = 1;
+		nivel = 2;
 		miGui = Gui.getGui(this);
 		miSala = new SalaDeJuegos(miGui,this);
 		itemsTotales = 0;
