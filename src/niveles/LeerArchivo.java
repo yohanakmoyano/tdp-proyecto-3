@@ -8,15 +8,14 @@ import java.util.List;
 
 public class LeerArchivo {
 
-	 
 	public static List<String> leer(String ruta) {
 		String linea;
-		
-		List<String> lista =new ArrayList<String>();
+
+		List<String> lista = new ArrayList<String>();
 		try {
 			FileReader fr = new FileReader(ruta);
 			BufferedReader br = new BufferedReader(fr);
-			while ((linea = br.readLine()) != null) { // en cada linea
+			while ((linea = br.readLine()) != null) {
 				lista.add(linea);
 			}
 
@@ -27,5 +26,5 @@ public class LeerArchivo {
 		}
 		return lista;
 	}
-	
+
 }

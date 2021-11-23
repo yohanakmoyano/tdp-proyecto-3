@@ -5,10 +5,9 @@ import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEntidad;
 
-public  class ItemE extends EntidadNoMovible{
-	//JDC: Dinero, AU: sombrero , PC: Fruit
-	
-	
+public class ItemE extends EntidadNoMovible {
+	// JDC: Dinero, AU: sombrero , PC: Fruit
+
 	public ItemE(int val, Coordenada c, String rutaImg) {
 		alive = true;
 		caminable = true;
@@ -22,6 +21,5 @@ public  class ItemE extends EntidadNoMovible{
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}
-
 
 }

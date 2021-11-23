@@ -5,21 +5,18 @@ import logica.Coordenada;
 
 public abstract class EntidadMovible extends Entidad {
 	protected int velocidad;
-	//sacar de entidaddes movible y ponerlo o solo en jugador o solo en juego
 	protected int vidas;
 	protected int actualizarMov;
 	protected boolean puedoMovermeIzq;
 	protected boolean puedoMovermeDer;
 	protected boolean puedoMovermeUp;
 	protected boolean puedoMovermeDown;
-	
 	protected int ultMovimiento;
 	public static final int reposo = 0;
 	public static final int ultMovIzq = 1;
 	public static final int ultMovDer = 2;
 	public static final int ultMovUp = 3;
 	public static final int ultMovDown = 4;
-	
 	protected int factorMovX;
 	protected int factorMovY;
 
@@ -28,7 +25,6 @@ public abstract class EntidadMovible extends Entidad {
 	}
 	
 	public void setVelocidad(int vel) {
-		System.out.println("Modifico velocidad: old: "+velocidad+" new: "+vel);
 		velocidad = vel;
 	}
 	
@@ -99,9 +95,6 @@ public abstract class EntidadMovible extends Entidad {
 	
 	public abstract void moverAbajo();
 	
-	/**
-	 * Se encarga de reducir en uno la cantidad de vidas del personaje. 
-	 */
 	public void perderVida() {
 		vidas--;
 	}

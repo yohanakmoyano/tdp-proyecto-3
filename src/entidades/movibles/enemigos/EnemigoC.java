@@ -6,9 +6,8 @@ import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public class EnemigoC extends Enemigo {
-	//JDC: Triangulo, AU: Pink , PC: Pinky
-	
-	
+	// JDC: Triangulo, AU: Pink , PC: Pinky
+
 	public EnemigoC(Coordenada c, String rutaImg) {
 		alive = true;
 		caminable = true;
@@ -20,12 +19,12 @@ public class EnemigoC extends Enemigo {
 		miVisitor = new VisitorEnemigo(this);
 		posicion = c;
 		ancho = 20;
-		factorMovX = ancho/4;
+		factorMovX = ancho / 4;
 		alto = 20;
-		factorMovY = alto/4;
+		factorMovY = alto / 4;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
-	
+
 	@Override
 	public void moverArriba() {
 		puedoMovermeDown = true;
@@ -61,13 +60,13 @@ public class EnemigoC extends Enemigo {
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha(factorMovX);
 	}
-	
+
 	@Override
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 
 	}
-	
+
 	@Override
 	public void morir() {
 		this.isDead();
@@ -81,7 +80,7 @@ public class EnemigoC extends Enemigo {
 		puedoMovermeDown = true;
 		this.revive();
 	}
-	
+
 	@Override
 	public Coordenada nextPosMovDer() {
 		return new Coordenada(posicion.getX() + (factorMovX), posicion.getY());

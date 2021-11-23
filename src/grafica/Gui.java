@@ -253,7 +253,6 @@ public class Gui extends JFrame {
 	}
 
 	public void PasoDeNivel() {
-		//panelprincipal.removeAll();
 		ImageIcon img_Siguiente_nivel = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/next_level.png"));
 		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);

@@ -7,8 +7,7 @@ import patrones.visitor_entidad.VisitorEntidad;
 
 public class EnemigoA extends Enemigo {
 //AU: black , JDC: Boss , PC: Blinky
-	
-	
+
 	public EnemigoA(Coordenada c, String rutaImg) {
 		alive = true;
 		caminable = true;
@@ -20,12 +19,12 @@ public class EnemigoA extends Enemigo {
 		miVisitor = new VisitorEnemigo(this);
 		posicion = c;
 		ancho = 20;
-		factorMovX = ancho/4;
+		factorMovX = ancho / 4;
 		alto = 20;
-		factorMovY = alto/4;
+		factorMovY = alto / 4;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
-	
+
 	@Override
 	public void moverArriba() {
 		puedoMovermeDown = true;
@@ -61,7 +60,7 @@ public class EnemigoA extends Enemigo {
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha(factorMovX);
 	}
-	
+
 	@Override
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
@@ -70,7 +69,6 @@ public class EnemigoA extends Enemigo {
 	@Override
 	public void morir() {
 		this.isDead();
-		System.out.println("Pos anterior a muerte Boss ("+posicion.getX() + ", " + posicion.getY()+")");
 		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
 		posicion.setX(miSalon.getRespawnPoint().getX());
 		posicion.setY(miSalon.getRespawnPoint().getY());
@@ -79,7 +77,6 @@ public class EnemigoA extends Enemigo {
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
-		System.out.println("Pos posterior a muerte Boss ("+posicion.getX() + ", " + posicion.getY()+")");
 		this.revive();
 	}
 

@@ -6,9 +6,8 @@ import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public class ItemB extends EntidadNoMovible {
-	//JDC: Cuchillo , AU pistola , PC: PowerPellets
-	
-	
+	// JDC: Cuchillo , AU pistola , PC: PowerPellets
+
 	public ItemB(int val, Coordenada c, String rutaImg) {
 		alive = true;
 		caminable = true;
