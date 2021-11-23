@@ -5,6 +5,7 @@ import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public abstract class Entidad {
+	protected boolean alive;
 	protected boolean caminable;
 	protected VisitorEntidad miVisitor;
 	protected int ancho; //mi X
@@ -26,6 +27,18 @@ public abstract class Entidad {
 	
 	public boolean isCaminable() {
 		return caminable;
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
+	
+	public void isDead() {
+		alive = false;
+	}
+	
+	public void revive() {
+		alive = true;
 	}
 	
 	/**
@@ -76,8 +89,8 @@ public abstract class Entidad {
 		return miRep.contieneCoordenada(c);
 	}
 	
-	
 	public void eliminar() {
+		this.isDead();
 		miRep.eliminar();
 	}
 	

@@ -69,7 +69,7 @@ public class RepresentacionGrafica {
 	}
 	
 	public boolean contieneCoordenada(Coordenada c) {
-		System.out.println("Contiene coordenada + " + dibujo.contains(c.getX(), c.getY()));
+		//System.out.println("Contiene coordenada + " + dibujo.contains(c.getX(), c.getY()));
 		return dibujo.getBounds().contains(c.getX(), c.getY());
 	}
 	

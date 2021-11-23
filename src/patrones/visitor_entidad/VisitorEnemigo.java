@@ -18,7 +18,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 
 	public void visit(Bloque ent) {
 		//miEnemigo.resetearMovimientos();
-		switch(miEnemigo.getUltMovimiento()) {
+		/**switch(miEnemigo.getUltMovimiento()) {
 			case(Enemigo.ultMovDer): {
 				miEnemigo.setPuedoMovermeDer(false);
 				break;
@@ -35,7 +35,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 				miEnemigo.setPuedoMovermeDown(false);
 				break;
 			}
-		}
+		}**/
 	//System.out.println("--------------------------Visite bloque-------------------------------------------------------------");
 	}
 	

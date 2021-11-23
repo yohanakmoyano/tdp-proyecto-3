@@ -19,7 +19,7 @@ public class SalaDeJuegos {
 	protected List<Entidad> listaEntidadFija;
 	protected Juego juego;
 	protected int cantItems;
-	protected Coordenada posAnteriorJug;
+	//protected Coordenada posAnteriorJug;
 	//ver si anda
 	protected Gui miGui;
 
@@ -89,7 +89,9 @@ public class SalaDeJuegos {
 		Zona ze = getZona(newPos);
 		if (z != ze) {
 			z.eliminarEntidad(e);
-			ze.agregarEntidad(e);
+			if(e.isAlive()) {
+				ze.agregarEntidad(e);
+			}
 			// System.out.println("--------------------------HuboCambioZona--: "+true);
 		}
 	}
@@ -108,19 +110,19 @@ public class SalaDeJuegos {
 	}
 
 	/**
-	 * Consulta si la entidad e, al moverse, cambio las zonas sobre las que estï¿½.
+	 * Actualiza las zonas a las que pertenece la entidad si la entidad e, dada su posicion anterior, cambio las zonas sobre las que está.
 	 * @param e entidad por la cual consultar.
 	 */
-	public void actualizarZonasEntidad(Entidad e) {
+	public void actualizarZonasEntidad(Coordenada posAnteriorEnt, Entidad e) {
 		// System.out.println("--------------------------ActualizarZonasEntidad------------------------------------------------");
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();
 		Coordenada esqInfDer = e.getEsquinaInfDer();
-		verificarCambioZona(posAnteriorJug, esqSupIzq, e);
-		verificarCambioZona(new Coordenada(posAnteriorJug.getX() + e.getAncho(), posAnteriorJug.getY()), esqSupDer, e);
-		verificarCambioZona(new Coordenada(posAnteriorJug.getX(), posAnteriorJug.getY() + e.getAlto()), esqInfIzq, e);
-		verificarCambioZona(new Coordenada(posAnteriorJug.getX() + e.getAncho(), posAnteriorJug.getY() + e.getAlto()), esqInfDer, e);
+		verificarCambioZona(posAnteriorEnt, esqSupIzq, e);
+		verificarCambioZona(new Coordenada(posAnteriorEnt.getX() + e.getAncho(), posAnteriorEnt.getY()), esqSupDer, e);
+		verificarCambioZona(new Coordenada(posAnteriorEnt.getX(), posAnteriorEnt.getY() + e.getAlto()), esqInfIzq, e);
+		verificarCambioZona(new Coordenada(posAnteriorEnt.getX() + e.getAncho(), posAnteriorEnt.getY() + e.getAlto()), esqInfDer, e);
 	}
 
 	// Modificar autorizaciones
@@ -128,8 +130,8 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovUp();
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
 		boolean puedeMoverse = (newPosSupIzq.getY() > 0) && (e.puedoMovermeUp()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosSupDer);
-		if (puedeMoverse)
-			posAnteriorJug = e.getEsquinaSupIzq();
+		/**if (puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();*/
 		// System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
@@ -139,8 +141,8 @@ public class SalaDeJuegos {
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
 		boolean puedeMoverse = ((newPosSupIzq.getY() + e.getAlto()) < altura) && (e.puedoMovermeDown()) && !posColisiona(newPosInfIzq) && !posColisiona(newPosInfDer);
-		if (puedeMoverse)
-			posAnteriorJug = e.getEsquinaSupIzq();
+		/*if (puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();*/
 		// System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
@@ -150,8 +152,8 @@ public class SalaDeJuegos {
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
 		boolean puedeMoverse = ((newPosSupIzq.getX() + e.getAlto()) < base) && (e.puedoMovermeDer()) && !posColisiona(newPosSupDer) && !posColisiona(newPosInfDer);
-		if (puedeMoverse)
-			posAnteriorJug = e.getEsquinaSupIzq();
+		/*if (puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();*/
 		// System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
@@ -160,8 +162,8 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovIzq();
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
 		boolean puedeMoverse = (newPosSupIzq.getX() > 0) && (e.puedoMovermeIzq()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosInfIzq);
-		if (puedeMoverse)
-			posAnteriorJug = e.getEsquinaSupIzq();
+		/*if (puedeMoverse)
+			posAnteriorJug = e.getEsquinaSupIzq();*/
 		// System.out.println("Puede mover => "+puedeMoverse);
 		return puedeMoverse;
 	}
@@ -224,10 +226,13 @@ public class SalaDeJuegos {
 			colisiono = e.colisiona(ent);
 			toRet = toRet || colisiono;
 			if (colisiono) {
+				Coordenada posAnt = ent.getPosicion();
 				// System.out.println("--------------------------Hubo Colision --: "+toRet +
 				// "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
 				// System.out.println("--------------------------Entro Visitor--: "+toRet);
 				ent.accept(e.getMyVisitor());
+				this.actualizarZonasEntidad(posAnt, ent);
+				//miGui.actualizarPuntaje();
 				juego.actualizoVidas();
 			} else {/*
 					 * EntidadMovible ee = (EntidadMovible)e; ee.resetearMovimientos();
@@ -237,7 +242,7 @@ public class SalaDeJuegos {
 		return toRet;
 	}
 
-	public boolean detectarColisionesJugador(Entidad e) {
+	public boolean detectarColisionesJugador(Coordenada posAnt, Entidad e) {
 		// System.out.println("--------------------------DetectarColsionesJugador-------------------------------------------------");
 		boolean colisiono = false;
 		boolean toRet = false;
@@ -245,6 +250,7 @@ public class SalaDeJuegos {
 			colisiono = colisionEnZona(e, z);
 			toRet = toRet || colisiono;
 		}
+		this.actualizarZonasEntidad(posAnt, e);
 		// System.out.println("--------------------------Hubo Colision--: "+toRet);
 		return toRet;
 	}

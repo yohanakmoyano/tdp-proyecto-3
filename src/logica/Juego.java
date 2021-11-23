@@ -164,13 +164,15 @@ public class Juego{
 		}
 	}
 
+
 	private void moverArriba() {
 		//System.out.println("--------------------------Logica-------------------------------------------------------------");
 		//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovArriba(personaje)) {
+			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverArriba();
-			miSala.actualizarZonasEntidad(personaje);
-			miSala.detectarColisionesJugador(personaje);
+			miSala.actualizarZonasEntidad(posAnt, personaje);
+			miSala.detectarColisionesJugador(posAnt, personaje);
 			//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		
@@ -180,9 +182,10 @@ public class Juego{
 		//System.out.println("--------------------------Logica-------------------------------------------------------------");
 		//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovDerecha(personaje)) {
+			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverDerecha();
-			miSala.actualizarZonasEntidad(personaje);
-			miSala.detectarColisionesJugador(personaje);
+			miSala.actualizarZonasEntidad(posAnt, personaje);
+			miSala.detectarColisionesJugador(posAnt, personaje);
 			//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		//System.out.println("-----------------------------------------------------------------------------------------------");
@@ -193,9 +196,10 @@ public class Juego{
 		//System.out.println("--------------------------Logica-------------------------------------------------------------");
 		//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovIzquierda(personaje)) {
+			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverIzquierda(); 
-			miSala.actualizarZonasEntidad(personaje);
-			miSala.detectarColisionesJugador(personaje);
+			miSala.actualizarZonasEntidad(posAnt, personaje);
+			miSala.detectarColisionesJugador(posAnt, personaje);
 			//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 		//System.out.println("-----------------------------------------------------------------------------------------------");
@@ -206,9 +210,10 @@ public class Juego{
 		//System.out.println("--------------------------Logica-------------------------------------------------------------");
 		//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		if(miSala.autorizarMovAbajo(personaje)) {
+			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverAbajo(); 
-			miSala.actualizarZonasEntidad(personaje);
-			miSala.detectarColisionesJugador(personaje);
+			miSala.actualizarZonasEntidad(posAnt, personaje);
+			miSala.detectarColisionesJugador(posAnt, personaje);
 			//System.out.println("Coordenada jugador: ("+personaje.getEsquinaSupIzq().getX()+", "+personaje.getEsquinaSupIzq().getY()+")");
 		}
 	//	System.out.println("-----------------------------------------------------------------------------------------------");

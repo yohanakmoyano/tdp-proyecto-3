@@ -11,13 +11,11 @@ public class Presa extends Strategy {
 	
 	@Override
 	public void atacar(Enemigo op) {
-		miJugador.perderVida(); /**
+		miJugador.perderVida();
 		if(miJugador.getVidas() == 0) {
-			//miJugador.morir(); //Resolver el morir
+			miJugador.morir(); //Resolver el morir
 		} else {
-			miJugador.morir();
-		}**/
-		miJugador.morir();//Corregir
+			miJugador.reUbicar();
+		}
 	}
-
 }

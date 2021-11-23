@@ -21,6 +21,7 @@ public  class Jugador extends EntidadMovible {
 
 	//sacar vel, v
 	private Jugador(Coordenada c, int vel, int v, String rutaImg, Juego jueg) {
+		alive = true;
 		caminable = true;
 		posRespawn = new Coordenada(c.getX(), c.getY());
 		ultMovimiento = reposo;
@@ -118,7 +119,9 @@ public  class Jugador extends EntidadMovible {
 
 	public void morir() {
 		//Ver como finalizar el juego.
-		reUbicar();
+		//reUbicar();
+		miRep.eliminar();
+		this.isDead();
 	}
 	
 	public void reUbicar() {

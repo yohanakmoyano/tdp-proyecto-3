@@ -10,6 +10,7 @@ public class ItemB extends EntidadNoMovible {
 	
 	
 	public ItemB(int val, Coordenada c, String rutaImg) {
+		alive = true;
 		caminable = true;
 		valor = val;
 		posicion = c;

@@ -63,33 +63,37 @@ public class Movimiento extends Thread {
 	
 	protected void moverEnemigoDer(Enemigo e) {
 		if(sala.autorizarMovDerecha(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
 			e.moverDerecha();
-			sala.actualizarZonasEntidad(e);
-			sala.detectarColisionesJugador(e);
+			sala.actualizarZonasEntidad(posAnt, e);
+			sala.detectarColisionesJugador(posAnt, e);
 		} 
 	} 
 	
 	protected void moverEnemigoIzq(Enemigo e) {
 		if(sala.autorizarMovIzquierda(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
 			e.moverIzquierda();
-			sala.actualizarZonasEntidad(e);
-			sala.detectarColisionesJugador(e);
+			sala.actualizarZonasEntidad(posAnt, e);
+			sala.detectarColisionesJugador(posAnt, e);
 		}
 	} 
 	
 	protected void moverEnemigoUp(Enemigo e) {
 		if(sala.autorizarMovArriba(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
 			e.moverArriba();
-			sala.actualizarZonasEntidad(e);
-			sala.detectarColisionesJugador(e);
+			sala.actualizarZonasEntidad(posAnt, e);
+			sala.detectarColisionesJugador(posAnt, e);
 		}
 	} 
 	
 	protected void moverEnemigoDown(Enemigo e) {
 		if(sala.autorizarMovAbajo(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
 			e.moverAbajo();
-			sala.actualizarZonasEntidad(e);
-			sala.detectarColisionesJugador(e);
+			sala.actualizarZonasEntidad(posAnt, e);
+			sala.detectarColisionesJugador(posAnt, e);
 		}
 	} 
 	

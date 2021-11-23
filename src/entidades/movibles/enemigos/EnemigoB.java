@@ -10,6 +10,7 @@ public class EnemigoB extends Enemigo {
 	
 	
 	public EnemigoB(Coordenada c, String rutaImg) {
+		alive = true;
 		caminable = true;
 		ultMovimiento = reposo;
 		puedoMovermeIzq = true;
@@ -68,6 +69,7 @@ public class EnemigoB extends Enemigo {
 
 	@Override
 	public void morir() {
+		this.isDead();
 		System.out.println("Pos anterior a muerte Boss ("+posicion.getX() + ", " + posicion.getY()+")");
 		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
 		posicion.setX(miSalon.getRespawnPoint().getX());
@@ -78,6 +80,7 @@ public class EnemigoB extends Enemigo {
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
 		System.out.println("Pos posterior a muerte Boss ("+posicion.getX() + ", " + posicion.getY()+")");
+		this.revive();
 	}
 
 	@Override

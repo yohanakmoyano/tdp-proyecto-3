@@ -10,6 +10,7 @@ public class EnemigoC extends Enemigo {
 	
 	
 	public EnemigoC(Coordenada c, String rutaImg) {
+		alive = true;
 		caminable = true;
 		ultMovimiento = reposo;
 		puedoMovermeIzq = true;
@@ -69,6 +70,7 @@ public class EnemigoC extends Enemigo {
 	
 	@Override
 	public void morir() {
+		this.isDead();
 		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
 		posicion.setX(miSalon.getRespawnPoint().getX());
 		posicion.setY(miSalon.getRespawnPoint().getY());
@@ -77,6 +79,7 @@ public class EnemigoC extends Enemigo {
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
+		this.revive();
 	}
 	
 	@Override
