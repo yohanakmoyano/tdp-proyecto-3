@@ -12,60 +12,44 @@ import grafica.Gui;
 public class SalaDeJuegos {
 	protected Salon miSalon;
 	protected Zona matrizZonas[][];
-	protected static final int base = 501;
-	protected static final int altura = 553;
+	protected static final int base = 500;
+	protected static final int altura = 552;
 	protected int cantDivisiones = 4;
 	protected List<Entidad> listaEnemigos;
 	protected List<Entidad> listaEntidadFija;
-	protected List<Entidad> listaJugador;
-	protected Gui miGui;
 	protected Juego juego;
 	protected int cantItems;
 	protected Coordenada posAnteriorJug;
+	//ver si anda
+	protected Gui miGui;
 
-	
-	public SalaDeJuegos(Gui g, Juego jueg) {
+	//hay que ver si se saca gui del contructor de sala de Juegos
+	public SalaDeJuegos(Gui gui, Juego jueg) {
 		int incrementX = base / cantDivisiones;
 		int incrementY = altura / cantDivisiones;
 		int baseX = 0;
 		int alturaY = 0;
 		int cantItems = 0;
-		int casoEspecialAncho = base - ((cantDivisiones - 1) * incrementX);
-		int casoEspecialAlto = altura - ((cantDivisiones - 1) * incrementY);
 		matrizZonas = new Zona[cantDivisiones][cantDivisiones];
+		
 		for (int i = 0; i < cantDivisiones; i++) {
 			for (int j = 0; j < cantDivisiones; j++) {
-				if ((i == (cantDivisiones - 1)) || (j == (cantDivisiones - 1))) { // Caso Especial
-					if ((i == cantDivisiones - 1) && (j == cantDivisiones - 1)) {
-						matrizZonas[i][j] = new Zona(baseX, alturaY, casoEspecialAncho, casoEspecialAlto);
-					} else {
-						if (i == cantDivisiones - 1) {
-							matrizZonas[i][j] = new Zona(baseX, alturaY, casoEspecialAncho, incrementY);
-						} else {
-							matrizZonas[i][j] = new Zona(baseX, alturaY, incrementX, casoEspecialAlto);
-						}
-					}
-				} else {
 					matrizZonas[i][j] = new Zona(baseX, alturaY, incrementX, incrementY);
-				}
-				baseX = baseX + incrementX + 1;
-
+					baseX = baseX + incrementX + 1;
 			}
-
 			baseX = 0;
 			alturaY = alturaY + incrementY + 1;
-
 		}
+		
 		miSalon = Salon.getInstance();// new Salon(new Coordenada(230, 230));//Cambiar a algo mas automatico.
 		listaEnemigos = new ArrayList<Entidad>();
 		listaEntidadFija = new ArrayList<Entidad>();
-		listaJugador = new ArrayList<Entidad>();
-		miGui = g;
 		juego = jueg;
+		miGui = gui;
 
 	}
-
-	public Gui obtenerGui() {
+	
+	public Gui getGui() {
 		return miGui;
 	}
 	
@@ -124,7 +108,7 @@ public class SalaDeJuegos {
 	}
 
 	/**
-	 * Consulta si la entidad e, al moverse, cambio las zonas sobre las que está.
+	 * Consulta si la entidad e, al moverse, cambio las zonas sobre las que estï¿½.
 	 * @param e entidad por la cual consultar.
 	 */
 	public void actualizarZonasEntidad(Entidad e) {
@@ -244,7 +228,6 @@ public class SalaDeJuegos {
 				// "("+ent.getEsquinaSupIzq().getX()+", "+ent.getEsquinaSupIzq().getY());
 				// System.out.println("--------------------------Entro Visitor--: "+toRet);
 				ent.accept(e.getMyVisitor());
-				miGui.actualizarPuntaje();
 				juego.actualizoVidas();
 			} else {/*
 					 * EntidadMovible ee = (EntidadMovible)e; ee.resetearMovimientos();
@@ -272,10 +255,6 @@ public class SalaDeJuegos {
 
 	public List<Entidad> getListaEntidadFija() {
 		return listaEntidadFija;
-	}
-
-	public List<Entidad> getListJugador() {
-		return listaJugador;
 	}
 
 }

@@ -5,6 +5,7 @@ import logica.Coordenada;
 
 public abstract class EntidadMovible extends Entidad {
 	protected int velocidad;
+	//sacar de entidaddes movible y ponerlo o solo en jugador o solo en juego
 	protected int vidas;
 	protected int actualizarMov;
 	protected boolean puedoMovermeIzq;

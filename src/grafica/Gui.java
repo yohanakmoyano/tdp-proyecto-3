@@ -70,7 +70,7 @@ public class Gui extends JFrame {
 		
 		// Panel laberinto
 		laberinto = new JPanel();
-		laberinto.setBounds(197, 0, 501, 553);
+		laberinto.setBounds(197, 0, 500, 552);
 		panelprincipal.add(laberinto);
 		laberinto.setLayout(new GridLayout(20, 20, 0, 0));
 		laberinto.setVisible(true);
@@ -190,8 +190,8 @@ public class Gui extends JFrame {
 		return myInstance;
 	}
 
-	public void actualizarPuntaje() {
-		text_puntaje.setText(" " + mijuego.getPuntaje());
+	public void actualizarPuntaje(int puntaje) {
+		text_puntaje.setText(" " + puntaje);
 	}
 
 	public void actualizarVidas(int v) {

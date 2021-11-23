@@ -15,6 +15,7 @@ import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
 import logica.Coordenada;
+import logica.Juego;
 import logica.SalaDeJuegos;
 
 public class Director {
@@ -22,16 +23,21 @@ public class Director {
 	protected SalaDeJuegos sj;
 	protected String fileName;
 	protected URL musica;
-	//pasar la fabrica directamentamente o alguna forma de idenficar como atributo o contructor
-		
+	protected Jugador jug;
+	protected int cantItems;
+	protected Juego juego;
 	
-	public Director(int n, SalaDeJuegos sj, int dominio) {
+	
+	public Director(int n, SalaDeJuegos salaJueg, int dominio, Juego jueg) {
+		sj = new SalaDeJuegos(null, null);
 		Coordenada punto = null;
 		Entidad entidad = null;
 		List<String> toRet = null;
 		int cantItems = 0;
 		nivel = n;
 		int j = 0;
+		juego = jueg;
+		sj = salaJueg;
 		
 		//Acomodar como abrir el punto correspondiente
 		//Dependiendo del dominio lee el txt correspondiente
@@ -50,18 +56,18 @@ public class Director {
 			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"PM.txt");
 			}
 			
-		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toRet.get(0)).toString());
+		sj.getGui().mostrarImagenFondo(this.getClass().getResource(toRet.get(0)).toString());
 		musica = this.getClass().getResource(toRet.get(1).toString());
 	    // Creo un jugador
-		Jugador jug = Jugador.getJugador(punto,100,3,this.getClass().getResource(toRet.get(2)).toString());
-		sj.obtenerGui().mostrarEntidad(jug);
-		sj.getListJugador().add(jug);
+		jug = Jugador.getJugador(punto,100,3,this.getClass().getResource(toRet.get(2)).toString(), juego);
+		sj.getGui().mostrarEntidad(jug);
 	
 		//Lee del txt las entidades y las agrega al mapa
-		for (int i = 3;i < toRet.size() ; i++) {
+		for (int i = 3; i < toRet.size() ; i++) {
 			String palabra = toRet.get(i);
 			String[] caracter = palabra.split(";");
 			punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]) );
+			
 			
 			switch (caracter[j]) {
 			
@@ -73,9 +79,8 @@ public class Director {
 				case "g": { // galleta
 					entidad = new ItemA(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
 					sj.getListaEntidadFija().add(entidad);
-					//System.out.println("cantidad de monedas " + cantItemsA);
 					cantItems++;	
-					sj.setCantItems(cantItems);
+					//System.out.println("cantidad de monedas " + cantItemsA);
 					break;
 				}
 				case "e": { // Creo un energizante
@@ -87,7 +92,6 @@ public class Director {
 					entidad = new ItemB(1, punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
 					cantItems++;	
-					sj.setCantItems(cantItems);
 					break;
 				}
 				case "d": { // Creo un dinero
@@ -100,7 +104,6 @@ public class Director {
 					sj.getListaEntidadFija().add(entidad);
 					break;
 				}
-				
 				case "B": { // Creo un Boss
 					entidad = new EnemigoA(punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEnemigos().add(entidad);
@@ -122,19 +125,11 @@ public class Director {
 					break;
 				}
 			}
-			
-			sj.obtenerGui().mostrarEntidad(entidad);
+			sj.getGui().mostrarEntidad(entidad);
 			sj.agregarAZonas(entidad);
+			sj.setCantItems(cantItems);
 		}
 			
-		/*if (nivel==1) 
-			builder=new Level1Builder(sj,j);
-		
-		if (nivel==2)
-			builder=new Level2Builder(sj,j);
-		
-		if (nivel==3)
-			builder=new Level3Builder(sj,j);	*/
 	}
 	
 	public void reset() {
@@ -148,6 +143,10 @@ public class Director {
 	public void changeLevel(int nvl) {
 		nivel = nvl;
 		
+	}
+	
+	public Jugador getJugador() {
+		return jug;
 	}
 
 }

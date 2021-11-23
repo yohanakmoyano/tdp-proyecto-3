@@ -9,11 +9,11 @@ import grafica.Gui;
 import niveles.Director;
 
 public class Juego{
-	protected Puntaje puntos;
+	protected int puntos;
 	protected int nivel; 
 	protected Gui miGui;
 	protected SalaDeJuegos miSala;
-	protected Director miFabrica;
+	protected Director director;
 	protected Jugador personaje;
 	protected Entidad entidad;
 	public static final int moverIzquierda = 1;
@@ -23,30 +23,30 @@ public class Juego{
 	public static final int ponerItem = 5;
 	protected Movimiento movE;
 	protected int dominio;
-	protected int itemsTotales;
-	
+		
 	
 	public Juego(int n) {
-		puntos = Puntaje.getInstancePuntaje();
-		nivel = n;//1;
+		puntos = 0;
+		nivel = n; //1;
 		miGui = Gui.getGui(this);
-		miSala = new SalaDeJuegos(miGui,this);
-		itemsTotales = 0;
-	    /*miFabrica = new Director(nivel, miSala,d);
-		if(!miSala.getListJugador().isEmpty())
-			personaje = (Jugador) miSala.getListJugador().get(0);*/
+		miSala = new SalaDeJuegos(miGui, this);
 	}	
-	//ojo con el casteo
+	
 	public void setDominio(int dominio) {
-		miFabrica = new Director(nivel, miSala, dominio);
-		if(!miSala.getListJugador().isEmpty())
-			personaje = (Jugador) miSala.getListJugador().get(0);
+		director = new Director(nivel, miSala, dominio, this);
+		personaje = director.getJugador();
 	}
+	
+	public Gui getGui() {
+		return miGui;
+	}
+	
 	public int getDominio() {
 		return dominio;
 	}
+	
 	public URL getMusica() {
-		return miFabrica.getMusica();
+		return director.getMusica();
 	}
 	
 	public void actualizoVidas() {
@@ -54,30 +54,20 @@ public class Juego{
 			miGui.actualizarVidas(personaje.getVidas());
 		else
 			miGui.finDeJuego();
-	
 	}
 	
 	public void setPuntaje(int p) {
-		puntos.setPuntaje(p);
+		puntos = puntos + p;
+		miGui.actualizarPuntaje(puntos);
 	}
-
-	//en getPuntaje esta mal evaluar el siguiente nivel aca
-	public int getPuntaje() {
-		int toRet;
-		toRet=puntos.getPuntajeActual();
-		
-		//if (toRet==100) //358
-		//	miGui.PasoDeNivel();
-	   siguienteNivel();//despues mover esto
-		return toRet;
+	
+	public int getPuntaje() {	   
+	   return puntos;
 	}
 
 	public void setNivel(int n) {
 		nivel = n;
-		miFabrica = new Director(nivel, miSala, dominio);
-		if(!miSala.getListJugador().isEmpty())
-			personaje = (Jugador) miSala.getListJugador().get(0);
-		
+		setDominio(dominio);
 	}
 
 	public int getNivel() {
@@ -89,10 +79,8 @@ public class Juego{
 		movE = new Movimiento(miSala);
 		movE.start();
 		nivel = this.getNivel();
-		//buscar donde restar estas monedas
-		itemsTotales = miSala.getCantItems();
-		System.out.println("cantidad de monedas " +itemsTotales);
 	}
+	//cuando inicio el juego no incio el enemigo tambien??
 	public void runEnemies() {
 		movE.run();
 	}
@@ -134,30 +122,22 @@ public class Juego{
 			return false;
 	}
 	
-	public boolean siguienteNivel() {
-		boolean pasoLvl = false;
-		//System.out.println("holaa");
-		if (itemsTotales == personaje.getCantItemsLevantados()) {//(personaje.getCantItemsLevantados()==4) { //
-			pasoLvl = true;
-			setNivel(nivel+1);
-			miGui.PasoDeNivel();
-			//System.out.println("holaa");
+	public void chequearGameOver(int cantItempsUp) {
+		if(cantItempsUp == miSala.getCantItems() ) {
+			if(nivel < 3) {
+				setNivel(nivel+1);
+				miGui.PasoDeNivel();
+			}
+			else {
+				terminoElJuego();
+			}
 		}
-		return pasoLvl;
-		//public void actualizoVidas() {
-			/*if (personaje.getVidas()!=0) 
-				miGui.actualizarVidas(personaje.getVidas());
-			else
-				miGui.finDeJuego();*/
-		}
-			
-	
+	}
 
-	/*public void pasoDeNivel() {
-		if(siguienteNivel()) {
-			miGui.PasoDeNivel();
-		}
-	}*/
+	//cree el menu devuelta
+	public void terminoElJuego() {
+		
+	}
 	
 	public void operar(int op) {
 		switch (op) {

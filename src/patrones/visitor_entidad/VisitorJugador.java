@@ -43,16 +43,15 @@ public class VisitorJugador extends VisitorEntidad {
 	public void visit(ItemA it) {
 		//System.out.println("--------------------------Visite galleta-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
-		// miJugador.getCantItemsLevantados();
-		miJugador.setCantItemsLevantados(miJugador.getCantItemsLevantados()+1);
+		miJugador.setCantItemsLevantados();
 		it.eliminar();
 	}
 
 	public void visit(ItemB it) {
 		//System.out.println("--------------------------Visite cuchillo-------------------------------------------------------------");
 		miJugador.afectarPuntaje(it.getValor());
-		miJugador.getCantItemsLevantados();
 		miJugador.getEstrategia().setStrategy(new Cazador(miJugador));
+		miJugador.setCantItemsLevantados();
 		it.eliminar();
 	}
 	public void visit(ItemC it) {

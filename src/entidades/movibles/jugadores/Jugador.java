@@ -3,7 +3,7 @@ package entidades.movibles.jugadores;
 import entidades.movibles.EntidadMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.Puntaje;
+import logica.Juego;
 import patrones.strategy.ControlStrategy;
 import patrones.visitor_entidad.VisitorEntidad;
 import patrones.visitor_entidad.VisitorJugador;
@@ -16,9 +16,11 @@ public  class Jugador extends EntidadMovible {
 	//coleccion de power up
 	protected static Jugador myInstance;
 	protected int cantItemsLevantados;
+	protected Juego juego;
 	
 
-	private Jugador(Coordenada c, int vel, int v, String rutaImg) {
+	//sacar vel, v
+	private Jugador(Coordenada c, int vel, int v, String rutaImg, Juego jueg) {
 		caminable = true;
 		posRespawn = new Coordenada(c.getX(), c.getY());
 		ultMovimiento = reposo;
@@ -28,37 +30,36 @@ public  class Jugador extends EntidadMovible {
 		puedoMovermeDown = true;
 		poseeItemD = false;
 		miVisitor = new VisitorJugador(this);
+		juego = jueg;
+		//verificar bien si velocidad sirve y vidas van mas en juego
+		//poner velocidad
 		velocidad = vel;
+		//poner cantidad de vidas asi sacamos cosas del constructor
 		vidas = v;
 		posicion = c;
 		ancho = 19;
 		factorMovX = ancho/4;
 		alto = 22;
 		factorMovY = alto/4;
-		cantItemsLevantados=0;
+		cantItemsLevantados = 0;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); //Por defecto se crea con estrategia presa.
 		
 	}
-	public static Jugador getJugador(Coordenada c, int vel, int v, String rutaImg) {
+	
+	public static Jugador getJugador(Coordenada c, int vel, int v, String rutaImg, Juego jueg) {
 		if(myInstance == null)
-			myInstance = new Jugador(c,vel,v,rutaImg);
+			myInstance = new Jugador(c, vel ,v ,rutaImg, jueg);
 		return myInstance;
 	}
 	
-	
 	public void afectarPuntaje(int valor) {
-		Puntaje.getInstancePuntaje().incrementarEn(valor);
+		juego.setPuntaje(valor);
 	}
 	
-public int getCantItemsLevantados() {
-		
-		//cantItemsLevantados++;
-		System.out.println("agarre un item "+cantItemsLevantados);
-		return cantItemsLevantados;
-	}
-	public void setCantItemsLevantados(int n){
-		cantItemsLevantados=cantItemsLevantados+1;
+	public void setCantItemsLevantados(){
+		cantItemsLevantados = cantItemsLevantados + 1;
+		juego.chequearGameOver(cantItemsLevantados);
 	}
 
 	//jugador metodo accionar--> tipo de estado de estrategia cuando suelto delego al strategy
