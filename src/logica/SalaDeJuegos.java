@@ -211,7 +211,9 @@ public class SalaDeJuegos {
 		return toRet;
 
 	}
-
+	public void reset() {
+		
+	}
 	private boolean colisionEnZona(Entidad e, Zona z) {
 		// System.out.println("-------------------------ColisionEnZona------------------------------------------------------------");
 		boolean colisiono = false;

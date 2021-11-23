@@ -186,7 +186,6 @@ public class Gui extends JFrame {
 	public void actualizarVidas(int v) {
 		text_vidas.setText(" " + v);
 	}
-
 	public void mostrarImagenFondo(String s) {
 		ImageIcon fotoJuego = null;
 		try {
@@ -199,8 +198,9 @@ public class Gui extends JFrame {
 		fondoNivel = new JLabel();
 		fondoNivel.setVerticalAlignment(SwingConstants.BOTTOM);
 		fondoNivel.setBounds(0, 0, 900, 600);
-		panelprincipal.add(fondoNivel);
 		fondoNivel.setIcon(new ImageIcon(medidaJuego));
+		panelprincipal.add(fondoNivel);
+		
 	}
 
 	public void mostrarEntidad(Entidad e) {
@@ -253,7 +253,7 @@ public class Gui extends JFrame {
 	}
 
 	public void PasoDeNivel() {
-		panelprincipal.removeAll();
+		//panelprincipal.removeAll();
 		ImageIcon img_Siguiente_nivel = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/next_level.png"));
 		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
@@ -262,11 +262,11 @@ public class Gui extends JFrame {
 
 		lbl_Siguiente_nivel.setBounds(0, 0, ancho, largo);
 		panelprincipal.add(lbl_Siguiente_nivel);
-		try {
+		/*try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 

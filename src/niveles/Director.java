@@ -38,24 +38,22 @@ public class Director {
 		int j = 0;
 		juego = jueg;
 		sj = salaJueg;
-		
+		System.out.println("entre aca");
 		//Acomodar como abrir el punto correspondiente
 		//Dependiendo del dominio lee el txt correspondiente
+		punto = coordenadaDeNivel(n);
 		if (dominio == 1) {
-			punto = new Coordenada(240, 390);
 			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"JDC.txt");	
 			}
 		
 		if (dominio == 2) {
-			punto = new Coordenada(240, 390);
 			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"AU.txt");
 			}
 		
 		if (dominio == 3) {
-			punto = new Coordenada(240, 390);
 			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"PM.txt");
 			}
-			
+		System.out.println("la ruta que estoy leyendo es: "+toRet.get(0));
 		juego.actualizarFondo(this.getClass().getResource(toRet.get(0)).toString());
 		musica = this.getClass().getResource(toRet.get(1).toString());
 	    // Creo un jugador
@@ -128,12 +126,23 @@ public class Director {
 			juego.mostrarEntidad(entidad);
 			sj.agregarAZonas(entidad);
 			sj.setCantItems(cantItems);
-			
-			System.out.println(" cantidad total de items"+sj.getCantItems());
 		}
 			
 	}
+	public Coordenada coordenadaDeNivel(int nivel) {
+		Coordenada punto = null;
+		
+		if(nivel == 1)
+			punto = new Coordenada(240, 390);
 	
+		if(nivel == 2)
+			punto = new Coordenada(222, 410);
+		
+		if(nivel == 3)
+			punto = new Coordenada(240, 380);
+		
+		return punto;
+	}
 	public void reset() {
 
 	}

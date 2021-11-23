@@ -32,11 +32,16 @@ public class Juego{
 		miSala = new SalaDeJuegos(this);
 	}	
 	
-	public void setDominio(int dominio) {
+	public void setDominio(int d) {
+		this.dominio=d;
+		construirDirector();
+	}
+	public void construirDirector() {
+		System.out.println("mi nivel es: "+nivel);
+		System.out.println("mi dominio es: "+dominio);
 		director = new Director(nivel, miSala, dominio, this);
 		personaje = director.getJugador();
 	}
-	
 	public int getDominio() {
 		return dominio;
 	}
@@ -62,6 +67,7 @@ public class Juego{
 	}
 
 	public void actualizarFondo(String urlImg) {
+		System.out.println("la ruta es ACAAAAA "+urlImg);
 		miGui.mostrarImagenFondo(urlImg);
 	}
 	
@@ -71,7 +77,7 @@ public class Juego{
 	
 	public void setNivel(int n) {
 		nivel = n;
-		setDominio(dominio);
+		//setDominio(dominio);
 	}
 
 	public int getNivel() {
@@ -87,11 +93,6 @@ public class Juego{
 	//cuando inicio el juego no incio el enemigo tambien??
 	public void runEnemies() {
 		movE.run();
-	}
-	
-	//falta coneccion entre el jugador
-	public void agregarItemD() {
-		miGui.agregarItem();
 	}
 	
 	public void actualizarSalaDeJuego(SalaDeJuegos s) {
@@ -127,10 +128,11 @@ public class Juego{
 	}
 	
 	public void chequearGameOver(int cantItempsUp) {
-		if(4 == miSala.getCantItems() ){  //if(cantItempsUp == miSala.getCantItems() ) 
-			
+	  if(cantItempsUp == miSala.getCantItems() ) {//(cantItempsUp==4){
 			if(nivel < 3) {
-				setNivel(nivel+1);
+				nivel=nivel+1;
+				//setNivel(nivel+1);
+				setDominio(dominio);
 				miGui.PasoDeNivel();
 			}
 			else {
