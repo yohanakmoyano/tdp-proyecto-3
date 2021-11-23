@@ -21,10 +21,9 @@ public class SalaDeJuegos {
 	protected int cantItems;
 	//protected Coordenada posAnteriorJug;
 	//ver si anda
-	protected Gui miGui;
-
-	//hay que ver si se saca gui del contructor de sala de Juegos
-	public SalaDeJuegos(Gui gui, Juego jueg) {
+	
+	
+	public SalaDeJuegos(Juego jueg) {
 		int incrementX = base / cantDivisiones;
 		int incrementY = altura / cantDivisiones;
 		int baseX = 0;
@@ -45,12 +44,7 @@ public class SalaDeJuegos {
 		listaEnemigos = new ArrayList<Entidad>();
 		listaEntidadFija = new ArrayList<Entidad>();
 		juego = jueg;
-		miGui = gui;
 
-	}
-	
-	public Gui getGui() {
-		return miGui;
 	}
 	
 	public void setCantItems(int cant) {

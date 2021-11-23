@@ -29,7 +29,7 @@ public class Director {
 	
 	
 	public Director(int n, SalaDeJuegos salaJueg, int dominio, Juego jueg) {
-		sj = new SalaDeJuegos(null, null);
+		sj = new SalaDeJuegos(null);
 		Coordenada punto = null;
 		Entidad entidad = null;
 		List<String> toRet = null;
@@ -56,11 +56,11 @@ public class Director {
 			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"PM.txt");
 			}
 			
-		sj.getGui().mostrarImagenFondo(this.getClass().getResource(toRet.get(0)).toString());
+		juego.actualizarFondo(this.getClass().getResource(toRet.get(0)).toString());
 		musica = this.getClass().getResource(toRet.get(1).toString());
 	    // Creo un jugador
 		jug = Jugador.getJugador(punto,100,3,this.getClass().getResource(toRet.get(2)).toString(), juego);
-		sj.getGui().mostrarEntidad(jug);
+		juego.mostrarEntidad(jug);
 	
 		//Lee del txt las entidades y las agrega al mapa
 		for (int i = 3; i < toRet.size() ; i++) {
@@ -79,7 +79,7 @@ public class Director {
 				case "g": { // galleta
 					entidad = new ItemA(1, punto,this.getClass().getResource(caracter[j+3]).toString()); 
 					sj.getListaEntidadFija().add(entidad);
-					cantItems++;	
+					cantItems = cantItems + 1;
 					//System.out.println("cantidad de monedas " + cantItemsA);
 					break;
 				}
@@ -91,7 +91,7 @@ public class Director {
 				case "c": { // Creo un cuchillo
 					entidad = new ItemB(1, punto,this.getClass().getResource(caracter[j+3]).toString());
 					sj.getListaEntidadFija().add(entidad);
-					cantItems++;	
+					cantItems = cantItems + 1;	
 					break;
 				}
 				case "d": { // Creo un dinero
@@ -125,9 +125,11 @@ public class Director {
 					break;
 				}
 			}
-			sj.getGui().mostrarEntidad(entidad);
+			juego.mostrarEntidad(entidad);
 			sj.agregarAZonas(entidad);
 			sj.setCantItems(cantItems);
+			
+			System.out.println(" cantidad total de items"+sj.getCantItems());
 		}
 			
 	}

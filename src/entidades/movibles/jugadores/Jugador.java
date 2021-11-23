@@ -58,8 +58,10 @@ public  class Jugador extends EntidadMovible {
 		juego.setPuntaje(valor);
 	}
 	
+	
 	public void setCantItemsLevantados(){
 		cantItemsLevantados = cantItemsLevantados + 1;
+		System.out.println("agarre "+cantItemsLevantados);
 		juego.chequearGameOver(cantItemsLevantados);
 	}
 
