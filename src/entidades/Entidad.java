@@ -2,7 +2,6 @@ package entidades;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.Puntaje;
 import patrones.visitor_entidad.VisitorEntidad;
 
 public abstract class Entidad {

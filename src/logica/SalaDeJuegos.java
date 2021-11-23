@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-
 import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
-import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
-import patrones.visitor_entidad.VisitorJugador;
 
 public class SalaDeJuegos {
 	protected Salon miSalon;
@@ -24,9 +21,9 @@ public class SalaDeJuegos {
 	protected Gui miGui;
 	protected Juego juego;
 	protected int cantItems;
-
 	protected Coordenada posAnteriorJug;
 
+	
 	public SalaDeJuegos(Gui g, Juego jueg) {
 		int incrementX = base / cantDivisiones;
 		int incrementY = altura / cantDivisiones;

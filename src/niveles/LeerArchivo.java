@@ -1,4 +1,4 @@
-package patrones.level_builder;
+package niveles;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

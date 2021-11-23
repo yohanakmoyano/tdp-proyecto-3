@@ -13,6 +13,7 @@ public class Zona extends Rectangle {
 	protected int alto;
 	protected AbstractSet<Entidad> listaEntidades; 
 
+	
 	public Zona(int x, int y, int ancho, int alto) {
 		super(x, y, ancho, alto);
 		posSupIzq = new Coordenada(x, y);

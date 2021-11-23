@@ -19,6 +19,7 @@ public class VentanaInicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel inicioJuego;
 
+	
 	public VentanaInicio() {
 		// Configuracion de la Ventana Inicio
 		setTitle("The Game");

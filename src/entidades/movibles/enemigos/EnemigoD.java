@@ -7,6 +7,8 @@ import patrones.visitor_entidad.VisitorEntidad;
 
 public  class EnemigoD extends Enemigo {
 	//JDC: Circulo, PC : Clyde , AU: Green
+	
+	
 	public EnemigoD(Coordenada c, String rutaImg) {
 		caminable = true;
 		ultMovimiento = reposo;

@@ -6,6 +6,8 @@ import patrones.visitor_entidad.VisitorEntidad;
 import patrones.visitor_entidad.VisitorNoMovibles;
 
 public class Bloque extends EntidadNoMovible {
+	
+	
 	public Bloque(Coordenada c, String rutaImg, int anc, int alt) {
 		caminable = false;
 		valor = 0;

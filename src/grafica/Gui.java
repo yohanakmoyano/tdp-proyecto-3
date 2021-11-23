@@ -42,7 +42,6 @@ public class Gui extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel panelprincipal;
 	private JPanel laberinto;
-
 	private Juego mijuego;
 	// private JLabel labelEntidad;
 	private JLabel fondoNivel;
@@ -168,6 +167,7 @@ public class Gui extends JFrame {
 
 			}
 		});
+		
 		boton_musicOff.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		panelprincipal.add(boton_musicOff);
 		panelprincipal.add(boton_music);
@@ -264,7 +264,6 @@ public class Gui extends JFrame {
 	}
 
 	public void PasoDeNivel() {
-		
 		//panelprincipal.removeAll();
 		ImageIcon img_Siguiente_nivel = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/next_level.png"));

@@ -10,6 +10,7 @@ public class Movimiento extends Thread {
 	protected boolean deboMover;
 	protected Random ran;
 	
+	
 	public Movimiento(SalaDeJuegos sj) {
 		sala = sj;
 		deboMover = true;

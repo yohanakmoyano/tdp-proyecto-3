@@ -1,9 +1,7 @@
-package patrones.level_builder;
-
+package niveles;
 
 import java.net.URL;
 import java.util.List;
-
 import entidades.Entidad;
 import entidades.movibles.enemigos.EnemigoA;
 import entidades.movibles.enemigos.EnemigoB;
@@ -20,81 +18,48 @@ import logica.Coordenada;
 import logica.SalaDeJuegos;
 
 public class Director {
-
 	protected int nivel;
-	//pasar la fabrica directamentamente o alguna forma de idenficar como atributo o contructor
 	protected SalaDeJuegos sj;
 	protected String fileName;
 	protected URL musica;
+	//pasar la fabrica directamentamente o alguna forma de idenficar como atributo o contructor
+		
 	
-	public void reset() {
-
-	}
-	public URL getMusica(){
-		return musica;
-	}
-	
-	public Director(int n, SalaDeJuegos sj,int d) {
-		nivel=n;
+	public Director(int n, SalaDeJuegos sj, int dominio) {
 		Coordenada punto = null;
 		Entidad entidad = null;
-		int j=0;
-		List<String> toret =null;
+		List<String> toRet = null;
 		int cantItems = 0;
+		nivel = n;
+		int j = 0;
 		
-		//Lee del txt el fondo del lvl1 de los diferentes Dominios
-		if (d==1) {
-			if (n==1) {
-				punto=new Coordenada(240,390);
-				toret= LeerArchivo.leer("src\\patrones\\level_builder\\level1JDC.txt");
+		//Acomodar como abrir el punto correspondiente
+		//Dependiendo del dominio lee el txt correspondiente
+		if (dominio == 1) {
+			punto = new Coordenada(240, 390);
+			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"JDC.txt");	
 			}
-			if (n==2) {
-				punto=new Coordenada(222,410);
-			toret= LeerArchivo.leer("src\\patrones\\level_builder\\level2JDC.txt");
+		
+		if (dominio == 2) {
+			punto = new Coordenada(240, 390);
+			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"AU.txt");
 			}
-			if (n==3) {
-				punto=new Coordenada(240,380);
-				toret= LeerArchivo.leer("src\\patrones\\level_builder\\level3JDC.txt");
+		
+		if (dominio == 3) {
+			punto = new Coordenada(240, 390);
+			toRet = LeerArchivo.leer("src\\niveles\\level"+n+"PM.txt");
 			}
-		}
-		if (d==2) {
-			if (n==1) {
-				punto=new Coordenada(240,390);
-			toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1AU.txt");
-			}
-			if (n==2) {
-				punto=new Coordenada(222,410);
-				toret = LeerArchivo.leer("src\\patrones\\level_builder\\level2AU.txt");
-			}
-			if (n==3) {
-				punto=new Coordenada(240,380);
-				toret = LeerArchivo.leer("src\\patrones\\level_builder\\level3AU.txt");
-			}
-		}
-		if (d==3) {
-			if (n==1) {
-				punto=new Coordenada(240,390);
-			toret = LeerArchivo.leer("src\\patrones\\level_builder\\level1PM.txt");
-			}
-			if (n==2) {
-				punto=new Coordenada(222,410);
-				toret = LeerArchivo.leer("src\\patrones\\level_builder\\level2PM.txt");
-			}
-				if (n==3) {
-					punto=new Coordenada(240,380);
-					toret = LeerArchivo.leer("src\\patrones\\level_builder\\level3PM.txt");
-				}
-		}
-		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toret.get(0)).toString());
-		musica=this.getClass().getResource(toret.get(1).toString());
+			
+		sj.obtenerGui().mostrarImagenFondo(this.getClass().getResource(toRet.get(0)).toString());
+		musica = this.getClass().getResource(toRet.get(1).toString());
 	    // Creo un jugador
-		Jugador jug = Jugador.getJugador(punto,100,3,this.getClass().getResource(toret.get(2)).toString());
+		Jugador jug = Jugador.getJugador(punto,100,3,this.getClass().getResource(toRet.get(2)).toString());
 		sj.obtenerGui().mostrarEntidad(jug);
 		sj.getListJugador().add(jug);
 	
 		//Lee del txt las entidades y las agrega al mapa
-		for (int i = 3;i < toret.size() ; i++) {
-			String palabra = toret.get(i);
+		for (int i = 3;i < toRet.size() ; i++) {
+			String palabra = toRet.get(i);
 			String[] caracter = palabra.split(";");
 			punto = new Coordenada(Integer.parseInt(caracter[j+1]), Integer.parseInt(caracter[j+2]) );
 			
@@ -172,9 +137,16 @@ public class Director {
 			builder=new Level3Builder(sj,j);	*/
 	}
 	
+	public void reset() {
+
+	}
+	
+	public URL getMusica(){
+		return musica;
+	}
 	
 	public void changeLevel(int nvl) {
-		nivel=nvl;
+		nivel = nvl;
 		
 	}
 

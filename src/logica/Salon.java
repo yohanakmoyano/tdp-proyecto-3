@@ -4,6 +4,7 @@ public class Salon {
 	protected Coordenada respawn;
 	protected static Salon miInstance;
 	
+	
 	private Salon(Coordenada r) {
 		respawn = r;
 	}

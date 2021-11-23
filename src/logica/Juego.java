@@ -1,16 +1,12 @@
 package logica;
 
-
 import java.net.URL;
-
-
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.EntidadNoMovible;
 import grafica.Gui;
-import patrones.level_builder.Director;
-
+import niveles.Director;
 
 public class Juego{
 	protected Puntaje puntos;
@@ -28,6 +24,7 @@ public class Juego{
 	protected Movimiento movE;
 	protected int dominio;
 	protected int itemsTotales;
+	
 	
 	public Juego(int n) {
 		puntos = Puntaje.getInstancePuntaje();
