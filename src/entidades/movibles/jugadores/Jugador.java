@@ -51,12 +51,14 @@ public  class Jugador extends EntidadMovible {
 		Puntaje.getInstancePuntaje().incrementarEn(valor);
 	}
 	
-	public void afectarCantItem() {
-		cantItemsLevantados++;
-	}
-	
-	public int getCantItemsLevantados() {
+public int getCantItemsLevantados() {
+		
+		//cantItemsLevantados++;
+		System.out.println("agarre un item "+cantItemsLevantados);
 		return cantItemsLevantados;
+	}
+	public void setCantItemsLevantados(int n){
+		cantItemsLevantados=cantItemsLevantados+1;
 	}
 
 	//jugador metodo accionar--> tipo de estado de estrategia cuando suelto delego al strategy

@@ -50,6 +50,7 @@ public class Gui extends JFrame {
 	private JTextField text_vidas;
 	private Clip clip;
 	private JLabel labelPotion;
+	private JLabel lbl_Siguiente_nivel;
 	protected static Gui myInstance;
 
 	private Gui(Juego juego) {
@@ -262,28 +263,33 @@ public class Gui extends JFrame {
 		}
 	}
 
-	public void cambioPuntaje() {
-		text_puntaje.setText("Puntaje: " + mijuego.getPuntaje());
-		// System.out.print("puntaje essss: " + mijuego.getPuntaje());
-	}
-
 	public void PasoDeNivel() {
-		panelprincipal.removeAll();
+		
+		//panelprincipal.removeAll();
 		ImageIcon img_Siguiente_nivel = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/next_level.png"));
-		JLabel lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
+		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
 		int ancho = img_Siguiente_nivel.getIconWidth();
 		int largo = img_Siguiente_nivel.getIconHeight();
+		
 		lbl_Siguiente_nivel.setBounds(0, 0, ancho, largo);
-
-		this.setSize(ancho, largo);
 		panelprincipal.add(lbl_Siguiente_nivel);
-		panelprincipal.repaint();
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		//lbl_Siguiente_nivel.setVisible(false);
+		// Cerramos el juego
+		//System.exit(0);
+		//panelprincipal.removeAll();
+	   //laberinto.removeAll();
+	   // this.setVisible(false);
+		//mijuego=new Juego(mijuego.getNivel());
+	//	mijuego.setNivel(mijuego.getNivel());
+		//mijuego.iniciarJuego();
+		
+		
 	}
 
 	public void finDeJuego() {

@@ -50,7 +50,7 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_JDC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Juego juego = new Juego();
+				Juego juego = new Juego(1);
 				juego.setDominio(1);
 				juego.iniciarJuego();
 				setVisible(false);
@@ -77,7 +77,7 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_AU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Juego juego = new Juego();
+				Juego juego = new Juego(1);
 				juego.setDominio(2);
 				juego.iniciarJuego();
 				setVisible(false);
@@ -105,7 +105,7 @@ public class VentanaDominio extends JFrame {
 
 		btnInicio_PM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Juego juego = new Juego();
+				Juego juego = new Juego(1);
 				juego.setDominio(3);
 				juego.iniciarJuego();
 				setVisible(false);

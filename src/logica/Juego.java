@@ -3,6 +3,7 @@ package logica;
 
 import java.net.URL;
 
+
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
@@ -11,7 +12,7 @@ import grafica.Gui;
 import patrones.level_builder.Director;
 
 
-public class Juego {
+public class Juego{
 	protected Puntaje puntos;
 	protected int nivel; 
 	protected Gui miGui;
@@ -28,9 +29,9 @@ public class Juego {
 	protected int dominio;
 	protected int itemsTotales;
 	
-	public Juego() {
+	public Juego(int n) {
 		puntos = Puntaje.getInstancePuntaje();
-		nivel = 2;
+		nivel = n;//1;
 		miGui = Gui.getGui(this);
 		miSala = new SalaDeJuegos(miGui,this);
 		itemsTotales = 0;
@@ -44,6 +45,9 @@ public class Juego {
 		if(!miSala.getListJugador().isEmpty())
 			personaje = (Jugador) miSala.getListJugador().get(0);
 	}
+	public int getDominio() {
+		return dominio;
+	}
 	public URL getMusica() {
 		return miFabrica.getMusica();
 	}
@@ -53,6 +57,7 @@ public class Juego {
 			miGui.actualizarVidas(personaje.getVidas());
 		else
 			miGui.finDeJuego();
+	
 	}
 	
 	public void setPuntaje(int p) {
@@ -64,13 +69,18 @@ public class Juego {
 		int toRet;
 		toRet=puntos.getPuntajeActual();
 		
-		if (toRet==100) //358
-			miGui.PasoDeNivel();
+		//if (toRet==100) //358
+		//	miGui.PasoDeNivel();
+	   siguienteNivel();//despues mover esto
 		return toRet;
 	}
 
 	public void setNivel(int n) {
 		nivel = n;
+		miFabrica = new Director(nivel, miSala, dominio);
+		if(!miSala.getListJugador().isEmpty())
+			personaje = (Jugador) miSala.getListJugador().get(0);
+		
 	}
 
 	public int getNivel() {
@@ -81,7 +91,7 @@ public class Juego {
 		//puntaje = 0;
 		movE = new Movimiento(miSala);
 		movE.start();
-		nivel = 1;
+		nivel = this.getNivel();
 		//buscar donde restar estas monedas
 		itemsTotales = miSala.getCantItems();
 		System.out.println("cantidad de monedas " +itemsTotales);
@@ -129,18 +139,28 @@ public class Juego {
 	
 	public boolean siguienteNivel() {
 		boolean pasoLvl = false;
-		if (itemsTotales == personaje.getCantItemsLevantados()) {
+		//System.out.println("holaa");
+		if (itemsTotales == personaje.getCantItemsLevantados()) {//(personaje.getCantItemsLevantados()==4) { //
 			pasoLvl = true;
+			setNivel(nivel+1);
+			miGui.PasoDeNivel();
+			//System.out.println("holaa");
 		}
 		return pasoLvl;
+		//public void actualizoVidas() {
+			/*if (personaje.getVidas()!=0) 
+				miGui.actualizarVidas(personaje.getVidas());
+			else
+				miGui.finDeJuego();*/
+		}
 			
-	}
+	
 
-	public void pasoDeNivel() {
+	/*public void pasoDeNivel() {
 		if(siguienteNivel()) {
 			miGui.PasoDeNivel();
 		}
-	}
+	}*/
 	
 	public void operar(int op) {
 		switch (op) {
