@@ -11,11 +11,11 @@ import logica.Coordenada;
 
 public class RepresentacionGrafica {
 	protected JLabel dibujo;
-	protected String ruta; 
-	protected int altura; 
-	protected int base; 
+	protected String ruta;
+	protected int altura;
+	protected int base;
 	protected int actualizarMov;
-	
+
 	public RepresentacionGrafica(String r, int x, int y, int ancho, int alto) {
 		ruta = r;
 		altura = alto;
@@ -31,56 +31,51 @@ public class RepresentacionGrafica {
 		Image medidaEntidad = imagen.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT);
 		dibujo.setIcon(new ImageIcon(medidaEntidad));
 	}
-	
-	//se mueve + en el eje x
+
 	public void moverDerecha(int factorX) {
 		actualizarMov = dibujo.getX() + (factorX);
 		dibujo.setBounds(actualizarMov, dibujo.getY(), base, altura);
 	}
-	
-	//se mueve - en el eje x
+
 	public void moverIzquierda(int factorX) {
 		actualizarMov = dibujo.getX() - (factorX);
 		dibujo.setBounds(actualizarMov, dibujo.getY(), base, altura);
 	}
-	
-	//se mueve - en el eje y
+
 	public void moverArriba(int factorY) {
 		actualizarMov = dibujo.getY() - (factorY);
 		dibujo.setBounds(dibujo.getX(), actualizarMov, base, altura);
 	}
-	
-	//se mueve + en el eje y
+
 	public void moverAbajo(int factorY) {
 		actualizarMov = dibujo.getY() + (factorY);
 		dibujo.setBounds(dibujo.getX(), actualizarMov, base, altura);
 	}
-	
+
 	public void eliminar() {
 		dibujo.setBounds(0, 0, 0, 0);
 	}
-	
+
 	public void moverRep(int x, int y) {
 		dibujo.setBounds(x, y, base, altura);
 	}
-	
+
 	public boolean colisiona(RepresentacionGrafica r) {
 		return this.dibujo.getBounds().intersects(r.getDibujo().getBounds());
 	}
-	
+
 	public boolean contieneCoordenada(Coordenada c) {
-		//System.out.println("Contiene coordenada + " + dibujo.contains(c.getX(), c.getY()));
 		return dibujo.getBounds().contains(c.getX(), c.getY());
 	}
-	
+
 	public String getRuta() {
 		return ruta;
 	}
-	
+
 	public JLabel getDibujo() {
 		return dibujo;
 	}
-	
+
 	public void cambiarRuta(String r) {
 		ruta = r;
 	}

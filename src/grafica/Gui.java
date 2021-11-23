@@ -24,18 +24,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import javax.swing.SwingConstants;
-
 import entidades.Entidad;
-
 import logica.Juego;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
-
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class Gui extends JFrame {
 
@@ -43,23 +37,22 @@ public class Gui extends JFrame {
 	private JPanel panelprincipal;
 	private JPanel laberinto;
 	private Juego mijuego;
-	// private JLabel labelEntidad;
 	private JLabel fondoNivel;
 	private JTextField text_puntaje;
 	private JTextField text_vidas;
 	private Clip clip;
-	private JLabel labelPotion;
 	private JLabel lbl_Siguiente_nivel;
+	private JLabel lbl_gameOver;
 	protected static Gui myInstance;
 
 	private Gui(Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
-		setTitle("PACMAN 2.0");
+		setTitle("THE GAME");
 		setSize(new Dimension(900, 600));
 		setResizable(false);
 		this.setVisible(true);
-		
+
 		// Panel principal
 		panelprincipal = new JPanel();
 		panelprincipal.setBounds(0, 0, 900, 600);
@@ -67,7 +60,7 @@ public class Gui extends JFrame {
 		panelprincipal.setVisible(true);
 		panelprincipal.setLayout(null);
 		this.agregarBotonesMusica();
-		
+
 		// Panel laberinto
 		laberinto = new JPanel();
 		laberinto.setBounds(197, 0, 500, 552);
@@ -79,7 +72,7 @@ public class Gui extends JFrame {
 
 		// Inicia miJuego
 		mijuego = juego;
-		
+
 		// Text Puntaje
 		text_puntaje = new JTextField();
 		text_puntaje.setForeground(Color.WHITE);
@@ -90,7 +83,7 @@ public class Gui extends JFrame {
 		text_puntaje.setBounds(725, 56, 137, 27);
 		panelprincipal.add(text_puntaje);
 		text_puntaje.setColumns(10);
-		
+
 		// Text Vidas
 		text_vidas = new JTextField();
 		text_vidas.setForeground(Color.WHITE);
@@ -100,7 +93,7 @@ public class Gui extends JFrame {
 		text_vidas.setFont(new Font("Consolas", Font.BOLD, 22));
 		text_vidas.setBounds(725, 140, 137, 27);
 		panelprincipal.add(text_vidas);
-		
+
 		// Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
@@ -109,10 +102,8 @@ public class Gui extends JFrame {
 
 	}
 
-	
-	//pasarle por parametro la musica correspondiente
 	public void agregarBotonesMusica() {
-		
+
 		String rutaBotonSonidoOn = this.getClass().getResource("/Images/generales/sonidoOff.png").toString();
 		ImageIcon fotoBotonSonidoOn = null;
 		try {
@@ -120,7 +111,7 @@ public class Gui extends JFrame {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		
+
 		String rutaBotonSonidoOff = this.getClass().getResource("/Images/generales/sonidoOn.png").toString();
 		ImageIcon fotoBotonSonidoOff = null;
 		try {
@@ -128,34 +119,32 @@ public class Gui extends JFrame {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		
+
 		JButton boton_musicOff = new JButton();
 		boton_musicOff.setBackground(Color.WHITE);
 		boton_musicOff.setBounds(23, 11, 35, 35);
 		boton_musicOff.setFocusable(false);
 		boton_musicOff.setFont(new Font("Consolas", Font.BOLD, 12));
 		boton_musicOff.setVisible(false);
-		Image medidaSonidoOff = fotoBotonSonidoOff.getImage().getScaledInstance(35,35, Image.SCALE_DEFAULT);
-		
+		Image medidaSonidoOff = fotoBotonSonidoOff.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
+
 		JButton boton_music = new JButton();
 		boton_music.setBackground(Color.WHITE);
 		boton_music.setBounds(23, 11, 35, 35);
 		boton_music.setFocusable(false);
 		boton_music.setFont(new Font("Consolas", Font.BOLD, 12));
-		Image medidaSonidoOn = fotoBotonSonidoOn.getImage().getScaledInstance(35,35, Image.SCALE_DEFAULT);
+		Image medidaSonidoOn = fotoBotonSonidoOn.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
 		boton_music.setIcon(new ImageIcon(medidaSonidoOn));
 		boton_music.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-		
-		
+
 		boton_musicOff.setIcon(new ImageIcon(medidaSonidoOff));
 		boton_music.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				URL path = mijuego.getMusica();//this.getClass().getResource("/audio/JDC.wav");
+				URL path = mijuego.getMusica();
 				try {
 					AudioInputStream audioInput = AudioSystem.getAudioInputStream(path);
 					clip = AudioSystem.getClip();
-
 					clip.open(audioInput);
 					clip.start();
 					boton_musicOff.setVisible(true);
@@ -167,18 +156,18 @@ public class Gui extends JFrame {
 
 			}
 		});
-		
+
 		boton_musicOff.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		panelprincipal.add(boton_musicOff);
 		panelprincipal.add(boton_music);
-				boton_musicOff.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						clip.stop();
-						boton_music.setVisible(true);
-						boton_musicOff.setVisible(false);
-					}
-				});
+		boton_musicOff.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clip.stop();
+				boton_music.setVisible(true);
+				boton_musicOff.setVisible(false);
+			}
+		});
 
 		requestFocusInWindow();
 
@@ -264,13 +253,13 @@ public class Gui extends JFrame {
 	}
 
 	public void PasoDeNivel() {
-		//panelprincipal.removeAll();
+		panelprincipal.removeAll();
 		ImageIcon img_Siguiente_nivel = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/next_level.png"));
 		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
 		int ancho = img_Siguiente_nivel.getIconWidth();
 		int largo = img_Siguiente_nivel.getIconHeight();
-		
+
 		lbl_Siguiente_nivel.setBounds(0, 0, ancho, largo);
 		panelprincipal.add(lbl_Siguiente_nivel);
 		try {
@@ -278,24 +267,14 @@ public class Gui extends JFrame {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		//lbl_Siguiente_nivel.setVisible(false);
-		// Cerramos el juego
-		//System.exit(0);
-		//panelprincipal.removeAll();
-	   //laberinto.removeAll();
-	   // this.setVisible(false);
-		//mijuego=new Juego(mijuego.getNivel());
-	//	mijuego.setNivel(mijuego.getNivel());
-		//mijuego.iniciarJuego();
-		
-		
+
 	}
 
 	public void finDeJuego() {
 		panelprincipal.removeAll();
 		ImageIcon img_gameOver = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/game_over.png"));
-		JLabel lbl_gameOver = new JLabel(img_gameOver);
+		lbl_gameOver = new JLabel(img_gameOver);
 		int ancho = img_gameOver.getIconWidth();
 		int largo = img_gameOver.getIconHeight();
 		lbl_gameOver.setBounds(0, 0, ancho, largo);
@@ -308,32 +287,9 @@ public class Gui extends JFrame {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 		// Cerramos el juego
 		System.exit(0);
 	}
-	// Comentado temporalmente
-	/*
-	 * public void mostrarEntidad(Entidad e) { ImageIcon imagen = null; String
-	 * rutaEntidad = e.getRepresentacionGrafica().getRuta(); int ancho =
-	 * e.getAncho(); int alto = e.getAlto(); labelEntidad = new JLabel();
-	 * labelEntidad.setBounds(e.getPosicion().getX(), e.getPosicion().getY(), ancho,
-	 * alto); try { imagen = new ImageIcon(new URL(rutaEntidad)); } catch
-	 * (MalformedURLException e1) { e1.printStackTrace(); } Image medidaEntidad =
-	 * imagen.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT);
-	 * labelEntidad.setIcon(new ImageIcon(medidaEntidad));
-	 * laberinto.add(labelEntidad); labelEntidad.setVisible(true);
-	 * 
-	 * }
-	 */
-
 	
-	 public void agregarItem() { 
-		 ImageIcon img_potion = new ImageIcon(getClass().getClassLoader().getResource("Images/generales/bomba_nivel1.png"));
-		 labelPotion = new JLabel(img_potion);
-		 labelPotion.setBounds(725, 224, 25, 25); 
-		 panelprincipal.add(labelPotion);
-		 panelprincipal.repaint();
-	 }
-	 
+
 }

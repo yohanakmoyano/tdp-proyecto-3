@@ -19,7 +19,6 @@ public class VentanaInicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel inicioJuego;
 
-	
 	public VentanaInicio() {
 		// Configuracion de la Ventana Inicio
 		setTitle("The Game");
@@ -99,9 +98,7 @@ public class VentanaInicio extends JFrame {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-
 		Image medidaJuego = fotoJuego.getImage().getScaledInstance(900, 600, Image.SCALE_DEFAULT);
-
 		// Label que contiene la imagen del fondo de la Ventana Inicio
 		inicioJuego = new JLabel("");
 		inicioJuego.setBounds(0, 0, 900, 600);

@@ -21,7 +21,7 @@ public class VentanaDominio extends JFrame {
 
 	public VentanaDominio() {
 		// Configuracion de la Ventana Inicio
-		setTitle("PACMAN 2.0");
+		setTitle("THE GAME");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
 		setSize(new Dimension(915, 640));
