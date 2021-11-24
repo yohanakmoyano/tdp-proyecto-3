@@ -1,7 +1,9 @@
 package entidades.movibles.enemigos;
 
+import entidades.movibles.jugadores.Jugador;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
+import logica.Movimiento;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
@@ -101,4 +103,35 @@ public class EnemigoC extends Enemigo {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY));
 	}
 
+	public void mover(Coordenada posDest, int eje, Movimiento mov) {
+		int ultMov = Jugador.ultMovimiento;
+		Coordenada destino = new Coordenada(posDest.getX(), posDest.getY());
+		if(eje == ejeX) {
+			switch(ultMov) {
+				case(Jugador.ultMovDer): {
+					destino.setX(destino.getX() + 2);
+					break;
+				} 
+				case(Jugador.ultMovIzq): {
+					destino.setX(destino.getX() - 2);
+					break;
+				}
+			}
+			moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
+		} else {
+			if(eje == ejeY) {
+				switch(ultMov) {
+					case(Jugador.ultMovUp): {
+						destino.setX(destino.getX() - 4);
+						break;
+					} 
+					case(Jugador.ultMovDown): {
+						destino.setX(destino.getX() + 4);
+						break;
+					}
+				}
+				moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
+			}
+		}
+	}
 }

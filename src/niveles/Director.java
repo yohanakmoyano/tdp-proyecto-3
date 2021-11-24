@@ -28,7 +28,6 @@ public class Director {
 	protected Juego juego;
 
 	public Director(int n, SalaDeJuegos salaJueg, int dominio, Juego jueg) {
-		sj = new SalaDeJuegos(null);
 		Coordenada punto = null;
 		Entidad entidad = null;
 		List<String> toRet = null;

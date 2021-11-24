@@ -42,12 +42,21 @@ public class SalaDeJuegos {
 
 	}
 
+
 	public void setCantItems(int cant) {
 		cantItems = cant;
 	}
 
 	public int getCantItems() {
 		return cantItems;
+	}
+
+	public int getBase() {
+		return base;
+	}
+	
+	public int getAltura() {
+		return altura;
 	}
 
 	// Consulta cual es la zona que contiene la coordenada PUNTO.
@@ -57,7 +66,7 @@ public class SalaDeJuegos {
 		return matrizZonas[cMatriz.getX()][cMatriz.getY()];
 	}
 
-	protected Coordenada posEnMatriz(Coordenada p) {
+	private Coordenada posEnMatriz(Coordenada p) {
 		int baseZona = base / cantDivisiones;
 		int altoZona = altura / cantDivisiones;
 
@@ -79,7 +88,7 @@ public class SalaDeJuegos {
 		}
 	}
 
-	private boolean posColisiona(Coordenada c) {
+	public boolean posColisiona(Coordenada c) {
 
 		Zona z = getZona(c);
 		Iterator<Entidad> it = z.getListaEntidades().iterator();
@@ -106,8 +115,7 @@ public class SalaDeJuegos {
 	public boolean autorizarMovArriba(EntidadMovible e) {
 		Coordenada newPosSupIzq = e.nextPosMovUp();
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
-		boolean puedeMoverse = (newPosSupIzq.getY() > 0) && (e.puedoMovermeUp()) && !posColisiona(newPosSupIzq)
-				&& !posColisiona(newPosSupDer);
+		boolean puedeMoverse = (newPosSupIzq.getY() > 0) && (e.puedoMovermeUp()) && !posColisiona(newPosSupIzq)	&& !posColisiona(newPosSupDer);
 		return puedeMoverse;
 	}
 
@@ -115,8 +123,7 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovDown();
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
-		boolean puedeMoverse = ((newPosSupIzq.getY() + e.getAlto()) < altura) && (e.puedoMovermeDown())
-				&& !posColisiona(newPosInfIzq) && !posColisiona(newPosInfDer);
+		boolean puedeMoverse = ((newPosSupIzq.getY() + e.getAlto()) < altura) && (e.puedoMovermeDown())	&& !posColisiona(newPosInfIzq) && !posColisiona(newPosInfDer);
 
 		return puedeMoverse;
 	}
@@ -125,8 +132,7 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovDer();
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
-		boolean puedeMoverse = ((newPosSupIzq.getX() + e.getAlto()) < base) && (e.puedoMovermeDer())
-				&& !posColisiona(newPosSupDer) && !posColisiona(newPosInfDer);
+		boolean puedeMoverse = ((newPosSupIzq.getX() + e.getAlto()) < base) && (e.puedoMovermeDer()) && !posColisiona(newPosSupDer) && !posColisiona(newPosInfDer);
 
 		return puedeMoverse;
 	}
@@ -134,8 +140,7 @@ public class SalaDeJuegos {
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
 		Coordenada newPosSupIzq = e.nextPosMovIzq();
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
-		boolean puedeMoverse = (newPosSupIzq.getX() > 0) && (e.puedoMovermeIzq()) && !posColisiona(newPosSupIzq)
-				&& !posColisiona(newPosInfIzq);
+		boolean puedeMoverse = (newPosSupIzq.getX() > 0) && (e.puedoMovermeIzq()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosInfIzq);
 
 		return puedeMoverse;
 	}

@@ -11,7 +11,7 @@ public abstract class EntidadMovible extends Entidad {
 	protected boolean puedoMovermeDer;
 	protected boolean puedoMovermeUp;
 	protected boolean puedoMovermeDown;
-	protected int ultMovimiento;
+	protected static int ultMovimiento;
 	public static final int reposo = 0;
 	public static final int ultMovIzq = 1;
 	public static final int ultMovDer = 2;

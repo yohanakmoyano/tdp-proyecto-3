@@ -2,6 +2,7 @@ package entidades.movibles.enemigos;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
+import logica.Movimiento;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
@@ -98,5 +99,14 @@ public class EnemigoB extends Enemigo {
 	@Override
 	public Coordenada nextPosMovDown() {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY));
+	}
+	
+	public void mover(Coordenada posDest, int eje, Movimiento mov) {
+		if(eje == ejeX) {
+			moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
+		} else {
+			if(eje == ejeY)
+				moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
+		}
 	}
 }
