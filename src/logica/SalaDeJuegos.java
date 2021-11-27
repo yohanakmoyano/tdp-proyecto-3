@@ -42,7 +42,9 @@ public class SalaDeJuegos {
 
 	}
 
-
+public Juego getJuego() {
+	return juego;
+}
 	public void setCantItems(int cant) {
 		cantItems = cant;
 	}
@@ -190,7 +192,12 @@ public class SalaDeJuegos {
 	}
 
 	public void reset() {
-
+		for (Entidad ent : listaEnemigos) {
+		ent.eliminar();
+		}
+		for (Entidad ent : listaEntidadFija) {
+			ent.eliminar();
+		}
 	}
 
 	private boolean colisionEnZona(Entidad e, Zona z) {
