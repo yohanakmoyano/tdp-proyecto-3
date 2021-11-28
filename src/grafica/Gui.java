@@ -186,7 +186,10 @@ public class Gui extends JFrame {
 	public void actualizarVidas(int v) {
 		text_vidas.setText(" " + v);
 	}
-	public void mostrarImagenFondo(String s) {
+	public void mostrarImagenFondo(String s,int n) {
+		if (n!=1) {
+			fondoNivel.setVisible(false);
+		}
 		ImageIcon fotoJuego = null;
 		try {
 			fotoJuego = new ImageIcon(new URL(s));
@@ -202,7 +205,6 @@ public class Gui extends JFrame {
 		panelprincipal.add(fondoNivel);
 		
 	}
-
 	public void mostrarEntidad(Entidad e) {
 		laberinto.add(e.getRepresentacionGrafica().getDibujo());
 		e.getRepresentacionGrafica().getDibujo().setVisible(true);
@@ -253,7 +255,7 @@ public class Gui extends JFrame {
 	}
 
 	public void PasoDeNivel() {
-		ImageIcon img_Siguiente_nivel = new ImageIcon(
+	ImageIcon img_Siguiente_nivel = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/next_level.png"));
 		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
 		int ancho = img_Siguiente_nivel.getIconWidth();
@@ -266,7 +268,7 @@ public class Gui extends JFrame {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}*/
-
+		
 	}
 
 	public void finDeJuego() {

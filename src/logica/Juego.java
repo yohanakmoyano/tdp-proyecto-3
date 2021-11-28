@@ -1,6 +1,7 @@
 package logica;
 
 import java.net.URL;
+
 import entidades.Entidad;
 import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
@@ -65,7 +66,7 @@ public class Juego {
 
 	public void actualizarFondo(String urlImg) {
 		System.out.println("El url es: "+urlImg);
-		miGui.mostrarImagenFondo(urlImg);
+		miGui.mostrarImagenFondo(urlImg,nivel);
 	}
 
 	public void mostrarEntidad(Entidad e) {
@@ -109,10 +110,10 @@ public class Juego {
 	public void chequearGameOver(int cantItempsUp) {
 		if(cantItempsUp==4){// (cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
+			//	miGui.PasoDeNivel();
 				miSala.reset();
 				nivel = nivel + 1;
 				setDominio(dominio);
-				miGui.PasoDeNivel();
 			}
 		}
 	}

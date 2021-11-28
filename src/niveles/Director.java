@@ -80,13 +80,13 @@ public class Director {
 				break;
 			}
 			case "c": { // Creo un cuchillo
-				entidad = new ItemB(1, punto, this.getClass().getResource(caracter[j + 3]).toString());
+				entidad = new ItemB(50, punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEntidadFija().add(entidad);
 				cantItems = cantItems + 1;
 				break;
 			}
 			case "d": { // Creo un dinero
-				entidad = new ItemE(1, punto, this.getClass().getResource(caracter[j + 3]).toString());
+				entidad = new ItemE(100, punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEntidadFija().add(entidad);
 				break;
 			}
