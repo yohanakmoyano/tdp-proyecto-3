@@ -115,6 +115,7 @@ public class Juego {
 				nivel = nivel + 1;
 				setDominio(dominio);
 			}
+		personaje.resetNivel();
 		}
 	}
 	public void setSalaDeJuegos(SalaDeJuegos s) {
