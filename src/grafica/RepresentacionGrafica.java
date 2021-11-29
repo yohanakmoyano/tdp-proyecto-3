@@ -75,7 +75,6 @@ public class RepresentacionGrafica {
 	public JLabel getDibujo() {
 		return dibujo;
 	}
-
 	public void cambiarRuta(String r) {
 		ruta = r;
 	}

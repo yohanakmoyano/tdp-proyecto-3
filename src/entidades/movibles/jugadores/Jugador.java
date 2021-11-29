@@ -16,7 +16,7 @@ public class Jugador extends EntidadMovible {
 	protected static Jugador myInstance;
 	protected int cantItemsLevantados;
 	protected Juego juego;
-
+	protected boolean transformacion;
 	private Jugador(Coordenada c, String rutaImg, Juego jueg) {
 		alive = true;
 		caminable = true;
@@ -39,6 +39,7 @@ public class Jugador extends EntidadMovible {
 		cantItemsLevantados = 0;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); // Por defecto se crea con estrategia presa.
+		transformacion=false;
 
 	}
 
@@ -115,7 +116,20 @@ public class Jugador extends EntidadMovible {
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
 	}
-
+	public void setTransformacion(boolean t){
+		transformacion=t;
+		if (transformacion)
+		juego.TransformarJugador();
+	}
+	public boolean getTranformacion() {
+		return transformacion;
+	}
+	public void cambiarImagen(String r, int x, int y, int ancho, int alto) {
+		this.getRepresentacionGrafica().eliminar();
+		//RepresentacionGrafica mir=this.getRepresentacionGrafica() ;
+		miRep=new RepresentacionGrafica(r,x,y,ancho,alto);
+		//this.getRepresentacionGrafica().setDibujo(r,x,y,ancho,alto);
+	}
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

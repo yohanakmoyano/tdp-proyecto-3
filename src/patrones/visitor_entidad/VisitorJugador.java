@@ -32,17 +32,20 @@ public class VisitorJugador extends VisitorEntidad {
 		miJugador.getEstrategia().setStrategy(new Cazador(miJugador));
 		miJugador.setCantItemsLevantados();
 		it.eliminar();
+		miJugador.setTransformacion(true);
 	}
 
 	public void visit(ItemC it) {
 		miJugador.afectarPuntaje(it.getValor());
 		miJugador.setVelocidad((miJugador.getVelocidad() * 3) / 2);
 		it.eliminar();
+		miJugador.setTransformacion(true);
 	}
 
 	public void visit(ItemD it) {
 		miJugador.tieneItemD();
 		it.eliminar();
+		miJugador.setTransformacion(true);
 	}
 
 	public void visit(ItemE it) {
