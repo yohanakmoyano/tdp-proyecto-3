@@ -64,4 +64,42 @@ public abstract class Enemigo extends EntidadMovible {
 			}
 		}
 	}
+	
+	
+	@Override
+	public void moverArriba() {
+		puedoMovermeDown = true;
+		ultMovimiento = ultMovUp;
+		actualizarMov = posicion.getY() - (factorMovY);
+		posicion.setY(actualizarMov);
+		miRep.moverArriba(factorMovY);
+	}
+
+	@Override
+	public void moverAbajo() {
+		puedoMovermeUp = true;
+		ultMovimiento = ultMovDown;
+		actualizarMov = posicion.getY() + (factorMovY);
+		posicion.setY(actualizarMov);
+		miRep.moverAbajo(factorMovY);
+	}
+
+	@Override
+	public void moverIzquierda() {
+		puedoMovermeDer = true;
+		ultMovimiento = ultMovIzq;
+		actualizarMov = posicion.getX() - (factorMovX);
+		posicion.setX(actualizarMov);
+		miRep.moverIzquierda(factorMovX);
+	}
+
+	@Override
+	public void moverDerecha() {
+		puedoMovermeIzq = true;
+		ultMovimiento = ultMovDer;
+		actualizarMov = posicion.getX() + (factorMovX);
+		posicion.setX(actualizarMov);
+		miRep.moverDerecha(factorMovX);
+	}
+	
 }

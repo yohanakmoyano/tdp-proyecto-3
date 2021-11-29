@@ -17,7 +17,7 @@ public class Jugador extends EntidadMovible {
 	protected int cantItemsLevantados;
 	protected Juego juego;
 
-	private Jugador(Coordenada c, int vel, int v, String rutaImg, Juego jueg) {
+	private Jugador(Coordenada c, String rutaImg, Juego jueg) {
 		alive = true;
 		caminable = true;
 		posRespawn = new Coordenada(c.getX(), c.getY());
@@ -29,8 +29,8 @@ public class Jugador extends EntidadMovible {
 		poseeItemD = false;
 		miVisitor = new VisitorJugador(this);
 		juego = jueg;
-		velocidad = vel;
-		vidas = v;
+		velocidad = 100;
+		vidas = 3;
 		posicion = c;
 		ancho = 19;
 		factorMovX = ancho / 4;
@@ -42,9 +42,9 @@ public class Jugador extends EntidadMovible {
 
 	}
 
-	public static Jugador getJugador(Coordenada c, int vel, int v, String rutaImg, Juego jueg) {
+	public static Jugador getJugador(Coordenada c, String rutaImg, Juego jueg) {
 		if (myInstance == null)
-			myInstance = new Jugador(c, vel, v, rutaImg, jueg);
+			myInstance = new Jugador(c, rutaImg, jueg);
 		return myInstance;
 	}
 

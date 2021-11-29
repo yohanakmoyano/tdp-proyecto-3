@@ -51,7 +51,7 @@ public class Director {
 		juego.actualizarFondo(this.getClass().getResource(toRet.get(0)).toString());
 		musica = this.getClass().getResource(toRet.get(1).toString());
 		// Creo un jugador
-		jug = Jugador.getJugador(punto, 100, 3, this.getClass().getResource(toRet.get(2)).toString(), juego);
+		jug = Jugador.getJugador(punto, this.getClass().getResource(toRet.get(2)).toString(), juego);
 		juego.mostrarEntidad(jug);
 
 		// Lee del txt las entidades y las agrega al mapa
