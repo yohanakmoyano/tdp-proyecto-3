@@ -68,7 +68,9 @@ public class Juego {
 		System.out.println("El url es: "+urlImg);
 		miGui.mostrarImagenFondo(urlImg,nivel);
 	}
-
+	/*public void actualizarposRespawn(Coordenada p) {
+		personaje.setposRespawn(p);
+	}*/
 	public void mostrarEntidad(Entidad e) {
 		miGui.mostrarEntidad(e);
 	}
@@ -116,9 +118,9 @@ public class Juego {
 	}
 	
 	public void chequearGameOver(int cantItempsUp) {
-		if(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
+		if(cantItempsUp==4){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
-			//	miGui.PasoDeNivel();
+				miGui.PasoDeNivel();
 				miSala.reset();
 				nivel = nivel + 1;
 				setDominio(dominio);

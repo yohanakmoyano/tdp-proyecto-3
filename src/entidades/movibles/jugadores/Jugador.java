@@ -55,6 +55,7 @@ public class Jugador extends EntidadMovible {
 	public void resetNivel() {
 		cantItemsLevantados=0;
 	}
+	
 	public void setCantItemsLevantados() {
 		cantItemsLevantados = cantItemsLevantados + 1;
 		juego.chequearGameOver(cantItemsLevantados);
@@ -104,7 +105,9 @@ public class Jugador extends EntidadMovible {
 		miRep.eliminar();
 		this.isDead();
 	}
-
+public void cambiarCoordenada(Coordenada p) {
+	posRespawn=p;
+}
 	public void reUbicar() {
 		miRep.eliminar();
 		miRep.moverRep(posRespawn.getX(), posRespawn.getY());

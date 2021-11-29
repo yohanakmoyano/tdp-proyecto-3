@@ -20,6 +20,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,7 +30,6 @@ import entidades.Entidad;
 import logica.Juego;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 
 public class Gui extends JFrame {
 
@@ -44,6 +44,7 @@ public class Gui extends JFrame {
 	private JLabel lbl_Siguiente_nivel;
 	private JLabel lbl_gameOver;
 	protected static Gui myInstance;
+	private JTextField text_pocion;
 
 	private Gui(Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,6 +94,13 @@ public class Gui extends JFrame {
 		text_vidas.setFont(new Font("Consolas", Font.BOLD, 22));
 		text_vidas.setBounds(725, 140, 137, 27);
 		panelprincipal.add(text_vidas);
+
+		text_pocion = new JTextField();
+		text_pocion.setBackground(Color.DARK_GRAY);
+		text_pocion.setFont(new Font("Consolas", Font.BOLD, 22));
+		text_pocion.setBounds(725, 226, 137, 27);
+		panelprincipal.add(text_pocion);
+		text_pocion.setColumns(10);
 
 		// Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
@@ -186,8 +194,13 @@ public class Gui extends JFrame {
 	public void actualizarVidas(int v) {
 		text_vidas.setText(" " + v);
 	}
-	public void mostrarImagenFondo(String s,int n) {
-		if (n!=1) {
+
+	public void actualizarPocion(String s) {
+		text_pocion.setText(" " + s);
+	}
+
+	public void mostrarImagenFondo(String s, int n) {
+		if (n != 1) {
 			fondoNivel.setVisible(false);
 		}
 		ImageIcon fotoJuego = null;
@@ -203,8 +216,9 @@ public class Gui extends JFrame {
 		fondoNivel.setBounds(0, 0, 900, 600);
 		fondoNivel.setIcon(new ImageIcon(medidaJuego));
 		panelprincipal.add(fondoNivel);
-		
+
 	}
+
 	public void mostrarEntidad(Entidad e) {
 		laberinto.add(e.getRepresentacionGrafica().getDibujo());
 		e.getRepresentacionGrafica().getDibujo().setVisible(true);
@@ -255,20 +269,16 @@ public class Gui extends JFrame {
 	}
 
 	public void PasoDeNivel() {
-	ImageIcon img_Siguiente_nivel = new ImageIcon(
+		ImageIcon img_Siguiente_nivel = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/next_level.png"));
-		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
 		int ancho = img_Siguiente_nivel.getIconWidth();
 		int largo = img_Siguiente_nivel.getIconHeight();
-
-		lbl_Siguiente_nivel.setBounds(0, 0, ancho, largo);
+		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
+		lbl_Siguiente_nivel.setFont(new Font("Consolas", Font.BOLD, 12));
+		lbl_Siguiente_nivel.setBounds(100, 50, ancho, largo);
 		panelprincipal.add(lbl_Siguiente_nivel);
-		/*try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/
-		
+		lbl_Siguiente_nivel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Images/generales/next_level.png")));
+
 	}
 
 	public void finDeJuego() {
@@ -291,6 +301,4 @@ public class Gui extends JFrame {
 		// Cerramos el juego
 		System.exit(0);
 	}
-	
-
 }

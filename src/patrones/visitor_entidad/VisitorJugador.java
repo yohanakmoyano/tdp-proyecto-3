@@ -37,7 +37,7 @@ public class VisitorJugador extends VisitorEntidad {
 
 	public void visit(ItemC it) {
 		miJugador.afectarPuntaje(it.getValor());
-		miJugador.setVelocidad((miJugador.getVelocidad() * 3) / 2);
+		miJugador.setVelocidad((miJugador.getVelocidad()* 3) / 2);
 		it.eliminar();
 		miJugador.setTransformacion(true);
 	}

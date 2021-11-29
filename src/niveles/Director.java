@@ -51,7 +51,10 @@ public class Director {
 		juego.actualizarFondo(this.getClass().getResource(toRet.get(0)).toString());
 		musica = this.getClass().getResource(toRet.get(1).toString());
 		// Creo un jugador
+		
 		jug = Jugador.getJugador(punto, this.getClass().getResource(toRet.get(2)).toString(), juego);
+		jug.cambiarCoordenada(punto);
+		jug.reUbicar();
 		juego.mostrarEntidad(jug);
 
 		// Lee del txt las entidades y las agrega al mapa
@@ -129,11 +132,14 @@ public class Director {
 		if (nivel == 1)
 			punto = new Coordenada(240, 390);
 
-		if (nivel == 2)
+		if (nivel == 2) {
 			punto = new Coordenada(222, 410);
+			
+		}
 
-		if (nivel == 3)
+		if (nivel == 3) {
 			punto = new Coordenada(240, 380);
+		}
 
 		return punto;
 	}
