@@ -1,8 +1,9 @@
 package logica;
 
 import java.util.AbstractSet;
+import java.util.ArrayList;
 import java.util.HashSet;
-
+import java.util.List;
 import java.awt.Rectangle;
 import entidades.Entidad;
 
@@ -39,6 +40,16 @@ public class Zona extends Rectangle {
 
 	public AbstractSet<Entidad> getListaEntidades() {
 		return listaEntidades;
+	}
+	
+	public List<Entidad> getEntColisionadas(Entidad e) {
+		List<Entidad> listaEntCol = new ArrayList<Entidad>();
+		
+		for(Entidad entidad : listaEntidades) {
+			if(entidad.colisiona(e))	
+				listaEntCol.add(entidad);
+		}
+		return listaEntCol;
 	}
 
 	public void agregarEntidad(Entidad e) {

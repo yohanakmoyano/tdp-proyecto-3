@@ -42,9 +42,10 @@ public class SalaDeJuegos {
 
 	}
 
-public Juego getJuego() {
-	return juego;
-}
+	public Juego getJuego() {
+		return juego;
+	}
+	
 	public void setCantItems(int cant) {
 		cantItems = cant;
 	}
@@ -199,6 +200,73 @@ public Juego getJuego() {
 			ent.eliminar();
 		}
 	}
+	
+	
+////////////////////////////////////////////////////////////////////////////////////////
+	/*public void verificarColisiones(Entidad e) {
+		AbstractSet<Entidad> entidadesSinRepetir = new HashSet<Entidad>();
+		entidadesSinRepetir = getlistEntCol(e);
+		boolean colisiono = false;
+
+		for (Entidad entidadAct : entidadesSinRepetir) {
+			colisiono = e.colisiona(entidadAct);
+			if (colisiono) {
+				entidadAct.accept(e.getMyVisitor());
+				miGui.actualizarPuntaje();
+				juego.actualizoVidas();
+			}
+		}
+	}
+
+//Conjunto de Zonas
+	private AbstractSet<Entidad> getlistEntCol(Entidad e) {
+		AbstractSet<Zona> zonasTotales = new HashSet<Zona>();
+		AbstractSet<Entidad> entidadesSinRepetir = new HashSet<Entidad>();
+
+		Zona z1 = getZona(e.getEsquinaSupIzq());
+		Zona z2 = getZona(e.getEsquinaSupDer());
+		Zona z3 = getZona(e.getEsquinaInfIzq());
+		Zona z4 = getZona(e.getEsquinaInfDer());
+
+		if (z1 != null)
+			zonasTotales.add(z1);
+		if (z2 != null)
+			zonasTotales.add(z2);
+		if (z3 != null)
+			zonasTotales.add(z3);
+		if (z4 != null)
+			zonasTotales.add(z4);
+
+//cuando lo que esta adentro ahi rompo el emcapsulamiento
+//llamar a un metodo de zona que me de lo que se choca la entidad
+		for (Zona zonaActual : zonasTotales) {
+			entidadesSinRepetir.addAll(zonaActual.getEntColisionadas(e));
+		}
+
+		return entidadesSinRepetir;
+	}
+
+//sssi se moviocuando me muevo pido a grilla
+
+	public void actualizarGrilla(Entidad e) {
+
+		Zona z1 = getZona(e.getEsquinaSupIzq());
+		Zona z2 = getZona(e.getEsquinaSupDer());
+		Zona z3 = getZona(e.getEsquinaInfIzq());
+		Zona z4 = getZona(e.getEsquinaInfDer());
+
+		if (z1 != null)
+			z1.agregarEntidad(e);
+		if (z2 != null)
+			z2.agregarEntidad(e);
+		if (z3 != null)
+			z3.agregarEntidad(e);
+		if (z4 != null)
+			z4.agregarEntidad(e);
+
+	}
+	*/
+////////////////////////////////////////////////////////////////////////////////////////
 
 	private boolean colisionEnZona(Entidad e, Zona z) {
 		boolean colisiono = false;

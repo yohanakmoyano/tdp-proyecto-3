@@ -27,7 +27,7 @@ public class Director {
 	protected int cantItems;
 	protected Juego juego;
 
-	public Director(int n, SalaDeJuegos salaJueg, int dominio, Juego jueg) {
+	public Director(int n, int dominio, Juego jueg) {
 		Coordenada punto = null;
 		Entidad entidad = null;
 		List<String> toRet = null;
@@ -35,7 +35,7 @@ public class Director {
 		nivel = n;
 		int j = 0;
 		juego = jueg;
-		sj = salaJueg;
+		sj = new SalaDeJuegos(jueg);
 		punto = coordenadaDeNivel(n);
 		if (dominio == 1) {
 			toRet = LeerArchivo.leer("src\\niveles\\level" + n + "JDC.txt");
@@ -159,6 +159,10 @@ public class Director {
 
 	public Jugador getJugador() {
 		return jug;
+	}
+	
+	public SalaDeJuegos getSalaJuego() {
+		return sj;
 	}
 
 }

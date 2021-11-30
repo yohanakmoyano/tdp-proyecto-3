@@ -27,16 +27,16 @@ public class Juego {
 		puntos = 0;
 		nivel = n; // 1;
 		miGui = Gui.getGui(this);
-		miSala = new SalaDeJuegos(this);
 	}
 
 	public void setDominio(int d) {
 		this.dominio = d;
 		construirDirector();
+		miSala = director.getSalaJuego();
 	}
 
 	public void construirDirector() {
-		director = new Director(nivel, miSala, dominio, this);
+		director = new Director(nivel, dominio, this);
 		personaje = director.getJugador();
 	}
 
@@ -118,12 +118,13 @@ public class Juego {
 	}
 	
 	public void chequearGameOver(int cantItempsUp) {
-		if(cantItempsUp==4){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
+		if(cantItempsUp==100){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
 				miGui.PasoDeNivel();
 				miSala.reset();
 				nivel = nivel + 1;
 				setDominio(dominio);
+				miGui.repaint();
 			}
 		personaje.resetNivel();
 		}

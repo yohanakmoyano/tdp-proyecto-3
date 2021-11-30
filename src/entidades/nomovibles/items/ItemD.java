@@ -16,10 +16,16 @@ public class ItemD extends EntidadNoMovible {
 		ancho = 25;
 		alto = 25;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
+		
 	}
 
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}
-
+	
+	//crear un metodo rango 
+	/*public Coordenada getRadioEfecto() {
+		return Coordenada(50,50);
+	}
+	 */
 }
