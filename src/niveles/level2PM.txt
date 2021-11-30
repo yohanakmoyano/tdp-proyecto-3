@@ -1,10 +1,6 @@
 /Images/PM/fondoPM_nivel2.png
 /audio/PC.wav
 /Images/PM/pac_man1.png
-B;241;241;/Images/PM/Blinky.png
-T;70;150;/Images/PM/Pinky.png
-S;321;300;/Images/PM/Inky.png
-C;300;300;/Images/PM/Clyde.png
 d;240;300;/Images/PM/banana.png
 c;430;247;/Images/PM/pacDoct.png
 c;172;185;/Images/PM/pacDoct.png

@@ -193,11 +193,8 @@ public class SalaDeJuegos {
 	}
 
 	public void reset() {
-		for (Entidad ent : listaEnemigos) {
-		ent.eliminar();
-		}
 		for (Entidad ent : listaEntidadFija) {
-			ent.eliminar();
+			juego.getGui().removerEntidad(ent);
 		}
 	}
 	

@@ -43,6 +43,7 @@ public class Gui extends JFrame {
 	private Clip clip;
 	private JLabel lbl_Siguiente_nivel;
 	private JLabel lbl_gameOver;
+	private JLabel lbl_Ganador;
 	protected static Gui myInstance;
 	private JTextField text_pocion;
 
@@ -280,7 +281,26 @@ public class Gui extends JFrame {
 		lbl_Siguiente_nivel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Images/generales/next_level.png")));
 
 	}
+	public void mostrarGanador() {
+		panelprincipal.removeAll();
+		ImageIcon img_Ganador = new ImageIcon(
+				getClass().getClassLoader().getResource("Images/generales/Ganaste.png"));
+		lbl_Ganador = new JLabel(img_Ganador);
+		int ancho = img_Ganador.getIconWidth();
+		int largo = img_Ganador.getIconHeight();
+		lbl_Ganador.setBounds(0, 0, ancho, largo);
 
+		this.setSize(ancho, largo);
+		panelprincipal.add(lbl_Ganador);
+		panelprincipal.repaint();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		// Cerramos el juego
+		System.exit(0);
+	}
 	public void finDeJuego() {
 		panelprincipal.removeAll();
 		ImageIcon img_gameOver = new ImageIcon(

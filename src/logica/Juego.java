@@ -43,6 +43,9 @@ public class Juego {
 	public int getDominio() {
 		return dominio;
 	}
+	public Gui getGui() {
+		return miGui;
+	}
 
 	public URL getMusica() {
 		return director.getMusica();
@@ -118,15 +121,17 @@ public class Juego {
 	}
 	
 	public void chequearGameOver(int cantItempsUp) {
-		if(cantItempsUp==100){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
+		if(cantItempsUp==10){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
 				miGui.PasoDeNivel();
 				miSala.reset();
 				nivel = nivel + 1;
 				setDominio(dominio);
 				miGui.repaint();
+				personaje.resetNivel();
 			}
-		personaje.resetNivel();
+		else
+			miGui.mostrarGanador();
 		}
 	}
 	public void setSalaDeJuegos(SalaDeJuegos s) {

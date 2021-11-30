@@ -53,6 +53,7 @@ public class RepresentacionGrafica {
 	}
 
 	public void eliminar() {
+		
 		dibujo.setBounds(0, 0, 0, 0);
 	}
 
