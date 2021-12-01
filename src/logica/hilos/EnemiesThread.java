@@ -1,34 +1,27 @@
-package logica;
+package logica.hilos;
 
 import java.util.Random;
 
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
+import logica.Coordenada;
 
-public class Movimiento extends Thread {
-	protected SalaDeJuegos sala;
+public class EnemiesThread extends EntidadMovibleThread {
 	protected boolean deboMover;
 	protected Random ran;
 	protected Jugador jug;
-
-	public Movimiento(SalaDeJuegos sj, Jugador jug) {
-		sala = sj;
-		deboMover = true;
-		ran = new Random();
-		this.jug = jug;
+	
+	@Override
+	public void preparar() {
+		// TODO Auto-generated method stub
+		
 	}
 
-
-	public void run() {
-		while (deboMover) {
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			moverEnemigos();
-		}
+	@Override
+	public void iniciar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public boolean getDeboMover() {
@@ -39,44 +32,32 @@ public class Movimiento extends Thread {
 		this.deboMover = deboMover;
 	}
 
-	//Movimiento aleatorio sin sentido.
-	protected void moverEnemigos() {
-		for (Entidad e : sala.getListaEnemigos()) {
-			int mov = ran.nextInt(4);
-			moverMientrasPueda((Enemigo) e, mov);
+	public void setJugador(Jugador jug) {
+		this.jug = jug;
+	}
+	
+	public void run() {
+		while (deboMover) {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			moverEnemigos();
 		}
 	}
 	
-	//aproximación a movimiento solicitado
-	/*protected void moverEnemigos() {
-		for(Entidad e : sala.getListaEnemigos()) {
+	protected void moverEnemigos() {
+		Coordenada posJug = new Coordenada(jug.getPosicion().getX(), jug.getPosicion().getY());
+		for(Entidad e : miSala.getListaEnemigos()) {
 			int movEje = ran.nextInt(2);
+			//System.out.print(movEje);
 			//int movEje = ran.nextInt(4);
 			//moverMientrasPueda((Enemigo)e, movEje);
-			((Enemigo)e).mover(jug.getPosicion(), movEje, this);
-		}
-	}*/
-	protected synchronized void moverMientrasPueda(Enemigo e, int direccion) {
-		switch (direccion) {
-			case (0): {
-				moverEnemigoDer(e);
-				break;
-			}
-			case (1): {
-				moverEnemigoIzq(e);
-				break;
-			}
-			case (2): {
-				moverEnemigoUp(e);
-				break;
-			}
-			case (3): {
-				moverEnemigoDown(e);
-				break;
-			}
+			//((Enemigo)e).mover(posJug, movEje, this);
 		}
 	}
-
+	
 	/**
 	 * Considerando que quiero ir de p1 a p2, en direccion horizontal hacia el este manteniendo fija la ordenada, devuelve el punto más lejano al
 	 * que puede llegar sin colisionar con una pared.
@@ -87,8 +68,8 @@ public class Movimiento extends Thread {
 	protected Coordenada topeMovDer(Coordenada p1, Coordenada p2) {
 		Coordenada pout = new Coordenada(p1.getX(), p1.getY());
 		boolean colisiona = false;
-		while((pout.getX()<sala.getBase()) && (pout.getX() > 0) && !colisiona && (pout.getX() != p2.getX())) {
-			colisiona = sala.posColisiona(pout);
+		while((pout.getX()<miSala.getBase()) && (pout.getX() > 0) && !colisiona && (pout.getX() != p2.getX())) {
+			colisiona = miSala.posColisiona(pout);
 			if(!colisiona) 
 				pout.setX(pout.getX()+1);
 		}
@@ -105,8 +86,8 @@ public class Movimiento extends Thread {
 	protected Coordenada topeMovIzq(Coordenada p1, Coordenada p2) {
 		Coordenada pout = new Coordenada(p1.getX(), p1.getY());
 		boolean colisiona = false;
-		while((pout.getX()<sala.getBase()) && (pout.getX() > 0) && !colisiona && (pout.getX() != p2.getX())) {
-			colisiona = sala.posColisiona(pout);
+		while((pout.getX()<miSala.getBase()) && (pout.getX() > 0) && !colisiona && (pout.getX() != p2.getX())) {
+			colisiona = miSala.posColisiona(pout);
 			if(!colisiona) 
 				pout.setX(pout.getX()-1);
 		}
@@ -123,8 +104,8 @@ public class Movimiento extends Thread {
 	protected Coordenada topeMovUp(Coordenada p1, Coordenada p2) {
 		Coordenada pout = new Coordenada(p1.getX(), p1.getY());
 		boolean colisiona = false;
-		while((pout.getY()<sala.getAltura()) && (pout.getY() > 0) && !colisiona && (pout.getY() != p2.getY())) {
-			colisiona = sala.posColisiona(pout);
+		while((pout.getY()<miSala.getAltura()) && (pout.getY() > 0) && !colisiona && (pout.getY() != p2.getY())) {
+			colisiona = miSala.posColisiona(pout);
 			if(!colisiona) 
 				pout.setY(pout.getY()-1);
 		}
@@ -141,8 +122,8 @@ public class Movimiento extends Thread {
 	protected Coordenada topeMovDown(Coordenada p1, Coordenada p2) {
 		Coordenada pout = new Coordenada(p1.getX(), p1.getY());
 		boolean colisiona = false;
-		while((pout.getY() < sala.getAltura()) && (pout.getY() > 0) && !colisiona && (pout.getY() != p2.getY())) {
-			colisiona = sala.posColisiona(pout);
+		while((pout.getY() < miSala.getAltura()) && (pout.getY() > 0) && !colisiona && (pout.getY() != p2.getY())) {
+			colisiona = miSala.posColisiona(pout);
 			if(!colisiona) 
 				pout.setY(pout.getY()+1);
 		}
@@ -160,12 +141,12 @@ public class Movimiento extends Thread {
 			if((x1 - x2) < 0) {//MoverDerecha
 				Coordenada newPosDer = topeMovDer(e.getPosicion(), jug.getPosicion());
 				while(e.getPosicion().getX() <= newPosDer.getX()) {
-					moverEnemigoDer(e);
+					moverDerecha(e);
 				}
 			} else { //MoverIzquierda
 				Coordenada newPosIzq = topeMovIzq(e.getPosicion(), jug.getPosicion());
 				while(e.getPosicion().getX() >= newPosIzq.getX()) {
-					moverEnemigoIzq(e);
+					moverIzquierda(e);
 				}
 			}
 		}
@@ -182,51 +163,15 @@ public class Movimiento extends Thread {
 			if((y1 - y2) > 0) {//MoverUp
 				Coordenada newPosUp = topeMovUp(e.getPosicion(), jug.getPosicion());
 				while(e.getPosicion().getY() >= newPosUp.getY()) {
-					moverEnemigoUp(e);
+					moverArriba(e);
 				}
 			} else {//MoverDown
 				Coordenada newPosDown = topeMovDown(e.getPosicion(), jug.getPosicion());
 				while(e.getPosicion().getY() <= newPosDown.getY()) {
-					moverEnemigoDown(e);
+					moverAbajo(e);
 				}
 			}
 		}
 	}
 	
-	protected void moverEnemigoDer(Enemigo e) {
-		if (sala.autorizarMovDerecha(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverDerecha();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	protected void moverEnemigoIzq(Enemigo e) {
-		if (sala.autorizarMovIzquierda(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverIzquierda();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	protected void moverEnemigoUp(Enemigo e) {
-		if (sala.autorizarMovArriba(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverArriba();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	protected void moverEnemigoDown(Enemigo e) {
-		if (sala.autorizarMovAbajo(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverAbajo();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
 }

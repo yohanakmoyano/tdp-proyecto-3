@@ -25,52 +25,11 @@ public abstract class Enemigo extends EntidadMovible {
 	
 	public abstract void mover(Coordenada posDest, int eje, Movimiento mov);
 	
-	/**
-	 * Precondicion: Debe ser posible mover de x1 a newPosDer o en su defecto de x1 a newPosIzq. 
-	 * Esto es, no existen obstáculos, presentan un camino limpio.
-	 * @param x1 coordenada X origen.
-	 * @param x2 coordenada X destino.
-	 */
-	protected void moverEnX(int x1, int x2, int newPosDer, int newPosIzq, Movimiento mov) {
-		if(x1 != x2) {
-			if((x1 - x2) < 0) {//MoverDerecha
-				while(posicion.getX() <= newPosDer) {
-					mov.moverEnemigoDer(this);
-				}
-			} else { //MoverIzquierda
-				while(posicion.getX() >= newPosIzq) {
-					mov.moverEnemigoIzq(this);
-				}
-			}
-		}
-	}
-	
-	/**
-	 * Precondicion: Debe ser posible mover de y1 a newPosUp o en su defecto de y1 a newPosDown. 
-	 * Esto es, no existen obstáculos, presentan un camino limpio.
-	 * @param y1 coordenada Y origen.
-	 * @param y2 coordenada Y destino.
-	 */
-	protected void moverEnY(int y1, int y2, int newPosUp, int newPosDown, Movimiento mov) {
-		if(y1 != y2) {
-			if((y1 - y2) > 0) {//MoverUp
-				while(posicion.getY() >= newPosUp) {
-					mov.moverEnemigoUp(this);
-				}
-			} else {//MoverDown
-				while(posicion.getY() <= newPosDown) {
-					mov.moverEnemigoDown(this);
-				}
-			}
-		}
-	}
-	
-	
 	@Override
 	public void moverArriba() {
 		puedoMovermeDown = true;
 		ultMovimiento = ultMovUp;
-		actualizarMov = posicion.getY() - (factorMovY);
+		actualizarMov = posicion.getY() - (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverArriba(factorMovY);
 	}
@@ -79,7 +38,7 @@ public abstract class Enemigo extends EntidadMovible {
 	public void moverAbajo() {
 		puedoMovermeUp = true;
 		ultMovimiento = ultMovDown;
-		actualizarMov = posicion.getY() + (factorMovY);
+		actualizarMov = posicion.getY() + (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverAbajo(factorMovY);
 	}
@@ -88,7 +47,7 @@ public abstract class Enemigo extends EntidadMovible {
 	public void moverIzquierda() {
 		puedoMovermeDer = true;
 		ultMovimiento = ultMovIzq;
-		actualizarMov = posicion.getX() - (factorMovX);
+		actualizarMov = posicion.getX() - (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverIzquierda(factorMovX);
 	}
@@ -97,7 +56,7 @@ public abstract class Enemigo extends EntidadMovible {
 	public void moverDerecha() {
 		puedoMovermeIzq = true;
 		ultMovimiento = ultMovDer;
-		actualizarMov = posicion.getX() + (factorMovX);
+		actualizarMov = posicion.getX() + (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha(factorMovX);
 	}

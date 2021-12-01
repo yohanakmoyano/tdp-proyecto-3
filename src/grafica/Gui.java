@@ -28,11 +28,17 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import entidades.Entidad;
 import logica.Juego;
+import logica.hilos.EnemiesThread;
+import logica.hilos.JugadorThread;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class Gui extends JFrame {
 
+	protected JugadorThread hiloJug;
+	protected EnemiesThread hiloEnemies;
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel panelprincipal;
 	private JPanel laberinto;
@@ -109,6 +115,18 @@ public class Gui extends JFrame {
 		setFocusable(true);
 		getContentPane().setLayout(null);
 
+	}
+	
+	
+	//Llamar cuando inicie la gui TODO
+	protected void initGame() {
+		//inicializo hilo movimiento jugador.
+		hiloJug = mijuego.getHiloJugador();
+		this.addKeyListener(hiloJug);
+		
+		hiloEnemies = mijuego.getHiloEnemies();
+		hiloEnemies.preparar();
+		hiloEnemies.iniciar();
 	}
 
 	public void agregarBotonesMusica() {

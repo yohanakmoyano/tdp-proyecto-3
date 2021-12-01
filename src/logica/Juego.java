@@ -1,13 +1,22 @@
 package logica;
 
 import java.net.URL;
+import java.util.AbstractSet;
+import java.util.HashSet;
 
 import entidades.Entidad;
+import entidades.movibles.EntidadMovible;
 import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
+import logica.hilos.EnemiesThread;
+import logica.hilos.JugadorThread;
 import niveles.Director;
 
 public class Juego {
+	
+	protected JugadorThread hiloJug;
+	protected EnemiesThread hiloEnemies;
+	
 	protected int puntos;
 	protected int nivel;
 	protected Gui miGui;
@@ -28,7 +37,40 @@ public class Juego {
 		nivel = n; // 1;
 		miGui = Gui.getGui(this);
 	}
+	
+	/**
+	 * Este método debe ser llamado dentro de iniciarJuego.
+	 */
+	protected void prepararHiloJugador() {
+		hiloJug = new JugadorThread();
+		hiloJug.setSalaDeJuegos(miSala);
+		AbstractSet<EntidadMovible> jug = new HashSet<EntidadMovible>();
+		jug.add(personaje);
+		hiloJug.setEntidad(jug);
+	}
 
+	public JugadorThread getHiloJugador() {
+		return hiloJug;
+	}
+
+	/**
+	 * Este método debe ser llamado dentro de iniciarJuego.
+	 */
+	protected void prepararHiloEnemies() {
+		hiloEnemies = new EnemiesThread();
+		hiloEnemies.setJugador(personaje);
+		hiloEnemies.setSalaDeJuegos(miSala);
+		AbstractSet<EntidadMovible> enem = new HashSet<EntidadMovible>();
+		for(Entidad e : miSala.getListaEnemigos()) {
+			enem.add((EntidadMovible)e);
+		}
+		hiloEnemies.setEntidad(enem);
+	}
+	
+	public EnemiesThread getHiloEnemies() {
+		return hiloEnemies;
+	}
+	
 	public void setDominio(int d) {
 		this.dominio = d;
 		construirDirector();
@@ -87,7 +129,7 @@ public class Juego {
 	}
 
 	public void iniciarJuego() {
-		movE = new Movimiento(miSala);
+		movE = new Movimiento(miSala, personaje);
 		movE.start();
 		nivel = this.getNivel();
 	}
@@ -138,7 +180,7 @@ public class Juego {
 		miSala=s;
 	}
 
-	public void operar(int op) {
+	public synchronized void operar(int op) {
 		switch (op) {
 		case moverAbajo: {
 			moverAbajo();
@@ -164,7 +206,7 @@ public class Juego {
 			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverArriba();
 			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesJugador(posAnt, personaje);
+			miSala.detectarColisionesEntidad(posAnt, personaje);
 		}
 
 	}
@@ -174,7 +216,7 @@ public class Juego {
 			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverDerecha();
 			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesJugador(posAnt, personaje);
+			miSala.detectarColisionesEntidad(posAnt, personaje);
 		}
 	}
 
@@ -183,7 +225,7 @@ public class Juego {
 			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverIzquierda();
 			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesJugador(posAnt, personaje);
+			miSala.detectarColisionesEntidad(posAnt, personaje);
 		}
 	}
 
@@ -192,7 +234,7 @@ public class Juego {
 			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
 			personaje.moverAbajo();
 			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesJugador(posAnt, personaje);
+			miSala.detectarColisionesEntidad(posAnt, personaje);
 		}
 
 	}

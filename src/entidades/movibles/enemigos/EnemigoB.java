@@ -10,6 +10,7 @@ public class EnemigoB extends Enemigo {
 	// JDC: cuadrado, PC: Inky , AU: blue
 
 	public EnemigoB(Coordenada c, String rutaImg) {
+		velocidad = 1;
 		alive = true;
 		caminable = true;
 		ultMovimiento = reposo;
@@ -47,30 +48,33 @@ public class EnemigoB extends Enemigo {
 
 	@Override
 	public Coordenada nextPosMovDer() {
-		return new Coordenada(posicion.getX() + (factorMovX), posicion.getY());
+		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
 	}
 
 	@Override
 	public Coordenada nextPosMovIzq() {
-		return new Coordenada(posicion.getX() - (factorMovX), posicion.getY());
+		return new Coordenada(posicion.getX() - (factorMovX*velocidad), posicion.getY());
 	}
 
 	@Override
 	public Coordenada nextPosMovUp() {
-		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY));
+		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY*velocidad));
 	}
 
 	@Override
 	public Coordenada nextPosMovDown() {
-		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY));
+		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
 	
 	public void mover(Coordenada posDest, int eje, Movimiento mov) {
 		if(eje == ejeX) {
-			moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
+			mov.moverEnY(this.posicion.getY(), posDest.getY(), this);
+			//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
 		} else {
-			if(eje == ejeY)
-				moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
+			if(eje == ejeY) {
+				mov.moverEnX(this.posicion.getX(), posDest.getX(), this);
+				//moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
+			}
 		}
 	}
 }

@@ -147,7 +147,7 @@ public class SalaDeJuegos {
 
 		return puedeMoverse;
 	}
-
+	
 	private void addEntidadAZonaEn(Coordenada pos, Entidad e) {
 
 		Zona z = getZona(pos);
@@ -282,7 +282,7 @@ public class SalaDeJuegos {
 		return toRet;
 	}
 
-	public boolean detectarColisionesJugador(Coordenada posAnt, Entidad e) {
+	public boolean detectarColisionesEntidad(Coordenada posAnt, Entidad e) {
 
 		boolean colisiono = false;
 		boolean toRet = false;

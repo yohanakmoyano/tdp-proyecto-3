@@ -29,7 +29,7 @@ public class Jugador extends EntidadMovible {
 		poseeItemD = false;
 		miVisitor = new VisitorJugador(this);
 		juego = jueg;
-		velocidad = 100;
+		velocidad = 1;
 		vidas = 3;
 		posicion = c;
 		ancho = 19;
@@ -72,7 +72,7 @@ public class Jugador extends EntidadMovible {
 	public void moverDerecha() {
 		puedoMovermeIzq = true;
 		ultMovimiento = ultMovDer;
-		actualizarMov = posicion.getX() + (factorMovX);
+		actualizarMov = posicion.getX() + (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha(factorMovX);
 	}
@@ -80,7 +80,7 @@ public class Jugador extends EntidadMovible {
 	public void moverIzquierda() {
 		puedoMovermeDer = true;
 		ultMovimiento = ultMovIzq;
-		actualizarMov = posicion.getX() - (factorMovX);
+		actualizarMov = posicion.getX() - (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverIzquierda(factorMovX);
 	}
@@ -88,7 +88,7 @@ public class Jugador extends EntidadMovible {
 	public void moverArriba() {
 		puedoMovermeDown = true;
 		ultMovimiento = ultMovUp;
-		actualizarMov = posicion.getY() - (factorMovY);
+		actualizarMov = posicion.getY() - (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverArriba(factorMovY);
 	}
@@ -96,7 +96,7 @@ public class Jugador extends EntidadMovible {
 	public void moverAbajo() {
 		puedoMovermeUp = true;
 		ultMovimiento = ultMovDown;
-		actualizarMov = posicion.getY() + (factorMovY);
+		actualizarMov = posicion.getY() + (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverAbajo(factorMovY);
 	}
@@ -105,9 +105,9 @@ public class Jugador extends EntidadMovible {
 		miRep.eliminar();
 		this.isDead();
 	}
-public void cambiarCoordenada(Coordenada p) {
-	posRespawn=p;
-}
+	public void cambiarCoordenada(Coordenada p) {
+		posRespawn=p;
+	}
 	public void reUbicar() {
 		miRep.eliminar();
 		miRep.moverRep(posRespawn.getX(), posRespawn.getY());
@@ -139,22 +139,22 @@ public void cambiarCoordenada(Coordenada p) {
 
 	@Override
 	public Coordenada nextPosMovDer() {
-		return new Coordenada(posicion.getX() + (factorMovX), posicion.getY());
+		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
 	}
 
 	@Override
 	public Coordenada nextPosMovIzq() {
-		return new Coordenada(posicion.getX() - (factorMovX), posicion.getY());
+		return new Coordenada(posicion.getX() - (factorMovX*velocidad), posicion.getY());
 	}
 
 	@Override
 	public Coordenada nextPosMovUp() {
-		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY));
+		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY*velocidad));
 	}
 
 	@Override
 	public Coordenada nextPosMovDown() {
-		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY));
+		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
 
 }

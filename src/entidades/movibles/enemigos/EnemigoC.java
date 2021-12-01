@@ -11,6 +11,7 @@ public class EnemigoC extends Enemigo {
 	// JDC: Triangulo, AU: Pink , PC: Pinky
 
 	public EnemigoC(Coordenada c, String rutaImg) {
+		velocidad = 1;
 		alive = true;
 		caminable = true;
 		ultMovimiento = reposo;
@@ -48,22 +49,22 @@ public class EnemigoC extends Enemigo {
 
 	@Override
 	public Coordenada nextPosMovDer() {
-		return new Coordenada(posicion.getX() + (factorMovX), posicion.getY());
+		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
 	}
 
 	@Override
 	public Coordenada nextPosMovIzq() {
-		return new Coordenada(posicion.getX() - (factorMovX), posicion.getY());
+		return new Coordenada(posicion.getX() - (factorMovX*velocidad), posicion.getY());
 	}
 
 	@Override
 	public Coordenada nextPosMovUp() {
-		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY));
+		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY*velocidad));
 	}
 
 	@Override
 	public Coordenada nextPosMovDown() {
-		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY));
+		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
 
 	public void mover(Coordenada posDest, int eje, Movimiento mov) {
@@ -80,7 +81,8 @@ public class EnemigoC extends Enemigo {
 					break;
 				}
 			}
-			moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
+			mov.moverEnX(this.posicion.getX(), posDest.getX(), this);
+			//moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
 		} else {
 			if(eje == ejeY) {
 				switch(ultMov) {
@@ -93,7 +95,8 @@ public class EnemigoC extends Enemigo {
 						break;
 					}
 				}
-				moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
+				mov.moverEnY(this.posicion.getY(), posDest.getY(), this);
+				//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
 			}
 		}
 	}
