@@ -18,7 +18,7 @@ public class VisitorJugador extends VisitorEntidad {
 	}
 
 	public void visit(Bloque ent) {
-
+		miJugador.comeBack();
 	}
 
 	public void visit(ItemA it) {

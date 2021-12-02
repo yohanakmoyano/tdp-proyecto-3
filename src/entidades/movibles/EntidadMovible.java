@@ -12,11 +12,11 @@ public abstract class EntidadMovible extends Entidad {
 	protected boolean puedoMovermeUp;
 	protected boolean puedoMovermeDown;
 	protected static int ultMovimiento;
-	public static final int reposo = 0;
-	public static final int ultMovIzq = 1;
-	public static final int ultMovDer = 2;
-	public static final int ultMovUp = 3;
-	public static final int ultMovDown = 4;
+	public static final int REPOSO = 0;
+	public static final int ULT_MOV_IZQ = 1;
+	public static final int ULT_MOV_DER = 2;
+	public static final int ULT_MOV_UP = 3;
+	public static final int ULT_MOV_DOWN = 4;
 	protected int factorMovX;
 	protected int factorMovY;
 
@@ -28,14 +28,7 @@ public abstract class EntidadMovible extends Entidad {
 		velocidad = vel;
 	}
 	
-	public void resetearMovimientos() {
-		puedoMovermeIzq = true;
-		puedoMovermeDer = true;
-		puedoMovermeUp = true;
-		puedoMovermeDown = true;
-	}
-	
-	public int getUltMovimiento() {
+	public int getUl0tMovimiento() {
 		return ultMovimiento;
 	}
 	
@@ -77,6 +70,29 @@ public abstract class EntidadMovible extends Entidad {
 	
 	public void setVidas(int v) {
 		vidas=v;
+	}
+	
+	public void comeBack() {
+		/*switch(ultMovimiento) {
+		case(ULT_MOV_DER): {
+			puedoMovermeDer = false;
+			break;
+		}
+		case(ULT_MOV_IZQ): {
+			puedoMovermeIzq = false;
+			break;
+		}
+		case(ULT_MOV_UP): {
+			puedoMovermeUp = false;
+			break;
+		}
+		case(ULT_MOV_DOWN): {
+			puedoMovermeDown = false;
+			break;
+		}
+		}*/
+		posicion.comeBack();
+		miRep.moverRep(posicion.getX(), posicion.getY());
 	}
 	
 	public abstract Coordenada nextPosMovDer();

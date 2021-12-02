@@ -52,9 +52,7 @@ public class EnemiesThread extends EntidadMovibleThread {
 		for(Entidad e : miSala.getListaEnemigos()) {
 			int movEje = ran.nextInt(2);
 			//System.out.print(movEje);
-			//int movEje = ran.nextInt(4);
-			//moverMientrasPueda((Enemigo)e, movEje);
-			//((Enemigo)e).mover(posJug, movEje, this);
+			((Enemigo)e).mover(posJug, movEje, this);
 		}
 	}
 	

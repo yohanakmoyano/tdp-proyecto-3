@@ -80,7 +80,7 @@ public class Gui extends JFrame {
 
 		// Inicia miJuego
 		mijuego = juego;
-
+		
 		// Text Puntaje
 		text_puntaje = new JTextField();
 		text_puntaje.setForeground(Color.WHITE);
@@ -112,6 +112,7 @@ public class Gui extends JFrame {
 		// Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
+		//initGame();
 		setFocusable(true);
 		getContentPane().setLayout(null);
 
@@ -121,12 +122,12 @@ public class Gui extends JFrame {
 	//Llamar cuando inicie la gui TODO
 	protected void initGame() {
 		//inicializo hilo movimiento jugador.
-		hiloJug = mijuego.getHiloJugador();
-		this.addKeyListener(hiloJug);
-		
+		//hiloJug = mijuego.getHiloJugador();
+		//this.addKeyListener(hiloJug);
+/*		
 		hiloEnemies = mijuego.getHiloEnemies();
 		hiloEnemies.preparar();
-		hiloEnemies.iniciar();
+		hiloEnemies.iniciar();*/
 	}
 
 	public void agregarBotonesMusica() {

@@ -2,8 +2,8 @@ package entidades.movibles.enemigos;
 
 import entidades.movibles.EntidadMovible;
 import logica.Coordenada;
-import logica.Movimiento;
 import logica.Salon;
+import logica.hilos.EnemiesThread;
 
 public abstract class Enemigo extends EntidadMovible {
 	protected int valor;
@@ -23,12 +23,12 @@ public abstract class Enemigo extends EntidadMovible {
 		return valor;
 	}
 	
-	public abstract void mover(Coordenada posDest, int eje, Movimiento mov);
+	public abstract void mover(Coordenada posDest, int eje, EnemiesThread mov);
 	
 	@Override
 	public void moverArriba() {
 		puedoMovermeDown = true;
-		ultMovimiento = ultMovUp;
+		ultMovimiento = ULT_MOV_UP;
 		actualizarMov = posicion.getY() - (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverArriba(factorMovY);
@@ -37,7 +37,7 @@ public abstract class Enemigo extends EntidadMovible {
 	@Override
 	public void moverAbajo() {
 		puedoMovermeUp = true;
-		ultMovimiento = ultMovDown;
+		ultMovimiento = ULT_MOV_DOWN;
 		actualizarMov = posicion.getY() + (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverAbajo(factorMovY);
@@ -46,7 +46,7 @@ public abstract class Enemigo extends EntidadMovible {
 	@Override
 	public void moverIzquierda() {
 		puedoMovermeDer = true;
-		ultMovimiento = ultMovIzq;
+		ultMovimiento = ULT_MOV_IZQ;
 		actualizarMov = posicion.getX() - (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverIzquierda(factorMovX);
@@ -55,7 +55,7 @@ public abstract class Enemigo extends EntidadMovible {
 	@Override
 	public void moverDerecha() {
 		puedoMovermeIzq = true;
-		ultMovimiento = ultMovDer;
+		ultMovimiento = ULT_MOV_DER;
 		actualizarMov = posicion.getX() + (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha(factorMovX);

@@ -129,7 +129,8 @@ public class Juego {
 	}
 
 	public void iniciarJuego() {
-		movE = new Movimiento(miSala, personaje);
+		//this.prepararHiloJugador();
+		movE = new Movimiento(miSala);
 		movE.start();
 		nivel = this.getNivel();
 	}
@@ -163,7 +164,7 @@ public class Juego {
 	}
 	
 	public void chequearGameOver(int cantItempsUp) {
-		if(cantItempsUp==10){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
+		if(cantItempsUp==1000){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
 				miGui.PasoDeNivel();
 				miSala.reset();
@@ -179,6 +180,7 @@ public class Juego {
 	public void setSalaDeJuegos(SalaDeJuegos s) {
 		miSala=s;
 	}
+	
 
 	public synchronized void operar(int op) {
 		switch (op) {
@@ -237,5 +239,5 @@ public class Juego {
 			miSala.detectarColisionesEntidad(posAnt, personaje);
 		}
 
-	}
+	} 
 }

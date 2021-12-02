@@ -103,7 +103,7 @@ public class SalaDeJuegos {
 		return colisiona;
 	}
 
-	public void actualizarZonasEntidad(Coordenada posAnteriorEnt, Entidad e) {
+	public synchronized void actualizarZonasEntidad(Coordenada posAnteriorEnt, Entidad e) {
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();
@@ -282,7 +282,7 @@ public class SalaDeJuegos {
 		return toRet;
 	}
 
-	public boolean detectarColisionesEntidad(Coordenada posAnt, Entidad e) {
+	public synchronized boolean detectarColisionesEntidad(Coordenada posAnt, Entidad e) {
 
 		boolean colisiono = false;
 		boolean toRet = false;

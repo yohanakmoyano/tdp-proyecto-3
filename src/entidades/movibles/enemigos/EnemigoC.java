@@ -3,7 +3,7 @@ package entidades.movibles.enemigos;
 import entidades.movibles.jugadores.Jugador;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.Movimiento;
+import logica.hilos.EnemiesThread;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
@@ -14,7 +14,7 @@ public class EnemigoC extends Enemigo {
 		velocidad = 1;
 		alive = true;
 		caminable = true;
-		ultMovimiento = reposo;
+		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
@@ -39,7 +39,7 @@ public class EnemigoC extends Enemigo {
 		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
 		posicion.setX(miSalon.getRespawnPoint().getX());
 		posicion.setY(miSalon.getRespawnPoint().getY());
-		ultMovimiento = reposo;
+		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
@@ -67,16 +67,16 @@ public class EnemigoC extends Enemigo {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
 
-	public void mover(Coordenada posDest, int eje, Movimiento mov) {
+	public void mover(Coordenada posDest, int eje, EnemiesThread mov) {
 		int ultMov = Jugador.ultMovimiento;
 		Coordenada destino = new Coordenada(posDest.getX(), posDest.getY());
 		if(eje == ejeX) {
 			switch(ultMov) {
-				case(Jugador.ultMovDer): {
+				case(Jugador.ULT_MOV_DER): {
 					destino.setX(destino.getX() + 2);
 					break;
 				} 
-				case(Jugador.ultMovIzq): {
+				case(Jugador.ULT_MOV_IZQ): {
 					destino.setX(destino.getX() - 2);
 					break;
 				}
@@ -86,11 +86,11 @@ public class EnemigoC extends Enemigo {
 		} else {
 			if(eje == ejeY) {
 				switch(ultMov) {
-					case(Jugador.ultMovUp): {
+					case(Jugador.ULT_MOV_UP): {
 						destino.setX(destino.getX() - 4);
 						break;
 					} 
-					case(Jugador.ultMovDown): {
+					case(Jugador.ULT_MOV_DOWN): {
 						destino.setX(destino.getX() + 4);
 						break;
 					}

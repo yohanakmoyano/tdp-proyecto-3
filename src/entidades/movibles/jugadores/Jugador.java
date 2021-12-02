@@ -21,7 +21,7 @@ public class Jugador extends EntidadMovible {
 		alive = true;
 		caminable = true;
 		posRespawn = new Coordenada(c.getX(), c.getY());
-		ultMovimiento = reposo;
+		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
@@ -71,7 +71,7 @@ public class Jugador extends EntidadMovible {
 
 	public void moverDerecha() {
 		puedoMovermeIzq = true;
-		ultMovimiento = ultMovDer;
+		ultMovimiento = ULT_MOV_DER;
 		actualizarMov = posicion.getX() + (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha(factorMovX);
@@ -79,7 +79,7 @@ public class Jugador extends EntidadMovible {
 
 	public void moverIzquierda() {
 		puedoMovermeDer = true;
-		ultMovimiento = ultMovIzq;
+		ultMovimiento = ULT_MOV_IZQ;
 		actualizarMov = posicion.getX() - (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverIzquierda(factorMovX);
@@ -87,7 +87,7 @@ public class Jugador extends EntidadMovible {
 
 	public void moverArriba() {
 		puedoMovermeDown = true;
-		ultMovimiento = ultMovUp;
+		ultMovimiento = ULT_MOV_UP;
 		actualizarMov = posicion.getY() - (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverArriba(factorMovY);
@@ -95,7 +95,7 @@ public class Jugador extends EntidadMovible {
 
 	public void moverAbajo() {
 		puedoMovermeUp = true;
-		ultMovimiento = ultMovDown;
+		ultMovimiento = ULT_MOV_DOWN;
 		actualizarMov = posicion.getY() + (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverAbajo(factorMovY);
@@ -113,7 +113,7 @@ public class Jugador extends EntidadMovible {
 		miRep.moverRep(posRespawn.getX(), posRespawn.getY());
 		posicion.setX(posRespawn.getX());
 		posicion.setY(posRespawn.getY());
-		ultMovimiento = reposo;
+		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;

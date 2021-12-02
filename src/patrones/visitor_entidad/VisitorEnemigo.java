@@ -17,7 +17,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 	}
 
 	public void visit(Bloque ent) {
-		
+		miEnemigo.comeBack();
 	}
 	
 	public void visit(ItemA it) {

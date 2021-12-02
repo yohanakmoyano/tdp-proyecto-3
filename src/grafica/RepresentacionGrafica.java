@@ -60,7 +60,7 @@ public class RepresentacionGrafica {
 	public void moverRep(int x, int y) {
 		dibujo.setBounds(x, y, base, altura);
 	}
-
+	
 	public boolean colisiona(RepresentacionGrafica r) {
 		return this.dibujo.getBounds().intersects(r.getDibujo().getBounds());
 	}

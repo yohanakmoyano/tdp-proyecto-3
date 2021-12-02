@@ -53,7 +53,7 @@ public class Director {
 		// Creo un jugador
 		
 		jug = Jugador.getJugador(punto, this.getClass().getResource(toRet.get(2)).toString(), juego);
-		jug.cambiarCoordenada(punto);
+		//jug.cambiarCoordenada(punto);
 		jug.reUbicar();
 		juego.mostrarEntidad(jug);
 

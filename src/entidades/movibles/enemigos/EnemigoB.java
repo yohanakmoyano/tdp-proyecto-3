@@ -2,7 +2,7 @@ package entidades.movibles.enemigos;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.Movimiento;
+import logica.hilos.EnemiesThread;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
@@ -13,7 +13,7 @@ public class EnemigoB extends Enemigo {
 		velocidad = 1;
 		alive = true;
 		caminable = true;
-		ultMovimiento = reposo;
+		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
@@ -38,7 +38,7 @@ public class EnemigoB extends Enemigo {
 		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
 		posicion.setX(miSalon.getRespawnPoint().getX());
 		posicion.setY(miSalon.getRespawnPoint().getY());
-		ultMovimiento = reposo;
+		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
@@ -66,7 +66,7 @@ public class EnemigoB extends Enemigo {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
 	
-	public void mover(Coordenada posDest, int eje, Movimiento mov) {
+	public void mover(Coordenada posDest, int eje, EnemiesThread mov) {
 		if(eje == ejeX) {
 			mov.moverEnY(this.posicion.getY(), posDest.getY(), this);
 			//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
