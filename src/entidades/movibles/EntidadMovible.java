@@ -28,7 +28,7 @@ public abstract class EntidadMovible extends Entidad {
 		velocidad = vel;
 	}
 	
-	public int getUl0tMovimiento() {
+	public int getUltMovimiento() {
 		return ultMovimiento;
 	}
 	
@@ -73,25 +73,29 @@ public abstract class EntidadMovible extends Entidad {
 	}
 	
 	public void comeBack() {
-		/*switch(ultMovimiento) {
+		switch(ultMovimiento) {
 		case(ULT_MOV_DER): {
-			puedoMovermeDer = false;
+			posicion.comeBackX();
+			//puedoMovermeDer = false; Comentado hasta resolver como actualizar luego de bloquearlo correctamente.
 			break;
 		}
 		case(ULT_MOV_IZQ): {
-			puedoMovermeIzq = false;
+			posicion.comeBackX();
+			//puedoMovermeIzq = false;
 			break;
 		}
 		case(ULT_MOV_UP): {
-			puedoMovermeUp = false;
+			posicion.comeBackY();
+			//puedoMovermeUp = false;
 			break;
 		}
 		case(ULT_MOV_DOWN): {
-			puedoMovermeDown = false;
+			posicion.comeBackY();
+			//puedoMovermeDown = false;
 			break;
 		}
-		}*/
-		posicion.comeBack();
+		}
+		ultMovimiento = REPOSO;
 		miRep.moverRep(posicion.getX(), posicion.getY());
 	}
 	

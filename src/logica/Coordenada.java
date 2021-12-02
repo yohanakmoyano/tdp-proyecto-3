@@ -24,8 +24,11 @@ public class Coordenada {
 		this.y = y;
 	}
 	
-	public void comeBack() {
+	public void comeBackX() {
 		x = xAnterior;
+	}
+
+	public void comeBackY() {
 		y = yAnterior;
 	}
 	
