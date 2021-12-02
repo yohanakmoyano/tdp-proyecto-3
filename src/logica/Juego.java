@@ -164,7 +164,7 @@ public class Juego {
 	}
 	
 	public void chequearGameOver(int cantItempsUp) {
-		if(cantItempsUp==1000){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
+		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
 				miGui.PasoDeNivel();
 				miSala.reset();

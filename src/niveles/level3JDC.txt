@@ -488,8 +488,8 @@ p;160;210;/Images/JDC/bloque_nivel3.jpg;8;80
 p;335;210;/Images/JDC/bloque_nivel3.jpg;8;80
 p;335;290;/Images/JDC/bloque_nivel3.jpg;40;8
 p;130;290;/Images/JDC/bloque_nivel3.jpg;40;8
-p;115;245;/Images/JDC/bloque_nivel3.jpg;20;20
-p;365;245;/Images/JDC/bloque_nivel3.jpg;20;20
+p;115;245;/Images/JDC/bloque_nivel3.jpg;10;20
+p;370;245;/Images/JDC/bloque_nivel3.jpg;10;20
 p;170;170;/Images/JDC/bloque_nivel3.jpg;160;10
 p;40;40;/Images/JDC/bloque_nivel3.jpg;100;10
 p;180;40;/Images/JDC/bloque_nivel3.jpg;140;10

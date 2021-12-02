@@ -28,7 +28,7 @@ public class Director {
 	protected Juego juego;
 
 	public Director(int n, int dominio, Juego jueg) {
-		Coordenada punto = null;
+		Coordenada punto = punto = new Coordenada(240, 390);
 		Entidad entidad = null;
 		List<String> toRet = null;
 		int cantItems = 0;
@@ -36,7 +36,6 @@ public class Director {
 		int j = 0;
 		juego = jueg;
 		sj = new SalaDeJuegos(jueg);
-		punto = coordenadaDeNivel(n);
 		if (dominio == 1) {
 			toRet = LeerArchivo.leer("src\\niveles\\level" + n + "JDC.txt");
 		}
@@ -53,7 +52,6 @@ public class Director {
 		// Creo un jugador
 		
 		jug = Jugador.getJugador(punto, this.getClass().getResource(toRet.get(2)).toString(), juego);
-		//jug.cambiarCoordenada(punto);
 		jug.reUbicar();
 		juego.mostrarEntidad(jug);
 
@@ -126,24 +124,7 @@ public class Director {
 
 	}
 
-	public Coordenada coordenadaDeNivel(int nivel) {
-		Coordenada punto = null;
-
-		if (nivel == 1)
-			punto = new Coordenada(240, 390);
-
-		if (nivel == 2) {
-			punto = new Coordenada(222, 410);
-			
-		}
-
-		if (nivel == 3) {
-			punto = new Coordenada(240, 380);
-		}
-
-		return punto;
-	}
-
+	
 	public void reset() {
 
 	}
