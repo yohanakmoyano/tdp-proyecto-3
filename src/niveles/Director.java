@@ -3,6 +3,7 @@ package niveles;
 import java.net.URL;
 import java.util.List;
 import entidades.Entidad;
+import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.enemigos.EnemigoA;
 import entidades.movibles.enemigos.EnemigoB;
 import entidades.movibles.enemigos.EnemigoC;
@@ -99,21 +100,25 @@ public class Director {
 			case "B": { // Creo un Boss
 				entidad = new EnemigoA(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
+				((Enemigo)entidad).setJugador(jug);
 				break;
 			}
 			case "C": { // Creo un circulo
 				entidad = new EnemigoD(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
+				((Enemigo)entidad).setJugador(jug);
 				break;
 			}
 			case "S": { // Creo un cuadrado
 				entidad = new EnemigoB(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
+				((Enemigo)entidad).setJugador(jug);
 				break;
 			}
 			case "T": { // Creo un triangulo
 				entidad = new EnemigoC(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
+				((Enemigo)entidad).setJugador(jug);
 				break;
 			}
 			}

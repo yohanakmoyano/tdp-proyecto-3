@@ -28,7 +28,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import entidades.Entidad;
 import logica.Juego;
-import logica.hilos.EnemiesThread;
 import logica.hilos.JugadorThread;
 
 import javax.swing.JTextField;
@@ -37,7 +36,6 @@ import javax.swing.JButton;
 public class Gui extends JFrame {
 
 	protected JugadorThread hiloJug;
-	protected EnemiesThread hiloEnemies;
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel panelprincipal;
@@ -260,23 +258,23 @@ public class Gui extends JFrame {
 				switch (e.getKeyCode()) {
 
 				case KeyEvent.VK_LEFT: {
-					mijuego.operar(Juego.moverIzquierda, mijuego.getPersonaje());
+					mijuego.operar(Juego.MOV_IZQUIERDA, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_RIGHT: {
-					mijuego.operar(Juego.moverDerecha, mijuego.getPersonaje());
+					mijuego.operar(Juego.MOV_DERECHA, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_UP: {
-					mijuego.operar(Juego.moverArriba, mijuego.getPersonaje());
+					mijuego.operar(Juego.MOV_ARRIBA, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_DOWN: {
-					mijuego.operar(Juego.moverAbajo, mijuego.getPersonaje());
+					mijuego.operar(Juego.MOV_ABAJO, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_SPACE: {
-					mijuego.operar(Juego.ponerItem, mijuego.getPersonaje());
+					mijuego.operar(Juego.PONER_ITEM, mijuego.getPersonaje());
 					break;
 				}
 				}

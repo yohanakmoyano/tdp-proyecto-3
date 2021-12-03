@@ -83,6 +83,7 @@ public class Jugador extends EntidadMovible {
 		posicion.setX(posRespawn.getX());
 		posicion.setY(posRespawn.getY());
 		ultMovimiento = REPOSO;
+		movEnCola = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
@@ -128,8 +129,25 @@ public class Jugador extends EntidadMovible {
 
 	@Override
 	public int mover() {
-		// TODO Auto-generated method stub
-		return 0;
+		switch(movEnCola) {
+		case(EntidadMovible.MOV_DER): {
+			this.moverDerecha();
+			break;
+		}
+		case(EntidadMovible.MOV_IZQ): {
+			this.moverIzquierda();
+			break;
+		}
+		case(EntidadMovible.MOV_DOWN): {
+			this.moverAbajo();
+			break;
+		}
+		case(EntidadMovible.MOV_UP): {
+			this.moverArriba();
+			break;
+		}
+		}
+		return movEnCola;
 	}
 
 }

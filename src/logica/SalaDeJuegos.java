@@ -89,7 +89,7 @@ public class SalaDeJuegos {
 		}
 	}
 
-	public synchronized boolean posColisiona(Coordenada c) {
+	/*public synchronized boolean posColisiona(Coordenada c) {
 
 		Zona z = getZona(c);
 		Iterator<Entidad> it = z.getListaEntidades().iterator();
@@ -99,7 +99,7 @@ public class SalaDeJuegos {
 			colisiona = e.contieneCoordenada(c) && (!e.isCaminable());
 		}
 		return colisiona;
-	}
+	}*/
 
 	public synchronized void actualizarZonasEntidad(Coordenada posAnteriorEnt, Entidad e) {
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();

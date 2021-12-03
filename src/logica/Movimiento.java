@@ -8,10 +8,12 @@ import entidades.movibles.jugadores.Jugador;
 
 public class Movimiento extends Thread {
 	protected SalaDeJuegos sala;
+	protected Juego miJuego;
 	protected boolean deboMover;
 	protected Random ran;
 
-	public Movimiento(SalaDeJuegos sj) {
+	public Movimiento(SalaDeJuegos sj, Juego miJ) {
+		miJuego = miJ;
 		sala = sj;
 		deboMover = true;
 		ran = new Random();
@@ -41,10 +43,11 @@ public class Movimiento extends Thread {
 	protected void moverEnemigos() {
 		for (Entidad e : sala.getListaEnemigos()) {
 			int mov = ran.nextInt(4);
-			moverMientrasPueda((Enemigo) e, mov);
+			miJuego.operar(mov, (Enemigo)e);
+			//moverMientrasPueda((Enemigo) e, mov);
 		}
 	}
-	
+/**	
 	protected synchronized void moverMientrasPueda(Enemigo e, int direccion) {
 		switch (direccion) {
 			case (0): {
@@ -101,5 +104,5 @@ public class Movimiento extends Thread {
 			sala.detectarColisionesEntidad(posAnt, e);
 		}
 	}
-
+*/
 }

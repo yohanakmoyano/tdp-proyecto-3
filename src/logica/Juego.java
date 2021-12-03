@@ -10,14 +10,12 @@ import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
 import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
-import logica.hilos.EnemiesThread;
 import logica.hilos.JugadorThread;
 import niveles.Director;
 
 public class Juego {
 	
 	protected JugadorThread hiloJug;
-	protected EnemiesThread hiloEnemies;
 	
 	protected int puntos;
 	protected int nivel;
@@ -26,11 +24,11 @@ public class Juego {
 	protected Director director;
 	protected Jugador personaje;
 	protected Entidad entidad;
-	public static final int moverIzquierda = 1;
-	public static final int moverDerecha = 2;
-	public static final int moverAbajo = 3;
-	public static final int moverArriba = 4;
-	public static final int ponerItem = 5;
+	public static final int MOV_IZQUIERDA = EntidadMovible.MOV_IZQ;
+	public static final int MOV_DERECHA = EntidadMovible.MOV_DER;
+	public static final int MOV_ARRIBA = EntidadMovible.MOV_UP;
+	public static final int MOV_ABAJO = EntidadMovible.MOV_DOWN;
+	public static final int PONER_ITEM = 5;
 	protected Movimiento movE;
 	protected int dominio;
 
@@ -57,24 +55,6 @@ public class Juego {
 
 	public JugadorThread getHiloJugador() {
 		return hiloJug;
-	}
-
-	/**
-	 * Este método debe ser llamado dentro de iniciarJuego.
-	 */
-	protected void prepararHiloEnemies() {
-		hiloEnemies = new EnemiesThread();
-		hiloEnemies.setJugador(personaje);
-		hiloEnemies.setSalaDeJuegos(miSala);
-		List<EntidadMovible> enem = new ArrayList<EntidadMovible>();
-		for(Entidad e : miSala.getListaEnemigos()) {
-			enem.add((EntidadMovible)e);
-		}
-		hiloEnemies.setEntidad(enem);
-	}
-	
-	public EnemiesThread getHiloEnemies() {
-		return hiloEnemies;
 	}
 	
 	public void setDominio(int d) {
@@ -136,7 +116,7 @@ public class Juego {
 
 	public void iniciarJuego() {
 		//this.prepararHiloJugador();
-		movE = new Movimiento(miSala);
+		movE = new Movimiento(miSala, this);
 		movE.start();
 		//this.prepararHiloEnemies();
 		//hiloEnemies.preparar();
@@ -191,26 +171,54 @@ public class Juego {
 	}
 
 	public synchronized void operar(int op, EntidadMovible e) {
+		boolean puedeMover = false;
+		int movARealizar = -1;
+		Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
 		switch (op) {
-		case moverAbajo: {
-			moverAbajo(e);
+		case MOV_ABAJO: {
+			puedeMover = miSala.autorizarMovAbajo(e);
+			if(puedeMover) {
+				e.setMovEnCola(MOV_ABAJO);
+				movARealizar = e.mover();
+				//moverAbajo(e);
+			}
 			break;
 		}
-		case moverIzquierda: {
-			moverIzquierda(e);
+		case MOV_IZQUIERDA: {
+			puedeMover = miSala.autorizarMovIzquierda(e);
+			if(puedeMover) {
+				e.setMovEnCola(MOV_IZQUIERDA);
+				movARealizar = e.mover();
+				//moverIzquierda(e);
+			}
 			break;
 		}
-		case moverDerecha: {
-			moverDerecha(e);
+		case MOV_DERECHA: {
+			puedeMover = miSala.autorizarMovDerecha(e);
+			if(puedeMover) {
+				e.setMovEnCola(MOV_DERECHA);
+				movARealizar = e.mover();
+				//moverDerecha(e);
+			}
 			break;
 		}
-		case moverArriba: {
-			moverArriba(e);
+		case MOV_ARRIBA: {
+			puedeMover = miSala.autorizarMovArriba(e);
+			if(puedeMover) {
+				e.setMovEnCola(MOV_ARRIBA);
+				movARealizar = e.mover();
+				//moverArriba(e);
+			}
 			break;
 		}
 		}
+		if(movARealizar != e.getUltMovimiento()) { //Si colisiono con un bloque esto dara verdadero.
+			e.bloquearMovimiento(movARealizar);
+		}
+		miSala.actualizarZonasEntidad(posAnt, e);
+		miSala.detectarColisionesEntidad(posAnt, e);
 	}
-
+/**
 	private void moverArriba(EntidadMovible e) {
 		if (miSala.autorizarMovArriba(e)) {
 			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
@@ -247,5 +255,5 @@ public class Juego {
 			miSala.detectarColisionesEntidad(posAnt, e);
 		}
 
-	} 
+	} */
 }

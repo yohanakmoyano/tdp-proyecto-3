@@ -2,7 +2,7 @@ package entidades.movibles.enemigos;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.hilos.EnemiesThread;
+import patrones.strategy_enem.Asesino;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
@@ -10,6 +10,8 @@ public class EnemigoB extends Enemigo {
 	// JDC: cuadrado, PC: Inky , AU: blue
 
 	public EnemigoB(Coordenada c, String rutaImg) {
+		miEstrategia = new Asesino();
+		miEstrategia.setEnemigo(this);
 		velocidad = 1;
 		alive = true;
 		caminable = true;
@@ -34,20 +36,6 @@ public class EnemigoB extends Enemigo {
 	}
 
 	@Override
-	public void morir() {
-		this.isDead();
-		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
-		posicion.setX(miSalon.getRespawnPoint().getX());
-		posicion.setY(miSalon.getRespawnPoint().getY());
-		ultMovimiento = REPOSO;
-		puedoMovermeIzq = true;
-		puedoMovermeDer = true;
-		puedoMovermeUp = true;
-		puedoMovermeDown = true;
-		this.revive();
-	}
-
-	@Override
 	public Coordenada nextPosMovDer() {
 		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
 	}
@@ -66,22 +54,28 @@ public class EnemigoB extends Enemigo {
 	public Coordenada nextPosMovDown() {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
-	
-	public void mover(Coordenada posDest, int eje, EnemiesThread mov) {
-		if(eje == ejeX) {
-			mov.moverEnY(this.posicion.getY(), posDest.getY(), this);
-			//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
-		} else {
-			if(eje == ejeY) {
-				mov.moverEnX(this.posicion.getX(), posDest.getX(), this);
-				//moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
-			}
-		}
-	}
 
 	@Override
 	public int mover() {
-		// TODO Auto-generated method stub
-		return 0;
+		int xJug = elJugador.getPosicion().getX();
+		int yJug = elJugador.getPosicion().getY();
+		int distX = posicion.distanciaX(xJug);
+		int distY = posicion.distanciaY(yJug);
+		if(distX <= distY) { //Mover sobre Y (al reves de EnemigoA)
+			if((posicion.getY() - yJug) < 0) { //MoverAbajo
+				movEnCola = MOV_DOWN;
+			} else {//MoverArriba
+				movEnCola = MOV_UP;
+			}			
+		} else { //MoverSobreX (al reves de EnemigoA)
+			if((posicion.getX() - xJug) < 0) { //moverDerecha
+				movEnCola = MOV_DER;
+			} else { //moverIzquierda
+				movEnCola = MOV_IZQ;
+			}
+		}
+		miEstrategia.mover(movEnCola);
+		//Faltan agregar condiciones para que no se quede moviendo siempre en una misma dirección.
+		return movEnCola;
 	}
 }

@@ -1,9 +1,9 @@
 package entidades.movibles.enemigos;
 
-import entidades.movibles.jugadores.Jugador;
+import entidades.movibles.EntidadMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.hilos.EnemiesThread;
+import patrones.strategy_enem.Asesino;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
@@ -11,6 +11,8 @@ public class EnemigoC extends Enemigo {
 	// JDC: Triangulo, AU: Pink , PC: Pinky
 
 	public EnemigoC(Coordenada c, String rutaImg) {
+		miEstrategia = new Asesino();
+		miEstrategia.setEnemigo(this);
 		velocidad = 1;
 		alive = true;
 		caminable = true;
@@ -35,20 +37,6 @@ public class EnemigoC extends Enemigo {
 	}
 
 	@Override
-	public void morir() {
-		this.isDead();
-		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
-		posicion.setX(miSalon.getRespawnPoint().getX());
-		posicion.setY(miSalon.getRespawnPoint().getY());
-		ultMovimiento = REPOSO;
-		puedoMovermeIzq = true;
-		puedoMovermeDer = true;
-		puedoMovermeUp = true;
-		puedoMovermeDown = true;
-		this.revive();
-	}
-
-	@Override
 	public Coordenada nextPosMovDer() {
 		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
 	}
@@ -68,43 +56,48 @@ public class EnemigoC extends Enemigo {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
 
-	public void mover(Coordenada posDest, int eje, EnemiesThread mov) {
-		int ultMov = Jugador.ultMovimiento;
-		Coordenada destino = new Coordenada(posDest.getX(), posDest.getY());
-		if(eje == ejeX) {
-			switch(ultMov) {
-				case(Jugador.MOV_DER): {
-					destino.setX(destino.getX() + 2);
-					break;
-				} 
-				case(Jugador.MOV_IZQ): {
-					destino.setX(destino.getX() - 2);
-					break;
-				}
-			}
-			mov.moverEnX(this.posicion.getX(), posDest.getX(), this);
-			//moverEnX(this.posicion.getX(), posDest.getX(), mov.topeMovDer(posicion, posDest).getX(), mov.topeMovIzq(posicion, posDest).getX(), mov);
-		} else {
-			if(eje == ejeY) {
-				switch(ultMov) {
-					case(Jugador.MOV_UP): {
-						destino.setX(destino.getX() - 4);
-						break;
-					} 
-					case(Jugador.MOV_DOWN): {
-						destino.setX(destino.getX() + 4);
-						break;
-					}
-				}
-				mov.moverEnY(this.posicion.getY(), posDest.getY(), this);
-				//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
-			}
-		}
-	}
-
 	@Override
 	public int mover() {
-		// TODO Auto-generated method stub
-		return 0;
+		int ultMov = elJugador.getUltMovimiento();
+		int xJug = elJugador.getPosicion().getX();
+		int yJug = elJugador.getPosicion().getY();
+		switch(ultMov) {
+		case(EntidadMovible.MOV_DER): {
+			xJug += (2 + factorMovX);
+			break;
+		} 
+		case(EntidadMovible.MOV_IZQ): {
+			xJug -= (2 + factorMovX);
+			break;
+		}
+		case(EntidadMovible.MOV_UP): {
+			yJug -= (4 + factorMovY);
+			break;
+		} 
+		case(EntidadMovible.MOV_DOWN): {
+			yJug += (4 + factorMovY);
+			break;
+		}
+		}
+		if((xJug > 0) && (yJug > 0)) {
+			int distX = posicion.distanciaX(xJug);
+			int distY = posicion.distanciaY(yJug);
+			if(distX <= distY) { //Mover sobre X
+				if((posicion.getX() - xJug) < 0) { //moverDerecha
+					movEnCola = MOV_DER;
+				} else { //moverIzquierda
+					movEnCola = MOV_IZQ;
+				}
+			} else { //MoverSobreY
+				if((posicion.getY() - yJug) < 0) { //MoverAbajo
+					movEnCola = MOV_DOWN;
+				} else {//MoverArriba
+					movEnCola = MOV_UP;
+				}
+			}
+			miEstrategia.mover(movEnCola);
+		}
+		//Faltan agregar condiciones para que no se quede moviendo siempre en una misma dirección.
+		return movEnCola;
 	}
 }

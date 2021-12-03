@@ -88,26 +88,30 @@ public abstract class EntidadMovible extends Entidad {
 		switch(ultMovimiento) {
 		case(MOV_DER): {
 			posicion.comeBackX();
+			ultMovimiento = MOV_IZQ;
 			//puedoMovermeDer = false; Comentado hasta resolver como actualizar luego de bloquearlo correctamente.
 			break;
 		}
 		case(MOV_IZQ): {
 			posicion.comeBackX();
+			ultMovimiento = MOV_DER;
 			//puedoMovermeIzq = false;
 			break;
 		}
 		case(MOV_UP): {
 			posicion.comeBackY();
+			ultMovimiento = MOV_DOWN;
 			//puedoMovermeUp = false;
 			break;
 		}
 		case(MOV_DOWN): {
 			posicion.comeBackY();
+			ultMovimiento = MOV_UP;
 			//puedoMovermeDown = false;
 			break;
 		}
 		}
-		ultMovimiento = REPOSO;
+		//ultMovimiento = REPOSO;
 		miRep.moverRep(posicion.getX(), posicion.getY());
 	}
 	
@@ -125,10 +129,31 @@ public abstract class EntidadMovible extends Entidad {
 	
 	public abstract Coordenada nextPosMovDown();
 	
+	public void bloquearMovimiento(int mov) {
+		switch(mov) {
+		case(MOV_DER): {
+			puedoMovermeDer = false;
+			break;
+		}
+		case(MOV_IZQ): {
+			puedoMovermeIzq = false;
+			break;
+		}
+		case(MOV_UP): {
+			puedoMovermeUp = false;
+			break;
+		}
+		case(MOV_DOWN): {
+			puedoMovermeDown = false;
+			break;
+		}
+		}
+	}
+	
 	public void moverDerecha() {
 		puedoMovermeIzq = true;
 		ultMovimiento = MOV_DER;
-		movEnCola = REPOSO;
+		movEnCola = MOV_DER;
 		actualizarMov = posicion.getX() + (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverDerecha(factorMovX);
@@ -137,7 +162,7 @@ public abstract class EntidadMovible extends Entidad {
 	public void moverIzquierda() {
 		puedoMovermeDer = true;
 		ultMovimiento = MOV_IZQ;
-		movEnCola = REPOSO;
+		movEnCola = MOV_IZQ;
 		actualizarMov = posicion.getX() - (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
 		miRep.moverIzquierda(factorMovX);
@@ -146,7 +171,7 @@ public abstract class EntidadMovible extends Entidad {
 	public void moverArriba() {
 		puedoMovermeDown = true;
 		ultMovimiento = MOV_UP;
-		movEnCola = REPOSO;
+		movEnCola = MOV_UP;
 		actualizarMov = posicion.getY() - (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverArriba(factorMovY);
@@ -155,7 +180,7 @@ public abstract class EntidadMovible extends Entidad {
 	public void moverAbajo() {
 		puedoMovermeUp = true;
 		ultMovimiento = MOV_DOWN;
-		movEnCola = REPOSO;
+		movEnCola = MOV_DOWN;
 		actualizarMov = posicion.getY() + (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
 		miRep.moverAbajo(factorMovY);
