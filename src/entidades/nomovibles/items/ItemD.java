@@ -1,5 +1,8 @@
 package entidades.nomovibles.items;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import entidades.nomovibles.EntidadNoMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
@@ -23,9 +26,22 @@ public class ItemD extends EntidadNoMovible {
 		v.visit(this);
 	}
 	
-	//crear un metodo rango 
-	/*public Coordenada getRadioEfecto() {
-		return Coordenada(50,50);
+	public void ponerBomba(Coordenada pos) {
+		miRep.moverRep(pos.getX(),pos.getY());
+		remover();
 	}
-	 */
+	
+	public void remover() {
+		Timer time = new Timer();
+		//this.setAlto(100);
+		//this.setAncho(100);
+		//miRep = new RepresentacionGrafica(rutaUrl, getPosicion().getX(), getPosicion().getY(), ancho, alto);
+		
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				miRep.eliminar();				
+			}}, 3000);
+	}
 }

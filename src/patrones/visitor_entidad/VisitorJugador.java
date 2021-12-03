@@ -1,5 +1,8 @@
 package patrones.visitor_entidad;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
@@ -9,6 +12,7 @@ import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
 import patrones.strategy.Cazador;
+import patrones.strategy.Presa;
 
 public class VisitorJugador extends VisitorEntidad {
 	protected Jugador miJugador;
@@ -27,25 +31,53 @@ public class VisitorJugador extends VisitorEntidad {
 		it.eliminar();
 	}
 
-	public void visit(ItemB it) {
-		miJugador.afectarPuntaje(it.getValor());
+	public void visit(ItemB arma) {
+		miJugador.afectarPuntaje(arma.getValor());
 		miJugador.getEstrategia().setStrategy(new Cazador(miJugador));
 		miJugador.setCantItemsLevantados();
-		it.eliminar();
+		arma.eliminar();
 		miJugador.setTransformacion(true);
+		miJugador.setVelocidad(5);
+		Timer time = new Timer();
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				miJugador.setVelocidad(1);
+				miJugador.getEstrategia().setStrategy(new Presa(miJugador));
+				miJugador.setTransformacion(false);
+			}}, 2000);	
 	}
 
-	public void visit(ItemC it) {
-		miJugador.afectarPuntaje(it.getValor());
+	public void visit(ItemC potion) {
+		miJugador.afectarPuntaje(potion.getValor());
 		miJugador.setVelocidad((miJugador.getVelocidad()* 3) / 2);
-		it.eliminar();
+		miJugador.setVelocidad(5);
+		potion.eliminar();
 		miJugador.setTransformacion(true);
+		Timer time = new Timer();
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				miJugador.setVelocidad(1);
+				miJugador.setTransformacion(false);
+			}}, 2000);
 	}
 
-	public void visit(ItemD it) {
+	public void visit(ItemD bomb) {
 		miJugador.tieneItemD();
-		it.eliminar();
+		bomb.eliminar();
 		miJugador.setTransformacion(true);
+		Timer time = new Timer();
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				bomb.ponerBomba(miJugador.getPosicion());
+				miJugador.setTransformacion(false);
+				
+			}}, 3000);
 	}
 
 	public void visit(ItemE it) {

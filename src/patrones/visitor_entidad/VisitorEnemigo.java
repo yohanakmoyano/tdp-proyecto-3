@@ -32,8 +32,8 @@ public class VisitorEnemigo extends VisitorEntidad{
 		
 	}
 
-	public void visit(ItemD it) {
-		
+	public void visit(ItemD bomb) {
+		miEnemigo.eliminar();
 	}
 
 	public void visit(ItemE it) {

@@ -51,6 +51,7 @@ public class Gui extends JFrame {
 	protected static Gui myInstance;
 	private JTextField text_pocion;
 
+	
 	private Gui(Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
@@ -294,10 +295,21 @@ public class Gui extends JFrame {
 		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
 		lbl_Siguiente_nivel.setFont(new Font("Consolas", Font.BOLD, 12));
 		lbl_Siguiente_nivel.setBounds(100, 50, ancho, largo);
-		panelprincipal.add(lbl_Siguiente_nivel);
+		//panelprincipal.add(lbl_Siguiente_nivel);
 		lbl_Siguiente_nivel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Images/generales/next_level.png")));
-
+		panelprincipal.add(lbl_Siguiente_nivel, 0);
+		//repaint();
+		/*con el thread hay error de colision no se que flashea
+		 * try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
+		//panelprincipal.remove(lbl_Siguiente_nivel);
+		//lbl_Siguiente_nivel.setVisible(false);
+		//repaint();
 	}
+	
 	public void mostrarGanador() {
 		panelprincipal.removeAll();
 		ImageIcon img_Ganador = new ImageIcon(
@@ -318,6 +330,7 @@ public class Gui extends JFrame {
 		// Cerramos el juego
 		System.exit(0);
 	}
+	
 	public void finDeJuego() {
 		panelprincipal.removeAll();
 		ImageIcon img_gameOver = new ImageIcon(
