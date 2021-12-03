@@ -260,23 +260,23 @@ public class Gui extends JFrame {
 				switch (e.getKeyCode()) {
 
 				case KeyEvent.VK_LEFT: {
-					mijuego.operar(Juego.moverIzquierda);
+					mijuego.operar(Juego.moverIzquierda, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_RIGHT: {
-					mijuego.operar(Juego.moverDerecha);
+					mijuego.operar(Juego.moverDerecha, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_UP: {
-					mijuego.operar(Juego.moverArriba);
+					mijuego.operar(Juego.moverArriba, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_DOWN: {
-					mijuego.operar(Juego.moverAbajo);
+					mijuego.operar(Juego.moverAbajo, mijuego.getPersonaje());
 					break;
 				}
 				case KeyEvent.VK_SPACE: {
-					mijuego.operar(Juego.ponerItem);
+					mijuego.operar(Juego.ponerItem, mijuego.getPersonaje());
 					break;
 				}
 				}

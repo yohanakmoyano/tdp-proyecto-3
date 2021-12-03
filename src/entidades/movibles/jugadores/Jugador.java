@@ -21,6 +21,7 @@ public class Jugador extends EntidadMovible {
 		alive = true;
 		caminable = true;
 		posRespawn = new Coordenada(c.getX(), c.getY());
+		movEnCola = REPOSO;
 		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
@@ -67,38 +68,6 @@ public class Jugador extends EntidadMovible {
 
 	public boolean tieneItemD() {
 		return poseeItemD = true;
-	}
-
-	public void moverDerecha() {
-		puedoMovermeIzq = true;
-		ultMovimiento = ULT_MOV_DER;
-		actualizarMov = posicion.getX() + (factorMovX*velocidad);
-		posicion.setX(actualizarMov);
-		miRep.moverDerecha(factorMovX);
-	}
-
-	public void moverIzquierda() {
-		puedoMovermeDer = true;
-		ultMovimiento = ULT_MOV_IZQ;
-		actualizarMov = posicion.getX() - (factorMovX*velocidad);
-		posicion.setX(actualizarMov);
-		miRep.moverIzquierda(factorMovX);
-	}
-
-	public void moverArriba() {
-		puedoMovermeDown = true;
-		ultMovimiento = ULT_MOV_UP;
-		actualizarMov = posicion.getY() - (factorMovY*velocidad);
-		posicion.setY(actualizarMov);
-		miRep.moverArriba(factorMovY);
-	}
-
-	public void moverAbajo() {
-		puedoMovermeUp = true;
-		ultMovimiento = ULT_MOV_DOWN;
-		actualizarMov = posicion.getY() + (factorMovY*velocidad);
-		posicion.setY(actualizarMov);
-		miRep.moverAbajo(factorMovY);
 	}
 
 	public void morir() {
@@ -155,6 +124,12 @@ public class Jugador extends EntidadMovible {
 	@Override
 	public Coordenada nextPosMovDown() {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
+	}
+
+	@Override
+	public int mover() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

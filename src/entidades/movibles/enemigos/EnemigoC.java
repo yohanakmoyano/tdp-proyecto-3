@@ -14,6 +14,7 @@ public class EnemigoC extends Enemigo {
 		velocidad = 1;
 		alive = true;
 		caminable = true;
+		movEnCola = REPOSO;
 		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
@@ -72,11 +73,11 @@ public class EnemigoC extends Enemigo {
 		Coordenada destino = new Coordenada(posDest.getX(), posDest.getY());
 		if(eje == ejeX) {
 			switch(ultMov) {
-				case(Jugador.ULT_MOV_DER): {
+				case(Jugador.MOV_DER): {
 					destino.setX(destino.getX() + 2);
 					break;
 				} 
-				case(Jugador.ULT_MOV_IZQ): {
+				case(Jugador.MOV_IZQ): {
 					destino.setX(destino.getX() - 2);
 					break;
 				}
@@ -86,11 +87,11 @@ public class EnemigoC extends Enemigo {
 		} else {
 			if(eje == ejeY) {
 				switch(ultMov) {
-					case(Jugador.ULT_MOV_UP): {
+					case(Jugador.MOV_UP): {
 						destino.setX(destino.getX() - 4);
 						break;
 					} 
-					case(Jugador.ULT_MOV_DOWN): {
+					case(Jugador.MOV_DOWN): {
 						destino.setX(destino.getX() + 4);
 						break;
 					}
@@ -99,5 +100,11 @@ public class EnemigoC extends Enemigo {
 				//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
 			}
 		}
+	}
+
+	@Override
+	public int mover() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

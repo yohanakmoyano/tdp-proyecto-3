@@ -3,6 +3,7 @@ package entidades.movibles.enemigos;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import logica.hilos.EnemiesThread;
+import patrones.strategy_enem.Asesino;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
 
@@ -13,6 +14,7 @@ public class EnemigoA extends Enemigo {
 		velocidad = 1;
 		alive = true;
 		caminable = true;
+		movEnCola = REPOSO;
 		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
@@ -76,5 +78,11 @@ public class EnemigoA extends Enemigo {
 				//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
 			}
 		}
+	}
+
+	@Override
+	public int mover() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

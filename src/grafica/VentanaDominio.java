@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import logica.Juego;
 
+@SuppressWarnings("serial")
 public class VentanaDominio extends JFrame {
 	private JLabel inicioJuego;
 

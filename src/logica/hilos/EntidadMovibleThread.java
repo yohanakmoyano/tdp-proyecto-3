@@ -1,14 +1,13 @@
 package logica.hilos;
 
-import java.util.AbstractSet;
+import java.util.List;
 
 import entidades.movibles.EntidadMovible;
 import logica.Coordenada;
-import logica.Juego;
 import logica.SalaDeJuegos;
 
 public abstract class EntidadMovibleThread extends Thread {
-	protected AbstractSet<EntidadMovible> entidadesMovibles;  //Cuando esté en el hilo del jugador
+	protected List<EntidadMovible> entidadesMovibles;  //Cuando esté en el hilo del jugador
 	protected SalaDeJuegos miSala;								//este conjunto solo tendrá almacenado al jugador
 														//En el caso de los enemigos tendrá a los enemigos que existan en el juego.
 
@@ -16,11 +15,11 @@ public abstract class EntidadMovibleThread extends Thread {
 	
 	public abstract void iniciar();
 
-	public AbstractSet<EntidadMovible> getEntidad() {
+	public List<EntidadMovible> getEntidad() {
 		return entidadesMovibles;
 	}
 	
-	public void setEntidad(AbstractSet<EntidadMovible> ent) {
+	public void setEntidad(List<EntidadMovible> ent) {
 		entidadesMovibles = ent;
 	}
 	

@@ -63,7 +63,6 @@ public class SalaDeJuegos {
 	}
 
 	// Consulta cual es la zona que contiene la coordenada PUNTO.
-
 	private Zona getZona(Coordenada punto) {
 		Coordenada cMatriz = posEnMatriz(punto);
 		return matrizZonas[cMatriz.getX()][cMatriz.getY()];
@@ -87,7 +86,6 @@ public class SalaDeJuegos {
 			if (e.isAlive()) {
 				ze.agregarEntidad(e);
 			}
-
 		}
 	}
 
@@ -118,7 +116,8 @@ public class SalaDeJuegos {
 	public boolean autorizarMovArriba(EntidadMovible e) {
 		Coordenada newPosSupIzq = e.nextPosMovUp();
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
-		boolean puedeMoverse = (newPosSupIzq.getY() > 0) && (e.puedoMovermeUp()) && !posColisiona(newPosSupIzq)	&& !posColisiona(newPosSupDer);
+		boolean puedeMoverse = (newPosSupIzq.isValid(base, altura) && newPosSupDer.isValid(base, altura));
+				/* && (e.puedoMovermeUp()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosSupDer)*/
 		return puedeMoverse;
 	}
 
@@ -126,8 +125,8 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovDown();
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
-		boolean puedeMoverse = ((newPosSupIzq.getY() + e.getAlto()) < altura) && (e.puedoMovermeDown())	&& !posColisiona(newPosInfIzq) && !posColisiona(newPosInfDer);
-
+		boolean puedeMoverse = (newPosInfIzq.isValid(base, altura) && newPosInfDer.isValid(base, altura));
+				/* && (e.puedoMovermeDown()) && !posColisiona(newPosInfIzq) && !posColisiona(newPosInfDer)*/
 		return puedeMoverse;
 	}
 
@@ -135,16 +134,16 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovDer();
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
-		boolean puedeMoverse = ((newPosSupIzq.getX() + e.getAlto()) < base) && (e.puedoMovermeDer()) && !posColisiona(newPosSupDer) && !posColisiona(newPosInfDer);
-
+		boolean puedeMoverse = (newPosSupDer.isValid(base, altura) && newPosInfDer.isValid(base, altura));
+				/* && (e.puedoMovermeDer()) && !posColisiona(newPosSupDer) && !posColisiona(newPosInfDer)*/
 		return puedeMoverse;
 	}
 
 	public boolean autorizarMovIzquierda(EntidadMovible e) {
 		Coordenada newPosSupIzq = e.nextPosMovIzq();
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
-		boolean puedeMoverse = (newPosSupIzq.getX() > 0) && (e.puedoMovermeIzq()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosInfIzq);
-
+		boolean puedeMoverse = (newPosSupIzq.isValid(base, altura)) && (newPosInfIzq.isValid(base, altura));
+				/* && (e.puedoMovermeIzq()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosInfIzq)*/
 		return puedeMoverse;
 	}
 	
@@ -157,7 +156,7 @@ public class SalaDeJuegos {
 		}
 	}
 
-	public void agregarAZonas(Entidad e) {
+	public synchronized void agregarAZonas(Entidad e) {
 
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();

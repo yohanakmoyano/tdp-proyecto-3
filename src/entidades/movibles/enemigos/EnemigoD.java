@@ -13,6 +13,7 @@ public class EnemigoD extends Enemigo {
 		velocidad = 1;
 		alive = true;
 		caminable = true;
+		movEnCola = REPOSO;
 		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
@@ -76,5 +77,11 @@ public class EnemigoD extends Enemigo {
 				//moverEnY(this.posicion.getY(), posDest.getY(), mov.topeMovUp(posicion, posDest).getY(), mov.topeMovDown(posicion, posDest).getY(), mov);
 			}
 		}
+	}
+
+	@Override
+	public int mover() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

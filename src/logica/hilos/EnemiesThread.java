@@ -2,7 +2,7 @@ package logica.hilos;
 
 import java.util.Random;
 
-import entidades.Entidad;
+import entidades.movibles.EntidadMovible;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import logica.Coordenada;
@@ -11,17 +11,23 @@ public class EnemiesThread extends EntidadMovibleThread {
 	protected boolean deboMover;
 	protected Random ran;
 	protected Jugador jug;
+	//protected List<Enemigo> enemies;
 	
 	@Override
 	public void preparar() {
 		// TODO Auto-generated method stub
-		
+		/**enemies = new HashSet<Enemigo>();
+		for(Entidad e : miSala.getListaEnemigos()) {
+			enemies.add((Enemigo)e);
+		}*/
+		ran = new Random();
+		deboMover = true;
 	}
 
 	@Override
 	public void iniciar() {
 		// TODO Auto-generated method stub
-		
+		this.start();
 	}
 
 	public boolean getDeboMover() {
@@ -43,16 +49,18 @@ public class EnemiesThread extends EntidadMovibleThread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			moverEnemigos();
+			System.out.println("Debo mover");
+			//moverEnemigos();
 		}
 	}
 	
 	protected void moverEnemigos() {
 		Coordenada posJug = new Coordenada(jug.getPosicion().getX(), jug.getPosicion().getY());
-		for(Entidad e : miSala.getListaEnemigos()) {
+		System.out.println("Enemigos");
+		for(EntidadMovible e : entidadesMovibles) {
 			int movEje = ran.nextInt(2);
-			//System.out.print(movEje);
 			((Enemigo)e).mover(posJug, movEje, this);
+			System.out.println("Enemigos");
 		}
 	}
 	
@@ -71,6 +79,9 @@ public class EnemiesThread extends EntidadMovibleThread {
 			if(!colisiona) 
 				pout.setX(pout.getX()+1);
 		}
+		System.out.println("Origen "+p1.getX()+" - "+p1.getY());
+		System.out.println("Destino "+p2.getX()+" - "+p2.getY());
+		System.out.println("Tope actual "+pout.getX()+" - "+pout.getY());
 		return pout;
 	}
 	
@@ -89,6 +100,9 @@ public class EnemiesThread extends EntidadMovibleThread {
 			if(!colisiona) 
 				pout.setX(pout.getX()-1);
 		}
+		System.out.println("Origen "+p1.getX()+" - "+p1.getY());
+		System.out.println("Destino "+p2.getX()+" - "+p2.getY());
+		System.out.println("Tope actual "+pout.getX()+" - "+pout.getY());
 		return pout;
 	}
 	
@@ -107,6 +121,9 @@ public class EnemiesThread extends EntidadMovibleThread {
 			if(!colisiona) 
 				pout.setY(pout.getY()-1);
 		}
+		System.out.println("Origen "+p1.getX()+" - "+p1.getY());
+		System.out.println("Destino "+p2.getX()+" - "+p2.getY());
+		System.out.println("Tope actual "+pout.getX()+" - "+pout.getY());
 		return pout;
 	}
 	
@@ -125,6 +142,7 @@ public class EnemiesThread extends EntidadMovibleThread {
 			if(!colisiona) 
 				pout.setY(pout.getY()+1);
 		}
+		System.out.println("Tope actual "+pout.getX()+" - "+pout.getY());
 		return pout;
 	}
 	
@@ -141,11 +159,13 @@ public class EnemiesThread extends EntidadMovibleThread {
 				while(e.getPosicion().getX() <= newPosDer.getX()) {
 					moverDerecha(e);
 				}
+				System.out.println("Destino actual "+newPosDer.getX()+" - "+newPosDer.getY());
 			} else { //MoverIzquierda
 				Coordenada newPosIzq = topeMovIzq(e.getPosicion(), jug.getPosicion());
 				while(e.getPosicion().getX() >= newPosIzq.getX()) {
 					moverIzquierda(e);
 				}
+				System.out.println("Destino actual "+newPosIzq.getX()+" - "+newPosIzq.getY());
 			}
 		}
 	}
@@ -163,11 +183,13 @@ public class EnemiesThread extends EntidadMovibleThread {
 				while(e.getPosicion().getY() >= newPosUp.getY()) {
 					moverArriba(e);
 				}
+				System.out.println("Destino actual "+newPosUp.getX()+" - "+newPosUp.getY());
 			} else {//MoverDown
 				Coordenada newPosDown = topeMovDown(e.getPosicion(), jug.getPosicion());
 				while(e.getPosicion().getY() <= newPosDown.getY()) {
 					moverAbajo(e);
 				}
+				System.out.println("Destino actual "+newPosDown.getX()+" - "+newPosDown.getY());
 			}
 		}
 	}

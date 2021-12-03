@@ -2,7 +2,9 @@ package logica;
 
 import java.net.URL;
 import java.util.AbstractSet;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
@@ -38,13 +40,17 @@ public class Juego {
 		miGui = Gui.getGui(this);
 	}
 	
+	public Jugador getPersonaje() {
+		return personaje;
+	}
+	
 	/**
 	 * Este método debe ser llamado dentro de iniciarJuego.
 	 */
 	protected void prepararHiloJugador() {
 		hiloJug = new JugadorThread();
 		hiloJug.setSalaDeJuegos(miSala);
-		AbstractSet<EntidadMovible> jug = new HashSet<EntidadMovible>();
+		List<EntidadMovible> jug = new ArrayList<EntidadMovible>();
 		jug.add(personaje);
 		hiloJug.setEntidad(jug);
 	}
@@ -60,7 +66,7 @@ public class Juego {
 		hiloEnemies = new EnemiesThread();
 		hiloEnemies.setJugador(personaje);
 		hiloEnemies.setSalaDeJuegos(miSala);
-		AbstractSet<EntidadMovible> enem = new HashSet<EntidadMovible>();
+		List<EntidadMovible> enem = new ArrayList<EntidadMovible>();
 		for(Entidad e : miSala.getListaEnemigos()) {
 			enem.add((EntidadMovible)e);
 		}
@@ -132,6 +138,9 @@ public class Juego {
 		//this.prepararHiloJugador();
 		movE = new Movimiento(miSala);
 		movE.start();
+		//this.prepararHiloEnemies();
+		//hiloEnemies.preparar();
+		//hiloEnemies.iniciar();
 		nivel = this.getNivel();
 	}
 
@@ -180,63 +189,62 @@ public class Juego {
 	public void setSalaDeJuegos(SalaDeJuegos s) {
 		miSala=s;
 	}
-	
 
-	public synchronized void operar(int op) {
+	public synchronized void operar(int op, EntidadMovible e) {
 		switch (op) {
 		case moverAbajo: {
-			moverAbajo();
+			moverAbajo(e);
 			break;
 		}
 		case moverIzquierda: {
-			moverIzquierda();
+			moverIzquierda(e);
 			break;
 		}
 		case moverDerecha: {
-			moverDerecha();
+			moverDerecha(e);
 			break;
 		}
 		case moverArriba: {
-			moverArriba();
+			moverArriba(e);
 			break;
 		}
 		}
 	}
 
-	private void moverArriba() {
-		if (miSala.autorizarMovArriba(personaje)) {
-			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
-			personaje.moverArriba();
-			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesEntidad(posAnt, personaje);
+	private void moverArriba(EntidadMovible e) {
+		if (miSala.autorizarMovArriba(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
+			e.moverArriba();
+			miSala.actualizarZonasEntidad(posAnt, e);
+			miSala.detectarColisionesEntidad(posAnt, e);
 		}
 
 	}
 
-	private void moverDerecha() {
-		if (miSala.autorizarMovDerecha(personaje)) {
-			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
-			personaje.moverDerecha();
-			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesEntidad(posAnt, personaje);
+	private void moverDerecha(EntidadMovible e) {
+		if (miSala.autorizarMovDerecha(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
+			e.moverDerecha();
+			miSala.actualizarZonasEntidad(posAnt, e);
+			miSala.detectarColisionesEntidad(posAnt, e);
 		}
 	}
 
-	private void moverIzquierda() {
-		if (miSala.autorizarMovIzquierda(personaje)) {
-			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
-			personaje.moverIzquierda();
-			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesEntidad(posAnt, personaje);
+	private void moverIzquierda(EntidadMovible e) {
+		if (miSala.autorizarMovIzquierda(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
+			e.moverIzquierda();
+			miSala.actualizarZonasEntidad(posAnt, e);
+			miSala.detectarColisionesEntidad(posAnt, e);
 		}
 	}
 
-	private void moverAbajo() {
-		if (miSala.autorizarMovAbajo(personaje)) {
-			Coordenada posAnt = new Coordenada(personaje.getPosicion().getX(), personaje.getPosicion().getY());
-			personaje.moverAbajo();
-			miSala.actualizarZonasEntidad(posAnt, personaje);
-			miSala.detectarColisionesEntidad(posAnt, personaje);
+	private void moverAbajo(EntidadMovible e) {
+		if (miSala.autorizarMovAbajo(e)) {
+			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
+			e.moverAbajo();
+			miSala.actualizarZonasEntidad(posAnt, e);
+			miSala.detectarColisionesEntidad(posAnt, e);
 		}
 
 	} 
