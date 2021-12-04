@@ -3,6 +3,7 @@ package patrones.visitor_entidad;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
@@ -45,9 +46,9 @@ public class VisitorJugador extends VisitorEntidad {
 			@Override
 			public void run() {
 				miJugador.getEstrategia().setStrategy(new Presa(miJugador));
-				//miJugador.setTransformacion(false);
+				miJugador.setTransformacion(false);
 			
-			}}, 8000);	
+			}}, 4000);	
 	}
 
 	public void visit(ItemC potion) {
@@ -62,8 +63,8 @@ public class VisitorJugador extends VisitorEntidad {
 			@Override
 			public void run() {
 				miJugador.setVelocidad(velocidadPrevia);
-				//miJugador.setTransformacion(false);
-			}}, 8000);
+				miJugador.setTransformacion(false);
+			}}, 4000);
 	}
 
 	public void visit(ItemD bomb) {
@@ -76,8 +77,11 @@ public class VisitorJugador extends VisitorEntidad {
 			@Override
 			public void run() {
 				System.out.println("entro en el hilo ");
-				bomb.ponerBomba(miJugador.getPosicion());
-				//miJugador.setTransformacion(false);		
+				Entidad efecto = bomb.ponerBomba(miJugador.getPosicion());
+				System.out.println("tiene un efecto ");
+				miJugador.tengoUnaBomba(efecto);
+				bomb.remover();
+				miJugador.setTransformacion(false);		
 			}}, 3000);
 	}
 
@@ -91,10 +95,9 @@ public class VisitorJugador extends VisitorEntidad {
 	}
 
 	public void visit(Jugador jug) {
-
+		
 	}
 
-	@Override
 	public void visit(ItemEfecto efect) {
 		
 	}

@@ -156,7 +156,7 @@ public abstract class EntidadMovible extends Entidad {
 		movEnCola = MOV_DER;
 		actualizarMov = posicion.getX() + (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
-		miRep.moverDerecha(factorMovX);
+		miRep.moverDerecha(factorMovX*velocidad);
 	}
 
 	public void moverIzquierda() {
@@ -165,7 +165,7 @@ public abstract class EntidadMovible extends Entidad {
 		movEnCola = MOV_IZQ;
 		actualizarMov = posicion.getX() - (factorMovX*velocidad);
 		posicion.setX(actualizarMov);
-		miRep.moverIzquierda(factorMovX);
+		miRep.moverIzquierda(factorMovX*velocidad);
 	}
 
 	public void moverArriba() {
@@ -174,7 +174,7 @@ public abstract class EntidadMovible extends Entidad {
 		movEnCola = MOV_UP;
 		actualizarMov = posicion.getY() - (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
-		miRep.moverArriba(factorMovY);
+		miRep.moverArriba(factorMovY*velocidad);
 	}
 
 	public void moverAbajo() {
@@ -183,7 +183,7 @@ public abstract class EntidadMovible extends Entidad {
 		movEnCola = MOV_DOWN;
 		actualizarMov = posicion.getY() + (factorMovY*velocidad);
 		posicion.setY(actualizarMov);
-		miRep.moverAbajo(factorMovY);
+		miRep.moverAbajo(factorMovY*velocidad);
 	}
 
 	public void perderVida() {

@@ -171,7 +171,6 @@ public class Juego {
 	public void chequearGameOver(int cantItempsUp) {
 		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
-				miGui.PasoDeNivel();
 				miSala.reset();
 				nivel = nivel + 1;
 				setDominio(dominio);

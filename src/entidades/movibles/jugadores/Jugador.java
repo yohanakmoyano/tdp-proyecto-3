@@ -1,5 +1,6 @@
 package entidades.movibles.jugadores;
 
+import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
@@ -51,6 +52,15 @@ public class Jugador extends EntidadMovible {
 		return myInstance;
 	}
 
+	public void tengoUnaBomba(Entidad e) {
+		//Coordenada cordAux = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
+		juego.getSalaDeJuegos().getListaEntidadFija().add(e);
+		juego.mostrarEntidad(e);
+		juego.getSalaDeJuegos().agregarAZonas(e);
+		//juego.getSalaDeJuegos().detectarColisionesEntidad(cordAux, e);
+		
+	}
+	
 	public void afectarPuntaje(int valor) {
 		juego.setPuntaje(valor);
 	}

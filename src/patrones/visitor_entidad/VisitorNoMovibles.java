@@ -19,7 +19,6 @@ public class VisitorNoMovibles extends VisitorEntidad {
 	}
 
 	public void visit(Bloque ent) {
-		// TODO Auto-generated method stub
 		
 	}
 	

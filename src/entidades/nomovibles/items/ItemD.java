@@ -2,6 +2,8 @@ package entidades.nomovibles.items;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import entidades.Entidad;
 import entidades.nomovibles.EntidadNoMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
@@ -28,12 +30,12 @@ public class ItemD extends EntidadNoMovible {
 		v.visit(this);
 	}
 	
-	public void ponerBomba(Coordenada pos) {
+	public Entidad ponerBomba(Coordenada pos) {
 		Coordenada newPos = new Coordenada(pos.getX(), pos.getY());
 		String ruta = this.getClass().getResource("/Images/JDC/explotion.gif").toString(); 
 		System.out.println(ruta);
 		efectoExplosion = new ItemEfecto(valor, newPos, ruta);
-		remover();
+		return efectoExplosion;
 	}
 	
 	public void remover() {
@@ -47,7 +49,7 @@ public class ItemD extends EntidadNoMovible {
 
 			@Override
 			public void run() {
-				miRep.eliminar();				
-			}}, 3000);
+				efectoExplosion.eliminar();				
+			}}, 2000);
 	}
 }

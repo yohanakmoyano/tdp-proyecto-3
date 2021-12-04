@@ -51,7 +51,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 
 	@Override
 	public void visit(ItemEfecto efect) {
-		
+		miEnemigo.morir();
 	}
 	
 }

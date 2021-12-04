@@ -41,7 +41,7 @@ public class Zona extends Rectangle {
 	public AbstractSet<Entidad> getListaEntidades() {
 		return listaEntidades;
 	}
-	
+	/*
 	public List<Entidad> getEntColisionadas(Entidad e) {
 		List<Entidad> listaEntCol = new ArrayList<Entidad>();
 		
@@ -51,6 +51,7 @@ public class Zona extends Rectangle {
 		}
 		return listaEntCol;
 	}
+	*/
 
 	public void agregarEntidad(Entidad e) {
 		listaEntidades.add(e);

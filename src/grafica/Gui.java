@@ -286,29 +286,6 @@ public class Gui extends JFrame {
 		public void keyReleased(KeyEvent e) {
 		}
 	}
-
-	public void PasoDeNivel() {
-		ImageIcon img_Siguiente_nivel = new ImageIcon(
-				getClass().getClassLoader().getResource("Images/generales/next_level.png"));
-		int ancho = img_Siguiente_nivel.getIconWidth();
-		int largo = img_Siguiente_nivel.getIconHeight();
-		lbl_Siguiente_nivel = new JLabel(img_Siguiente_nivel);
-		lbl_Siguiente_nivel.setFont(new Font("Consolas", Font.BOLD, 12));
-		lbl_Siguiente_nivel.setBounds(100, 50, ancho, largo);
-		//panelprincipal.add(lbl_Siguiente_nivel);
-		lbl_Siguiente_nivel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Images/generales/next_level.png")));
-		panelprincipal.add(lbl_Siguiente_nivel, 0);
-		//repaint();
-		/*con el thread hay error de colision no se que flashea
-		 * try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/
-		//panelprincipal.remove(lbl_Siguiente_nivel);
-		//lbl_Siguiente_nivel.setVisible(false);
-		//repaint();
-	}
 	
 	public void mostrarGanador() {
 		panelprincipal.removeAll();
