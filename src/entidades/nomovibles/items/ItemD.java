@@ -32,19 +32,16 @@ public class ItemD extends EntidadNoMovible {
 	
 	public Entidad ponerBomba(Coordenada pos) {
 		Coordenada newPos = new Coordenada(pos.getX(), pos.getY());
+		
+		System.out.println("mi posicion de bomba es: "+pos.getX()+"-"+pos.getY());
+		
 		String ruta = this.getClass().getResource("/Images/JDC/explotion.gif").toString(); 
-		System.out.println(ruta);
 		efectoExplosion = new ItemEfecto(valor, newPos, ruta);
 		return efectoExplosion;
 	}
 	
 	public void remover() {
 		Timer time = new Timer();
-		
-		//this.setAlto(100);
-		//this.setAncho(100);
-		//miRep = new RepresentacionGrafica(rutaUrl, getPosicion().getX(), getPosicion().getY(), ancho, alto);
-		
 		time.schedule(new TimerTask() {
 
 			@Override

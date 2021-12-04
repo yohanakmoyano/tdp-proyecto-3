@@ -79,10 +79,8 @@ public class VisitorJugador extends VisitorEntidad {
 
 			@Override
 			public void run() {
-				System.out.println("entro en el hilo ");
 				miJugador.getJuego().getGui().actualizarPocion("");
 				Entidad efecto = bomb.ponerBomba(miJugador.getPosicion());
-				System.out.println("tiene un efecto ");
 				miJugador.tengoUnaBomba(efecto);
 				bomb.remover();
 				miJugador.setTransformacion(false);		

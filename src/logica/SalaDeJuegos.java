@@ -157,7 +157,6 @@ public class SalaDeJuegos {
 	}
 
 	public synchronized void agregarAZonas(Entidad e) {
-
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
 		Coordenada esqInfIzq = e.getEsquinaInfIzq();

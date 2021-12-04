@@ -61,6 +61,11 @@ public class EnemigoA extends Enemigo {
 		int yJug = elJugador.getPosicion().getY();
 		int distX = posicion.distanciaX(xJug);
 		int distY = posicion.distanciaY(yJug);
+		
+		if (posicion.getX()==miSalon.getRespawnPoint().getX() && posicion.getY()>181) {
+			   movEnCola = MOV_UP;
+		}	
+		else {
 		if(distX <= distY) { //Mover sobre X
 			if((posicion.getX() - xJug) < 0) { //moverDerecha
 				movEnCola = MOV_DER;
@@ -73,8 +78,10 @@ public class EnemigoA extends Enemigo {
 			} else {//MoverArriba
 				movEnCola = MOV_UP;
 			}
+		}	
 		}
 		miEstrategia.mover(movEnCola);
+		
 		//Faltan agregar condiciones para que no se quede moviendo siempre en una misma dirección.
 		return movEnCola;
 	}

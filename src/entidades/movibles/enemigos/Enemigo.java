@@ -38,7 +38,8 @@ public abstract class Enemigo extends EntidadMovible {
 		puedoMovermeIzq = true;
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
-		puedoMovermeDown = true;
+		puedoMovermeDown =true;
+		
 		this.revive();
 	}
 

@@ -12,12 +12,11 @@ public class ItemEfecto extends EntidadNoMovible{
 		caminable = true;
 		valor = val;
 		posicion = c;
-		ancho = 90;
 		alto = 90;
-		System.out.println("en itemEfecto: "+ rutaImg);
+		ancho = 90;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
-
+	
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

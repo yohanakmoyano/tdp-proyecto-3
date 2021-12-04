@@ -37,13 +37,9 @@ public class Juego {
 	
 	public void setDominio(int d) {
 		this.dominio = d;
-		construirDirector();
-		miSala = director.getSalaJuego();
-	}
-
-	public void construirDirector() {
 		director = new Director(nivel, dominio, this);
 		personaje = director.getJugador();
+		miSala = director.getSalaJuego();
 	}
 
 	public int getDominio() {
@@ -74,12 +70,9 @@ public class Juego {
 	}
 
 	public void actualizarFondo(String urlImg) {
-		System.out.println("El url es: "+urlImg);
 		miGui.mostrarImagenFondo(urlImg,nivel);
 	}
-	/*public void actualizarposRespawn(Coordenada p) {
-		personaje.setposRespawn(p);
-	}*/
+
 	public void mostrarEntidad(Entidad e) {
 		miGui.mostrarEntidad(e);
 	}
@@ -111,7 +104,6 @@ public class Juego {
 	}
 	
 	public void transformarJugador() {
-		
 		if (dominio == 1)
 			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_pocion.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
 		if (dominio == 2)
@@ -122,7 +114,6 @@ public class Juego {
 	}
 	
 	public void resetTransformacion() {
-	
 		if (dominio == 1)
 			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_nivel1.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
 		if (dominio == 2)
@@ -147,7 +138,7 @@ public class Juego {
 	}
 	
 	public void PasoDeNivel(int cantItempsUp) {
-		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
+		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) 
 			if (nivel < 3) {
 				miSala.reset();
 				nivel = nivel + 1;
@@ -211,42 +202,4 @@ public class Juego {
 		miSala.actualizarZonasEntidad(posAnt, e);
 		miSala.detectarColisionesEntidad(posAnt, e);
 	}
-/**
-	private void moverArriba(EntidadMovible e) {
-		if (miSala.autorizarMovArriba(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverArriba();
-			miSala.actualizarZonasEntidad(posAnt, e);
-			miSala.detectarColisionesEntidad(posAnt, e);
-		}
-
-	}
-
-	private void moverDerecha(EntidadMovible e) {
-		if (miSala.autorizarMovDerecha(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverDerecha();
-			miSala.actualizarZonasEntidad(posAnt, e);
-			miSala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	private void moverIzquierda(EntidadMovible e) {
-		if (miSala.autorizarMovIzquierda(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverIzquierda();
-			miSala.actualizarZonasEntidad(posAnt, e);
-			miSala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	private void moverAbajo(EntidadMovible e) {
-		if (miSala.autorizarMovAbajo(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverAbajo();
-			miSala.actualizarZonasEntidad(posAnt, e);
-			miSala.detectarColisionesEntidad(posAnt, e);
-		}
-
-	} */
 }

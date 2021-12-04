@@ -44,8 +44,7 @@ public class Gui extends JFrame {
 	private JTextField text_puntaje;
 	private JTextField text_vidas;
 	private Clip clip;
-	private JLabel lbl_Siguiente_nivel;
-	private JLabel lbl_gameOver;
+	//private JLabel lbl_gameOver;
 	private JLabel lbl_Ganador;
 	protected static Gui myInstance;
 	private JTextField text_pocion;
@@ -117,17 +116,6 @@ public class Gui extends JFrame {
 
 	}
 	
-	//Llamar cuando inicie la gui TODO
-	protected void initGame() {
-		//inicializo hilo movimiento jugador.
-		//hiloJug = mijuego.getHiloJugador();
-		//this.addKeyListener(hiloJug);
-/*		
-		hiloEnemies = mijuego.getHiloEnemies();
-		hiloEnemies.preparar();
-		hiloEnemies.iniciar();*/
-	}
-
 	public void agregarBotonesMusica() {
 
 		String rutaBotonSonidoOn = this.getClass().getResource("/Images/generales/sonidoOff.png").toString();
@@ -273,10 +261,6 @@ public class Gui extends JFrame {
 					mijuego.operar(Juego.MOV_ABAJO, mijuego.getPersonaje());
 					break;
 				}
-				case KeyEvent.VK_SPACE: {
-					mijuego.operar(Juego.PONER_ITEM, mijuego.getPersonaje());
-					break;
-				}
 				}
 			}
 		}
@@ -311,14 +295,16 @@ public class Gui extends JFrame {
 		panelprincipal.removeAll();
 		ImageIcon img_gameOver = new ImageIcon(
 				getClass().getClassLoader().getResource("Images/generales/game_over.png"));
-		lbl_gameOver = new JLabel(img_gameOver);
+		JLabel lbl_gameOver = new JLabel(img_gameOver);
 		int ancho = img_gameOver.getIconWidth();
 		int largo = img_gameOver.getIconHeight();
 		lbl_gameOver.setBounds(0, 0, ancho, largo);
 
 		this.setSize(ancho, largo);
 		panelprincipal.add(lbl_gameOver);
+		
 		panelprincipal.repaint();
+		//lbl_gameOver.setVisible(true);
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {

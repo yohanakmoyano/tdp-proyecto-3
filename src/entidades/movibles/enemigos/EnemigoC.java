@@ -82,6 +82,10 @@ public class EnemigoC extends Enemigo {
 		if((xJug > 0) && (yJug > 0)) {
 			int distX = posicion.distanciaX(xJug);
 			int distY = posicion.distanciaY(yJug);
+			if (posicion.getX()==miSalon.getRespawnPoint().getX() && posicion.getY()>181) {
+				   movEnCola = MOV_UP;
+			}	
+			else {
 			if(distX <= distY) { //Mover sobre X
 				if((posicion.getX() - xJug) < 0) { //moverDerecha
 					movEnCola = MOV_DER;
@@ -94,6 +98,7 @@ public class EnemigoC extends Enemigo {
 				} else {//MoverArriba
 					movEnCola = MOV_UP;
 				}
+			}
 			}
 			miEstrategia.mover(movEnCola);
 		}

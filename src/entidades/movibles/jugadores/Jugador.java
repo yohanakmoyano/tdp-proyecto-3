@@ -53,13 +53,9 @@ public class Jugador extends EntidadMovible {
 	}
 
 	public void tengoUnaBomba(Entidad e) {
-		//Coordenada cordAux = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
 		juego.getSalaDeJuegos().getListaEntidadFija().add(e);
 		juego.mostrarEntidad(e);
 		juego.getSalaDeJuegos().agregarAZonas(e);
-	
-		//juego.getSalaDeJuegos().detectarColisionesEntidad(cordAux, e);
-		
 	}
 	public Juego getJuego() {
 		return juego;
