@@ -28,14 +28,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import entidades.Entidad;
 import logica.Juego;
-import logica.hilos.JugadorThread;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class Gui extends JFrame {
 
-	protected JugadorThread hiloJug;
+	//protected JugadorThread hiloJug;
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel panelprincipal;

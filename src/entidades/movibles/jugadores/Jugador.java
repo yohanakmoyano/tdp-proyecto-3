@@ -71,7 +71,7 @@ public class Jugador extends EntidadMovible {
 	
 	public void setCantItemsLevantados() {
 		cantItemsLevantados = cantItemsLevantados + 1;
-		juego.chequearGameOver(cantItemsLevantados);
+		juego.PasoDeNivel(cantItemsLevantados);
 	}
 
 	public ControlStrategy getEstrategia() {

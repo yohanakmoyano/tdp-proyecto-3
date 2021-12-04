@@ -1,22 +1,14 @@
 package logica;
 
 import java.net.URL;
-import java.util.AbstractSet;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
 import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
 import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
-import logica.hilos.JugadorThread;
+
 import niveles.Director;
 
 public class Juego {
-	
-	protected JugadorThread hiloJug;
-	
 	protected int puntos;
 	protected int nivel;
 	protected Gui miGui;
@@ -42,20 +34,6 @@ public class Juego {
 		return personaje;
 	}
 	
-	/**
-	 * Este método debe ser llamado dentro de iniciarJuego.
-	 */
-	protected void prepararHiloJugador() {
-		hiloJug = new JugadorThread();
-		hiloJug.setSalaDeJuegos(miSala);
-		List<EntidadMovible> jug = new ArrayList<EntidadMovible>();
-		jug.add(personaje);
-		hiloJug.setEntidad(jug);
-	}
-
-	public JugadorThread getHiloJugador() {
-		return hiloJug;
-	}
 	
 	public void setDominio(int d) {
 		this.dominio = d;
@@ -168,7 +146,7 @@ public class Juego {
 			return false;
 	}
 	
-	public void chequearGameOver(int cantItempsUp) {
+	public void PasoDeNivel(int cantItempsUp) {
 		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) {// (cantItempsUp==4){
 			if (nivel < 3) {
 				miSala.reset();
