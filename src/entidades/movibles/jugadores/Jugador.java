@@ -17,6 +17,8 @@ public class Jugador extends EntidadMovible {
 	protected int cantItemsLevantados;
 	protected Juego juego;
 	protected boolean transformacion;
+	
+	
 	private Jugador(Coordenada c, String rutaImg, Juego jueg) {
 		alive = true;
 		caminable = true;
@@ -40,8 +42,7 @@ public class Jugador extends EntidadMovible {
 		cantItemsLevantados = 0;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 		controlStr = new ControlStrategy(this); // Por defecto se crea con estrategia presa.
-		transformacion=false;
-
+		transformacion = false;
 	}
 
 	public static Jugador getJugador(Coordenada c, String rutaImg, Juego jueg) {
@@ -53,6 +54,7 @@ public class Jugador extends EntidadMovible {
 	public void afectarPuntaje(int valor) {
 		juego.setPuntaje(valor);
 	}
+	
 	public void resetNivel() {
 		cantItemsLevantados=0;
 	}
@@ -74,9 +76,11 @@ public class Jugador extends EntidadMovible {
 		miRep.eliminar();
 		this.isDead();
 	}
+	
 	public void cambiarCoordenada(Coordenada p) {
 		posRespawn=p;
 	}
+	
 	public void reUbicar() {
 		miRep.eliminar();
 		miRep.moverRep(posRespawn.getX(), posRespawn.getY());
@@ -89,20 +93,28 @@ public class Jugador extends EntidadMovible {
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
 	}
+	
 	public void setTransformacion(boolean t){
-		transformacion=t;
-		if (transformacion)
-		juego.TransformarJugador();
+		transformacion = t;
+		if (transformacion) {
+			juego.transformarJugador();
+		}else {
+			juego.resetTransformacion();
+		}
+		
 	}
+	
 	public boolean getTranformacion() {
 		return transformacion;
 	}
+	
 	public void cambiarImagen(String r, int x, int y, int ancho, int alto) {
 		this.getRepresentacionGrafica().eliminar();
 		//RepresentacionGrafica mir=this.getRepresentacionGrafica() ;
-		miRep=new RepresentacionGrafica(r,x,y,ancho,alto);
+		miRep = new RepresentacionGrafica(r, x , y, ancho, alto);
 		//this.getRepresentacionGrafica().setDibujo(r,x,y,ancho,alto);
 	}
+	
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

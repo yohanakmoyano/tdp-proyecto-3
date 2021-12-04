@@ -131,15 +131,31 @@ public class Juego {
 	public SalaDeJuegos getSalaDeJuegos() {
 		return miSala;
 	}
-	public void TransformarJugador() {
-			if (dominio==1)
-				personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_pocion.png").toString(),personaje.getPosicion().getX(),personaje.getPosicion().getY(),personaje.getAlto(),personaje.getAlto());
-			if (dominio==2)
-				personaje.cambiarImagen(this.getClass().getResource("/Images/AU/jugador_red_pocion.png").toString(),personaje.getPosicion().getX(),personaje.getPosicion().getY(),personaje.getAlto(),personaje.getAlto());
-			if (dominio==3)
-				personaje.cambiarImagen(this.getClass().getResource("/Images/PM/pac_man_pocion.png").toString(),personaje.getPosicion().getX(),personaje.getPosicion().getY(),personaje.getAlto(),personaje.getAlto());
-			miGui.mostrarEntidad(personaje);
+	
+	public void transformarJugador() {
+		
+		if (dominio == 1)
+			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_pocion.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+		if (dominio == 2)
+			personaje.cambiarImagen(this.getClass().getResource("/Images/AU/jugador_red_pocion.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+		if (dominio == 3)
+			personaje.cambiarImagen(this.getClass().getResource("/Images/PM/pac_man_pocion.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+		miGui.mostrarEntidad(personaje);
 	}
+	
+	public void resetTransformacion() {
+	
+		if (dominio == 1)
+			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_nivel1.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+		if (dominio == 2)
+			personaje.cambiarImagen(this.getClass().getResource("/Images/AU/jugador_red.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+		if (dominio == 3)
+			personaje.cambiarImagen(this.getClass().getResource("/Images/PM/pac_man1.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+		miGui.mostrarEntidad(personaje);
+}
+
+	
+	
 	@SuppressWarnings("unused")
 	private void finDeJuego() {
 		miGui.finDeJuego();

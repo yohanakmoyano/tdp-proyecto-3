@@ -26,6 +26,14 @@ public abstract class Entidad {
 		return alto;
 	}
 
+	public void setAncho(int b) {
+		ancho = b;
+	}
+	
+	public void setAlto(int h) {
+		alto = h;
+	}
+	
 	public boolean isCaminable() {
 		return caminable;
 	}

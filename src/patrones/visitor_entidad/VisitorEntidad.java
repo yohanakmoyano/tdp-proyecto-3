@@ -8,6 +8,7 @@ import entidades.nomovibles.items.ItemB;
 import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
+import entidades.nomovibles.items.ItemEfecto;
 
 public abstract class VisitorEntidad {
 	public abstract void visit(Bloque ent);
@@ -25,4 +26,6 @@ public abstract class VisitorEntidad {
 	public abstract void visit(Enemigo enemigo);
 	
 	public abstract void visit(Jugador jug);
+	
+	public abstract void visit(ItemEfecto efect);
 }

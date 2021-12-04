@@ -16,18 +16,21 @@ public class RepresentacionGrafica {
 	protected int base;
 	protected int actualizarMov;
 
+	
 	public RepresentacionGrafica(String r, int x, int y, int ancho, int alto) {
 		ruta = r;
+		base = ancho;
 		altura = alto;
-		base = alto;
 		ImageIcon imagen = null;
 		dibujo = new JLabel();
 		dibujo.setBounds(x, y, ancho, alto);
+		
 		try {
 			imagen = new ImageIcon(new URL(r));
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
 		}
+		
 		Image medidaEntidad = imagen.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT);
 		dibujo.setIcon(new ImageIcon(medidaEntidad));
 	}
@@ -53,7 +56,6 @@ public class RepresentacionGrafica {
 	}
 
 	public void eliminar() {
-		
 		dibujo.setBounds(0, 0, 0, 0);
 	}
 
@@ -76,6 +78,7 @@ public class RepresentacionGrafica {
 	public JLabel getDibujo() {
 		return dibujo;
 	}
+	
 	public void cambiarRuta(String r) {
 		ruta = r;
 	}

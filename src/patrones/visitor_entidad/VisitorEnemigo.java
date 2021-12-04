@@ -8,6 +8,7 @@ import entidades.nomovibles.items.ItemB;
 import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
+import entidades.nomovibles.items.ItemEfecto;
 
 public class VisitorEnemigo extends VisitorEntidad{
 	protected Enemigo miEnemigo;
@@ -33,7 +34,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 	}
 
 	public void visit(ItemD bomb) {
-		miEnemigo.eliminar();
+		
 	}
 
 	public void visit(ItemE it) {
@@ -46,6 +47,11 @@ public class VisitorEnemigo extends VisitorEntidad{
 	
 	public void visit(Jugador jug) {
 		jug.getEstrategia().atacar(miEnemigo);
+	}
+
+	@Override
+	public void visit(ItemEfecto efect) {
+		
 	}
 	
 }

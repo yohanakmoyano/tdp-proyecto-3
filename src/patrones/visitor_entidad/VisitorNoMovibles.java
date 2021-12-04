@@ -9,6 +9,7 @@ import entidades.nomovibles.items.ItemB;
 import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
+import entidades.nomovibles.items.ItemEfecto;
 
 public class VisitorNoMovibles extends VisitorEntidad {
 	protected EntidadNoMovible me;
@@ -48,5 +49,10 @@ public class VisitorNoMovibles extends VisitorEntidad {
 	
 	public void visit(Jugador jug) {
 		jug.afectarPuntaje(me.getValor());
+	}
+
+	@Override
+	public void visit(ItemEfecto efect) {
+		
 	}
 }

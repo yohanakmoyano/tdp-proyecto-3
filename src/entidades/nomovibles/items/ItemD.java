@@ -2,14 +2,17 @@ package entidades.nomovibles.items;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
 import entidades.nomovibles.EntidadNoMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEntidad;
 
+/**
+ * JDC: Bomba, PC: PotionE, AU: calabaza
+ */
 public class ItemD extends EntidadNoMovible {
-	// JDC: Bomba, PC: PotionE, AU: calabaza
+	protected ItemEfecto efectoExplosion;
+	
 
 	public ItemD(int val, Coordenada c, String rutaImg) {
 		alive = true;
@@ -19,7 +22,6 @@ public class ItemD extends EntidadNoMovible {
 		ancho = 25;
 		alto = 25;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
-		
 	}
 
 	public void accept(VisitorEntidad v) {
@@ -27,12 +29,16 @@ public class ItemD extends EntidadNoMovible {
 	}
 	
 	public void ponerBomba(Coordenada pos) {
-		miRep.moverRep(pos.getX(),pos.getY());
+		Coordenada newPos = new Coordenada(pos.getX(), pos.getY());
+		String ruta = this.getClass().getResource("/Images/JDC/explotion.gif").toString(); 
+		System.out.println(ruta);
+		efectoExplosion = new ItemEfecto(valor, newPos, ruta);
 		remover();
 	}
 	
 	public void remover() {
 		Timer time = new Timer();
+		
 		//this.setAlto(100);
 		//this.setAncho(100);
 		//miRep = new RepresentacionGrafica(rutaUrl, getPosicion().getX(), getPosicion().getY(), ancho, alto);

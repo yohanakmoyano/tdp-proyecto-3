@@ -11,12 +11,14 @@ import entidades.nomovibles.items.ItemB;
 import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
+import entidades.nomovibles.items.ItemEfecto;
 import patrones.strategy.Cazador;
 import patrones.strategy.Presa;
 
 public class VisitorJugador extends VisitorEntidad {
 	protected Jugador miJugador;
 
+	
 	public VisitorJugador(Jugador miJug) {
 		miJugador = miJug;
 	}
@@ -37,22 +39,21 @@ public class VisitorJugador extends VisitorEntidad {
 		miJugador.setCantItemsLevantados();
 		arma.eliminar();
 		miJugador.setTransformacion(true);
-		miJugador.setVelocidad(5);
 		Timer time = new Timer();
 		time.schedule(new TimerTask() {
 
 			@Override
 			public void run() {
-				miJugador.setVelocidad(1);
 				miJugador.getEstrategia().setStrategy(new Presa(miJugador));
-				miJugador.setTransformacion(false);
-			}}, 2000);	
+				//miJugador.setTransformacion(false);
+			
+			}}, 8000);	
 	}
 
 	public void visit(ItemC potion) {
+		int velocidadPrevia = miJugador.getVelocidad();
 		miJugador.afectarPuntaje(potion.getValor());
-		miJugador.setVelocidad((miJugador.getVelocidad()* 3) / 2);
-		miJugador.setVelocidad(5);
+		miJugador.setVelocidad((miJugador.getVelocidad()* 7) / 2);
 		potion.eliminar();
 		miJugador.setTransformacion(true);
 		Timer time = new Timer();
@@ -60,13 +61,13 @@ public class VisitorJugador extends VisitorEntidad {
 
 			@Override
 			public void run() {
-				miJugador.setVelocidad(1);
-				miJugador.setTransformacion(false);
-			}}, 2000);
+				miJugador.setVelocidad(velocidadPrevia);
+				//miJugador.setTransformacion(false);
+			}}, 8000);
 	}
 
 	public void visit(ItemD bomb) {
-		miJugador.tieneItemD();
+		//miJugador.tieneItemD();
 		bomb.eliminar();
 		miJugador.setTransformacion(true);
 		Timer time = new Timer();
@@ -74,9 +75,9 @@ public class VisitorJugador extends VisitorEntidad {
 
 			@Override
 			public void run() {
+				System.out.println("entro en el hilo ");
 				bomb.ponerBomba(miJugador.getPosicion());
-				miJugador.setTransformacion(false);
-				
+				//miJugador.setTransformacion(false);		
 			}}, 3000);
 	}
 
@@ -91,5 +92,10 @@ public class VisitorJugador extends VisitorEntidad {
 
 	public void visit(Jugador jug) {
 
+	}
+
+	@Override
+	public void visit(ItemEfecto efect) {
+		
 	}
 }
