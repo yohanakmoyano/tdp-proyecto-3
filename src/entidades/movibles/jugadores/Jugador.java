@@ -9,14 +9,15 @@ import patrones.strategy.ControlStrategy;
 import patrones.visitor_entidad.VisitorEntidad;
 import patrones.visitor_entidad.VisitorJugador;
 
+/**
+ * JDC: jugador_456 , AU: jugador_red , PC: Pac_man
+ */
 public class Jugador extends EntidadMovible {
-	// JDC: jugador_456 , AU: jugador_red , PC: Pac_man
+	protected static Jugador myInstance;
 	protected ControlStrategy controlStr;
 	protected Coordenada posRespawn;
-	protected boolean poseeItemD;
-	protected static Jugador myInstance;
-	protected int cantItemsLevantados;
 	protected Juego juego;
+	protected int cantItemsLevantados;
 	protected boolean transformacion;
 	
 	
@@ -30,7 +31,6 @@ public class Jugador extends EntidadMovible {
 		puedoMovermeDer = true;
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
-		poseeItemD = false;
 		miVisitor = new VisitorJugador(this);
 		juego = jueg;
 		velocidad = 1;
@@ -57,9 +57,11 @@ public class Jugador extends EntidadMovible {
 		juego.mostrarEntidad(e);
 		juego.getSalaDeJuegos().agregarAZonas(e);
 	}
+	
 	public Juego getJuego() {
 		return juego;
 	}
+	
 	public void afectarPuntaje(int valor) {
 		juego.setPuntaje(valor);
 	}
@@ -77,17 +79,13 @@ public class Jugador extends EntidadMovible {
 		return controlStr;
 	}
 
-	public boolean tieneItemD() {
-		return poseeItemD = true;
-	}
-
 	public void morir() {
 		miRep.eliminar();
 		this.isDead();
 	}
 	
 	public void cambiarCoordenada(Coordenada p) {
-		posRespawn=p;
+		posRespawn = p;
 	}
 	
 	public void reUbicar() {
@@ -117,11 +115,10 @@ public class Jugador extends EntidadMovible {
 		return transformacion;
 	}
 	
+	// se puede mover a representacion grafica 
 	public void cambiarImagen(String r, int x, int y, int ancho, int alto) {
 		this.getRepresentacionGrafica().eliminar();
-		//RepresentacionGrafica mir=this.getRepresentacionGrafica() ;
 		miRep = new RepresentacionGrafica(r, x , y, ancho, alto);
-		//this.getRepresentacionGrafica().setDibujo(r,x,y,ancho,alto);
 	}
 	
 	public void accept(VisitorEntidad v) {

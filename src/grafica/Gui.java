@@ -273,7 +273,7 @@ public class Gui extends JFrame {
 	public void mostrarGanador() {
 		panelprincipal.removeAll();
 		ImageIcon img_Ganador = new ImageIcon(
-				getClass().getClassLoader().getResource("Images/generales/Ganaste.png"));
+				getClass().getClassLoader().getResource("Images/generales/ganaste.png"));
 		lbl_Ganador = new JLabel(img_Ganador);
 		int ancho = img_Ganador.getIconWidth();
 		int largo = img_Ganador.getIconHeight();

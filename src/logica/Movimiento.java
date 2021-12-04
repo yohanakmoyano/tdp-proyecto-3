@@ -23,7 +23,7 @@ public class Movimiento extends Thread {
 	public void run() {
 		while (deboMover) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

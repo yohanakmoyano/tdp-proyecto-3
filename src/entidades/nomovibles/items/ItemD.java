@@ -31,12 +31,10 @@ public class ItemD extends EntidadNoMovible {
 	}
 	
 	public Entidad ponerBomba(Coordenada pos) {
-		Coordenada newPos = new Coordenada(pos.getX(), pos.getY());
+		Coordenada posAct = verificaPosCorrecta(pos);
+		String ruta = this.getClass().getResource("/Images/generales/explotion.gif").toString(); 
 		
-		System.out.println("mi posicion de bomba es: "+pos.getX()+"-"+pos.getY());
-		
-		String ruta = this.getClass().getResource("/Images/JDC/explotion.gif").toString(); 
-		efectoExplosion = new ItemEfecto(valor, newPos, ruta);
+		efectoExplosion = new ItemEfecto(valor, posAct, ruta);
 		return efectoExplosion;
 	}
 	
@@ -49,4 +47,33 @@ public class ItemD extends EntidadNoMovible {
 				efectoExplosion.eliminar();				
 			}}, 2000);
 	}
+	
+	public Coordenada verificaPosCorrecta(Coordenada c) {
+		int posX = c.getX() + 70; 
+		int posY = c.getY() + 70; 
+		int espaioRestX = 0;
+		int espaioRestY = 0;
+		Coordenada nuevaCord = new Coordenada(c.getX()-25, c.getY()-25);
+		
+		//verifico si se pasa de dimensiones la explosion
+		if(posX >= 499 && posY >= 551) {
+			espaioRestX = 499 - c.getX();
+			espaioRestY = 551 - c.getY() ;
+			nuevaCord = new Coordenada(c.getX() - (70 - espaioRestX), c.getY() - (70 - espaioRestY));
+		}
+		else {
+			if(posX >= 499) {
+				espaioRestX = 499 - c.getX();
+				nuevaCord = new Coordenada(c.getX()- (70 - espaioRestX), c.getY());
+			}
+			
+			if(posY >= 551) {
+				espaioRestY = 551 - c.getY() ;
+				nuevaCord = new Coordenada(c.getX(), c.getY()- (70 - espaioRestY));
+			}
+		}
+		return nuevaCord;
+		
+	}
+	
 }

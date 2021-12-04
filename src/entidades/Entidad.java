@@ -83,6 +83,10 @@ public abstract class Entidad {
 	public Coordenada getPosicion() {
 		return posicion;
 	}
+	
+	public void setCoordenada(Coordenada c) {
+		posicion = c;
+	}
 
 	public boolean colisiona(Entidad e) {
 		return ((this != e) && (miRep.colisiona(e.getRepresentacionGrafica())));

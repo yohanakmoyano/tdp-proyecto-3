@@ -26,7 +26,7 @@ public class VentanaInstrucciones extends JFrame {
 		setResizable(false);
 		
 		//Imagen del fondo de la Ventana Instrucciones
-		String rutaFotoJuego = this.getClass().getResource("/Images/generales/Instrucciones.png").toString();
+		String rutaFotoJuego = this.getClass().getResource("/Images/generales/instrucciones.png").toString();
 		ImageIcon fotoJuego = null;
 		try {
 			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));
