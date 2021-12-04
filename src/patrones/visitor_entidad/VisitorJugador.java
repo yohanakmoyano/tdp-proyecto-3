@@ -57,12 +57,14 @@ public class VisitorJugador extends VisitorEntidad {
 		miJugador.setVelocidad((miJugador.getVelocidad()* 7) / 2);
 		potion.eliminar();
 		miJugador.setTransformacion(true);
+		miJugador.getJuego().getGui().actualizarPocion("+ velocidad");
 		Timer time = new Timer();
 		time.schedule(new TimerTask() {
 
 			@Override
 			public void run() {
 				miJugador.setVelocidad(velocidadPrevia);
+				miJugador.getJuego().getGui().actualizarPocion("");
 				miJugador.setTransformacion(false);
 			}}, 4000);
 	}
@@ -71,12 +73,14 @@ public class VisitorJugador extends VisitorEntidad {
 		//miJugador.tieneItemD();
 		bomb.eliminar();
 		miJugador.setTransformacion(true);
+		miJugador.getJuego().getGui().actualizarPocion("1 explosivo");
 		Timer time = new Timer();
 		time.schedule(new TimerTask() {
 
 			@Override
 			public void run() {
 				System.out.println("entro en el hilo ");
+				miJugador.getJuego().getGui().actualizarPocion("");
 				Entidad efecto = bomb.ponerBomba(miJugador.getPosicion());
 				System.out.println("tiene un efecto ");
 				miJugador.tengoUnaBomba(efecto);

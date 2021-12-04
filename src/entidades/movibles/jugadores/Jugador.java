@@ -57,10 +57,13 @@ public class Jugador extends EntidadMovible {
 		juego.getSalaDeJuegos().getListaEntidadFija().add(e);
 		juego.mostrarEntidad(e);
 		juego.getSalaDeJuegos().agregarAZonas(e);
+	
 		//juego.getSalaDeJuegos().detectarColisionesEntidad(cordAux, e);
 		
 	}
-	
+	public Juego getJuego() {
+		return juego;
+	}
 	public void afectarPuntaje(int valor) {
 		juego.setPuntaje(valor);
 	}

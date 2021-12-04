@@ -99,8 +99,9 @@ public class Gui extends JFrame {
 		text_vidas.setFont(new Font("Consolas", Font.BOLD, 22));
 		text_vidas.setBounds(725, 140, 137, 27);
 		panelprincipal.add(text_vidas);
-
+         //Text pocion
 		text_pocion = new JTextField();
+		text_pocion.setForeground(Color.WHITE);
 		text_pocion.setBackground(Color.DARK_GRAY);
 		text_pocion.setFont(new Font("Consolas", Font.BOLD, 22));
 		text_pocion.setBounds(725, 226, 137, 27);
@@ -115,7 +116,6 @@ public class Gui extends JFrame {
 		getContentPane().setLayout(null);
 
 	}
-	
 	
 	//Llamar cuando inicie la gui TODO
 	protected void initGame() {
@@ -214,7 +214,7 @@ public class Gui extends JFrame {
 	}
 
 	public void actualizarPocion(String s) {
-		text_pocion.setText(" " + s);
+		text_pocion.setText(""+s);
 	}
 
 	public void mostrarImagenFondo(String s, int n) {
