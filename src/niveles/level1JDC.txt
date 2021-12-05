@@ -430,8 +430,6 @@ p;360;40;/Images/JDC/bloque_libre.jpg;100;20
 p;180;40;/Images/JDC/bloque_libre.jpg;140;20
 p;90;90;/Images/JDC/bloque_libre.jpg;140;45
 p;270;90;/Images/JDC/bloque_libre.jpg;140;45
-p;200;210;/Images/JDC/bloque_libre.jpg;30;10
-p;270;210;/Images/JDC/bloque_libre.jpg;30;10
 p;200;210;/Images/JDC/bloque_libre.jpg;10;80
 p;290;210;/Images/JDC/bloque_libre.jpg;10;80
 p;200;280;/Images/JDC/bloque_libre.jpg;100;10

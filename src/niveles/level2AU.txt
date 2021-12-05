@@ -355,6 +355,7 @@ g;111;57;/Images/AU/Planta.png
 g;128;57;/Images/AU/Planta.png
 g;150;57;/Images/AU/Planta.png
 g;150;74;/Images/AU/Planta.png
+g;225;415;/Images/AU/Planta.png
 e;468;513;/Images/AU/Huevo.png
 p;0;0;/Images/AU/bloqueAU_nivel2.jpg;10;60
 p;0;60;/Images/AU/bloqueAU_nivel2.jpg;10;60
@@ -401,8 +402,6 @@ p;80;470;/Images/AU/bloqueAU_nivel2.jpg;60;7
 p;180;470;/Images/AU/bloqueAU_nivel2.jpg;150;40
 p;250;330;/Images/AU/bloqueAU_nivel2.jpg;10;55
 p;250;415;/Images/AU/bloqueAU_nivel2.jpg;10;50
-p;200;210;/Images/AU/bloqueAU_nivel2.jpg;30;10
-p;270;210;/Images/AU/bloqueAU_nivel2.jpg;30;10
 p;200;210;/Images/AU/bloqueAU_nivel2.jpg;10;80
 p;290;210;/Images/AU/bloqueAU_nivel2.jpg;10;80
 p;200;280;/Images/AU/bloqueAU_nivel2.jpg;100;10
