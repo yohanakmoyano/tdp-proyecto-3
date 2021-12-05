@@ -161,10 +161,6 @@ public class Juego {
 		}
 	}
 
-	public void setSalaDeJuegos(SalaDeJuegos s) {
-		miSala = s;
-	}
-
 	public synchronized void operar(int op, EntidadMovible e) {
 		boolean puedeMover = false;
 		int movARealizar = -1;

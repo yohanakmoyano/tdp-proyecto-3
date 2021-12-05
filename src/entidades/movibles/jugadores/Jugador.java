@@ -83,10 +83,6 @@ public class Jugador extends EntidadMovible {
 		this.isDead();
 	}
 
-	public void cambiarCoordenada(Coordenada p) {
-		posRespawn = p;
-	}
-
 	public void reUbicar() {
 		miRep.eliminar();
 		miRep.moverRep(posRespawn.getX(), posRespawn.getY());
