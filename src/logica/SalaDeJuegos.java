@@ -45,7 +45,7 @@ public class SalaDeJuegos {
 	public Juego getJuego() {
 		return juego;
 	}
-	
+
 	public void setCantItems(int cant) {
 		cantItems = cant;
 	}
@@ -57,24 +57,23 @@ public class SalaDeJuegos {
 	public int getBase() {
 		return base;
 	}
-	
+
 	public int getAltura() {
 		return altura;
 	}
-	
+
 	public void cazarEnemigos() {
-		for(Entidad e : listaEnemigos) {
-			((Enemigo)e).modoPresaOn();
-		}
-	}
-	
-	public void huirDeEnemigos() {
-		for(Entidad e : listaEnemigos) {
-			((Enemigo)e).modoAsesinoOn();
+		for (Entidad e : listaEnemigos) {
+			((Enemigo) e).modoPresaOn();
 		}
 	}
 
-	// Consulta cual es la zona que contiene la coordenada PUNTO.
+	public void huirDeEnemigos() {
+		for (Entidad e : listaEnemigos) {
+			((Enemigo) e).modoAsesinoOn();
+		}
+	}
+
 	private Zona getZona(Coordenada punto) {
 		Coordenada cMatriz = posEnMatriz(punto);
 		return matrizZonas[cMatriz.getX()][cMatriz.getY()];
@@ -101,18 +100,6 @@ public class SalaDeJuegos {
 		}
 	}
 
-	/*public synchronized boolean posColisiona(Coordenada c) {
-
-		Zona z = getZona(c);
-		Iterator<Entidad> it = z.getListaEntidades().iterator();
-		boolean colisiona = false;
-		while (it.hasNext() && !colisiona) {
-			Entidad e = it.next();
-			colisiona = e.contieneCoordenada(c) && (!e.isCaminable());
-		}
-		return colisiona;
-	}*/
-
 	public synchronized void actualizarZonasEntidad(Coordenada posAnteriorEnt, Entidad e) {
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
@@ -129,7 +116,7 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovUp();
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
 		boolean puedeMoverse = (newPosSupIzq.isValid(base, altura) && newPosSupDer.isValid(base, altura));
-				/* && (e.puedoMovermeUp()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosSupDer)*/
+
 		return puedeMoverse;
 	}
 
@@ -138,7 +125,7 @@ public class SalaDeJuegos {
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
 		boolean puedeMoverse = (newPosInfIzq.isValid(base, altura) && newPosInfDer.isValid(base, altura));
-				/* && (e.puedoMovermeDown()) && !posColisiona(newPosInfIzq) && !posColisiona(newPosInfDer)*/
+
 		return puedeMoverse;
 	}
 
@@ -147,7 +134,7 @@ public class SalaDeJuegos {
 		Coordenada newPosSupDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY());
 		Coordenada newPosInfDer = new Coordenada(newPosSupIzq.getX() + e.getAncho(), newPosSupIzq.getY() + e.getAlto());
 		boolean puedeMoverse = (newPosSupDer.isValid(base, altura) && newPosInfDer.isValid(base, altura));
-				/* && (e.puedoMovermeDer()) && !posColisiona(newPosSupDer) && !posColisiona(newPosInfDer)*/
+
 		return puedeMoverse;
 	}
 
@@ -155,16 +142,14 @@ public class SalaDeJuegos {
 		Coordenada newPosSupIzq = e.nextPosMovIzq();
 		Coordenada newPosInfIzq = new Coordenada(newPosSupIzq.getX(), newPosSupIzq.getY() + e.getAlto());
 		boolean puedeMoverse = (newPosSupIzq.isValid(base, altura)) && (newPosInfIzq.isValid(base, altura));
-				/* && (e.puedoMovermeIzq()) && !posColisiona(newPosSupIzq) && !posColisiona(newPosInfIzq)*/
+
 		return puedeMoverse;
 	}
-	
-	private void addEntidadAZonaEn(Coordenada pos, Entidad e) {
 
+	private void addEntidadAZonaEn(Coordenada pos, Entidad e) {
 		Zona z = getZona(pos);
 		if (z != null) {
 			z.agregarEntidad(e);
-
 		}
 	}
 
@@ -186,8 +171,6 @@ public class SalaDeJuegos {
 			col.add(z);
 	}
 
-	// Consulta las zonas en las que se encuentra la entidad e.
-
 	private AbstractSet<Zona> zonasDeEntidad(Entidad e) {
 		Coordenada esqSupIzq = e.getEsquinaSupIzq();
 		Coordenada esqSupDer = e.getEsquinaSupDer();
@@ -206,78 +189,11 @@ public class SalaDeJuegos {
 		for (Entidad ent : listaEntidadFija) {
 			juego.getGui().removerEntidad(ent);
 		}
-		
-		for (Entidad e: listaEnemigos ) {
-			((EntidadMovible)e).morir();
+
+		for (Entidad e : listaEnemigos) {
+			((EntidadMovible) e).morir();
 		}
 	}
-	
-	
-////////////////////////////////////////////////////////////////////////////////////////
-	/*public void verificarColisiones(Entidad e) {
-		AbstractSet<Entidad> entidadesSinRepetir = new HashSet<Entidad>();
-		entidadesSinRepetir = getlistEntCol(e);
-		boolean colisiono = false;
-
-		for (Entidad entidadAct : entidadesSinRepetir) {
-			colisiono = e.colisiona(entidadAct);
-			if (colisiono) {
-				entidadAct.accept(e.getMyVisitor());
-				miGui.actualizarPuntaje();
-				juego.actualizoVidas();
-			}
-		}
-	}
-
-//Conjunto de Zonas
-	private AbstractSet<Entidad> getlistEntCol(Entidad e) {
-		AbstractSet<Zona> zonasTotales = new HashSet<Zona>();
-		AbstractSet<Entidad> entidadesSinRepetir = new HashSet<Entidad>();
-
-		Zona z1 = getZona(e.getEsquinaSupIzq());
-		Zona z2 = getZona(e.getEsquinaSupDer());
-		Zona z3 = getZona(e.getEsquinaInfIzq());
-		Zona z4 = getZona(e.getEsquinaInfDer());
-
-		if (z1 != null)
-			zonasTotales.add(z1);
-		if (z2 != null)
-			zonasTotales.add(z2);
-		if (z3 != null)
-			zonasTotales.add(z3);
-		if (z4 != null)
-			zonasTotales.add(z4);
-
-//cuando lo que esta adentro ahi rompo el emcapsulamiento
-//llamar a un metodo de zona que me de lo que se choca la entidad
-		for (Zona zonaActual : zonasTotales) {
-			entidadesSinRepetir.addAll(zonaActual.getEntColisionadas(e));
-		}
-
-		return entidadesSinRepetir;
-	}
-
-//sssi se moviocuando me muevo pido a grilla
-
-	public void actualizarGrilla(Entidad e) {
-
-		Zona z1 = getZona(e.getEsquinaSupIzq());
-		Zona z2 = getZona(e.getEsquinaSupDer());
-		Zona z3 = getZona(e.getEsquinaInfIzq());
-		Zona z4 = getZona(e.getEsquinaInfDer());
-
-		if (z1 != null)
-			z1.agregarEntidad(e);
-		if (z2 != null)
-			z2.agregarEntidad(e);
-		if (z3 != null)
-			z3.agregarEntidad(e);
-		if (z4 != null)
-			z4.agregarEntidad(e);
-
-	}
-	*/
-////////////////////////////////////////////////////////////////////////////////////////
 
 	private boolean colisionEnZona(Entidad e, Zona z) {
 		boolean colisiono = false;

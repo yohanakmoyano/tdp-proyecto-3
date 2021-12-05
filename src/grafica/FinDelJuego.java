@@ -10,17 +10,19 @@ import java.awt.Image;
 public class FinDelJuego extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel inicioJuego;
+
 	public FinDelJuego(Gui miGui, int opcion) {
-		// Configuracion del panelfin de juego
+		// Configuracion del panel fin de juego
 		setBounds(0, 0, 900, 600);
 		setLayout(null);
 		String rutaFotoJuego = null;
 		// Imagen del fondo de la ventana GameOver
 		if (opcion == 1)
 			rutaFotoJuego = this.getClass().getResource("/Images/generales/game_over.png").toString();
-		if (opcion == 2)// Imagen del fondo de la ventana Ganaste
+		// Imagen del fondo de la ventana Ganaste
+		if (opcion == 2)
 			rutaFotoJuego = this.getClass().getResource("/Images/generales/Ganaste.png").toString();
-		
+
 		ImageIcon fotoJuego = null;
 		try {
 			fotoJuego = new ImageIcon(new URL(rutaFotoJuego));

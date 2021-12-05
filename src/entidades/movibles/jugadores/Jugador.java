@@ -17,7 +17,7 @@ public class Jugador extends EntidadMovible {
 	protected Juego juego;
 	protected int cantItemsLevantados;
 	protected boolean transformacion;
-	
+
 	private Jugador(Coordenada c, String rutaImg, Juego jueg) {
 		alive = true;
 		caminable = true;
@@ -45,11 +45,11 @@ public class Jugador extends EntidadMovible {
 	public void modoCazaOn() {
 		juego.cazarEnemigos();
 	}
-	
+
 	public void modoCazaOff() {
 		juego.huirDeEnemigos();
 	}
-	
+
 	public static Jugador getJugador(Coordenada c, String rutaImg, Juego jueg) {
 		if (myInstance == null)
 			myInstance = new Jugador(c, rutaImg, jueg);
@@ -61,33 +61,33 @@ public class Jugador extends EntidadMovible {
 		juego.mostrarEntidad(e);
 		juego.getSalaDeJuegos().agregarAZonas(e);
 	}
-	
+
 	public Juego getJuego() {
 		return juego;
 	}
-	
+
 	public void afectarPuntaje(int valor) {
 		juego.setPuntaje(valor);
 	}
-	
+
 	public void resetNivel() {
-		cantItemsLevantados=0;
+		cantItemsLevantados = 0;
 	}
-	
+
 	public void setCantItemsLevantados() {
 		cantItemsLevantados = cantItemsLevantados + 1;
 		juego.PasoDeNivel(cantItemsLevantados);
 	}
-	
+
 	public void morir() {
 		miRep.eliminar();
 		this.isDead();
 	}
-	
+
 	public void cambiarCoordenada(Coordenada p) {
 		posRespawn = p;
 	}
-	
+
 	public void reUbicar() {
 		miRep.eliminar();
 		miRep.moverRep(posRespawn.getX(), posRespawn.getY());
@@ -100,67 +100,61 @@ public class Jugador extends EntidadMovible {
 		puedoMovermeUp = true;
 		puedoMovermeDown = true;
 	}
-	
-	public void setTransformacion(boolean t){
+
+	public void setTransformacion(boolean t) {
 		transformacion = t;
 		if (transformacion) {
 			juego.transformarJugador();
-		}else {
+		} else {
 			juego.resetTransformacion();
 		}
-		
+
 	}
-	
+
 	public boolean getTranformacion() {
 		return transformacion;
 	}
-	
-	// se puede mover a representacion grafica 
+
 	public void cambiarImagen(String r, int x, int y, int ancho, int alto) {
 		this.getRepresentacionGrafica().eliminar();
-		miRep = new RepresentacionGrafica(r, x , y, ancho, alto);
+		miRep = new RepresentacionGrafica(r, x, y, ancho, alto);
 	}
-	
+
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}
 
-	@Override
 	public Coordenada nextPosMovDer() {
-		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
+		return new Coordenada(posicion.getX() + (factorMovX * velocidad), posicion.getY());
 	}
 
-	@Override
 	public Coordenada nextPosMovIzq() {
-		return new Coordenada(posicion.getX() - (factorMovX*velocidad), posicion.getY());
+		return new Coordenada(posicion.getX() - (factorMovX * velocidad), posicion.getY());
 	}
 
-	@Override
 	public Coordenada nextPosMovUp() {
-		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY*velocidad));
+		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY * velocidad));
 	}
 
-	@Override
 	public Coordenada nextPosMovDown() {
-		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
+		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY * velocidad));
 	}
 
-	@Override
 	public int mover() {
-		switch(movEnCola) {
-		case(EntidadMovible.MOV_DER): {
+		switch (movEnCola) {
+		case (EntidadMovible.MOV_DER): {
 			this.moverDerecha();
 			break;
 		}
-		case(EntidadMovible.MOV_IZQ): {
+		case (EntidadMovible.MOV_IZQ): {
 			this.moverIzquierda();
 			break;
 		}
-		case(EntidadMovible.MOV_DOWN): {
+		case (EntidadMovible.MOV_DOWN): {
 			this.moverAbajo();
 			break;
 		}
-		case(EntidadMovible.MOV_UP): {
+		case (EntidadMovible.MOV_UP): {
 			this.moverArriba();
 			break;
 		}

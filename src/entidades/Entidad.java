@@ -8,13 +8,11 @@ public abstract class Entidad {
 	protected boolean alive;
 	protected boolean caminable;
 	protected VisitorEntidad miVisitor;
-	protected int ancho; // mi X
-	protected int alto; // mi Y
+	protected int ancho;
+	protected int alto;
 	protected int esquina;
 	protected RepresentacionGrafica miRep;
-	protected Coordenada posicion; // se tratará de la esquina superior izquierda.
-	// Considerando a la entidad como un cuadrilátero cuyos ángulos interiores son
-	// todos rectos.
+	protected Coordenada posicion; // se tratará de la esquina superior izquierda.Considerando a la entidad como un cuadrilátero cuyos ángulos interiores son todos rectos.
 
 	public abstract void accept(VisitorEntidad v);
 
@@ -50,28 +48,17 @@ public abstract class Entidad {
 		alive = true;
 	}
 
-	// Consulta cual es la posicion/coordenada correspondiente a la esquina superior
-	// izquierda de la entidad.
 	public Coordenada getEsquinaSupIzq() {
 		return posicion;
 	}
-
-	// Consulta cual es la posicion/coordenada correspondiente a la esquina superior
-	// derecha de la entidad.
 
 	public Coordenada getEsquinaSupDer() {
 		return new Coordenada(posicion.getX() + ancho, posicion.getY());
 	}
 
-	// Consulta cual es la posicion/coordenada correspondiente a la esquina inferior
-	// izquierda de la entidad.
-
 	public Coordenada getEsquinaInfIzq() {
 		return new Coordenada(posicion.getX(), posicion.getY() + alto);
 	}
-
-	// Consulta cual es la posicion/coordenada correspondiente a la esquina inferior
-	// derecha de la entidad.
 
 	public Coordenada getEsquinaInfDer() {
 		return new Coordenada(posicion.getX() + ancho, posicion.getY() + alto);

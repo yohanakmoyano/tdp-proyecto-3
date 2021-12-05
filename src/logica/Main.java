@@ -1,7 +1,6 @@
 package logica;
 
 import java.awt.EventQueue;
-
 import grafica.VentanaInicio;
 
 public class Main {

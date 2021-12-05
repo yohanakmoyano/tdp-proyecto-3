@@ -18,7 +18,7 @@ public class Zona extends Rectangle {
 		posSupIzq = new Coordenada(x, y);
 		this.ancho = ancho;
 		this.alto = alto;
-		listaEntidades = new HashSet<Entidad>(); // Me aseguro de no tener entidades repetidas dentro de la lista.
+		listaEntidades = new HashSet<Entidad>();
 	}
 
 	public Coordenada getEsquinaSupIzq() {

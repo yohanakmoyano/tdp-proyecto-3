@@ -12,20 +12,20 @@ import entidades.nomovibles.items.ItemEfecto;
 
 public abstract class VisitorEntidad {
 	public abstract void visit(Bloque ent);
-	
+
 	public abstract void visit(ItemA it);
 
 	public abstract void visit(ItemB it);
-	
+
 	public abstract void visit(ItemC it);
 
 	public abstract void visit(ItemD it);
 
 	public abstract void visit(ItemE it);
-	
+
 	public abstract void visit(Enemigo enemigo);
-	
+
 	public abstract void visit(Jugador jug);
-	
+
 	public abstract void visit(ItemEfecto efect);
 }

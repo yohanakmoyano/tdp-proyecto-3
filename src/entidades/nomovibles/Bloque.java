@@ -17,7 +17,6 @@ public class Bloque extends EntidadNoMovible {
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
-	@Override
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}

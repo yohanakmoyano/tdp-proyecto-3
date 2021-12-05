@@ -2,12 +2,10 @@ package grafica;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -15,13 +13,11 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,7 +25,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import entidades.Entidad;
 import logica.Juego;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -45,8 +40,9 @@ public class Gui extends JFrame {
 	private Clip clip;
 	protected static Gui myInstance;
 	private JTextField text_pocion;
+	private JButton boton_musicOff;
+	private JButton boton_music;
 	protected JPanel panelFinDeJuego;
-	
 
 	private Gui(Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,12 +102,13 @@ public class Gui extends JFrame {
 		panelprincipal.add(text_pocion);
 		text_pocion.setColumns(10);
 
+		
 		// Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
 		setFocusable(true);
 		getContentPane().setLayout(null);
-
+		
 	}
 
 	public void agregarBotonesMusica() {
@@ -132,7 +129,7 @@ public class Gui extends JFrame {
 			e.printStackTrace();
 		}
 
-		JButton boton_musicOff = new JButton();
+		boton_musicOff = new JButton();
 		boton_musicOff.setBackground(Color.WHITE);
 		boton_musicOff.setBounds(23, 11, 35, 35);
 		boton_musicOff.setFocusable(false);
@@ -140,7 +137,7 @@ public class Gui extends JFrame {
 		boton_musicOff.setVisible(false);
 		Image medidaSonidoOff = fotoBotonSonidoOff.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
 
-		JButton boton_music = new JButton();
+		boton_music = new JButton();
 		boton_music.setBackground(Color.WHITE);
 		boton_music.setBounds(23, 11, 35, 35);
 		boton_music.setFocusable(false);
@@ -151,7 +148,7 @@ public class Gui extends JFrame {
 
 		boton_musicOff.setIcon(new ImageIcon(medidaSonidoOff));
 		boton_music.addMouseListener(new MouseAdapter() {
-			@Override
+
 			public void mouseClicked(MouseEvent e) {
 				URL path = mijuego.getMusica();
 				try {
@@ -173,7 +170,7 @@ public class Gui extends JFrame {
 		panelprincipal.add(boton_musicOff);
 		panelprincipal.add(boton_music);
 		boton_musicOff.addMouseListener(new MouseAdapter() {
-			@Override
+
 			public void mouseClicked(MouseEvent e) {
 				clip.stop();
 				boton_music.setVisible(true);
@@ -234,11 +231,10 @@ public class Gui extends JFrame {
 	}
 
 	private class MyKeyListener implements KeyListener {
-		@Override
+
 		public void keyTyped(KeyEvent e) {
 		}
 
-		@Override
 		public void keyPressed(KeyEvent e) {
 			if (mijuego.sigueEnJuego()) {
 				switch (e.getKeyCode()) {
@@ -263,15 +259,13 @@ public class Gui extends JFrame {
 			}
 		}
 
-		@Override
 		public void keyReleased(KeyEvent e) {
 		}
 	}
 
 	public void mostrarGanador() {
 		panelprincipal.removeAll();
-
-		panelFinDeJuego = new FinDelJuego(this,2);
+		panelFinDeJuego = new FinDelJuego(this, 2);
 		getContentPane().add(panelFinDeJuego);
 		getContentPane().setComponentZOrder(panelFinDeJuego, 0);
 		setFocusable(true);
@@ -280,11 +274,11 @@ public class Gui extends JFrame {
 
 	public void finDeJuego() {
 		panelprincipal.removeAll();
-		panelFinDeJuego = new FinDelJuego(this,1);
+		panelFinDeJuego = new FinDelJuego(this, 1);
 		getContentPane().add(panelFinDeJuego);
 		getContentPane().setComponentZOrder(panelFinDeJuego, 0);
 		setFocusable(true);
 		repaint();
-		
+
 	}
 }

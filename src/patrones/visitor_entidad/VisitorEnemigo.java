@@ -19,7 +19,6 @@ public class VisitorEnemigo extends VisitorEntidad{
 
 	public void visit(Bloque ent) {
 		miEnemigo.comeBack();
-		//miEnemigo.bloquearMovimiento(miEnemigo.movOpuesto(miEnemigo.getUltMovimiento()));
 	}
 	
 	public void visit(ItemA it) {
@@ -50,7 +49,6 @@ public class VisitorEnemigo extends VisitorEntidad{
 		miEnemigo.getEstrategia().atacar();
 	}
 
-	@Override
 	public void visit(ItemEfecto efect) {
 		miEnemigo.morir();
 	}

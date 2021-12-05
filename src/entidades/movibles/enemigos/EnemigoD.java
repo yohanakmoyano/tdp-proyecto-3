@@ -1,7 +1,6 @@
 package entidades.movibles.enemigos;
 
 import java.util.Random;
-
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.strategy_enem.Asesino;
@@ -37,19 +36,19 @@ public class EnemigoD extends Enemigo {
 	}
 
 	public Coordenada nextPosMovDer() {
-		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
+		return new Coordenada(posicion.getX() + (factorMovX * velocidad), posicion.getY());
 	}
 
 	public Coordenada nextPosMovIzq() {
-		return new Coordenada(posicion.getX() - (factorMovX*velocidad), posicion.getY());
+		return new Coordenada(posicion.getX() - (factorMovX * velocidad), posicion.getY());
 	}
 
 	public Coordenada nextPosMovUp() {
-		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY*velocidad));
+		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY * velocidad));
 	}
 
 	public Coordenada nextPosMovDown() {
-		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
+		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY * velocidad));
 	}
 
 	public int mover() {
@@ -58,27 +57,26 @@ public class EnemigoD extends Enemigo {
 
 		Random r = new Random();
 		int eje = r.nextInt(2);
-		
+
 		if (miSalon.estaDentro(this)) {
-			   movEnCola = getMovPosible(MOV_UP);
-		}	
-		else {
-			if(eje == ejeX) { //Mover sobre X
-				if((posicion.getX() - xJug) < 0) { //moverDerecha
+			movEnCola = getMovPosible(MOV_UP);
+		} else {
+			if (eje == ejeX) { // Mover sobre X
+				if ((posicion.getX() - xJug) < 0) { // moverDerecha
 					movEnCola = getMovPosible(MOV_DER);
-				} else { //moverIzquierda
+				} else { // moverIzquierda
 					movEnCola = getMovPosible(MOV_IZQ);
 				}
-			} else { //MoverSobreY
-				if((posicion.getY() - yJug) < 0) { //MoverAbajo
+			} else { // MoverSobreY
+				if ((posicion.getY() - yJug) < 0) { // MoverAbajo
 					movEnCola = getMovPosible(MOV_DOWN);
-				} else {//MoverArriba
+				} else {// MoverArriba
 					movEnCola = getMovPosible(MOV_UP);
 				}
 			}
 		}
 		miEstrategia.mover(movEnCola);
-		//Faltan agregar condiciones para que no se quede moviendo siempre en una misma dirección.
+		
 		return movEnCola;
 	}
 }

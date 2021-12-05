@@ -20,7 +20,7 @@ import logica.Juego;
 import logica.SalaDeJuegos;
 
 public class Director {
-	
+
 	protected SalaDeJuegos sj;
 	protected String fileName;
 	protected URL musica;
@@ -36,7 +36,7 @@ public class Director {
 		int j = 0;
 		juego = jueg;
 		sj = new SalaDeJuegos(jueg);
-		
+
 		if (dominio == 1) {
 			toRet = LeerArchivo.leer("src\\niveles\\level" + n + "JDC.txt");
 		}
@@ -48,17 +48,13 @@ public class Director {
 		if (dominio == 3) {
 			toRet = LeerArchivo.leer("src\\niveles\\level" + n + "PM.txt");
 		}
-		
+
 		juego.actualizarFondo(this.getClass().getResource(toRet.get(0)).toString());
-		
 		musica = this.getClass().getResource(toRet.get(1).toString());
-		
-		// Creo un jugador
 		jug = Jugador.getJugador(punto, this.getClass().getResource(toRet.get(2)).toString(), juego);
 		jug.reUbicar();
 		juego.mostrarEntidad(jug);
 
-		// Lee del txt las entidades y las agrega al mapa
 		for (int i = 3; i < toRet.size(); i++) {
 			String palabra = toRet.get(i);
 			String[] caracter = palabra.split(";");
@@ -99,29 +95,29 @@ public class Director {
 				sj.getListaEntidadFija().add(entidad);
 				break;
 			}
-			
+
 			case "B": { // Creo un Boss
 				entidad = new EnemigoA(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
-				((Enemigo)entidad).setJugador(jug);
+				((Enemigo) entidad).setJugador(jug);
 				break;
 			}
 			case "C": { // Creo un circulo
 				entidad = new EnemigoD(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
-				((Enemigo)entidad).setJugador(jug);
+				((Enemigo) entidad).setJugador(jug);
 				break;
 			}
 			case "S": { // Creo un cuadrado
 				entidad = new EnemigoB(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
-				((Enemigo)entidad).setJugador(jug);
+				((Enemigo) entidad).setJugador(jug);
 				break;
 			}
 			case "T": { // Creo un triangulo
 				entidad = new EnemigoC(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
-				((Enemigo)entidad).setJugador(jug);
+				((Enemigo) entidad).setJugador(jug);
 				break;
 			}
 			}
@@ -139,7 +135,7 @@ public class Director {
 	public Jugador getJugador() {
 		return jug;
 	}
-	
+
 	public SalaDeJuegos getSalaJuego() {
 		return sj;
 	}

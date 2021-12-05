@@ -5,7 +5,6 @@ import entidades.Entidad;
 import entidades.movibles.EntidadMovible;
 import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
-
 import niveles.Director;
 
 public class Juego {
@@ -24,25 +23,24 @@ public class Juego {
 	protected Movimiento movE;
 	protected int dominio;
 
-	
 	public Juego() {
 		puntos = 0;
 		nivel = 1;
 		miGui = Gui.getGui(this);
 	}
-	
+
 	public Jugador getPersonaje() {
 		return personaje;
 	}
-	
+
 	public void cazarEnemigos() {
 		miSala.cazarEnemigos();
 	}
-	
+
 	public void huirDeEnemigos() {
 		miSala.huirDeEnemigos();
 	}
-	
+
 	public void setDominio(int d) {
 		this.dominio = d;
 		director = new Director(nivel, dominio, this);
@@ -53,6 +51,7 @@ public class Juego {
 	public int getDominio() {
 		return dominio;
 	}
+
 	public Gui getGui() {
 		return miGui;
 	}
@@ -80,7 +79,7 @@ public class Juego {
 	}
 
 	public void actualizarFondo(String urlImg) {
-		miGui.mostrarImagenFondo(urlImg,nivel);
+		miGui.mostrarImagenFondo(urlImg, nivel);
 	}
 
 	public void mostrarEntidad(Entidad e) {
@@ -108,26 +107,38 @@ public class Juego {
 	public SalaDeJuegos getSalaDeJuegos() {
 		return miSala;
 	}
-	
+
 	public void transformarJugador() {
 		if (dominio == 1)
-			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_pocion.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_pocion.png").toString(),
+					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
+					personaje.getAlto());
 		if (dominio == 2)
-			personaje.cambiarImagen(this.getClass().getResource("/Images/AU/jugador_red_pocion.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+			personaje.cambiarImagen(this.getClass().getResource("/Images/AU/jugador_red_pocion.png").toString(),
+					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
+					personaje.getAlto());
 		if (dominio == 3)
-			personaje.cambiarImagen(this.getClass().getResource("/Images/PM/pac_man_pocion.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+			personaje.cambiarImagen(this.getClass().getResource("/Images/PM/pac_man_pocion.png").toString(),
+					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
+					personaje.getAlto());
 		miGui.mostrarEntidad(personaje);
 	}
-	
+
 	public void resetTransformacion() {
 		if (dominio == 1)
-			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_nivel1.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_nivel1.png").toString(),
+					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
+					personaje.getAlto());
 		if (dominio == 2)
-			personaje.cambiarImagen(this.getClass().getResource("/Images/AU/jugador_red.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+			personaje.cambiarImagen(this.getClass().getResource("/Images/AU/jugador_red.png").toString(),
+					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
+					personaje.getAlto());
 		if (dominio == 3)
-			personaje.cambiarImagen(this.getClass().getResource("/Images/PM/pac_man1.png").toString(), personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(), personaje.getAlto());
+			personaje.cambiarImagen(this.getClass().getResource("/Images/PM/pac_man1.png").toString(),
+					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
+					personaje.getAlto());
 		miGui.mostrarEntidad(personaje);
-}
+	}
 
 	public boolean sigueEnJuego() {
 		if (personaje.getVidas() >= 0)
@@ -135,9 +146,9 @@ public class Juego {
 		else
 			return false;
 	}
-	
+
 	public void PasoDeNivel(int cantItempsUp) {
-		if(cantItempsUp == miSala.getCantItems()){
+		if (cantItempsUp == miSala.getCantItems()) {
 			if (nivel < 3) {
 				movE.setDeboMover(false);
 				miSala.reset();
@@ -146,14 +157,13 @@ public class Juego {
 				miGui.repaint();
 				personaje.resetNivel();
 				movE.setDeboMover(true);
-			}
-		else
-			miGui.mostrarGanador();
+			} else
+				miGui.mostrarGanador();
 		}
 	}
-	
+
 	public void setSalaDeJuegos(SalaDeJuegos s) {
-		miSala=s;
+		miSala = s;
 	}
 
 	public synchronized void operar(int op, EntidadMovible e) {
@@ -163,7 +173,7 @@ public class Juego {
 		switch (op) {
 		case MOV_ABAJO: {
 			puedeMover = miSala.autorizarMovAbajo(e);
-			if(puedeMover) {
+			if (puedeMover) {
 				e.setMovEnCola(MOV_ABAJO);
 				movARealizar = e.mover();
 			}
@@ -171,7 +181,7 @@ public class Juego {
 		}
 		case MOV_IZQUIERDA: {
 			puedeMover = miSala.autorizarMovIzquierda(e);
-			if(puedeMover) {
+			if (puedeMover) {
 				e.setMovEnCola(MOV_IZQUIERDA);
 				movARealizar = e.mover();
 			}
@@ -179,7 +189,7 @@ public class Juego {
 		}
 		case MOV_DERECHA: {
 			puedeMover = miSala.autorizarMovDerecha(e);
-			if(puedeMover) {
+			if (puedeMover) {
 				e.setMovEnCola(MOV_DERECHA);
 				movARealizar = e.mover();
 			}
@@ -187,14 +197,14 @@ public class Juego {
 		}
 		case MOV_ARRIBA: {
 			puedeMover = miSala.autorizarMovArriba(e);
-			if(puedeMover) {
+			if (puedeMover) {
 				e.setMovEnCola(MOV_ARRIBA);
 				movARealizar = e.mover();
 			}
 			break;
 		}
 		}
-		if(movARealizar != e.getUltMovimiento()) {
+		if (movARealizar != e.getUltMovimiento()) {
 			e.bloquearMovimiento(movARealizar);
 		}
 		miSala.actualizarZonasEntidad(posAnt, e);

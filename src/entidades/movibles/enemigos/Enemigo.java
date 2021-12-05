@@ -12,6 +12,7 @@ public abstract class Enemigo extends EntidadMovible {
 	protected StrategyEnemy miEstrategia;
 	protected Jugador elJugador;
 	protected Salon miSalon = Salon.getInstance();
+
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
 	}
@@ -19,12 +20,12 @@ public abstract class Enemigo extends EntidadMovible {
 	public StrategyEnemy getEstrategia() {
 		return miEstrategia;
 	}
-	
+
 	public void setJugador(Jugador jug) {
 		miEstrategia.setJugador(jug);
 		elJugador = jug;
 	}
-	
+
 	public int getVelocidad() {
 		return velocidad;
 	}
@@ -38,14 +39,13 @@ public abstract class Enemigo extends EntidadMovible {
 		miEstrategia.setEnemigo(this);
 		miEstrategia.setJugador(elJugador);
 	}
-	
+
 	public void modoAsesinoOn() {
 		miEstrategia = new Asesino();
 		miEstrategia.setEnemigo(this);
 		miEstrategia.setJugador(elJugador);
 	}
-	
-	@Override
+
 	public void morir() {
 		this.isDead();
 		miRep.moverRep(miSalon.getRespawnPoint().getX(), miSalon.getRespawnPoint().getY());
@@ -53,11 +53,6 @@ public abstract class Enemigo extends EntidadMovible {
 		posicion.setY(miSalon.getRespawnPoint().getY());
 		ultMovimiento = REPOSO;
 		movEnCola = REPOSO;
-		puedoMovermeIzq = true;
-		puedoMovermeDer = true;
-		puedoMovermeUp = true;
-		puedoMovermeDown =true;
-		
 		this.revive();
 	}
 

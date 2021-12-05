@@ -2,7 +2,6 @@ package patrones.visitor_entidad;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
@@ -17,7 +16,6 @@ import entidades.nomovibles.items.ItemEfecto;
 public class VisitorJugador extends VisitorEntidad {
 	protected Jugador miJugador;
 
-	
 	public VisitorJugador(Jugador miJug) {
 		miJugador = miJug;
 	}
@@ -41,31 +39,31 @@ public class VisitorJugador extends VisitorEntidad {
 		Timer time = new Timer();
 		time.schedule(new TimerTask() {
 
-			@Override
 			public void run() {
 				miJugador.modoCazaOff();
 				miJugador.setTransformacion(false);
-			
-			}}, 5000);	
-		
+
+			}
+		}, 5000);
+
 	}
 
 	public void visit(ItemC potion) {
 		int velocidadPrevia = miJugador.getVelocidad();
 		miJugador.afectarPuntaje(potion.getValor());
-		miJugador.setVelocidad((miJugador.getVelocidad()* 5) / 2);
+		miJugador.setVelocidad((miJugador.getVelocidad() * 5) / 2);
 		potion.eliminar();
 		miJugador.setTransformacion(true);
 		miJugador.getJuego().getGui().actualizarPocion("+ velocidad");
 		Timer time = new Timer();
 		time.schedule(new TimerTask() {
 
-			@Override
 			public void run() {
 				miJugador.setVelocidad(velocidadPrevia);
 				miJugador.getJuego().getGui().actualizarPocion("");
 				miJugador.setTransformacion(false);
-			}}, 6000);
+			}
+		}, 6000);
 	}
 
 	public void visit(ItemD bomb) {
@@ -75,14 +73,14 @@ public class VisitorJugador extends VisitorEntidad {
 		miJugador.getJuego().getGui().actualizarPocion("15 seg para explosión");
 		time.schedule(new TimerTask() {
 
-			@Override
 			public void run() {
 				miJugador.getJuego().getGui().actualizarPocion("");
 				Entidad efecto = bomb.ponerBomba(miJugador.getPosicion());
 				miJugador.tengoUnaBomba(efecto);
 				bomb.remover();
-				miJugador.setTransformacion(false);	
-			}}, 15000);
+				miJugador.setTransformacion(false);
+			}
+		}, 15000);
 	}
 
 	public void visit(ItemE it) {
@@ -95,10 +93,10 @@ public class VisitorJugador extends VisitorEntidad {
 	}
 
 	public void visit(Jugador jug) {
-		
+
 	}
 
 	public void visit(ItemEfecto efect) {
-		
+
 	}
 }

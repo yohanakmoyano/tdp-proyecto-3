@@ -17,7 +17,6 @@ public class Movimiento extends Thread {
 		ran = new Random();
 	}
 
-
 	public void run() {
 		while (deboMover) {
 			try {
@@ -38,12 +37,12 @@ public class Movimiento extends Thread {
 	}
 
 	protected void moverEnemigos() {
-		
+
 		for (Entidad e : sala.getListaEnemigos()) {
 			int mov = ran.nextInt(4);
-			miJuego.operar(mov, (Enemigo)e);
+			miJuego.operar(mov, (Enemigo) e);
 		}
-	
+
 	}
 
 }

@@ -3,8 +3,11 @@ package logica;
 import entidades.movibles.enemigos.Enemigo;
 import java.awt.Rectangle;
 
-@SuppressWarnings("serial")
 public class Salon extends Rectangle {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected int alto;
 	protected int ancho;
 	protected Coordenada respawn;
@@ -26,12 +29,12 @@ public class Salon extends Rectangle {
 	public boolean estaDentro(Enemigo e) {
 		int x = e.getPosicion().getX();
 		int y = e.getPosicion().getY();
-		if ((x>=210 && x<=290) && (y>181 && y<280))
+		if ((x >= 210 && x <= 290) && (y > 181 && y < 280))
 			return true;
 		else
 			return false;
 	}
-	
+
 	public Coordenada getRespawnPoint() {
 		return respawn;
 	}

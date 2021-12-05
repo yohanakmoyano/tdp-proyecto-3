@@ -10,22 +10,19 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-
 public class VentanaInstrucciones extends JFrame {
 	private static final long serialVersionUID = 1L;
-	//private JButton btnvolverInicio; 
 	private JLabel inicioJuego;
-	
-	
+
 	public VentanaInstrucciones() {
-		//Configuracion de la Ventana Instrucciones
+		// Configuracion de la Ventana Instrucciones
 		setTitle("THE GAME");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
 		setSize(new Dimension(915, 640));
 		setResizable(false);
-		
-		//Imagen del fondo de la Ventana Instrucciones
+
+		// Imagen del fondo de la Ventana Instrucciones
 		String rutaFotoJuego = this.getClass().getResource("/Images/generales/instrucciones.png").toString();
 		ImageIcon fotoJuego = null;
 		try {
@@ -35,8 +32,8 @@ public class VentanaInstrucciones extends JFrame {
 		}
 
 		Image medidaJuego = fotoJuego.getImage().getScaledInstance(900, 600, Image.SCALE_DEFAULT);
-		getContentPane().setLayout(null);		
-		//Label que contiene la imagen del fondo de la Ventana Instrucciones
+		getContentPane().setLayout(null);
+		// Label que contiene la imagen del fondo de la Ventana Instrucciones
 		inicioJuego = new JLabel("");
 		inicioJuego.setBounds(0, 0, 900, 600);
 		getContentPane().add(inicioJuego);
