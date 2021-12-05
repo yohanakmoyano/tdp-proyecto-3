@@ -63,8 +63,10 @@ public class Juego {
 	public void actualizoVidas() {
 		if (personaje.getVidas() != 0)
 			miGui.actualizarVidas(personaje.getVidas());
-		else
+		else {
+			movE.setDeboMover(false);
 			miGui.finDeJuego();
+		}
 	}
 
 	public void setPuntaje(int p) {
@@ -93,7 +95,6 @@ public class Juego {
 	}
 
 	public void iniciarJuego() {
-		//this.prepararHiloJugador();
 		movE = new Movimiento(miSala, this);
 		movE.start();
 		nivel = this.getNivel();
@@ -144,16 +145,19 @@ public class Juego {
 	public void PasoDeNivel(int cantItempsUp) {
 		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) 
 			if (nivel < 3) {
+				movE.setDeboMover(false);
 				miSala.reset();
 				nivel = nivel + 1;
 				setDominio(dominio);
 				miGui.repaint();
 				personaje.resetNivel();
+				movE.setDeboMover(true);
 			}
 		else
 			miGui.mostrarGanador();
 		}
 	}
+	
 	public void setSalaDeJuegos(SalaDeJuegos s) {
 		miSala=s;
 	}

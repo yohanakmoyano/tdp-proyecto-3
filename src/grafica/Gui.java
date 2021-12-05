@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -34,8 +35,6 @@ import javax.swing.JButton;
 
 public class Gui extends JFrame {
 
-	//protected JugadorThread hiloJug;
-	
 	private static final long serialVersionUID = 1L;
 	private JPanel panelprincipal;
 	private JPanel laberinto;
@@ -44,12 +43,11 @@ public class Gui extends JFrame {
 	private JTextField text_puntaje;
 	private JTextField text_vidas;
 	private Clip clip;
-	//private JLabel lbl_gameOver;
-	private JLabel lbl_Ganador;
 	protected static Gui myInstance;
 	private JTextField text_pocion;
-
+	protected JPanel panelFinDeJuego;
 	
+
 	private Gui(Juego juego) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gui.class.getResource("/Images/generales/icono.png")));
@@ -77,7 +75,7 @@ public class Gui extends JFrame {
 
 		// Inicia miJuego
 		mijuego = juego;
-		
+
 		// Text Puntaje
 		text_puntaje = new JTextField();
 		text_puntaje.setForeground(Color.WHITE);
@@ -98,7 +96,7 @@ public class Gui extends JFrame {
 		text_vidas.setFont(new Font("Consolas", Font.BOLD, 22));
 		text_vidas.setBounds(725, 140, 137, 27);
 		panelprincipal.add(text_vidas);
-         //Text pocion
+		// Text pocion
 		text_pocion = new JTextField();
 		text_pocion.setForeground(Color.WHITE);
 		text_pocion.setBackground(Color.DARK_GRAY);
@@ -110,12 +108,11 @@ public class Gui extends JFrame {
 		// Oyentes de teclados
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
-		//initGame();
 		setFocusable(true);
 		getContentPane().setLayout(null);
 
 	}
-	
+
 	public void agregarBotonesMusica() {
 
 		String rutaBotonSonidoOn = this.getClass().getResource("/Images/generales/sonidoOff.png").toString();
@@ -202,7 +199,7 @@ public class Gui extends JFrame {
 	}
 
 	public void actualizarPocion(String s) {
-		text_pocion.setText(""+s);
+		text_pocion.setText("" + s);
 	}
 
 	public void mostrarImagenFondo(String s, int n) {
@@ -269,48 +266,24 @@ public class Gui extends JFrame {
 		public void keyReleased(KeyEvent e) {
 		}
 	}
-	
+
 	public void mostrarGanador() {
 		panelprincipal.removeAll();
-		ImageIcon img_Ganador = new ImageIcon(
-				getClass().getClassLoader().getResource("Images/generales/ganaste.png"));
-		lbl_Ganador = new JLabel(img_Ganador);
-		int ancho = img_Ganador.getIconWidth();
-		int largo = img_Ganador.getIconHeight();
-		lbl_Ganador.setBounds(0, 0, ancho, largo);
 
-		this.setSize(ancho, largo);
-		panelprincipal.add(lbl_Ganador);
-		panelprincipal.repaint();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		// Cerramos el juego
-		System.exit(0);
+		panelFinDeJuego = new FinDelJuego(this,2);
+		getContentPane().add(panelFinDeJuego);
+		getContentPane().setComponentZOrder(panelFinDeJuego, 0);
+		setFocusable(true);
+		repaint();
 	}
-	
+
 	public void finDeJuego() {
 		panelprincipal.removeAll();
-		ImageIcon img_gameOver = new ImageIcon(
-				getClass().getClassLoader().getResource("Images/generales/game_over.png"));
-		JLabel lbl_gameOver = new JLabel(img_gameOver);
-		int ancho = img_gameOver.getIconWidth();
-		int largo = img_gameOver.getIconHeight();
-		lbl_gameOver.setBounds(0, 0, ancho, largo);
-
-		this.setSize(ancho, largo);
-		panelprincipal.add(lbl_gameOver);
+		panelFinDeJuego = new FinDelJuego(this,1);
+		getContentPane().add(panelFinDeJuego);
+		getContentPane().setComponentZOrder(panelFinDeJuego, 0);
+		setFocusable(true);
+		repaint();
 		
-		panelprincipal.repaint();
-		//lbl_gameOver.setVisible(true);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		// Cerramos el juego
-		System.exit(0);
 	}
 }

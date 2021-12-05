@@ -41,10 +41,12 @@ public class Movimiento extends Thread {
 
 	//Movimiento aleatorio sin sentido.
 	protected void moverEnemigos() {
+		if (deboMover) {
 		for (Entidad e : sala.getListaEnemigos()) {
 			int mov = ran.nextInt(4);
 			miJuego.operar(mov, (Enemigo)e);
 		}
+	}
 	}
 
 }
