@@ -4,7 +4,6 @@ import java.util.Random;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.Salon;
 import patrones.strategy_enem.Asesino;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;

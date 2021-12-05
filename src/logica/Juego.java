@@ -24,9 +24,9 @@ public class Juego {
 	protected Movimiento movE;
 	protected int dominio;
 
-	public Juego(int n) {
+	public Juego() {
 		puntos = 0;
-		nivel = n; // 1;
+		nivel = 1;
 		miGui = Gui.getGui(this);
 	}
 	
@@ -128,13 +128,6 @@ public class Juego {
 		miGui.mostrarEntidad(personaje);
 }
 
-	
-	
-	@SuppressWarnings("unused")
-	private void finDeJuego() {
-		miGui.finDeJuego();
-	}
-
 	public boolean sigueEnJuego() {
 		if (personaje.getVidas() >= 0)
 			return true;
@@ -143,7 +136,7 @@ public class Juego {
 	}
 	
 	public void PasoDeNivel(int cantItempsUp) {
-		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) 
+		if(cantItempsUp == 10){//(cantItempsUp == miSala.getCantItems()) 
 			if (nivel < 3) {
 				movE.setDeboMover(false);
 				miSala.reset();

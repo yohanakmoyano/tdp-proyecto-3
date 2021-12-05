@@ -1,14 +1,15 @@
 package logica;
 
 import java.util.AbstractSet;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.awt.Rectangle;
 import entidades.Entidad;
 
-@SuppressWarnings("serial")
 public class Zona extends Rectangle {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Coordenada posSupIzq;
 	protected int ancho;
 	protected int alto;

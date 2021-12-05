@@ -72,7 +72,7 @@ public class VisitorJugador extends VisitorEntidad {
 		bomb.eliminar();
 		miJugador.setTransformacion(true);
 		Timer time = new Timer();
-		miJugador.getJuego().getGui().actualizarPocion("1 explosion");
+		miJugador.getJuego().getGui().actualizarPocion("15 seg para explosión");
 		time.schedule(new TimerTask() {
 
 			@Override
@@ -82,7 +82,7 @@ public class VisitorJugador extends VisitorEntidad {
 				miJugador.tengoUnaBomba(efecto);
 				bomb.remover();
 				miJugador.setTransformacion(false);	
-			}}, 20000);
+			}}, 15000);
 	}
 
 	public void visit(ItemE it) {

@@ -2,15 +2,10 @@ package grafica;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class FinDelJuego extends JPanel {
 	private static final long serialVersionUID = 1L;

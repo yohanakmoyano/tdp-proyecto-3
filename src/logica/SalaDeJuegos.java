@@ -4,7 +4,6 @@ import entidades.movibles.enemigos.Enemigo;
 import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import entidades.Entidad;
 import entidades.movibles.EntidadMovible;

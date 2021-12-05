@@ -1,10 +1,8 @@
 package logica;
 
 import java.util.Random;
-
 import entidades.Entidad;
 import entidades.movibles.enemigos.Enemigo;
-import entidades.movibles.jugadores.Jugador;
 
 public class Movimiento extends Thread {
 	protected SalaDeJuegos sala;
@@ -39,14 +37,13 @@ public class Movimiento extends Thread {
 		this.deboMover = deboMover;
 	}
 
-	//Movimiento aleatorio sin sentido.
 	protected void moverEnemigos() {
-		if (deboMover) {
+		
 		for (Entidad e : sala.getListaEnemigos()) {
 			int mov = ran.nextInt(4);
 			miJuego.operar(mov, (Enemigo)e);
 		}
-	}
+	
 	}
 
 }

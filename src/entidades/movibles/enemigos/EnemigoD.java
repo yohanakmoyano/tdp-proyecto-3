@@ -4,7 +4,6 @@ import java.util.Random;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
-import logica.Salon;
 import patrones.strategy_enem.Asesino;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
@@ -33,32 +32,26 @@ public class EnemigoD extends Enemigo {
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 
-	@Override
 	public void accept(VisitorEntidad v) {
 		v.visit(this);
 	}
 
-	@Override
 	public Coordenada nextPosMovDer() {
 		return new Coordenada(posicion.getX() + (factorMovX*velocidad), posicion.getY());
 	}
 
-	@Override
 	public Coordenada nextPosMovIzq() {
 		return new Coordenada(posicion.getX() - (factorMovX*velocidad), posicion.getY());
 	}
 
-	@Override
 	public Coordenada nextPosMovUp() {
 		return new Coordenada(posicion.getX(), posicion.getY() - (factorMovY*velocidad));
 	}
 
-	@Override
 	public Coordenada nextPosMovDown() {
 		return new Coordenada(posicion.getX(), posicion.getY() + (factorMovY*velocidad));
 	}
 
-	@Override
 	public int mover() {
 		int xJug = elJugador.getPosicion().getX();
 		int yJug = elJugador.getPosicion().getY();
