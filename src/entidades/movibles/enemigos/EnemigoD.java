@@ -1,5 +1,7 @@
 package entidades.movibles.enemigos;
 
+import java.util.Random;
+
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.strategy_enem.Asesino;
@@ -12,7 +14,7 @@ public class EnemigoD extends Enemigo {
 	public EnemigoD(Coordenada c, String rutaImg) {
 		miEstrategia = new Asesino();
 		miEstrategia.setEnemigo(this);
-		velocidad = 1;
+		velocidad = 2;
 		alive = true;
 		caminable = true;
 		movEnCola = REPOSO;
@@ -59,25 +61,29 @@ public class EnemigoD extends Enemigo {
 	public int mover() {
 		int xJug = elJugador.getPosicion().getX();
 		int yJug = elJugador.getPosicion().getY();
-		int distX = posicion.distanciaX(xJug);
-		int distY = posicion.distanciaY(yJug);
+		//int distX = posicion.distanciaX(xJug);
+		//int distY = posicion.distanciaY(yJug);
+
+		Random r = new Random();
+		int eje = r.nextInt(2);
+		
 		if (posicion.getX()==miSalon.getRespawnPoint().getX() && posicion.getY()>181) {
 			   movEnCola = MOV_UP;
 		}	
 		else {
-		if(distX <= distY) { //Mover sobre X
-			if((posicion.getX() - xJug) < 0) { //moverDerecha
-				movEnCola = MOV_DER;
-			} else { //moverIzquierda
-				movEnCola = MOV_IZQ;
+			if(eje == ejeX) { //Mover sobre X
+				if((posicion.getX() - xJug) < 0) { //moverDerecha
+					movEnCola = getMovPosible(MOV_DER);
+				} else { //moverIzquierda
+					movEnCola = getMovPosible(MOV_IZQ);
+				}
+			} else { //MoverSobreY
+				if((posicion.getY() - yJug) < 0) { //MoverAbajo
+					movEnCola = getMovPosible(MOV_DOWN);
+				} else {//MoverArriba
+					movEnCola = getMovPosible(MOV_UP);
+				}
 			}
-		} else { //MoverSobreY
-			if((posicion.getY() - yJug) < 0) { //MoverAbajo
-				movEnCola = MOV_DOWN;
-			} else {//MoverArriba
-				movEnCola = MOV_UP;
-			}
-		}
 		}
 		miEstrategia.mover(movEnCola);
 		//Faltan agregar condiciones para que no se quede moviendo siempre en una misma dirección.

@@ -1,5 +1,7 @@
 package entidades.movibles;
 
+import java.util.Random;
+
 import entidades.Entidad;
 import logica.Coordenada;
 
@@ -128,6 +130,110 @@ public abstract class EntidadMovible extends Entidad {
 	public abstract Coordenada nextPosMovUp();
 	
 	public abstract Coordenada nextPosMovDown();
+	
+	/**
+	 * Consulta y retorna el movimiento opuesto al movimiento mov pasado por parámetro.
+	 * @param mov
+	 * @return
+	 */
+	public int movOpuesto(int mov) {
+		int op = REPOSO;
+		switch(mov) {
+		case(MOV_UP): {
+			op = MOV_DOWN;
+			break;
+		}
+		case(MOV_DOWN): {
+			op = MOV_UP;
+			break;
+		}
+		case(MOV_DER): {
+			op = MOV_IZQ;
+			break;
+		}
+		case(MOV_IZQ): {
+			op = MOV_DER;
+			break;
+		}
+		}
+		return op;
+	}
+	
+	private int getRandomMov(int eje) {
+		int mov = REPOSO;
+		Random r = new Random();
+		int ran = r.nextInt(2);
+		if(eje == ejeX) {
+			if((ran == 1) && puedoMovermeDer) {
+				mov = MOV_DER;
+			} else {
+				if((ran == 0) && puedoMovermeIzq)
+					mov = MOV_IZQ;
+			}
+		} else {
+			if(eje == ejeY) {
+				if((ran == 0) && puedoMovermeDown) {
+					mov = MOV_DOWN;
+				} else {
+					if((ran == 1) && puedoMovermeUp) {
+						mov = MOV_UP;
+					}
+				}
+			}
+		}
+		return mov;
+	}
+	
+	protected int getMovPosible(int mov) {
+		int movToRet = REPOSO;
+		switch(mov) {
+		case(MOV_DER): {
+			if(puedoMovermeDer) {
+				movToRet = mov;
+			} else {
+				movToRet = getRandomMov(ejeY);
+				if((movToRet == REPOSO) && puedoMovermeIzq) {
+					movToRet = movOpuesto(mov);
+				}
+			}
+			break;
+		} 
+		case(MOV_IZQ): {
+			if(puedoMovermeIzq) {
+				movToRet = mov;
+			} else {
+				movToRet = getRandomMov(ejeY);
+				if((movToRet == REPOSO) && puedoMovermeDer) {
+					movToRet = movOpuesto(mov);
+				}
+			}
+			break;
+		}
+		case(MOV_UP): {
+			if(puedoMovermeUp) {
+				movToRet = mov;
+			} else {
+				movToRet = getRandomMov(ejeX);
+				if((movToRet == REPOSO) && puedoMovermeDown) {
+					movToRet = movOpuesto(mov);
+				}
+			}
+			break;
+		}
+		case(MOV_DOWN): {
+			if(puedoMovermeDown) {
+				movToRet = mov;
+			} else {
+				movToRet = getRandomMov(ejeX);
+				if((movToRet == REPOSO) && puedoMovermeUp) {
+					movToRet = movOpuesto(mov);
+				}
+			}
+			break;
+		}
+		}
+		return movToRet;
+	}
 	
 	public void bloquearMovimiento(int mov) {
 		switch(mov) {

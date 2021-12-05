@@ -19,6 +19,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 
 	public void visit(Bloque ent) {
 		miEnemigo.comeBack();
+		//miEnemigo.bloquearMovimiento(miEnemigo.movOpuesto(miEnemigo.getUltMovimiento()));
 	}
 	
 	public void visit(ItemA it) {
