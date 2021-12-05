@@ -5,7 +5,6 @@ import entidades.movibles.EntidadMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import logica.Juego;
-import patrones.strategy.ControlStrategy;
 import patrones.visitor_entidad.VisitorEntidad;
 import patrones.visitor_entidad.VisitorJugador;
 
@@ -14,7 +13,6 @@ import patrones.visitor_entidad.VisitorJugador;
  */
 public class Jugador extends EntidadMovible {
 	protected static Jugador myInstance;
-	protected ControlStrategy controlStr;
 	protected Coordenada posRespawn;
 	protected Juego juego;
 	protected int cantItemsLevantados;
@@ -42,7 +40,6 @@ public class Jugador extends EntidadMovible {
 		factorMovY = alto / 4;
 		cantItemsLevantados = 0;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
-		controlStr = new ControlStrategy(this); // Por defecto se crea con estrategia presa.
 		transformacion = false;
 	}
 
@@ -82,11 +79,7 @@ public class Jugador extends EntidadMovible {
 		cantItemsLevantados = cantItemsLevantados + 1;
 		juego.PasoDeNivel(cantItemsLevantados);
 	}
-
-	public ControlStrategy getEstrategia() {
-		return controlStr;
-	}
-
+	
 	public void morir() {
 		miRep.eliminar();
 		this.isDead();

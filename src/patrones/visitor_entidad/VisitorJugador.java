@@ -13,8 +13,6 @@ import entidades.nomovibles.items.ItemC;
 import entidades.nomovibles.items.ItemD;
 import entidades.nomovibles.items.ItemE;
 import entidades.nomovibles.items.ItemEfecto;
-import patrones.strategy.Cazador;
-import patrones.strategy.Presa;
 
 public class VisitorJugador extends VisitorEntidad {
 	protected Jugador miJugador;
@@ -37,7 +35,6 @@ public class VisitorJugador extends VisitorEntidad {
 	public void visit(ItemB arma) {
 		miJugador.afectarPuntaje(arma.getValor());
 		miJugador.modoCazaOn();
-		miJugador.getEstrategia().setStrategy(new Cazador(miJugador));
 		miJugador.setCantItemsLevantados();
 		arma.eliminar();
 		miJugador.setTransformacion(true);
@@ -47,7 +44,6 @@ public class VisitorJugador extends VisitorEntidad {
 			@Override
 			public void run() {
 				miJugador.modoCazaOff();
-				miJugador.getEstrategia().setStrategy(new Presa(miJugador));
 				miJugador.setTransformacion(false);
 			
 			}}, 4000);	
@@ -95,7 +91,7 @@ public class VisitorJugador extends VisitorEntidad {
 	}
 
 	public void visit(Enemigo enemigo) {
-		miJugador.getEstrategia().atacar(enemigo);
+		enemigo.getEstrategia().atacar();
 	}
 
 	public void visit(Jugador jug) {

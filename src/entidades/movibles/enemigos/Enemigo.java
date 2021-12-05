@@ -16,6 +16,10 @@ public abstract class Enemigo extends EntidadMovible {
 		this.velocidad = velocidad;
 	}
 
+	public StrategyEnemy getEstrategia() {
+		return miEstrategia;
+	}
+	
 	public void setJugador(Jugador jug) {
 		miEstrategia.setJugador(jug);
 		elJugador = jug;

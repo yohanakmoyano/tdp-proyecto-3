@@ -47,7 +47,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 	}
 	
 	public void visit(Jugador jug) {
-		jug.getEstrategia().atacar(miEnemigo);
+		miEnemigo.getEstrategia().atacar();
 	}
 
 	@Override
