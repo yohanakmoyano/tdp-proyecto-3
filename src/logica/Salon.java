@@ -1,28 +1,19 @@
 package logica;
 
 import entidades.movibles.enemigos.Enemigo;
-import java.awt.Rectangle;
 
-public class Salon extends Rectangle {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	protected int alto;
-	protected int ancho;
+public class Salon {
+	
 	protected Coordenada respawn;
 	protected static Salon miInstance;
 
-	private Salon(Coordenada r, int ancho, int alto) {
-		super(200, 210, ancho, alto);
+	private Salon(Coordenada r) {
 		respawn = r;
-		this.alto = alto;
-		this.ancho = ancho;
 	}
 
 	public static Salon getInstance() {
 		if (miInstance == null)
-			miInstance = new Salon(new Coordenada(241, 241), 100, 80);
+			miInstance = new Salon(new Coordenada(241, 241));
 		return miInstance;
 	}
 

@@ -21,6 +21,9 @@ public class VentanaDominio extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel inicioJuego;
+	private JButton btnInicio_AU;
+	private JButton btnInicio_JDC;
+	private JButton btnInicio_PM;
 
 	public VentanaDominio() {
 		// Configuracion de la Ventana Inicio
@@ -35,7 +38,7 @@ public class VentanaDominio extends JFrame {
 
 	public void agregarBotones() {
 		// Boton Juego del Calamar
-		JButton btnInicio_JDC = new JButton("");
+		btnInicio_JDC = new JButton("");
 		btnInicio_JDC.setBounds(93, 522, 190, 50);
 		btnInicio_JDC.setBackground(new Color(220, 20, 60));
 
@@ -62,7 +65,7 @@ public class VentanaDominio extends JFrame {
 		getContentPane().add(btnInicio_JDC);
 
 		// Boton Among Us
-		JButton btnInicio_AU = new JButton("");
+		btnInicio_AU = new JButton("");
 		btnInicio_AU.setBounds(357, 522, 190, 50);
 		btnInicio_AU.setBackground(new Color(220, 20, 60));
 
@@ -89,7 +92,7 @@ public class VentanaDominio extends JFrame {
 		getContentPane().add(btnInicio_AU);
 
 		// Boton Among Pacman
-		JButton btnInicio_PM = new JButton("");
+		btnInicio_PM = new JButton("");
 		btnInicio_PM.setForeground(Color.WHITE);
 		btnInicio_PM.setBounds(628, 522, 190, 50);
 		btnInicio_PM.setBackground(new Color(220, 20, 60));
