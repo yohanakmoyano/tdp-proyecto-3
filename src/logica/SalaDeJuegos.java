@@ -1,5 +1,6 @@
 package logica;
 
+import entidades.movibles.enemigos.Enemigo;
 import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -60,6 +61,18 @@ public class SalaDeJuegos {
 	
 	public int getAltura() {
 		return altura;
+	}
+	
+	public void cazarEnemigos() {
+		for(Entidad e : listaEnemigos) {
+			((Enemigo)e).modoPresaOn();
+		}
+	}
+	
+	public void huirDeEnemigos() {
+		for(Entidad e : listaEnemigos) {
+			((Enemigo)e).modoAsesinoOn();
+		}
 	}
 
 	// Consulta cual es la zona que contiene la coordenada PUNTO.

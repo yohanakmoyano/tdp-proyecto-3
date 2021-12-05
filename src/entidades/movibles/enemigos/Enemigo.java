@@ -3,6 +3,8 @@ package entidades.movibles.enemigos;
 import entidades.movibles.EntidadMovible;
 import entidades.movibles.jugadores.Jugador;
 import logica.Salon;
+import patrones.strategy_enem.Asesino;
+import patrones.strategy_enem.Presa;
 import patrones.strategy_enem.StrategyEnemy;
 
 public abstract class Enemigo extends EntidadMovible {
@@ -27,6 +29,18 @@ public abstract class Enemigo extends EntidadMovible {
 		return valor;
 	}
 
+	public void modoPresaOn() {
+		miEstrategia = new Presa();
+		miEstrategia.setEnemigo(this);
+		miEstrategia.setJugador(elJugador);
+	}
+	
+	public void modoAsesinoOn() {
+		miEstrategia = new Asesino();
+		miEstrategia.setEnemigo(this);
+		miEstrategia.setJugador(elJugador);
+	}
+	
 	@Override
 	public void morir() {
 		this.isDead();

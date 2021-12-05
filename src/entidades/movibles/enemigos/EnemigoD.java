@@ -14,7 +14,7 @@ public class EnemigoD extends Enemigo {
 	public EnemigoD(Coordenada c, String rutaImg) {
 		miEstrategia = new Asesino();
 		miEstrategia.setEnemigo(this);
-		velocidad = 2;
+		velocidad = 1;
 		alive = true;
 		caminable = true;
 		movEnCola = REPOSO;

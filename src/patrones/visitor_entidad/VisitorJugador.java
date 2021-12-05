@@ -36,6 +36,7 @@ public class VisitorJugador extends VisitorEntidad {
 
 	public void visit(ItemB arma) {
 		miJugador.afectarPuntaje(arma.getValor());
+		miJugador.modoCazaOn();
 		miJugador.getEstrategia().setStrategy(new Cazador(miJugador));
 		miJugador.setCantItemsLevantados();
 		arma.eliminar();
@@ -45,10 +46,12 @@ public class VisitorJugador extends VisitorEntidad {
 
 			@Override
 			public void run() {
+				miJugador.modoCazaOff();
 				miJugador.getEstrategia().setStrategy(new Presa(miJugador));
 				miJugador.setTransformacion(false);
 			
 			}}, 4000);	
+		
 	}
 
 	public void visit(ItemC potion) {

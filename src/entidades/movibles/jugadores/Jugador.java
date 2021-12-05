@@ -46,6 +46,14 @@ public class Jugador extends EntidadMovible {
 		transformacion = false;
 	}
 
+	public void modoCazaOn() {
+		juego.cazarEnemigos();
+	}
+	
+	public void modoCazaOff() {
+		juego.huirDeEnemigos();
+	}
+	
 	public static Jugador getJugador(Coordenada c, String rutaImg, Juego jueg) {
 		if (myInstance == null)
 			myInstance = new Jugador(c, rutaImg, jueg);

@@ -34,6 +34,13 @@ public class Juego {
 		return personaje;
 	}
 	
+	public void cazarEnemigos() {
+		miSala.cazarEnemigos();
+	}
+	
+	public void huirDeEnemigos() {
+		miSala.huirDeEnemigos();
+	}
 	
 	public void setDominio(int d) {
 		this.dominio = d;
