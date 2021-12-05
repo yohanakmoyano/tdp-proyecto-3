@@ -6,9 +6,7 @@ import java.awt.Rectangle;
 import entidades.Entidad;
 
 public class Zona extends Rectangle {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	protected Coordenada posSupIzq;
 	protected int ancho;
@@ -42,18 +40,7 @@ public class Zona extends Rectangle {
 	public AbstractSet<Entidad> getListaEntidades() {
 		return listaEntidades;
 	}
-	/*
-	public List<Entidad> getEntColisionadas(Entidad e) {
-		List<Entidad> listaEntCol = new ArrayList<Entidad>();
-		
-		for(Entidad entidad : listaEntidades) {
-			if(entidad.colisiona(e))	
-				listaEntCol.add(entidad);
-		}
-		return listaEntCol;
-	}
-	*/
-
+	
 	public void agregarEntidad(Entidad e) {
 		listaEntidades.add(e);
 	}

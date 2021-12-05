@@ -80,7 +80,7 @@ public class EnemigoC extends Enemigo {
 			Random r = new Random();
 			int eje = r.nextInt(2);
 			
-			if ( (posicion.getX()>=210 && posicion.getX()<=290) && posicion.getY()>181 && posicion.getY()<280) {
+			if ( miSalon.estaDentro(this)) {
 				   movEnCola = getMovPosible(MOV_UP);
 			}	
 			else {

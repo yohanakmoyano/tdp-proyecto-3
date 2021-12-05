@@ -11,7 +11,7 @@ public class Salon extends Rectangle {
 	protected static Salon miInstance;
 
 	private Salon(Coordenada r, int ancho, int alto) {
-		super(241, 201, ancho, alto);
+		super(200, 210, ancho, alto);
 		respawn = r;
 		this.alto = alto;
 		this.ancho = ancho;
@@ -26,7 +26,10 @@ public class Salon extends Rectangle {
 	public boolean estaDentro(Enemigo e) {
 		int x = e.getPosicion().getX();
 		int y = e.getPosicion().getY();
-		return this.contains(x, y);
+		if ((x>=210 && x<=290) && (y>181 && y<280))
+			return true;
+		else
+			return false;
 	}
 	
 	public Coordenada getRespawnPoint() {

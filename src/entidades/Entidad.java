@@ -29,11 +29,11 @@ public abstract class Entidad {
 	public void setAncho(int b) {
 		ancho = b;
 	}
-	
+
 	public void setAlto(int h) {
 		alto = h;
 	}
-	
+
 	public boolean isCaminable() {
 		return caminable;
 	}
@@ -70,7 +70,8 @@ public abstract class Entidad {
 		return new Coordenada(posicion.getX(), posicion.getY() + alto);
 	}
 
-	// Consulta cual es la posicion/coordenada correspondiente a la esquina inferior derecha de la entidad.
+	// Consulta cual es la posicion/coordenada correspondiente a la esquina inferior
+	// derecha de la entidad.
 
 	public Coordenada getEsquinaInfDer() {
 		return new Coordenada(posicion.getX() + ancho, posicion.getY() + alto);
@@ -83,7 +84,7 @@ public abstract class Entidad {
 	public Coordenada getPosicion() {
 		return posicion;
 	}
-	
+
 	public void setCoordenada(Coordenada c) {
 		posicion = c;
 	}

@@ -20,7 +20,7 @@ import logica.Juego;
 import logica.SalaDeJuegos;
 
 public class Director {
-	protected int nivel;
+	
 	protected SalaDeJuegos sj;
 	protected String fileName;
 	protected URL musica;
@@ -33,7 +33,6 @@ public class Director {
 		Entidad entidad = null;
 		List<String> toRet = null;
 		int cantItems = 0;
-		nivel = n;
 		int j = 0;
 		juego = jueg;
 		sj = new SalaDeJuegos(jueg);
@@ -51,6 +50,7 @@ public class Director {
 		}
 		
 		juego.actualizarFondo(this.getClass().getResource(toRet.get(0)).toString());
+		
 		musica = this.getClass().getResource(toRet.get(1).toString());
 		
 		// Creo un jugador
@@ -99,11 +99,7 @@ public class Director {
 				sj.getListaEntidadFija().add(entidad);
 				break;
 			}
-			/*case "f": { // Creo una efecto
-				entidad = new ItemD(1, punto, this.getClass().getResource(caracter[j + 3]).toString());
-				sj.getListaEntidadFija().add(entidad);
-				break;
-			}*/
+			
 			case "B": { // Creo un Boss
 				entidad = new EnemigoA(punto, this.getClass().getResource(caracter[j + 3]).toString());
 				sj.getListaEnemigos().add(entidad);
@@ -136,18 +132,8 @@ public class Director {
 
 	}
 
-	
-	public void reset() {
-
-	}
-
 	public URL getMusica() {
 		return musica;
-	}
-
-	public void changeLevel(int nvl) {
-		nivel = nvl;
-
 	}
 
 	public Jugador getJugador() {
