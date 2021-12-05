@@ -1,20 +1,19 @@
-package entidades.nomovibles.items;
+package entidades.nomovibles;
 
-import entidades.nomovibles.EntidadNoMovible;
+import entidades.Entidad;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEntidad;
 
-public class ItemC extends EntidadNoMovible {
-	// JDC: Energizante, PC: PotionV , AU: huevo frito
+public class ItemEfecto extends Entidad {
 
-	public ItemC(int val, Coordenada c, String rutaImg) {
+	public ItemEfecto(int val, Coordenada c, String rutaImg) {
 		alive = true;
 		caminable = true;
 		valor = val;
 		posicion = c;
-		ancho = 15;
-		alto = 30;
+		alto = 70;
+		ancho = 70;
 		miRep = new RepresentacionGrafica(rutaImg, c.getX(), c.getY(), ancho, alto);
 	}
 

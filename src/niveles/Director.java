@@ -10,11 +10,11 @@ import entidades.movibles.enemigos.EnemigoC;
 import entidades.movibles.enemigos.EnemigoD;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
-import entidades.nomovibles.items.ItemA;
-import entidades.nomovibles.items.ItemB;
-import entidades.nomovibles.items.ItemC;
-import entidades.nomovibles.items.ItemD;
-import entidades.nomovibles.items.ItemE;
+import entidades.nomovibles.ItemA;
+import entidades.nomovibles.ItemB;
+import entidades.nomovibles.ItemC;
+import entidades.nomovibles.ItemD;
+import entidades.nomovibles.ItemE;
 import logica.Coordenada;
 import logica.Juego;
 import logica.SalaDeJuegos;
@@ -54,6 +54,7 @@ public class Director {
 		jug = Jugador.getJugador(punto, this.getClass().getResource(toRet.get(2)).toString(), juego);
 		jug.reUbicar();
 		juego.mostrarEntidad(jug);
+		sj.agregarAZonas(jug);
 
 		for (int i = 3; i < toRet.size(); i++) {
 			String palabra = toRet.get(i);

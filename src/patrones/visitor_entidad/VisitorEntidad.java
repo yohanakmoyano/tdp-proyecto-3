@@ -3,12 +3,12 @@ package patrones.visitor_entidad;
 import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.jugadores.Jugador;
 import entidades.nomovibles.Bloque;
-import entidades.nomovibles.items.ItemA;
-import entidades.nomovibles.items.ItemB;
-import entidades.nomovibles.items.ItemC;
-import entidades.nomovibles.items.ItemD;
-import entidades.nomovibles.items.ItemE;
-import entidades.nomovibles.items.ItemEfecto;
+import entidades.nomovibles.ItemA;
+import entidades.nomovibles.ItemB;
+import entidades.nomovibles.ItemC;
+import entidades.nomovibles.ItemD;
+import entidades.nomovibles.ItemE;
+import entidades.nomovibles.ItemEfecto;
 
 public abstract class VisitorEntidad {
 	public abstract void visit(Bloque ent);

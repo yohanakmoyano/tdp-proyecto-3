@@ -1,10 +1,8 @@
-package entidades.nomovibles.items;
+package entidades.nomovibles;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
 import entidades.Entidad;
-import entidades.nomovibles.EntidadNoMovible;
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
 import patrones.visitor_entidad.VisitorEntidad;
@@ -12,7 +10,7 @@ import patrones.visitor_entidad.VisitorEntidad;
 /**
  * JDC: Bomba, PC: PotionE, AU: calabaza
  */
-public class ItemD extends EntidadNoMovible {
+public class ItemD extends Entidad {
 	protected ItemEfecto efectoExplosion;
 
 	public ItemD(int val, Coordenada c, String rutaImg) {

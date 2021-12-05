@@ -11,9 +11,17 @@ public abstract class Entidad {
 	protected int ancho;
 	protected int alto;
 	protected int esquina;
+	protected int valor;
 	protected RepresentacionGrafica miRep;
 	protected Coordenada posicion; // se tratará de la esquina superior izquierda.Considerando a la entidad como un cuadrilátero cuyos ángulos interiores son todos rectos.
 
+	public int getValor() {
+		return valor;
+	}
+
+	public void setValor(int val) {
+		valor = val;
+	}
 	public abstract void accept(VisitorEntidad v);
 
 	public int getAncho() {
