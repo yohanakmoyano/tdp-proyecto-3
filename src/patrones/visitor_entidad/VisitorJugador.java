@@ -46,7 +46,7 @@ public class VisitorJugador extends VisitorEntidad {
 				miJugador.modoCazaOff();
 				miJugador.setTransformacion(false);
 			
-			}}, 4000);	
+			}}, 5000);	
 		
 	}
 

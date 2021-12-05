@@ -44,65 +44,7 @@ public class Movimiento extends Thread {
 		for (Entidad e : sala.getListaEnemigos()) {
 			int mov = ran.nextInt(4);
 			miJuego.operar(mov, (Enemigo)e);
-			//moverMientrasPueda((Enemigo) e, mov);
-		}
-	}
-/**	
-	protected synchronized void moverMientrasPueda(Enemigo e, int direccion) {
-		switch (direccion) {
-			case (0): {
-				moverEnemigoDer(e);
-				break;
-			}
-			case (1): {
-				moverEnemigoIzq(e);
-				break;
-			}
-			case (2): {
-				moverEnemigoUp(e);
-				break;
-			}
-			case (3): {
-				moverEnemigoDown(e);
-				break;
-			}
 		}
 	}
 
-	protected void moverEnemigoDer(Enemigo e) {
-		if (sala.autorizarMovDerecha(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverDerecha();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	protected void moverEnemigoIzq(Enemigo e) {
-		if (sala.autorizarMovIzquierda(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverIzquierda();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	protected void moverEnemigoUp(Enemigo e) {
-		if (sala.autorizarMovArriba(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverArriba();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-
-	protected void moverEnemigoDown(Enemigo e) {
-		if (sala.autorizarMovAbajo(e)) {
-			Coordenada posAnt = new Coordenada(e.getPosicion().getX(), e.getPosicion().getY());
-			e.moverAbajo();
-			sala.actualizarZonasEntidad(posAnt, e);
-			sala.detectarColisionesEntidad(posAnt, e);
-		}
-	}
-*/
 }

@@ -96,9 +96,6 @@ public class Juego {
 		//this.prepararHiloJugador();
 		movE = new Movimiento(miSala, this);
 		movE.start();
-		//this.prepararHiloEnemies();
-		//hiloEnemies.preparar();
-		//hiloEnemies.iniciar();
 		nivel = this.getNivel();
 	}
 
@@ -171,7 +168,6 @@ public class Juego {
 			if(puedeMover) {
 				e.setMovEnCola(MOV_ABAJO);
 				movARealizar = e.mover();
-				//moverAbajo(e);
 			}
 			break;
 		}
@@ -180,7 +176,6 @@ public class Juego {
 			if(puedeMover) {
 				e.setMovEnCola(MOV_IZQUIERDA);
 				movARealizar = e.mover();
-				//moverIzquierda(e);
 			}
 			break;
 		}
@@ -189,7 +184,6 @@ public class Juego {
 			if(puedeMover) {
 				e.setMovEnCola(MOV_DERECHA);
 				movARealizar = e.mover();
-				//moverDerecha(e);
 			}
 			break;
 		}
@@ -198,7 +192,6 @@ public class Juego {
 			if(puedeMover) {
 				e.setMovEnCola(MOV_ARRIBA);
 				movARealizar = e.mover();
-				//moverArriba(e);
 			}
 			break;
 		}

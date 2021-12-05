@@ -4,6 +4,7 @@ import java.util.Random;
 
 import grafica.RepresentacionGrafica;
 import logica.Coordenada;
+import logica.Salon;
 import patrones.strategy_enem.Asesino;
 import patrones.visitor_entidad.VisitorEnemigo;
 import patrones.visitor_entidad.VisitorEntidad;
@@ -61,14 +62,12 @@ public class EnemigoB extends Enemigo {
 	public int mover() {
 		int xJug = elJugador.getPosicion().getX();
 		int yJug = elJugador.getPosicion().getY();
-		//int distX = posicion.distanciaX(xJug);
-		//int distY = posicion.distanciaY(yJug);
-
+		
 		Random r = new Random();
 		int eje = r.nextInt(2);
 		
-		if (posicion.getX()==miSalon.getRespawnPoint().getX() && posicion.getY()>181) {
-			   movEnCola = MOV_UP;
+		if (posicion.getX()==miSalon.getRespawnPoint().getX() && posicion.getY()>181 && posicion.getY()<280) {
+			   movEnCola = getMovPosible(MOV_UP);
 		}	
 		else {
 			if(eje == ejeX) { //Mover sobre Y (al reves de EnemigoA)

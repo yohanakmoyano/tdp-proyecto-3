@@ -61,17 +61,14 @@ public class EnemigoA extends Enemigo {
 	public int mover() {
 		int xJug = elJugador.getPosicion().getX();
 		int yJug = elJugador.getPosicion().getY();
-		//int distX = posicion.distanciaX(xJug);
-		//int distY = posicion.distanciaY(yJug);
 
 		Random r = new Random();
 		int eje = r.nextInt(2);
 		
-		if (posicion.getX()==miSalon.getRespawnPoint().getX() && posicion.getY()>181) {
-			   movEnCola = MOV_UP;
+		if (posicion.getX()==miSalon.getRespawnPoint().getX() && posicion.getY()>181 && posicion.getY()<280) {
+			   movEnCola = getMovPosible(MOV_UP);
 		}	
 		else {
-			//if(((distX - distY) % 2) == 0) { //Mover sobre X
 			if(eje == ejeX) {
 				if((posicion.getX() - xJug) < 0) { //moverDerecha
 					movEnCola = getMovPosible(MOV_DER);

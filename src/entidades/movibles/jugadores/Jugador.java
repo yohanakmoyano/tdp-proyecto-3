@@ -18,7 +18,6 @@ public class Jugador extends EntidadMovible {
 	protected int cantItemsLevantados;
 	protected boolean transformacion;
 	
-	
 	private Jugador(Coordenada c, String rutaImg, Juego jueg) {
 		alive = true;
 		caminable = true;

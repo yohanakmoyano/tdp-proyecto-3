@@ -160,7 +160,7 @@ public abstract class EntidadMovible extends Entidad {
 	}
 	
 	private int getRandomMov(int eje) {
-		int mov = REPOSO;
+		int mov = movEnCola;
 		Random r = new Random();
 		int ran = r.nextInt(2);
 		if(eje == ejeX) {
@@ -185,7 +185,7 @@ public abstract class EntidadMovible extends Entidad {
 	}
 	
 	protected int getMovPosible(int mov) {
-		int movToRet = REPOSO;
+		int movToRet = movEnCola;
 		switch(mov) {
 		case(MOV_DER): {
 			if(puedoMovermeDer) {

@@ -56,7 +56,9 @@ public class RepresentacionGrafica {
 	}
 
 	public void eliminar() {
+		//dibujo.setIcon(null);
 		dibujo.setBounds(0, 0, 0, 0);
+		//dibujo.setVisible(false);
 	}
 
 	public void moverRep(int x, int y) {
