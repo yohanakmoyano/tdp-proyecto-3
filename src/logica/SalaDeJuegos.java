@@ -206,6 +206,10 @@ public class SalaDeJuegos {
 		for (Entidad ent : listaEntidadFija) {
 			juego.getGui().removerEntidad(ent);
 		}
+		
+		for (Entidad e: listaEnemigos ) {
+			((EntidadMovible)e).morir();
+		}
 	}
 	
 	

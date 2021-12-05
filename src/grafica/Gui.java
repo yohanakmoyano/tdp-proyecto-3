@@ -100,6 +100,7 @@ public class Gui extends JFrame {
 		text_pocion = new JTextField();
 		text_pocion.setForeground(Color.WHITE);
 		text_pocion.setBackground(Color.DARK_GRAY);
+		text_pocion.setHorizontalAlignment(SwingConstants.CENTER);
 		text_pocion.setFont(new Font("Consolas", Font.ITALIC, 10));
 		text_pocion.setBounds(725, 226, 137, 27);
 		panelprincipal.add(text_pocion);
