@@ -10,7 +10,6 @@ public class ItemA extends Entidad {
 
 	public ItemA(int val, Coordenada c, String rutaImg) {
 		alive = true;
-		caminable = true;
 		valor = val;
 		posicion = c;
 		ancho = 13;

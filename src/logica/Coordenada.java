@@ -32,14 +32,6 @@ public class Coordenada {
 		y = yAnterior;
 	}
 
-	public int distanciaX(int x2) {
-		return Math.abs(x - x2);
-	}
-
-	public int distanciaY(int y2) {
-		return Math.abs(y - y2);
-	}
-
 	public boolean isValid(int maxX, int maxY) {
 		return (((x >= 0) && (x <= maxX)) && ((y >= 0) && (y <= maxY)));
 	}

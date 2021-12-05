@@ -19,7 +19,6 @@ public class Juego {
 	public static final int MOV_DERECHA = EntidadMovible.MOV_DER;
 	public static final int MOV_ARRIBA = EntidadMovible.MOV_UP;
 	public static final int MOV_ABAJO = EntidadMovible.MOV_DOWN;
-	public static final int PONER_ITEM = 5;
 	protected Movimiento movE;
 	protected int dominio;
 

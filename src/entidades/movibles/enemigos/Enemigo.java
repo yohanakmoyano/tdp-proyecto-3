@@ -53,6 +53,7 @@ public abstract class Enemigo extends EntidadMovible {
 		posicion.setY(miSalon.getRespawnPoint().getY());
 		ultMovimiento = REPOSO;
 		movEnCola = REPOSO;
+		resetMovimientos();
 		this.revive();
 	}
 

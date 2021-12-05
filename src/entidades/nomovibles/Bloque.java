@@ -8,7 +8,6 @@ import patrones.visitor_entidad.VisitorEntidad;
 public class Bloque extends Entidad {
 
 	public Bloque(Coordenada c, String rutaImg, int anc, int alt) {
-		caminable = false;
 		valor = 0;
 		posicion = c;
 		ancho = anc;

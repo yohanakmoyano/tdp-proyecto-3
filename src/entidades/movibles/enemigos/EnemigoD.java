@@ -15,7 +15,6 @@ public class EnemigoD extends Enemigo {
 		miEstrategia.setEnemigo(this);
 		velocidad = 1;
 		alive = true;
-		caminable = true;
 		movEnCola = REPOSO;
 		ultMovimiento = REPOSO;
 		puedoMovermeIzq = true;

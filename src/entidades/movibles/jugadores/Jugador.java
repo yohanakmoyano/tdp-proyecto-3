@@ -20,7 +20,6 @@ public class Jugador extends EntidadMovible {
 
 	private Jugador(Coordenada c, String rutaImg, Juego jueg) {
 		alive = true;
-		caminable = true;
 		posRespawn = new Coordenada(c.getX(), c.getY());
 		movEnCola = REPOSO;
 		ultMovimiento = REPOSO;
@@ -95,10 +94,7 @@ public class Jugador extends EntidadMovible {
 		posicion.setY(posRespawn.getY());
 		ultMovimiento = REPOSO;
 		movEnCola = REPOSO;
-		puedoMovermeIzq = true;
-		puedoMovermeDer = true;
-		puedoMovermeUp = true;
-		puedoMovermeDown = true;
+		resetMovimientos();
 	}
 
 	public void setTransformacion(boolean t) {

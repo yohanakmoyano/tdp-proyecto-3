@@ -6,11 +6,9 @@ import patrones.visitor_entidad.VisitorEntidad;
 
 public abstract class Entidad {
 	protected boolean alive;
-	protected boolean caminable;
 	protected VisitorEntidad miVisitor;
 	protected int ancho;
 	protected int alto;
-	protected int esquina;
 	protected int valor;
 	protected RepresentacionGrafica miRep;
 	protected Coordenada posicion; // se tratará de la esquina superior izquierda.Considerando a la entidad como un cuadrilátero cuyos ángulos interiores son todos rectos.
@@ -38,10 +36,6 @@ public abstract class Entidad {
 
 	public void setAlto(int h) {
 		alto = h;
-	}
-
-	public boolean isCaminable() {
-		return caminable;
 	}
 
 	public boolean isAlive() {
@@ -80,16 +74,8 @@ public abstract class Entidad {
 		return posicion;
 	}
 
-	public void setCoordenada(Coordenada c) {
-		posicion = c;
-	}
-
 	public boolean colisiona(Entidad e) {
 		return ((this != e) && (miRep.colisiona(e.getRepresentacionGrafica())));
-	}
-
-	public boolean contieneCoordenada(Coordenada c) {
-		return miRep.contieneCoordenada(c);
 	}
 
 	public void eliminar() {

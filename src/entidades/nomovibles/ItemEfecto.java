@@ -9,7 +9,6 @@ public class ItemEfecto extends Entidad {
 
 	public ItemEfecto(int val, Coordenada c, String rutaImg) {
 		alive = true;
-		caminable = true;
 		valor = val;
 		posicion = c;
 		alto = 70;

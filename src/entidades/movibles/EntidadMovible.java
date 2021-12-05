@@ -46,34 +46,18 @@ public abstract class EntidadMovible extends Entidad {
 		return puedoMovermeIzq;
 	}
 
-	public void setPuedoMovermeIzq(boolean mov) {
-		puedoMovermeIzq = mov;
-	}
-
 	public boolean puedoMovermeDer() {
 		return puedoMovermeDer;
-	}
-
-	public void setPuedoMovermeDer(boolean mov) {
-		puedoMovermeDer = mov;
 	}
 
 	public boolean puedoMovermeUp() {
 		return puedoMovermeUp;
 	}
-
-	public void setPuedoMovermeUp(boolean mov) {
-		puedoMovermeUp = mov;
-	}
-
+	
 	public boolean puedoMovermeDown() {
 		return puedoMovermeDown;
 	}
-
-	public void setPuedoMovermeDown(boolean mov) {
-		puedoMovermeDown = mov;
-	}
-
+	
 	public int getVidas() {
 		return vidas;
 	}
@@ -82,6 +66,13 @@ public abstract class EntidadMovible extends Entidad {
 		vidas = v;
 	}
 
+	protected void resetMovimientos() {
+		puedoMovermeIzq = true;
+		puedoMovermeDer = true;
+		puedoMovermeUp = true;
+		puedoMovermeDown = true;
+	}
+	
 	public void comeBack() {
 		switch (ultMovimiento) {
 		case (MOV_DER): {

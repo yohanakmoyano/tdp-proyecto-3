@@ -15,7 +15,6 @@ public class ItemD extends Entidad {
 
 	public ItemD(int val, Coordenada c, String rutaImg) {
 		alive = true;
-		caminable = true;
 		valor = val;
 		posicion = c;
 		ancho = 25;
