@@ -53,7 +53,7 @@ public class VisitorJugador extends VisitorEntidad {
 	public void visit(ItemC potion) {
 		int velocidadPrevia = miJugador.getVelocidad();
 		miJugador.afectarPuntaje(potion.getValor());
-		miJugador.setVelocidad((miJugador.getVelocidad()* 7) / 2);
+		miJugador.setVelocidad((miJugador.getVelocidad()* 5) / 2);
 		potion.eliminar();
 		miJugador.setTransformacion(true);
 		miJugador.getJuego().getGui().actualizarPocion("+ velocidad");
@@ -65,7 +65,7 @@ public class VisitorJugador extends VisitorEntidad {
 				miJugador.setVelocidad(velocidadPrevia);
 				miJugador.getJuego().getGui().actualizarPocion("");
 				miJugador.setTransformacion(false);
-			}}, 4000);
+			}}, 6000);
 	}
 
 	public void visit(ItemD bomb) {

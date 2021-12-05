@@ -24,6 +24,7 @@ public class Juego {
 	protected Movimiento movE;
 	protected int dominio;
 
+	
 	public Juego() {
 		puntos = 0;
 		nivel = 1;
@@ -136,7 +137,7 @@ public class Juego {
 	}
 	
 	public void PasoDeNivel(int cantItempsUp) {
-		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) 
+		if(cantItempsUp == miSala.getCantItems()){
 			if (nivel < 3) {
 				movE.setDeboMover(false);
 				miSala.reset();
@@ -193,7 +194,7 @@ public class Juego {
 			break;
 		}
 		}
-		if(movARealizar != e.getUltMovimiento()) { //Si colisiono con un bloque esto dara verdadero.
+		if(movARealizar != e.getUltMovimiento()) {
 			e.bloquearMovimiento(movARealizar);
 		}
 		miSala.actualizarZonasEntidad(posAnt, e);
