@@ -136,7 +136,7 @@ public class Juego {
 	}
 	
 	public void PasoDeNivel(int cantItempsUp) {
-		if(cantItempsUp == 4){//(cantItempsUp == miSala.getCantItems()) 
+		if(cantItempsUp == miSala.getCantItems()){//(cantItempsUp == miSala.getCantItems()) 
 			if (nivel < 3) {
 				movE.setDeboMover(false);
 				miSala.reset();
