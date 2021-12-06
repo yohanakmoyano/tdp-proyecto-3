@@ -110,7 +110,7 @@ public class Juego {
 		return miSala;
 	}
 
-	public void transformarJugador() {
+	public synchronized void transformarJugador() {
 		if (dominio == 1)
 			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_pocion.png").toString(),
 					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
@@ -126,7 +126,7 @@ public class Juego {
 		miGui.mostrarEntidad(personaje);
 	}
 
-	public void resetTransformacion() {
+	public synchronized void resetTransformacion() {
 		if (dominio == 1)
 			personaje.cambiarImagen(this.getClass().getResource("/Images/JDC/jugador_nivel1.png").toString(),
 					personaje.getPosicion().getX(), personaje.getPosicion().getY(), personaje.getAncho(),
