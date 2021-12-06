@@ -1,7 +1,11 @@
 package logica;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
 import entidades.Entidad;
+import entidades.movibles.enemigos.Enemigo;
 import entidades.movibles.EntidadMovible;
 import entidades.movibles.jugadores.Jugador;
 import grafica.Gui;
@@ -96,7 +100,6 @@ public class Juego {
 	public void iniciarJuego() {
 		movE = new Movimiento(miSala, this);
 		movE.start();
-		nivel = this.getNivel();
 	}
 
 	public void runEnemies() {
@@ -150,12 +153,18 @@ public class Juego {
 		if (cantItempsUp == miSala.getCantItems()) {
 			if (nivel < 3) {
 				movE.setDeboMover(false);
-				miSala.reset();
+				SalaDeJuegos oldSala = miSala;
+				List<Entidad> enemigos = oldSala.resetEnemigos();
+				oldSala.resetEntidadesFijas();
 				nivel = nivel + 1;
 				setDominio(dominio);
+				for(Entidad e: enemigos) {
+					miSala.agregarEnemigoASala(e);
+				}
 				miGui.repaint();
 				personaje.resetNivel();
-				movE.setDeboMover(true);
+				iniciarJuego();
+				
 			} else
 				miGui.mostrarGanador();
 		}

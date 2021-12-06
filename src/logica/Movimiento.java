@@ -36,6 +36,10 @@ public class Movimiento extends Thread {
 		this.deboMover = deboMover;
 	}
 
+	public void setSala(SalaDeJuegos sj) {
+		sala = sj;
+	}
+	
 	protected void moverEnemigos() {
 
 		for (Entidad e : sala.getListaEnemigos()) {

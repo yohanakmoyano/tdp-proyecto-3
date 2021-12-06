@@ -185,16 +185,37 @@ public class SalaDeJuegos {
 
 	}
 
-	public void reset() {
+	public void resetEntidadesFijas() {
 		for (Entidad ent : listaEntidadFija) {
 			juego.getGui().removerEntidad(ent);
 		}
-
-		for (Entidad e : listaEnemigos) {
-			((EntidadMovible) e).morir();
+	}
+	
+	public void agregarEnemigoASala(Entidad e) {
+		listaEnemigos.add(e);
+		agregarAZonas(e);
+	}
+	
+	//Elimina de la sala a los enemigos y los devuelve en una lista nueva.
+	public List<Entidad> resetEnemigos() {
+		List<Entidad> enem = new ArrayList<Entidad>();
+		for(Entidad e: listaEnemigos) {
+			enem.add(e);
+			((Enemigo)e).morir();
+		}
+		for(Entidad e: enem) {
+			eliminarDeZonas(e);
+			listaEnemigos.remove(e);
+		}
+		return enem;
+	}
+	
+	private void eliminarDeZonas(Entidad e) {
+		for(Zona z: zonasDeEntidad(e)) {
+			z.eliminarEntidad(e);
 		}
 	}
-
+	
 	private boolean colisionEnZona(Entidad e, Zona z) {
 		boolean colisiono = false;
 		boolean toRet = false;
