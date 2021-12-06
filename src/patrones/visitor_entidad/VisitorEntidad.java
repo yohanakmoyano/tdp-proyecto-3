@@ -13,15 +13,15 @@ import entidades.nomovibles.ItemEfecto;
 public abstract class VisitorEntidad {
 	public abstract void visit(Bloque ent);
 
-	public abstract void visit(ItemA it);
+	public abstract void visit(ItemA comida);
 
-	public abstract void visit(ItemB it);
+	public abstract void visit(ItemB arma);
 
-	public abstract void visit(ItemC it);
+	public abstract void visit(ItemC potion);
 
-	public abstract void visit(ItemD it);
+	public abstract void visit(ItemD bomb);
 
-	public abstract void visit(ItemE it);
+	public abstract void visit(ItemE bonus);
 
 	public abstract void visit(Enemigo enemigo);
 

@@ -21,15 +21,15 @@ public class VisitorEnemigo extends VisitorEntidad{
 		miEnemigo.comeBack();
 	}
 	
-	public void visit(ItemA it) {
+	public void visit(ItemA comida) {
 		
 	}
 
-	public void visit(ItemB it) {
+	public void visit(ItemB arma) {
 		
 	}
 	
-	public void visit(ItemC it) {
+	public void visit(ItemC potion) {
 		
 	}
 
@@ -37,7 +37,7 @@ public class VisitorEnemigo extends VisitorEntidad{
 		
 	}
 
-	public void visit(ItemE it) {
+	public void visit(ItemE bonus) {
 		
 	}
 	

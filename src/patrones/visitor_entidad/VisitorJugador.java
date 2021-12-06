@@ -24,10 +24,10 @@ public class VisitorJugador extends VisitorEntidad {
 		miJugador.comeBack();
 	}
 
-	public void visit(ItemA it) {
-		miJugador.afectarPuntaje(it.getValor());
+	public void visit(ItemA comida) {
+		miJugador.afectarPuntaje(comida.getValor());
 		miJugador.setCantItemsLevantados();
-		it.eliminar();
+		comida.eliminar();
 	}
 
 	public void visit(ItemB arma) {
@@ -83,9 +83,9 @@ public class VisitorJugador extends VisitorEntidad {
 		}, 15000);
 	}
 
-	public void visit(ItemE it) {
-		miJugador.afectarPuntaje(it.getValor());
-		it.eliminar();
+	public void visit(ItemE bonus) {
+		miJugador.afectarPuntaje(bonus.getValor());
+		bonus.eliminar();
 	}
 
 	public void visit(Enemigo enemigo) {

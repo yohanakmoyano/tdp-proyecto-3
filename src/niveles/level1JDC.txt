@@ -2,9 +2,9 @@
 /audio/JDC.wav
 /Images/JDC/jugador_nivel1.png
 B;241;241;/Images/JDC/boss_enemigo.png
-T;70;150;/Images/JDC/triangulo_enemigo.png
-S;321;300;/Images/JDC/cuadrado_enemigo.png
-C;300;300;/Images/JDC/circulo_enemigo.png
+T;241;241;/Images/JDC/triangulo_enemigo.png
+S;241;241;/Images/JDC/cuadrado_enemigo.png
+C;241;241;/Images/JDC/circulo_enemigo.png
 g;16;19;/Images/JDC/galleta_nivel1.png
 g;16;34;/Images/JDC/galleta_nivel1.png
 g;16;49;/Images/JDC/galleta_nivel1.png

@@ -2,9 +2,9 @@
 /audio/AU.wav
 /Images/AU/jugador_red.png
 B;241;241;/Images/AU/enemigo_black.png
-T;70;150;/Images/AU/enemigo_blue.png
-S;321;300;/Images/AU/enemigo_green.png
-C;300;300;/Images/AU/enemigo_pink.png
+T;241;241;/Images/AU/enemigo_blue.png
+S;241;241;/Images/AU/enemigo_green.png
+C;241;241;/Images/AU/enemigo_pink.png
 g;16;19;/Images/AU/Planta.png
 g;16;34;/Images/AU/Planta.png
 g;16;49;/Images/AU/Planta.png

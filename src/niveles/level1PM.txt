@@ -2,9 +2,9 @@
 /audio/PC.wav
 /Images/PM/pac_man1.png
 B;241;241;/Images/PM/Blinky.png
-T;70;150;/Images/PM/Pinky.png
-S;321;300;/Images/PM/Inky.png
-C;300;300;/Images/PM/Clyde.png
+T;241;241;/Images/PM/Pinky.png
+S;241;241;/Images/PM/Inky.png
+C;241;241;/Images/PM/Clyde.png
 g;16;19;/Images/PM/pacDoct.png
 g;16;34;/Images/PM/pacDoct.png
 g;16;49;/Images/PM/pacDoct.png
